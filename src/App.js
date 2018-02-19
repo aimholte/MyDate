@@ -16,6 +16,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+          <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk&libraries=places">
+          </script>
       </div>
     );
   }
