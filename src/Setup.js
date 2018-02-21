@@ -81,20 +81,23 @@ let vintage =[
 
 function activeprint() {
 
+
+    window.location= "Money_Page_Active.html";
     count =1;
-    window.location= "Money_Page.html"
 }
 function cityprint() {
+
+    window.location= "Money_Page_City.html";
     count=2;
-    window.location= "Money_Page.html"
 }
 function freshprint() {
+
+    window.location= "Money_Page_Fresh.html";
     count = 3;
-    window.location= "Money_Page.html"
 }
 function vintageprint() {
+    window.location= "Money_Page_Vintage.html";
     count = 4;
-    window.location= "Money_Page.html"
 }
 //functions that go through and prints out three options for the date based on the price and the category prints them
 function runnercheap() {
@@ -212,69 +215,74 @@ function runnerhigh() {
 }
 let price = 0;
 //functions to go to a different page
-function gotToThree(){
-    window.location = "Page3.html"
+function gotToActive(){
+    window.location = "Active_Page.html"
 
 }
-function goToFour(){
-    window.location = "http://localhost:63342/HS/working/Page4.html?_ijt=5mdijck2gh2a38s515odco4d9i"
+function goToCity(){
+    window.location = "City_Page.html"
 }
-function goToFive(){
-    window.location = "http://localhost:63342/HS/working/Page5.html?_ijt=5mdijck2gh2a38s515odco4d9i"
+function goToFresh(){
+    window.location = "Fresh_Page.html"
 }
-function goToSix(){
-    window.location = "http://localhost:63342/HS/working/Page6.html?_ijt=5mdijck2gh2a38s515odco4d9i"
+function goToVintage(){
+    window.location = "Vintage_Page.html"
 }
-function goToSeven()
-{
-    window.location ="http://localhost:63342/HS/working/Page7.html?_ijt=5mdijck2gh2a38s515odco4d9i"
-}
+
 //sends you to the correct page
-function bigBaller(){
-    price = 3;
-    if(count === 1){
-        gotToThree();
-    }
-    else if(count ===2){
-        goToFour();
-    }
-    else if(count===3){
-        goToFive();
-    }
-    else{
-        goToSix();
-    }
-}
-function someDough(){
-    price =2;
-    if(count === 1){
-        gotToThree();
-    }
-    else if(count ===2){
-        goToFour();
-    }
-    else if(count===3){
-        goToFive();
-    }
-    else{
-        goToSix();
-    }
-}
-function ballingBudget(){
-    price =1;
-    if(count === 1){
-        gotToThree();
-    }
-    if(count ===2){
-        goToFour();
-    }
-    if(count===3){
-        goToFive();
-    }
-    if(count ===4){
-        goToSix();
-    }
+function bigBallerActive(){
+   window.location ="High_Budget_Active.html"
 
 }
+function someDoughActive(){
+    window.location = "Mid_Active.html"
+
+}
+function ballingBudgetActive(){
+    window.location = "Cheap_Active.html"
+
+
+}
+
+function bigBallerCity(){
+    window.location ="High_Budget_City.html"
+
+}
+function someDoughCity(){
+    window.location = "Mid_City.html"
+
+}
+function ballingBudgetCity(){
+    window.location = "Cheap_City.html"
+}
+
+function bigBallerFresh(){
+    window.location ="HF.html"
+
+}
+function someDoughFresh(){
+    window.location = "MF.html"
+
+}
+function ballingBudgetFresh(){
+    window.location = "CF.html"
+
+
+}
+
+function bigBallerVintage(){
+    window.location ="HV.html"
+
+}
+function someDoughVintage(){
+    window.location = "MV.html"
+
+}
+function ballingBudgetVintage(){
+    window.location = "CV.html"
+
+
+}
+
 
 
