@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
+    <title>Place searches</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
         /* Always set the map height explicitly to define the size of the div
@@ -18,51 +17,68 @@
             padding: 0;
         }
     </style>
+    <script>
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+        var map;
+        var infowindow;
+        var saintPaul = {lat: 44.938, lng: -93.169};
+        var loc = new google.maps.LatLng(44.938, -93.169);
+
+        function initMap() {
+            var pyrmont = {lat: 44.938, lng: -93.169};
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: pyrmont,
+                zoom: 15
+            });
+
+            infowindow = new google.maps.InfoWindow();
+            var service = new google.maps.places.PlacesService(map);
+            service.nearbySearch({
+                location: pyrmont,
+                radius: 500
+            }, callback);
+        }
+
+        function callback(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                    createMarker(results[i]);
+                }
+            }
+        }
+
+        function createMarker(place) {
+            var placeLoc = place.geometry.location;
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(place.name);
+                infowindow.open(map, this);
+            });
+        }
+
+        function getAllLocations(lat, long){
+            var currentLocation = new google.maps.LatLng(lat, long);
+            var search = google.maps.places.PlacesServices(currentLocation);
+            google.maps.places.PlaceResults searchResults = [search.nearbySearch({
+                location: saintPaul,
+                radius: 500,
+            })];
+            return searchResults;
+        }
+
+
+    </script>
 </head>
 <body>
 <div id="map"></div>
-<script>
-    var map;
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 8
-        });
-    }
-</script>
-<script>
-    var map;
-    var service;
-    var infowindow;
-
-    function initialize() {
-        var pyrmont = new google.maps.LatLng(-33.8665433,151.1956316);
-
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: pyrmont,
-            zoom: 15
-        });
-
-        var request = {
-            location: pyrmont,
-            radius: '500',
-            type: ['restaurant']
-        };
-
-        service = new google.maps.places.PlacesService(map);
-        service.nearbySearch(request, callback);
-    }
-
-    function callback(results, status) {
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-            for (var i = 0; i < results.length; i++) {
-                var place = results[i];
-                createMarker(results[i]);
-            }
-        }
-    }
-    //API Key: AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk, Latitude: 44.937893,  Longitude: -93.169043
-
-</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk&libraries=places&callback=initMap" async defer></script>
 </body>
 </html>
