@@ -257,29 +257,29 @@ function ballingBudgetCity(){
 }
 
 function bigBallerFresh(){
-    window.location ="HF.html"
+    window.location ="High_Budget_Fresh.html"
 
 }
 function someDoughFresh(){
-    window.location = "MF.html"
+    window.location = "Mid_Fresh.html"
 
 }
 function ballingBudgetFresh(){
-    window.location = "CF.html"
+    window.location = "Cheap_Fresh.html"
 
 
 }
 
 function bigBallerVintage(){
-    window.location ="HV.html"
+    window.location ="High_Budget_Vintage.html"
 
 }
 function someDoughVintage(){
-    window.location = "MV.html"
+    window.location = "Mid_Vintage.html"
 
 }
 function ballingBudgetVintage(){
-    window.location = "CV.html"
+    window.location = "Cheap_Vintage.html"
 
 
 }

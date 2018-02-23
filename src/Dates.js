@@ -1,5 +1,9 @@
-
-let activecheap = [
+function titlesSeparatedByCommas(items) {
+    return items
+        .map((item) => item.title)
+        .join(", ");
+}
+let activeCheap = [
 
     {
         title:"Swing Dancing in the Caves",
@@ -50,20 +54,9 @@ let activeHi =[
         cos:106
     }
 ];
-let Hiact = "";
-for (i=0;i<activeHi.length;i++){
-    Hiact+= activeHi[i].title;
-    Hiact+=" ,"
-}
-let Midact ="";
-for(i=0;i<activeMid.length;i++){
-    Midact+= activeMid[i].title;
-    Midact+=", ";}
-let LowAct = "";
-for(i=0;i<activecheap.length;i++){
-    LowAct += activecheap[i].title;
-    LowAct+=", ";
-}
+let Hiact = titlesSeparatedByCommas(activeHi);
+let Midact =titlesSeparatedByCommas(activeMid);
+let LowAct = titlesSeparatedByCommas(activeCheap);
 
 
 let Midcity = [
@@ -108,22 +101,11 @@ let Lowcity =[
     }
 ];
 
-let HiCi ="";
-for (i=0;i<Hicity.length;i++){
-    HiCi+= Hicity[i].title;
-    HiCi+= ", ";
-}
-let Midci ="";
-for(i=0;i<Midcity.length;i++){
-    Midci+= Midcity[i].title;
-    Midci+= ", ";
-}
-let LowCi = "";
-for(i=0;i<Lowcity.length;i++){
-    LowCi+= Lowcity[i].title;
-    LowCi+=", ";
-}
-let Hifresh =[
+let HiCi =  titlesSeparatedByCommas(Hicity);
+let Midci =titlesSeparatedByCommas(Midcity);
+let LowCi = titlesSeparatedByCommas(Lowcity);
+
+let HiFresh =[
     {
         title: "Try relaxing at a Spa",
 
@@ -159,35 +141,28 @@ let LowFresh =[
         title: "Try that new Bakery"
     }
 ];
-let Hifre ="";
-for(i=0;i<Hifreshresh.length;i++){
-    Hifre+=Hifresh[i].title;
-    Hifre+=", "
-}
-let Midfre="";
-for(i=0;i<MidFresh.length;i++){
-    Midfre+= MidFresh[i].title;
-    Midfre+=", "
-}
-let Lowfre="";
-for(i=0;i<LowFresh.length;i++){
-    Lowfre+= LowFresh[i].title;
-}
-let Lowvintage =[
+let Hifre =titlesSeparatedByCommas(HiFresh);
+let Midfre=titlesSeparatedByCommas(MidFresh);
+let Lowfre=titlesSeparatedByCommas(LowFresh);
+
+let LowVintage =[
     {
         title:"Stroll around the Mall",
+        cost: 30
 
     },
     {
         title:"Go to an Arcade",
+        cost:20
 
     },
     {
         title: "Go to a Pet store",
+        cost:0
 
     }
 ];
-let Hivintage =[
+let HiVintage =[
     {
         title:"Rent an old convertible"
     },
@@ -198,7 +173,7 @@ let Hivintage =[
         title:"Rent out a Lake House"
     }
 ];
-let Midvintage =[
+let MidVintage =[
     {
         title: "Drive-In"
     },
@@ -209,19 +184,11 @@ let Midvintage =[
         title:"Bowling Alley"
     }
 ];
-let LV ="";
-for(i=0;i<Lowvintage.length;i++){
-    LV+= Lowvintage[i].title;
-    LV += ", ";
-}
-let HV ="";
-for(i=0;i<Hivintage.length;i++){
-    HV+= Hivintage[i].title;
-    HV+= ", ";
-}
-let MV ="";
-for(i=0;i<Midvintage.length;i++){
-    MV+= Midvintage[i].title;
-    MV+=", ";
-}
+
+
+
+
+let LV = titlesSeparatedByCommas(LowVintage);
+let HV = titlesSeparatedByCommas(HiVintage);
+let MV = titlesSeparatedByCommas(MidVintage);
 
