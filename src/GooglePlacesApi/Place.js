@@ -13,9 +13,31 @@ class Place{
         this.vicinity = vicinity;
         this.website = website;
     }
+
+    set location(newLocation) {
+        this.location = newLocation;
+    }
+
+    set name(newName) {
+        this.name = newName;
+    }
+
+    get location() {
+        return this.location;
+    }
+
+    get name() {
+        return this.name;
+    }
 }
 
-function getLocation() {
+var place1 = new Place("Location Uno", "The Cool Place", ["cool_place"], true, 3, 5, ['a cool place!'],
+'www.coolplace.com', 'This place is close!', 'www.coolplace.com');
+
+document.write(place1.types);
+
+
+/*function getLocation() {
     return this.location;
 }
 
@@ -53,7 +75,7 @@ function getVicinity() {
 
 function getWebsite() {
     return this.website;
-}
+}*/
 
 placeTest = new Place([-321.1, 19.2], "A cool place", ["dope_place", "cool_place"], true, 1, 5.0, [], "coolplace.com",
     "this place is close!", "coolplace.com");

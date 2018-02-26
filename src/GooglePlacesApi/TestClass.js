@@ -1,11 +1,25 @@
-var obj = {
-    log: ['a', 'b', 'c'],
-    get latest() {
-        if (this.log.length == 0) {
-            return undefined;
-        }
-        return this.log[this.log.length - 1];
+class User {
+
+    constructor(name) {
+        // invokes the setter
+        this.name = name;
     }
+
+    get name() {
+        return this._name;
+    }
+
+    set name(value) {
+        if (value.length < 4) {
+            alert("Name is too short.");
+            return;
+        }
+        this._name = value;
+    }
+
 }
 
-console.log(obj.latest);
+let user = new User("John");
+alert(user.name); // John
+
+user = new User(""); // Name too short.
