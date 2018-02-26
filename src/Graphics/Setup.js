@@ -213,21 +213,6 @@ function runnerhigh() {
     }
     window.alert(date2)
 }
-let price = 0;
-//functions to go to a different page
-function gotToActive(){
-    window.location = "Active_Page.html"
-
-}
-function goToCity(){
-    window.location = "City_Page.html"
-}
-function goToFresh(){
-    window.location = "Fresh_Page.html"
-}
-function goToVintage(){
-    window.location = "Vintage_Page.html"
-}
 
 //sends you to the correct page
 function bigBallerActive(){

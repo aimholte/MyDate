@@ -64,63 +64,63 @@
             });
         }
 
-        function getAllLocations(){
-           // var currentLocation = new google.maps.LatLng(lat, long);
-           // var search = google.maps.places.PlacesServices(currentLocation);
-            google.maps.places.PlaceResults searchResults = [search.nearbySearch({
-                location: saintPaul,
-                radius: 500,
-            })];
-            return searchResults;
-        }
+//        function getAllLocations(){
+//           // var currentLocation = new google.maps.LatLng(lat, long);
+//           // var search = google.maps.places.PlacesServices(currentLocation);
+//            google.maps.places.PlaceResults searchResults = [search.nearbySearch({
+//                location: saintPaul,
+//                radius: 500,
+//            })];
+//            return searchResults;
+//        }
 
-        function getActiveLocations(resultsList) {
-            activeList = [];
-            for (var i = 0; i < resultsList.length; i++) {
-                if(activeList[i].types.contains('night_club', 'park', 'zoo', 'amusement_park', 'gym')) {
-                    activeList.push(place);
-                }
-            }
-            return activeList;
-        }
-
-        function getCityLocations(resultsList) {
-            cityList = [];
-            for (var i = 0; i < resultsList.length; i++) {
-                if(cityList[i].types.contains('art_gallery', 'museum', 'casino', 'stadium')){
-                    cityList.push(place);
-                }
-            }
-            return cityList;
-        }
-
-        function getOldSchoolLocations(resultsList) {
-            oldSchoolList = [];
-            for (var i = 0; i < resultsList.length; i++) {
-                if(oldSchoolList[i].types.contains('mall', 'bar', 'movie_theatre', 'bowling_alley')) {
-                    oldSchoolList.push(place);
-                }
-            }
-            return oldSchoolList;
-        }
-
-        function getSomethingNewLocations(resultsList) {
-            somethingNewList = [];
-            for (var i = 0; i < resultsList.length; i++){
-                if(somethingNewList[i].types.contains('spa', 'bakery', 'book_store', 'aquarium')) {
-                    somethingNewList.push(place);
-                }
-            }
-            return somethingNewList;
-        }
-
-        print(getCityLocations(getAllLocations()));
+//        function getActiveLocations(resultsList) {
+//            activeList = [];
+//            for (var i = 0; i < resultsList.length; i++) {
+//                if(activeList[i].types.contains('night_club', 'park', 'zoo', 'amusement_park', 'gym')) {
+//                    activeList.push(place);
+//                }
+//            }
+//            return activeList;
+//        }
+//
+//        function getCityLocations(resultsList) {
+//            cityList = [];
+//            for (var i = 0; i < resultsList.length; i++) {
+//                if(cityList[i].types.contains('art_gallery', 'museum', 'casino', 'stadium')){
+//                    cityList.push(place);
+//                }
+//            }
+//            return cityList;
+//        }
+//
+//        function getOldSchoolLocations(resultsList) {
+//            oldSchoolList = [];
+//            for (var i = 0; i < resultsList.length; i++) {
+//                if(oldSchoolList[i].types.contains('mall', 'bar', 'movie_theatre', 'bowling_alley')) {
+//                    oldSchoolList.push(place);
+//                }
+//            }
+//            return oldSchoolList;
+//        }
+//
+//        function getSomethingNewLocations(resultsList) {
+//            somethingNewList = [];
+//            for (var i = 0; i < resultsList.length; i++){
+//                if(somethingNewList[i].types.contains('spa', 'bakery', 'book_store', 'aquarium')) {
+//                    somethingNewList.push(place);
+//                }
+//            }
+//            return somethingNewList;
+//        }
+//
+//        print(getCityLocations(getAllLocations()));
 
 
     </script>
 </head>
 <body>
 <div id="map"></div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk&libraries=places&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/json?"key=AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk&libraries=places&callback=initMap" async defer></script>
 </body>
 </html>
