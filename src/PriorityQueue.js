@@ -70,6 +70,7 @@
     }
 
 
+
     // Pairwise comparison semantics
     const pairwiseQueue = new PriorityQueue((a, b) => a[1] > b[1]);
     pairwiseQueue.push(['low', 0], ['medium', 8], ['high', 10]);

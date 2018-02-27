@@ -18,6 +18,9 @@ let activeCheap = [
         title: " Bike around a Lake ",
         location: "Lake of the Isles",
         cost:10
+    },
+    {
+        title:"Play Ping Pong"
     }
 
 ];
@@ -35,6 +38,13 @@ let activeMid =[
         title: "Go to the Zoo",
         cost:36
     },
+    {
+        title:"Go Salsa Dancing "
+    },
+    {
+        title:"Roller Skating"
+    },
+
 
 ];
 
@@ -52,6 +62,15 @@ let activeHi =[
     {
         title:"White Water Rafting",
         cos:106
+    },
+    {
+        title:"Go Skiing"
+    },
+    {
+        title: "Trampoline House"
+    },
+    {
+        title:"Valley Fair"
     }
 ];
 let Hiact = titlesSeparatedByCommas(activeHi);
@@ -117,6 +136,9 @@ let HiFresh =[
     {
         title:"Go see the Ice Castles",
 
+    },
+    {
+        title:"Wine and Pallet"
     }
 ];
 let MidFresh =[

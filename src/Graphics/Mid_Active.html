@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="Food.js">
+    </script>
     <script src="Dates.js"></script>
     <meta charset="UTF-8">
     <title>Moderate Active</title>
@@ -11,14 +13,38 @@
         background-color: white;
         color:limegreen;
     }
+
     div.dateOption{
         color:limegreen;
         background-color: black;
-        border: 3px solid deeppink;
-        width: 500px;
+        border: 3px solid purple;
+        width: 250px;
+        height: 500px;
 
     }
 
+    div.dateOption2{
+        color:limegreen;
+        background-color: black;
+        position: absolute;
+        border: 3px solid purple;
+        width: 250px;
+        height: 500px;
+        left: 300px;
+        top: 80px;
+
+
+    }
+    div.dateOption3{
+        color:limegreen;
+        background-color: black;
+        position: absolute;
+        border: 3px solid purple;
+        width: 250px;
+        height: 500px;
+        left: 600px;
+        top: 80px;
+    }
 </style>
 
 <h1>Mid Active</h1>
@@ -28,10 +54,71 @@
 
 <img src="../back11.jpg" style="position: absolute;top: 0px;left: 0px;z-index: -1;height: 800px;width: 1000px;">
 <div class="dateOption">
+    <p>
+        Activity 1:
+    </p>
     <script>
-        document.write(Midact)
+        document.write(activeMid[1].title);
+    </script>
+    <p>
+        <br>
+        Meal:
+    </p>
+    <script>
+        document.write(" "+American[1].title)
+    </script>
+    <p>
+        <br>
+        Activity 2:
+    </p>
+    <script>
+        document.write(activeMid[2].title);
     </script>
 
+</div>
+<div class="dateOption2">
+    <p>
+        Activity 1:
+    </p>
+    <script>
+        document.write(activeMid[1].title);
+    </script>
+    <p>
+        <br>
+        Meal:
+    </p>
+    <script>
+        document.write(" "+Italian[2].title)
+    </script>
+    <p>
+        <br>
+        Activity 2:
+    </p>
+    <script>
+        document.write(activeMid[2].title);
+    </script>
+</div>
+<div class="dateOption3">
+    <p>
+        Activity 1:
+    </p>
+    <script>
+        document.write(activeMid[0].title);
+    </script>
+    <p>
+        <br>
+        Meal:
+    </p>
+    <script>
+        document.write(" "+Chinese[0].title)
+    </script>
+    <p>
+        <br>
+        Activity 2:
+    </p>
+    <script>
+        document.write(activeMid[2].title);
+    </script>
 </div>
 </body>
 </html>

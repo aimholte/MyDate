@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="Food.js"></script>
     <script src="Dates.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -17,14 +18,97 @@
         color:slategray;
         background-color: aliceblue;
         border: 3px solid lightskyblue ;
-        width: 500px;
+        width: 250px;
+        height: 500px;
+    }
+    div.dateOption2{
+        color:slategray;
+        background-color: aliceblue;
+        position: absolute;
+        border: 3px solid lightskyblue;
+        width: 250px;
+        height: 500px;
+        left: 300px;
+        top: 80px;
 
+
+    }
+    div.dateOption3{
+        color:slategray;
+        background-color: aliceblue;
+        position: absolute;
+        border: 3px solid lightskyblue;
+        width: 250px;
+        height: 500px;
+        left: 600px;
+        top: 80px;
     }
 </style>
 <h1>Moderate Vintage</h1>
 <div class="vintageDate">
+    <p>
+        Activity 1:
+    </p>
     <script>
-        document.write(MV)
+        document.write(MidVintage[1].title);
+    </script>
+    <p>
+        <br>
+        Meal:
+    </p>
+    <script>
+        document.write(" "+Italian[2].title)
+    </script>
+    <p>
+        <br>
+        Activity 2:
+    </p>
+    <script>
+        document.write(MidVintage[2].title);
+    </script>
+</div>
+<div class="dateOption2">
+    <p>
+        Activity 1:
+    </p>
+    <script>
+        document.write(MidVintage[0].title);
+    </script>
+    <p>
+        <br>
+        Meal:
+    </p>
+    <script>
+        document.write(" "+Mexican[2].title)
+    </script>
+    <p>
+        <br>
+        Activity 2:
+    </p>
+    <script>
+        document.write(MidVintage[1].title);
+    </script>
+</div>
+<div class="dateOption3">
+    <p>
+        Activity 1:
+    </p>
+    <script>
+        document.write(MidVintage[2].title);
+    </script>
+    <p>
+        <br>
+        Meal:
+    </p>
+    <script>
+        document.write(" "+American[2].title)
+    </script>
+    <p>
+        <br>
+        Activity 2:
+    </p>
+    <script>
+        document.write(MidVintage[0].title);
     </script>
 </div>
 

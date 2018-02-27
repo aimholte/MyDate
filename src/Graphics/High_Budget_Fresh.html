@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="Food.js"></script>
     <script src="Dates.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,16 +9,103 @@
 <body>
 <h1>Pricey Fresh</h1>
 <style>
-    div.Freshdate{
-        color: black;
-        width: 500px;
-        background: white;
+
+    div.dateOption{
+        color:black;
+        background-color: white;
         border: 3px solid mediumspringgreen;
+        width: 250px;
+        height: 500px;
+
     }
+    div.dateOption2{
+        color:black;
+        background-color: white;
+        position: absolute;
+        border: 3px solid mediumspringgreen;
+        width: 250px;
+        height: 500px;
+        left: 300px;
+        top: 80px;
+
+
+    }
+    div.dateOption3{
+        color:black;
+        background-color: white;
+        position: absolute;
+        border: 3px solid mediumspringgreen;
+        width: 250px;
+        height: 500px;
+        left: 600px;
+        top: 80px;
+    }
+
 </style>
-<div class="Freshdate">
+<div class="dateOption">
+    <p>
+        Activity 1:
+    </p>
     <script>
-        document.write(Hifre)
+        document.write(MidFresh[0].title);
+    </script>
+    <p>
+        <br>
+        Meal:
+    </p>
+    <script>
+        document.write(" "+Mexican[2].title)
+    </script>
+    <p>
+        <br>
+        Activity 2:
+    </p>
+    <script>
+        document.write(MidFresh[2].title);
+    </script>
+</div>
+<div class="dateOption2">
+    <p>
+        Activity 1:
+    </p>
+    <script>
+        document.write(MidFresh[1].title);
+    </script>
+    <p>
+        <br>
+        Meal:
+    </p>
+    <script>
+        document.write(" "+Chinese[0].title)
+    </script>
+    <p>
+        <br>
+        Activity 2:
+    </p>
+    <script>
+        document.write(MidFresh[2].title);
+    </script>
+</div>
+<div class="dateOption3">
+    <p>
+        Activity 1:
+    </p>
+    <script>
+        document.write(MidFresh[0].title);
+    </script>
+    <p>
+        <br>
+        Meal:
+    </p>
+    <script>
+        document.write(" "+Italian[0].title)
+    </script>
+    <p>
+        <br>
+        Activity 2:
+    </p>
+    <script>
+        document.write(MidFresh[1].title);
     </script>
 </div>
 <img src="../Pictures/back4.jpg" style="position: absolute;top: 0px;left: 0px;z-index: -1; width: 1000px; height: 800px">
