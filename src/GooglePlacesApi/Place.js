@@ -100,4 +100,4 @@ var placeTest = new Place([-44.111, 44.22],"A Cool Place", ["restaurant", "hip_p
     ["This place is cool", "Cool this place is", "I head this place was cool", "I went there and it was cool",
         "This is a test"], "www.thecoolestplaceever.com", "This place is closeby!", "A really cool URL");
 
-
+// Test
