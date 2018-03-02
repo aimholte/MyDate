@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <script src="Dates.js"></script>
+    <script src="Food.js"></script>
+    <script type="text/javascript"></script>
     <meta charset="UTF-8">
     <title>Low Activ</title>
 </head>
@@ -19,15 +21,97 @@
         color:slategray;
         background-color: aliceblue;
         border: 3px solid lightskyblue ;
-        width: 500px;
-
+        width: 250px;
+        height: 500px;
     }
+   div.dateOption2{
+       color:slategray;
+       background-color: aliceblue;
+       position: absolute;
+       border: 3px solid lightskyblue;
+       width: 250px;
+       height: 500px;
+       left: 300px;
+       top: 80px;
+
+
+   }
+   div.dateOption3{
+       color:slategray;
+       background-color: aliceblue;
+       position: absolute;
+       border: 3px solid lightskyblue;
+       width: 250px;
+       height: 500px;
+       left: 600px;
+       top: 80px;
+   }
 
 </style>
 <div class="vintageDate">
-    <script type="text/javascript" >
-        document.write(LV);
-
+    <p>
+        Activity 1:
+    </p>
+    <script>
+        document.write(LowVintage[2].title);
+    </script>
+    <p>
+        <br>
+        Meal:
+    </p>
+    <script>
+        document.write(" "+Thai[0].title)
+    </script>
+    <p>
+        <br>
+        Activity 2:
+    </p>
+    <script>
+        document.write(LowVintage[0].title);
+    </script>
+</div>
+<div class="dateOption2">
+    <p>
+        Activity 1:
+    </p>
+    <script>
+        document.write(LowVintage[1].title);
+    </script>
+    <p>
+        <br>
+        Meal:
+    </p>
+    <script>
+        document.write(" "+Mexican[0].title)
+    </script>
+    <p>
+        <br>
+        Activity 2:
+    </p>
+    <script>
+        document.write(LowVintage[2].title);
+    </script>
+</div>
+<div class="dateOption3">
+    <p>
+        Activity 1:
+    </p>
+    <script>
+        document.write(LowVintage[1].title);
+    </script>
+    <p>
+        <br>
+        Meal:
+    </p>
+    <script>
+        document.write(" "+American[0].title)
+    </script>
+    <p>
+        <br>
+        Activity 2:
+    </p>
+    <script>
+        document.write(LowVintage[0].title);
     </script>
 </div>
 

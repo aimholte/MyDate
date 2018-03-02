@@ -18,6 +18,9 @@ let activeCheap = [
         title: " Bike around a Lake ",
         location: "Lake of the Isles",
         cost:10
+    },
+    {
+        title:"Play Ping Pong"
     }
 
 ];
@@ -35,23 +38,42 @@ let activeMid =[
         title: "Go to the Zoo",
         cost:36
     },
+    {
+        title:"Go Salsa Dancing "
+    },
+    {
+        title:"Roller Skating"
+    },
+
 
 ];
 
 
-let activeHi =[
+let  activeHi =[
     {
         title: "Yoga in a Salt Cave",
         cost:60
     },
     {
-        title:"Go zip lining through a Forest",
+        title:"Zip lining through a Forest",
         cost: 160
 
     },
     {
         title:"White Water Rafting",
-        cos:106
+        cost:110
+    },
+    {
+        title:"Go Skiing",
+        cost:100
+    },
+    {
+        title: "Trampoline House",
+        cost:80
+    },
+    {
+        title:"Valley Fair",
+        cost: 50
     }
 ];
 let Hiact = titlesSeparatedByCommas(activeHi);
@@ -117,6 +139,9 @@ let HiFresh =[
     {
         title:"Go see the Ice Castles",
 
+    },
+    {
+        title:"Wine and Pallet"
     }
 ];
 let MidFresh =[
@@ -191,4 +216,12 @@ let MidVintage =[
 let LV = titlesSeparatedByCommas(LowVintage);
 let HV = titlesSeparatedByCommas(HiVintage);
 let MV = titlesSeparatedByCommas(MidVintage);
+
+
+
+
+
+
+
+
 

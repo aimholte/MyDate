@@ -2,81 +2,107 @@
 
 class Place{
     constructor(location, name, types, openNow, priceLevel, rating, reviews, url, vicinity, website) {
-        this.location = location;
-        this.name = name;
-        this.types = types;
-        this.openNow = openNow;
-        this.priceLevel = priceLevel;
-        this.rating = rating;
-        this.reviews = reviews;
-        this.url = url;
-        this.vicinity = vicinity;
-        this.website = website;
+        this._types = types;
+        this._openNow = openNow;
+        this._priceLevel = priceLevel;
+        this._rating = rating;
+        this._reviews = reviews;
+        this._url = url;
+        this._vicinity = vicinity;
+        this._website = website;
+        this._location = location;
+        this._name = name;
     }
 
-    set location(newLocation) {
-        this.location = newLocation;
-    }
-
-    set name(newName) {
-        this.name = newName;
-    }
 
     get location() {
-        return this.location;
+        return this._location;
+    }
+
+    set location(value) {
+        this._location = value;
     }
 
     get name() {
-        return this.name;
+        return this._name;
+    }
+
+    set name(value) {
+        this._name = value;
+    }
+
+    get types() {
+        return this._types;
+    }
+
+    set types(value) {
+        this._types = value;
+    }
+
+    get openNow() {
+        return this._openNow;
+    }
+
+    set openNow(value) {
+        this._openNow = value;
+    }
+
+    get priceLevel() {
+        return this._priceLevel;
+    }
+
+    set priceLevel(value) {
+        this._priceLevel = value;
+    }
+
+    get rating() {
+        return this._rating;
+    }
+
+    set rating(value) {
+        this._rating = value;
+    }
+
+    get reviews() {
+        return this._reviews;
+    }
+
+    set reviews(value) {
+        this._reviews = value;
+    }
+
+    get url() {
+        return this._url;
+    }
+
+    set url(value) {
+        this._url = value;
+    }
+
+    get vicinity() {
+        return this._vicinity;
+    }
+
+    set vicinity(value) {
+        this._vicinity = value;
+    }
+
+    get website() {
+        return this._website;
+    }
+
+    set website(value) {
+        this._website = value;
     }
 }
 
-var place1 = new Place("Location Uno", "The Cool Place", ["cool_place"], true, 3, 5, ['a cool place!'],
-'www.coolplace.com', 'This place is close!', 'www.coolplace.com');
+var placeTest = new Place([-44.111, 44.22],"A Cool Place", ["restaurant", "hip_place"], true, 5, 5,
+    ["This place is cool", "Cool this place is", "I head this place was cool", "I went there and it was cool",
+        "This is a test"], "www.thecoolestplaceever.com", "This place is closeby!", "A really cool URL");
 
-document.write(place1.types);
+// Test
 
-
-/*function getLocation() {
-    return this.location;
-}
-
-function getName() {
-    return this.name;
-}
-
-function get getTypes() {
-    return this.types;
-}
-
-function getOpenNow() {
-    return this.openNow;
-}
-
-function getPriceLevel() {
-    return this.priceLevel;
-}
-
-function getRating() {
-    return this.rating;
-}
-
-function getReviews() {
-    return this.reviews;
-}
-
-function getUrl() {
-    return this.url;
-}
-
-function getVicinity() {
-    return this.vicinity;
-}
-
-function getWebsite() {
-    return this.website;
-}*/
-
-placeTest = new Place([-321.1, 19.2], "A cool place", ["dope_place", "cool_place"], true, 1, 5.0, [], "coolplace.com",
-    "this place is close!", "coolplace.com");
-
+//Writing JSON  results:
+src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk&libraries=places";
+test = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.937893,%20-93.169043&radius=500&type=restaurant&key=AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk";
+myJSONResult =
