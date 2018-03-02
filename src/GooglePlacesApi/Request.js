@@ -10,7 +10,7 @@ function initialize(latitude, longittude, radiusNum, typeArray) {
     };
 
     var service = new google.maps.places.PlacesService(document.createElement('div'));
-    service.nearbySearch(request, callback)
+    service.nearbySearch(request, callback);
 
 
 }
@@ -32,9 +32,11 @@ function callback(results, status) {
             //createMarker(results[i]);
             //document.write(results[i]);
             //alert(results[i].name + " " + results[i].types + " " + results[i].rating);
-            solution[i] = [results[i].name + " " + results[i].types + " " + results[i].rating];
+            solution[i] = [results[i]];
+            console.log(results[i].name)
         }
         alert(String(solution));
+
     }
 }
 

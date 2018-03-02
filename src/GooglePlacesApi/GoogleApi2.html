@@ -25,12 +25,21 @@
         var map;
         var infowindow;
         var pyrmont = {lat: 44.938, lng: -93.171};
-        var service = new google.maps.places.PlacesService(document.createElement('div'));
-        service.nearbySearch({
-            location: pyrmont,
-            radius: 500,
-            type: ['store']
-        }, callback);
+
+        var activeTypes = ["night_club", "park", "zoo", "amusement_park", "gym"];
+        var hittingTheCityTypes = ["art_gallery", "museum", "casino", "stadium"];
+        var oldSchoolTypes = ["mall", "bar", "movie_theater", "bowling_alley"];
+        var somethingNewTypes = ["spa", "aquarium", "bakery", "book_store"];
+        var food = ['restaurant', 'cafe', 'bakery'];
+        var allTypes = [activeTypes, hittingTheCityTypes, oldSchoolTypes, somethingNewTypes, food];
+
+
+//        var service = new google.maps.places.PlacesService(document.createElement('div'));
+//        service.nearbySearch({
+//            location: pyrmont,
+//            radius: 500,
+//            type: ['restaurant', 'cafe']
+//        }, callback);
 
 
         function initMap() {
@@ -43,12 +52,52 @@
 
 //            infowindow = new google.maps.InfoWindow();
             var service = new google.maps.places.PlacesService(document.createElement('div'));
-            service.nearbySearch({
-                location: pyrmont,
-                radius: 500,
-                type: ['store']
-            }, callback);
+            var solutions = [];
+
+            for(var i = 0; i < activeTypes.length; i++) {
+                solutions[i] = service.nearbySearch({
+                    location: pyrmont,
+                    radius: 5000,
+                    type: activeTypes[i]
+                }, callback);
+            }
+
+
+            for(var i = 0; i < hittingTheCityTypes.length; i++) {
+                solutions[i] = service.nearbySearch({
+                    location: pyrmont,
+                    radius: 5000,
+                    type: hittingTheCityTypes[i]
+                }, callback);
+            }
+
+            for(var i = 0; i < oldSchoolTypes.length; i++) {
+                solutions[i] = service.nearbySearch({
+                    location: pyrmont,
+                    radius: 5000,
+                    type: oldSchoolTypes[i]
+                }, callback);
+            }
+
+            for(var i = 0; i < somethingNewTypes.length; i++) {
+                solutions[i] = service.nearbySearch({
+                    location: pyrmont,
+                    radius: 5000,
+                    type: somethingNewTypes[i]
+                }, callback);
+            }
+
+            for(var i = 0; i < food.length; i++) {
+                solutions[i] = service.nearbySearch({
+                    location: pyrmont,
+                    radius: 5000,
+                    type: food[i]
+                }, callback);
+            }
+
+
         }
+
 
         function callback(results, status) {
             var solution = [];
@@ -57,26 +106,35 @@
                     //createMarker(results[i]);
                     //document.write(results[i]);
                     //alert(results[i].name + " " + results[i].types + " " + results[i].rating);
-                    solution[i] = [results[i].name + " " + results[i].types + " " + results[i].rating];
+                    solution[i] = [results[i].name + ' ' + results[i].types + " "];
+                    }
+                if(solution != []) {
+                    alert(String(solution));
                 }
-                alert(String(solution));
             }
-        }
+                else {
+                    alert('No locations available');
+                }
 
-        function createMarker(place) {
-            var placeLoc = place.geometry.location;
-            var marker = new google.maps.Marker({
-                map: map,
-                position: place.geometry.location
-            });
+            }
+
+            function createMarker(place) {
+                var placeLoc = place.geometry.location;
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: place.geometry.location
+                });
 
 //            google.maps.event.addListener(marker, 'click', function() {
 //                infowindow.setContent(place.name);
 //                infowindow.open(map, this);
 //            });
-        }
+            }
 
-        alert(results);
+            initMap(activeTypes);
+
+
+
     </script>
 </head>
 <body>
