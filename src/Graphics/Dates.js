@@ -49,28 +49,31 @@ let activeMid =[
 ];
 
 
-let activeHi =[
+let  activeHi =[
     {
         title: "Yoga in a Salt Cave",
         cost:60
     },
     {
-        title:"Go zip lining through a Forest",
+        title:"Zip lining through a Forest",
         cost: 160
 
     },
     {
         title:"White Water Rafting",
-        cos:106
+        cost:110
     },
     {
-        title:"Go Skiing"
+        title:"Go Skiing",
+        cost:100
     },
     {
-        title: "Trampoline House"
+        title: "Trampoline House",
+        cost:80
     },
     {
-        title:"Valley Fair"
+        title:"Valley Fair",
+        cost: 50
     }
 ];
 let Hiact = titlesSeparatedByCommas(activeHi);
@@ -213,4 +216,12 @@ let MidVintage =[
 let LV = titlesSeparatedByCommas(LowVintage);
 let HV = titlesSeparatedByCommas(HiVintage);
 let MV = titlesSeparatedByCommas(MidVintage);
+
+
+
+
+
+
+
+
 

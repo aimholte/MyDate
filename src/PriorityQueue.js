@@ -78,3 +78,4 @@
     while (!pairwiseQueue.isEmpty()) {
         console.log(pairwiseQueue.pop()[0]); //=> 'high', 'medium', 'low'
     }
+
