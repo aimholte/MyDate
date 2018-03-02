@@ -1,6 +1,6 @@
-// var map;
-// var service;
-// var infowindow;
+var map;
+var service;
+var infowindow;
 
 function initialize() {
     var pyrmont = new google.maps.LatLng(-33.8665, 151.1956);

@@ -101,3 +101,8 @@ var placeTest = new Place([-44.111, 44.22],"A Cool Place", ["restaurant", "hip_p
         "This is a test"], "www.thecoolestplaceever.com", "This place is closeby!", "A really cool URL");
 
 // Test
+
+//Writing JSON  results:
+src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk&libraries=places";
+test = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.937893,%20-93.169043&radius=500&type=restaurant&key=AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk";
+myJSONResult =

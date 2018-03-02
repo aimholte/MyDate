@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    (document).ready(function () {
+        .ajax({
+            type: 'GET',
+            url: 'https://maps.googleapis.com/maps/api/place/searc/json?location=-33.8670522,151.1957362&radius=500&types=food&name=harbour&sensor=false&key=AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk;',
+            async: false,
+            jsonpCallback: 'jsonCallback',
+            contentType: "application/json",
+            dataType: 'jsonp',
+            success: function (data) {
+                for (i = 0; i < data.results.length; i++) {
+                    myAddress[i] = data.results[i].formatted_address;
+                    document.getElementById("message").innerHTML += myAddress[i] + "<br>";
+                    console.log(myAddress[i]);
+                    document.write(myAddress[i]);
+                };
+            },
+            error: function (e) {
+                console.log(e.message);
+                document.write(myAddress[i]);
+            }
+        });
+    });
+</script>
+</body>
+</html>
