@@ -211,6 +211,29 @@ let sortedActiveHi = [];
 addAll(activeHiPQ,sortedActiveHi);
 
 
+console.log(sortedActiveCheap[4].cost);
+console.log(sortedActiveCheap[4].title);
+
+function allCost(entry1,entry2){
+    return entry1.cost +entry2.cost;
+
+}
+
+let date1Cost = allCost(sortedActiveCheap[0],sortedActiveCheap[5]);
+let date2Cost = allCost(sortedActiveCheap[1],sortedActiveCheap[4]);
+let date3Cost = allCost(sortedActiveCheap[2],sortedActiveCheap[3]);
+
+let date4Cost = allCost(sortedActiveMid[0],sortedActiveMid[5]);
+let date5Cost = allCost(sortedActiveMid[1],sortedActiveMid[4]);
+let date6Cost = allCost(sortedActiveMid[2],sortedActiveMid[3]);
+
+let date7Cost = allCost(sortedActiveHi[0],sortedActiveHi[5]);
+let date8Cost = allCost(sortedActiveHi[1],sortedActiveHi[4]);
+let date9Cost = allCost(sortedActiveHi[2],sortedActiveHi[3]);
+
+
+
+
 
 
 

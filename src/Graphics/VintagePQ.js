@@ -1,5 +1,3 @@
-
-// Priority Queue
 const tops = 0;
 const parent = i => ((i + 1) >>> 1) - 1;
 const left = i => (i << 1) + 1;
@@ -78,8 +76,7 @@ class PriorityQueue {
     }
 }
 
-//Functions to go from Array to Priority Queue
-// and from Queue to Array
+
 
 function pushAll(pq,array) {
     for (let i=0; i<array.length;i++){
@@ -94,85 +91,73 @@ function addAll(pq,array){
     }
 }
 
-
-let FreshHigh =[
+let VintageCheap =[
     {
-        title: "Try relaxing at a Spa",
-
-    },
-    {
-        title: "Try Skydiving",
+        title:"Stroll around the Mall",
+        cost: 30
 
     },
     {
-        title:"Go see the Ice Castles",
+        title:"Go to an Arcade",
+        cost:20
 
     },
     {
-        title:"Wine and Pallet"
+        title: "Go to a Pet store",
+        cost:0
+
+    },
+    {
+        title:"Change this",
+        cost:5
+    },
+    {
+        title:"Change this also",
+        cost:10
+    },
+    {
+        title: "Fix This",
+        cost:22
     }
 ];
-let FreshMiddle =[
+let VintageHigh =[
     {
-        title:"Go see the Ice Castles",
+        title:"Rent an old convertible"
     },
     {
-        title:"Aquarium"
+        title:"Find a field to go picnicking in"
     },
     {
-        title:"Look at open houses"
-    },
-    {
-        title:"Change This",
-        cost: 10
-    },
-    {
-        title:"Chang This one Too",
-        cost: 14
-    },
-    {
-        title:"Fix THis",
-        cost : 12
+        title:"Rent out a Lake House"
     }
 ];
-let FreshCheap =[
+let VintageMiddle =[
     {
-        title: "Pick a book out for eachother",
-        cost: 10
+        title: "Drive-In",
+        cost:30
     },
     {
-        title: "Go look at the frozen waterfall",
-        cost: 0
+        title: "Go dancing in the Caves",
+        cost: 36
     },
     {
-        title: "Try that new Bakery",
-        cost: 15
-    },
-    {
-        title:"Change This",
-        cost: 10
-    },
-    {
-        title:"Chang This one Too",
-        cost: 14
-    },
-    {
-        title:"Fix THis",
-        cost : 12
+        title:"Bowling Alley",
+        cost: 28
     }
 ];
 
-const freshCheapPQ = new PriorityQueue((a,b)=> a[1]<b[1]);
-pushAll(freshCheapPQ,FreshCheap);
-let sortedFreshCheap = [];
-addAll(freshCheapPQ,sortedFreshCheap);
 
-const freshMiddlePQ = new PriorityQueue((a,b)=> a[1]<b[1]);
-pushAll(freshMiddlePQ,FreshMiddle);
-let sortedFreshMiddle = [];
-addAll(freshMiddlePQ,sortedFreshMiddle);
+const VintageCheapPQ = new PriorityQueue((a,b)=> a[1]<b[1]);
+pushAll(VintageCheapPQ,VintageCheap);
+let sortedVintageCheap = [];
+addAll(VintageCheapPQ,sortedVintageCheap);
 
-const freshHighPQ = new PriorityQueue((a,b)=> a[1]<b[1]);
-pushAll(freshHighPQ,FreshHigh);
-let sortedFreshHigh = [];
-addAll(freshHighPQ,sortedFreshHigh);
+const VintageHighPQ = new PriorityQueue((a,b)=> a[1]<b[1]);
+pushAll(VintageHighPQ,VintageHigh);
+let sortedVintageHigh = [];
+addAll(VintageHighPQ,sortedVintageHigh);
+
+const VintageMiddlePQ = new PriorityQueue((a,b)=> a[1]<b[1]);
+pushAll(VintageMiddlePQ,VintageMiddle);
+let sortedVintageMiddle = [];
+addAll(VintageMiddlePQ,sortedVintageMiddle);
