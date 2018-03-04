@@ -11,16 +11,31 @@ let activeCheap = [
     },
     {
         title:"Mini Golfing",
-        location: "Can Can",
         cost:25
     },
     {
         title: " Bike around a Lake ",
-        location: "Lake of the Isles",
         cost:10
     },
     {
-        title:"Play Ping Pong"
+        title:"Play Ping Pong",
+        cost:0
+    },
+    {
+        title:"Walk around the City",
+        cost: 0
+    },
+    {
+        title: "Go to a Park",
+        cost: 0
+    },
+    {
+        title:"See Minnehaha Falls",
+        cost:0
+    },
+    {
+        title: "Go to a Roller Durby game",
+        cost: 25
     }
 
 ];
@@ -39,11 +54,21 @@ let activeMid =[
         cost:36
     },
     {
-        title:"Go Salsa Dancing "
+        title:"Go Salsa Dancing ",
+        cost: 20
     },
     {
-        title:"Roller Skating"
+        title:"Roller Skating",
+        cost: 25
     },
+    {
+        title:"Go Karting",
+        cost: 40
+    },
+    {
+        title: "Laser Tag",
+        cost: 45
+    }
 
 
 ];
@@ -88,7 +113,8 @@ let Midcity = [
         cost: 50
     },
     {
-        title: "Check out the sculpture garden and Ice cream",
+        title: "Check out the sculpture garden",
+        cost: 30
 
     },
     {
@@ -96,6 +122,18 @@ let Midcity = [
         loction: "Night-town Museum",
         cost:50
 
+    },
+    {
+        title:"Segway Tour",
+        cost:45
+    },
+    {
+        title: "Go to a club",
+        cost: 33
+    },
+    {
+        title: "Casino Time",
+        cost:40
     }
 
 ];
@@ -106,20 +144,49 @@ let Hicity =[
     },
     {
         title:"Eat up top of a Skyscraper",
+        cost:100
     },
     {
-        title:"Go see a play"
+        title:"Go see a play",
+        cost:70
+    },
+    {
+        title:"Something here",
+        cost: 80
+    },
+    {
+        title:"Change this",
+        cost:55
+    },
+    {
+        title:"Change this one too",
+        cost:66
     }
 ];
 let Lowcity =[
     {
-        title:"The World Market"
+        title:"The World Market",
+        cost: 20
     },
     {
-        title:"Check out a Museum"
+        title:"Check out a Museum",
+        cost: 15
     },
     {
-        title:"Ride Bike's around the Green Way"
+        title:"Ride Bike's around the Green Way",
+        cost: 10
+    },
+    {
+        title: "The old Mill downtown",
+        cost:10
+    },
+    {
+        title: "Raspberry Island",
+        cost:0
+    },
+    {
+        title: "The River Downtown",
+        cost:0
     }
 ];
 
