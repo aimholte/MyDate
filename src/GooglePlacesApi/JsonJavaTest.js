@@ -8,4 +8,8 @@ class placeplace{
     alerter(){
         alert("Name: " + this.name + "\n" + "Types: "+ this.types);
     }
+
+    toArray(array){
+        array.push(this);
+    }
 }

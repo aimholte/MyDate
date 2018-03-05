@@ -76,62 +76,88 @@ class PriorityQueue {
     }
 }
 
-let  activeHi =[
+
+
+function pushAll(pq,array) {
+    for (let i=0; i<array.length;i++){
+        pq.push(array[i]);
+    }
+
+}
+function addAll(pq,array){
+    while(!pq.isEmpty()){
+        let entry = pq.pop();
+        array.push(entry);
+    }
+}
+
+let VintageCheap =[
     {
-        title: "Yoga in a Salt Cave",
-        cost:60
-    },
-    {
-        title:"Zip lining through a Forest",
-        cost: 160
+        title:"Stroll around the Mall",
+        cost: 30
 
     },
     {
-        title:"White Water Rafting",
-        cost:110
+        title:"Go to an Arcade",
+        cost:20
+
     },
     {
-        title:"Go Skiing",
-        cost:100
+        title: "Go to a Pet store",
+        cost:0
+
     },
     {
-        title: "Trampoline House",
-        cost:80
+        title:"Change this",
+        cost:5
     },
     {
-        title:"Valley Fair",
-        cost: 50
+        title:"Change this also",
+        cost:10
+    },
+    {
+        title: "Fix This",
+        cost:22
+    }
+];
+let VintageHigh =[
+    {
+        title:"Rent an old convertible"
+    },
+    {
+        title:"Find a field to go picnicking in"
+    },
+    {
+        title:"Rent out a Lake House"
+    }
+];
+let VintageMiddle =[
+    {
+        title: "Drive-In",
+        cost:30
+    },
+    {
+        title: "Go dancing in the Caves",
+        cost: 36
+    },
+    {
+        title:"Bowling Alley",
+        cost: 28
     }
 ];
 
-// const pairwiseQueue = new PriorityQueue((a, b) => a[1] > b[1]);
-// pairwiseQueue.push(['low', 0], ['medium', 8], ['high', 10]);
-// console.log('\nContents:');
-// while (!pairwiseQueue.isEmpty()) {
-//     console.log(pairwiseQueue.pop()[0]); //=> 'high', 'medium', 'low'
-// }
 
-const PQ = new PriorityQueue((a,b)=> a[1]>b[1]);
-PQ.push([activeHi[0].title,activeHi[0].cost], [activeHi[1].title, activeHi[1].cost],[activeHi[2].title,activeHi[2].cost]);
-let name = "";
-name+=PQ.pop()[0];
+const VintageCheapPQ = new PriorityQueue((a,b)=> a[1]<b[1]);
+pushAll(VintageCheapPQ,VintageCheap);
+let sortedVintageCheap = [];
+addAll(VintageCheapPQ,sortedVintageCheap);
 
-let work =[
-    {
-        title: name
-    },
-];
+const VintageHighPQ = new PriorityQueue((a,b)=> a[1]<b[1]);
+pushAll(VintageHighPQ,VintageHigh);
+let sortedVintageHigh = [];
+addAll(VintageHighPQ,sortedVintageHigh);
 
-console.log(work[0].title);
-//console.log(PQ.pop()[0]);
-
-
-// const ActionHIQueue = new PriorityQueue((a, b) => a[1] > b[1]);
-// ActionHIQueue.push([activeHi[0].title, activeHi[0].cost], [activeHi[1].title, activeHi[1].cost], [activeHi[2].title, activeHi[2].cost],
-//     [activeHi[3].title, activeHi[3].cost], [activeHi[4].title, activeHi[4].cost], [activeHi[5].title, activeHi[5].cost]);
-// console.log('\nContents:');
-
-
-// while (!ActionHIQueue.isEmpty()) {
-//     console.log(ActionHIQueue.pop()[0]); //=> 'high', 'medium', 'low'
-//}
+const VintageMiddlePQ = new PriorityQueue((a,b)=> a[1]<b[1]);
+pushAll(VintageMiddlePQ,VintageMiddle);
+let sortedVintageMiddle = [];
+addAll(VintageMiddlePQ,sortedVintageMiddle);
