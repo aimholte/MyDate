@@ -1,3 +1,5 @@
+
+//PQ Class
 const topss = 0;
 const parent = i => ((i + 1) >>> 1) - 1;
 const left = i => (i << 1) + 1;
@@ -75,7 +77,7 @@ class PriorityQueue {
         }
     }
 }
-
+//functions for array to Q and Q to array
 function pushAll(pq,array) {
     for (let i=0; i<array.length;i++){
         pq.push(array[i]);
@@ -88,10 +90,10 @@ function addAll(pq,array){
         array.push(entry);
     }
 }
-
+//Arrays for City
 let CityMiddle = [
     {
-        title:"Professional Sports Game",
+        title:"T-Wolves Game",
         location: "Target Center",
         cost: 50
     },
@@ -134,15 +136,15 @@ let CityHigh =[
         cost:70
     },
     {
-        title:"Something here",
-        cost: 80
+        title:"Food tour",
+        cost: 60
     },
     {
-        title:"Change this",
+        title:"Casino",
         cost:55
     },
     {
-        title:"Change this one too",
+        title:"Go to a Wild Game",
         cost:66
     }
 ];
@@ -156,7 +158,7 @@ let CityCheap =[
         cost: 15
     },
     {
-        title:"Ride Bike's around the Green Way",
+        title:"Ride Bike's on the Green Way",
         cost: 10
     },
     {
@@ -187,3 +189,25 @@ const cityHiPQ = new PriorityQueue((a,b)=> a[1]<b[1]);
 pushAll(cityHiPQ,CityHigh);
 let sortedCityHi =[];
 addAll(cityHiPQ,sortedCityHi);
+
+
+//adds up the cost for two objects
+function allCost(entry1,entry2){
+    return entry1.cost +entry2.cost;
+
+}
+
+let dateCost1 = allCost(sortedCityCheap[0],sortedCityCheap[5]);
+let dateCost2 = allCost(sortedCityCheap[1],sortedCityCheap[4]);
+let dateCost3 = allCost(sortedCityCheap[2],sortedCityCheap[3]);
+
+let dateCost4 = allCost(sortedCityMid[0],sortedCityMid[5]);
+let dateCost5 = allCost(sortedCityMid[1],sortedCityMid[4]);
+let dateCost6 = allCost(sortedCityMid[2],sortedCityMid[3]);
+
+let dateCost7 = allCost(sortedCityHi[0],sortedCityHi[5]);
+let dateCost8 = allCost(sortedCityHi[1],sortedCityHi[4]);
+let dateCost9 = allCost(sortedCityHi[2],sortedCityHi[3]);
+
+console.log(sortedCityCheap[1].cost);
+console.log(sortedCityCheap[4].cost);
