@@ -94,45 +94,60 @@ function addAll(pq,array){
     }
 }
 
-
+//arrays holding dates for Fresh
 let FreshHigh =[
     {
         title: "Try relaxing at a Spa",
+        cost: 70
 
     },
     {
         title: "Try Skydiving",
+        cost: 140
 
     },
     {
         title:"Go see the Ice Castles",
+        cost: 30
 
     },
     {
-        title:"Wine and Pallet"
+        title:"Wine and Pallet",
+        cost: 85
+    },
+    {
+        title: "Aquarium",
+        cost:70
+    },
+    {
+        title:"Stay at a Resort",
+        cost:125
     }
 ];
 let FreshMiddle =[
     {
         title:"Go see the Ice Castles",
+        cost: 30
     },
     {
-        title:"Aquarium"
+        title:"Aquarium",
+        cost: 40
     },
     {
-        title:"Look at open houses"
+        title:"Look at open houses",
+        cost: 0
     },
     {
-        title:"Change This",
-        cost: 10
+        title:"Pick a book out for eachother",
+        cost: 30
     },
     {
-        title:"Chang This one Too",
+        title:"Go to a Ghost Town",
         cost: 14
     },
     {
-        title:"Fix THis",
-        cost : 12
+        title:"Music Festival",
+        cost : 35
     }
 ];
 let FreshCheap =[
@@ -149,19 +164,19 @@ let FreshCheap =[
         cost: 15
     },
     {
-        title:"Change This",
+        title:"Arts Festival",
         cost: 10
     },
     {
-        title:"Chang This one Too",
+        title:"Go to a city park",
         cost: 14
     },
     {
-        title:"Fix THis",
+        title:"Revist your high school",
         cost : 12
     }
 ];
-
+// puts objects in a Q and then pops them to an array
 const freshCheapPQ = new PriorityQueue((a,b)=> a[1]<b[1]);
 pushAll(freshCheapPQ,FreshCheap);
 let sortedFreshCheap = [];
@@ -176,3 +191,21 @@ const freshHighPQ = new PriorityQueue((a,b)=> a[1]<b[1]);
 pushAll(freshHighPQ,FreshHigh);
 let sortedFreshHigh = [];
 addAll(freshHighPQ,sortedFreshHigh);
+
+//adds up the cost for two objects
+function allCost(entry1,entry2){
+    return entry1.cost +entry2.cost;
+
+}
+//Cheap total Cost
+let dateMoney = allCost(sortedFreshCheap[0],sortedFreshCheap[5]);
+let dateMoney2 = allCost(sortedFreshCheap[1],sortedFreshCheap[4]);
+let dateMoney3 = allCost(sortedFreshCheap[2],sortedFreshCheap[3]);
+//Middle Total Cost
+let dateMoney4 = allCost(sortedFreshMiddle[0],sortedFreshMiddle[5]);
+let dateMoney5 = allCost(sortedFreshMiddle[1],sortedFreshMiddle[4]);
+let dateMoney6 = allCost(sortedFreshMiddle[2],sortedFreshMiddle[3]);
+//High Total Cost
+let dateMoney7 = allCost(sortedFreshHigh[0],sortedFreshHigh[5]);
+let dateMoney8 = allCost(sortedFreshHigh[1],sortedFreshHigh[4]);
+let dateMoney9 = allCost(sortedFreshHigh[2],sortedFreshHigh[3]);
