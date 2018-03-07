@@ -23,7 +23,7 @@
         service.nearbySearch({
             location: saintPaul,
             radius: 500,
-            types: ['store']
+            types: ['cafe'],
         }, callback);
     }
 
@@ -32,7 +32,6 @@
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
                 container.innerHTML += results[i].name + '<br />';
-                alert(results[i].name);
             }
         }
     }
