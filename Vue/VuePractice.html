@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script src="Vue.js"></script>
+    <div id="app">
+        {{message}}
+
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data: {
+                message: 'Hello Vue.js!'
+            }
+        });
+    </script>
+    <script>
+        let config = {
+            apiKey: "AIzaSyATPL1co8b7HZkgEV_OwqTL0E0KPy18x4g",
+            authDomain: "demo1-79c7e.firebaseapp.com",
+            databaseURL: "https://demo1-79c7e.firebaseio.com",
+            projectId: "demo1-79c7e",
+            storageBucket: "demo1-79c7e.appspot.com",
+            messagingSenderId: "1039916148001"
+
+        };
+        let app = Firebase.initializeApp(config )
+    </script>
+
+
+
+
+</body>
+</html>
