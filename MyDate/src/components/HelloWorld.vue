@@ -1,16 +1,16 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+    <h2>Date Categories</h2>
     <ul>
-      <li>
+      <router link>
         <a
           href="https://vuejs.org"
           target="_blank"
         >
           Core Docs
         </a>
-      </li>
+      </router link>
       <li>
         <a
           href="https://forum.vuejs.org"
@@ -45,7 +45,7 @@
         </a>
       </li>
     </ul>
-    <h2>Ecosystem</h2>
+    <h2>Price Range</h2>
     <ul>
       <li>
         <a
@@ -88,7 +88,7 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to My Date'
     }
   }
 }
