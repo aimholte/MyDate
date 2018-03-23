@@ -1,6 +1,6 @@
 # mydate
 
-> A project for our software design project in Vue
+> Date Planner App
 
 ## Build Setup
 
