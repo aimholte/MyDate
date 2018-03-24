@@ -1,8 +1,18 @@
+
 <template>
   <div id="about">
-    When you have a great story about how your product or service was built to change lives, share it. The "About Us" page is a great place for it to live, too. Good stories humanize your brand, providing context and meaning for your product. What’s more, good stories are sticky -- which means people are more likely to connect with them and pass them on.
+    <h1>
+      About
+    </h1>
+   MyDate is a date planning app that customizes personal date ideas just for you.
+    <br>
+    All you have to do is select your price and date category!
+    <br>
+    Click Date Picker to begin.
+
   </div>
 </template>
+
 
 <script>
   export default {
@@ -10,13 +20,14 @@
   }
 </script>
 <!-- styling for the component -->
-<style>
+<style >
   #about {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'Bookman Old Style', serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+    background-image: url("/MyDate/src/assets/MyDateLogo.png");
   }
 </style>
