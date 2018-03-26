@@ -2,6 +2,9 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import CheckboxRadio from 'vue-checkbox-radio';
+
+Vue.use(CheckboxRadio);
 
 import VueRouter from 'vue-router'
 Vue.use(VueRouter);
@@ -10,7 +13,15 @@ Vue.use(VueRouter);
 import HelloWorld from './components/HelloWorld'
 // import the About component
 import About from './components/About'
+//import DP
+import DP from './components/DP'
 
+
+
+function goToMoney() {
+
+
+}
 
 const routes =[
   {
@@ -18,6 +29,9 @@ const routes =[
   },
   {
     path: '/about', component: About
+  },
+  {
+    path: "/DP", component: DP
   }
 ];
 
@@ -35,6 +49,7 @@ new Vue({
   el: '#app',
   components: { App },
   template: '<App/>',
+
   router
 }).$mount('#app');
 
