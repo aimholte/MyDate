@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>This is a test!</title>
+    <script src="JsonJavaTest.js"></script>
+    <script src="PriorityQueue.js"></script>
+
+
 </head>
 <body>
-
 <script>
+
+//    var myObject = JSON.parse(sessionStorage.myObject); //will parse JSON string back to object
+//    myObject.alerter();
+
+
+
     class User {
 
         constructor(name) {
@@ -27,11 +36,16 @@
         }
 
     }
+const pairwiseQueue = new PriorityQueue((a, b) => a[1] > b[1]);
 
-    let user = new User("John");
+let user = new User("John");
+    pairwiseQueue.push([user,0]);
+
+
     alert(user.name); // John
 
-    user = new User(""); // Name too short.
+
+    //user = new User(""); // Name too short.
 
 </script>
 

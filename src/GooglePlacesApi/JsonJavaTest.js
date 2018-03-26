@@ -9,3 +9,5 @@ class placeplace{
         alert("Name: " + this.name + "\n" + "Types: "+ this.types);
     }
 }
+
+
