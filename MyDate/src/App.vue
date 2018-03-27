@@ -2,7 +2,7 @@
   <div id="app" >
     <!-- the router outlet, where all matched components would ber viewed -->
     <app-header></app-header>
-    <img src="./assets/MyDateLogo.png" />
+    <img src="./assets/MyDateLogo.png" class="centerPic"/>
     <!--<img src="./assets/PerfectDAte.png" style="position: sticky; top: 10px; left: 100px; z-index: -1" >-->
 
     <router-view></router-view>
@@ -34,6 +34,12 @@
 </script>
 <!-- styling for the component -->
 <style >
+  .centerPic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

@@ -1,8 +1,9 @@
+
 <template>
     <div id ="DP">
         <!--Header-->
       <br>
-      <h2>Date Categories</h2>
+      <h2 class="centerTex">Date Categories</h2>
 
       <!--Active-->
       <label>Active</label>
@@ -53,7 +54,7 @@
         You've selected:
       </p>
       <ul>
-        <li  v-for="category in categories">{{category}}</li>
+        <li class="alltheright" v-for="category in categories">{{category}}</li>
       </ul>
 
       <!--Selection Box-->
@@ -75,10 +76,16 @@
       <!--<input type="checkbox" id="LT">-->
       <!--<label for="LT">Low Tier</label>-->
 
+      <!--Button Practice-->
+      <!--<script type="text/javascript"></script>-->
+      <!--<script :src="main.js"></script>-->
 
-
-
-
+      <!--<button class="chillright">Next</button>-->
+      <nav>
+        <ul>
+          <li><router-link class="chillright" v-bind:to="'/amount'">Next</router-link></li>
+        </ul>
+      </nav>
     </div>
 
 
@@ -112,6 +119,25 @@
 </style>
 
 <style >
+  .centerTex{
+    text-align: center;
+
+  }
+  .chillright{
+    text-align: right;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .chillLeft{
+    text-align: left;
+  }
+  .alltheright{
+    text-align: left;
+    display: block;
+
+
+  }
   #DP{
     text-align: left;
   }
@@ -121,6 +147,15 @@
   h2{
     position:static;
     top: 70px;
+  }
+  ul{
+    list-style-type: none;
+    text-align: center;
+    margin: 0;
+  }
+  li{
+    display: inline-block;
+    margin: 0 10px;
   }
 
 
