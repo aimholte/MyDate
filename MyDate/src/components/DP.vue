@@ -98,7 +98,7 @@
       data(){
           return{
             categories:[ ],
-            testAnswer: "",
+
             types: ["Active", "City","Vintage","SomethingNew"]
 
           }
