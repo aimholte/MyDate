@@ -54,6 +54,15 @@
             type:"Bar",
         }];
 
+
+        let jj =[
+            { name: "Jack",
+                type:"Bar"
+        }
+
+
+        ];
+
         function callback(results, status) {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 for (let i = 0; i < results.length; i++) {
@@ -64,6 +73,11 @@
                     plee.alerter();
 
 
+                    let place=(results[i]);
+                    let plee=new placeplace(place.name, place.types);
+                    //jj+=plee;
+
+                    plee.alerter();
 
                 }
             }
@@ -89,6 +103,9 @@
         document.write(jj[0].name);
 
 
+
+
+        //document.write(jj[0].name);
     </script>
 </head>
 <body>

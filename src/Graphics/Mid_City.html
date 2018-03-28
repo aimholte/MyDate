@@ -4,6 +4,7 @@
     <script src="Food.js"></script>
     <script src="Dates.js"></script>
     <script src="Setup.js"></script>
+    <script src="CityPQ.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -45,12 +46,20 @@
     }
 </style>
 <h1> Moderate City</h1>
+<!--Date 1-->
 <div class="citydate">
+    <p>
+        Date 1:
+    </p>
     <p>
         Activity 1:
     </p>
     <script>
-        document.write(Midcity[1].title);
+        document.write(sortedCityMid[0].title);
+    </script>
+
+    <script>
+        document.write("- $ "+sortedCityMid[0].cost)
     </script>
     <p>
         <br>
@@ -64,38 +73,73 @@
         Activity 2:
     </p>
     <script>
-        document.write(Midcity[2].title);
+        document.write(sortedCityMid[5].title);
+    </script>
+
+    <script>
+        document.write("- $ "+ sortedCityMid[5].cost)
+    </script>
+    <p>
+        Date Total Cost:
+    </p>
+    <script>
+        document.write("$ "+ dateCost4)
     </script>
 </div>
+<!--Date 2-->
 <div class="dateOption2">
+    <p>
+        Date 2:
+    </p>
     <p>
         Activity 1:
     </p>
     <script>
-        document.write(Midcity[0].title);
+        document.write(sortedCityMid[1].title);
+    </script>
+    <script>
+        document.write("- $ "+ sortedCityMid[1].cost )
     </script>
     <p>
         <br>
         Meal:
     </p>
     <script>
-        document.write(" "+Italian[0].title)
+        document.write(Italian[0].title)
     </script>
     <p>
         <br>
         Activity 2:
     </p>
     <script>
-        document.write(Midcity[1].title);
+        document.write(sortedCityMid[4].title);
+    </script>
+
+    <script>
+        document.write("- $ "+sortedCityMid[4].cost)
+    </script>
+    <p>
+    Date Total Cost:
+    </p>
+    <script>
+        document.write("$ "+dateCost5)
     </script>
 </div>
+<!--Date 3-->
 <div class="dateOption3">
+    <p>
+        Date 3:
+    </p>
 
     <p>
         Activity 1:
     </p>
     <script>
-        document.write(Midcity[2].title);
+        document.write(sortedCityMid[2].title);
+    </script>
+
+    <script>
+        document.write("- $ "+sortedCityMid[2].cost)
     </script>
     <p>
         <br>
@@ -109,7 +153,17 @@
         Activity 2:
     </p>
     <script>
-        document.write(Midcity[0].title);
+        document.write(sortedCityMid[3].title);
+    </script>
+    <script>
+        document.write("- $"+sortedCityMid[3].cost)
+    </script>
+    <p>
+        Total Date Cost:
+    </p>
+
+    <script>
+        document.write("$ "+dateCost6)
     </script>
 </div>
 <img src="../Pictures/back7.jpg" style="position: absolute;top: 0px;left: 0px;z-index: -1; width: 1000px; height: 800px">

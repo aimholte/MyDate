@@ -48,7 +48,8 @@ let American =[
 
 let Chinese =[
     {
-        title:"P.F Chang"
+        title:"P.F Chang",
+        cost:30
     }
 
 ];

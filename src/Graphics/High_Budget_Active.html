@@ -3,6 +3,7 @@
 <head>
     <script src="Dates.js"></script>
     <script src="Food.js"></script>
+    <script src ="ActivePQ.js"></script>
 
     <meta charset="UTF-8">
     <title>Pricey Active</title>
@@ -48,15 +49,22 @@
 
 
 </style>
-
+<!--Date 1-->
 <h1>Pricey Active</h1>
 <script type="text/javascript"></script>
 <div class="dateOption">
     <p>
+        Date 1:
+    </p>
+    <p>
         Activity 1:
     </p>
     <script>
-       document.write(activeHi[0].title);
+       document.write(sortedActiveHi[0].title);
+    </script>
+
+    <script>
+        document.write("- $ " + sortedActiveHi[0].cost)
     </script>
     <p>
         <br>
@@ -70,20 +78,37 @@
         Activity 2:
     </p>
     <script>
-        document.write(activeHi[0].title);
+        document.write(sortedActiveHi[5].title);
+    </script>
+
+    <script>
+        document.write("- $ " +sortedActiveHi[5].cost)
+    </script>
+    <p>
+        Total Date Cost:
+    </p>
+    <script>
+        document.write("$ " +date7Cost)
     </script>
 
 </div>
 
 
-
+<!--Date2-->
 
 <div class="dateOption2">
+    <p>
+        Date 2:
+    </p>
     <p>
         Activity 1:
     </p>
     <script>
-        document.write(activeHi[2].title);
+        document.write(sortedActiveHi[1].title);
+    </script>
+
+    <script>
+        document.write("- $ " + sortedActiveHi[1].cost)
     </script>
     <p>
         <br>
@@ -97,15 +122,32 @@
         Activity 2:
     </p>
     <script>
-        document.write(activeHi[3].title);
+        document.write(sortedActiveHi[4].title);
+    </script>
+
+    <script>
+        document.write("- $ " +sortedActiveHi[4].cost)
+    </script>
+    <p>
+        Total Date Cost
+    </p>
+    <script>
+        document.write("$ " +date8Cost)
     </script>
 </div>
 <div class="dateOption3">
     <p>
+        Date 3:
+    </p>
+    <p>
         Activity 1:
     </p>
     <script>
-        document.write(activeHi[4].title);
+        document.write(sortedActiveHi[2].title);
+    </script>
+
+    <script>
+        document.write("- $ " +sortedActiveHi[2].cost)
     </script>
     <p>
         <br>
@@ -119,7 +161,17 @@
         Activity 2:
     </p>
     <script>
-        document.write(activeHi[5].title);
+        document.write(sortedActiveHi[3].title);
+    </script>
+
+    <script>
+        document.write("- $ " +sortedActiveHi[3].cost)
+    </script>
+    <p>
+        Total Date Cost:
+    </p>
+    <script>
+        document.write("$ " +date9Cost)
     </script>
 </div>
 

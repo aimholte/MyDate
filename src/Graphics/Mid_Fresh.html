@@ -3,6 +3,7 @@
 <head>
     <script src="Food.js"></script>
     <script src="Dates.js"></script>
+    <script src="FreshPQ.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -40,12 +41,19 @@
         top: 80px;
     }
 </style>
+<!--Date 1-->
 <div class="dateOption">
+   <p>
+       Date 1:
+   </p>
     <p>
         Activity 1:
     </p>
     <script>
-        document.write(MidFresh[1].title);
+        document.write(sortedFreshMiddle[0].title);
+    </script>
+    <script>
+        document.write("- $ "+ sortedFreshMiddle[0].cost)
     </script>
     <p>
         <br>
@@ -59,15 +67,31 @@
         Activity 2:
     </p>
     <script>
-        document.write(MidFresh[2].title);
+        document.write(sortedFreshMiddle[5].title);
+    </script>
+    <script>
+        document.write("- $ "+ sortedFreshMiddle[1].cost)
+    </script>
+    <p>
+        Total Date Cost:
+    </p>
+    <script>
+        document.write("$ "+ dateMoney4)
     </script>
 </div>
+<!--Date 2-->
 <div class="dateOption2">
+    <p>
+        Date 2:
+    </p>
     <p>
         Activity 1:
     </p>
     <script>
-        document.write(MidFresh[0].title);
+        document.write(sortedFreshMiddle[1].title);
+    </script>
+    <script>
+        document.write("- $ "+ sortedFreshMiddle[1].cost)
     </script>
     <p>
         <br>
@@ -81,15 +105,31 @@
         Activity 2:
     </p>
     <script>
-        document.write(MidFresh[2].title);
+        document.write(sortedFreshMiddle[4].title);
+    </script>
+    <script>
+        document.write("- $ "+ sortedFreshMiddle[4].cost)
+    </script>
+    <p>
+        Total Date Cost:
+    </p>
+    <script>
+        document.write("$ "+ dateMoney5)
     </script>
 </div>
+<!--Date 3-->
 <div class="dateOption3">
+    <p>
+        Date 3
+    </p>
     <p>
         Activity 1:
     </p>
     <script>
-        document.write(MidFresh[1].title);
+        document.write(sortedFreshMiddle[2].title);
+    </script>
+    <script>
+        document.write("- $ "+ sortedFreshMiddle[2].cost)
     </script>
     <p>
         <br>
@@ -103,7 +143,16 @@
         Activity 2:
     </p>
     <script>
-        document.write(MidFresh[0].title);
+        document.write(sortedFreshMiddle[3].title);
+    </script>
+    <script>
+        document.write("- $ "+  sortedFreshMiddle[3].cost)
+    </script>
+    <p>
+        Total Date Cost:
+    </p>
+    <script>
+        document.write("$ "+ dateMoney6)
     </script>
 
 </div>

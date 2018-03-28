@@ -3,6 +3,7 @@
 <head>
     <script src="Food.js"></script>
     <script src="Dates.js"></script>
+    <script src="VintagePQ.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -45,70 +46,119 @@
     }
 </style>
 <h1>Moderate Vintage</h1>
+<!--Date 1-->
 <div class="vintageDate">
     <p>
+        Date: 1
+    </p>
+    <p>
         Activity 1:
     </p>
     <script>
-        document.write(MidVintage[1].title);
+        document.write(sortedVintageMiddle[0].title);
+    </script>
+    <script>
+        document.write("- $ "+sortedVintageMiddle[0].cost)
     </script>
     <p>
         <br>
         Meal:
     </p>
     <script>
-        document.write(" "+Italian[2].title)
+        document.write(Italian[2].title)
     </script>
     <p>
         <br>
         Activity 2:
     </p>
     <script>
-        document.write(MidVintage[2].title);
+        document.write(sortedVintageMiddle[5].title);
+    </script>
+    <script>
+        document.write("- $ "+sortedVintageMiddle[5].cost)
+    </script>
+    <p>
+        Total Date Cost:
+    </p>
+    <script>
+        document.write("$ "+totalCost4)
     </script>
 </div>
+<!--Date 2-->
 <div class="dateOption2">
     <p>
+        Date 2:
+    </p>
+
+    <p>
         Activity 1:
     </p>
     <script>
-        document.write(MidVintage[0].title);
+        document.write(sortedVintageMiddle[1].title);
+    </script>
+    <script>
+        document.write("- $ "+sortedVintageMiddle[1].cost)
     </script>
     <p>
         <br>
         Meal:
     </p>
     <script>
-        document.write(" "+Mexican[2].title)
+        document.write(Mexican[2].title)
     </script>
     <p>
         <br>
         Activity 2:
     </p>
     <script>
-        document.write(MidVintage[1].title);
+        document.write(sortedVintageMiddle[4].title);
+    </script>
+    <script>
+        document.write("- $ "+sortedVintageMiddle[4].cost)
+    </script>
+    <p>
+        Total Date Cost:
+    </p>
+    <script>
+        document.write("$ "+ totalCost5)
     </script>
 </div>
+<!--Date 3-->
 <div class="dateOption3">
+    <p>
+        Date 3:
+    </p>
     <p>
         Activity 1:
     </p>
     <script>
-        document.write(MidVintage[2].title);
+        document.write(sortedVintageMiddle[2].title)
+    </script>
+    <script>
+        document.write("- $ "+ sortedVintageMiddle[2].cost)
     </script>
     <p>
         <br>
         Meal:
     </p>
     <script>
-        document.write(" "+American[2].title)
+        document.write(American[2].title)
     </script>
     <p>
         <br>
         Activity 2:
     </p>
     <script>
-        document.write(MidVintage[0].title);
+        document.write(sortedVintageMiddle[3].title);
+    </script>
+    <script>
+        document.write("- $ "+sortedVintageMiddle[3].cost)
+    </script>
+    <p>
+        Total Date Cost:
+    </p>
+    <script>
+        document.write("$ "+totalCost6)
     </script>
 </div>
 
