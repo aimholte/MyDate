@@ -3,6 +3,9 @@
 <head>
     <title>Place searches</title>
     <script src="JsonJavaTest.js"></script>
+    <script src="PriorityQueue.js"></script>
+
+
 
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -10,11 +13,11 @@
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
         #map {
-            height: 100%;
+            height: 1%;
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
-            height: 100%;
+            height: 1%;
             margin: 0;
             padding: 0;
         }
@@ -24,8 +27,11 @@
         // parameter when you first load the API. For example:
         // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-        var map;
-        var infowindow;
+        let map;
+        let plee;
+        let place;
+        let infowindow;
+
 
         function initMap() {
             var pyrmont = {lat: 41.263, lng: -95.998};
@@ -36,13 +42,17 @@
             });
 
             infowindow = new google.maps.InfoWindow();
-            var service = new google.maps.places.PlacesService(map);
+            let service = new google.maps.places.PlacesService(map);
             service.nearbySearch({
                 location: pyrmont,
                 radius: 1000,
                 //type: ['resturaunt']
             }, callback);
         }
+        let jj=[{
+            name:"",
+            type:"Bar",
+        }];
 
 
         let jj =[
@@ -56,12 +66,18 @@
         function callback(results, status) {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 for (let i = 0; i < results.length; i++) {
+                    place = (results[i]);
+                    plee = new placeplace(place.name, place.types);
+                    //jj+=plee;
+
+                    plee.alerter();
+
+
                     let place=(results[i]);
                     let plee=new placeplace(place.name, place.types);
-                    //jj.push(place.name,place.types);
-                    //plee.toArray(jj);
+                    //jj+=plee;
 
-                    plee.alerter()
+                    plee.alerter();
 
                 }
             }
@@ -84,9 +100,12 @@
 //                infowindow.open(map, this);
 
         }
+        document.write(jj[0].name);
 
 
-        //document.write(jj[1])
+
+
+        //document.write(jj[0].name);
     </script>
 </head>
 <body>

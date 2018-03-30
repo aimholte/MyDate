@@ -15,13 +15,16 @@ import HelloWorld from './components/HelloWorld'
 import About from './components/About'
 //import DP
 import DP from './components/DP'
+// import Money
+import Money from './components/Money'
+//import DatePage
+import datepage from './components/DatePage'
+//import Database
+import EventData from "./assets/Event_Ideas"
+
+console.log(EventData);
 
 
-
-function goToMoney() {
-
-
-}
 
 const routes =[
   {
@@ -32,7 +35,13 @@ const routes =[
   },
   {
     path: "/DP", component: DP
-  }
+  },
+  {
+    path: "/amount", component: Money
+  },
+  {
+    path: "/datepage", component: datepage
+  },
 ];
 
 const router = new VueRouter ({
@@ -44,11 +53,16 @@ Vue.config.productionTip = false;
 /* eslint-disable no-new */
 
 
+// function goToMoney(){
+//   window.location = "http://localhost:8080/amount"
+// }
+
 
 new Vue({
   el: '#app',
   components: { App },
   template: '<App/>',
+
 
   router
 }).$mount('#app');
