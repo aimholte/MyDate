@@ -1,35 +1,44 @@
 <template>
 
     <div id="DatePage">
-
-    <ul>
-                  <li v-for="place in results">
-
-
-                      <div style="width: 300px;
-                        border-style:solid; border-width:1;display:left;">
-                        <span id="long">{{place.name}}.</span>
-                        <span id="true">{{place.vicinity}}.</span>
-                      </div>
-
-
-
-                      <hr color="red"/>
-
-                  </li>
-                </ul>
-
-
-
     <h1>
       Your Dates:
     </h1>
+    <ul>
+          <li v-for="place in results">
+
+
+             <div style="width: 300px;
+                border-style:solid; border-width:1; ">
+                <span id="long">{{place.name}}.</span>
+             </div>
+             <div style="width: 300px;
+                border-style:solid; border-width:1; ">
+                <span id="true">{{place.vicinity  }}.</span>
+             </div>
+
+
+
+              <hr color="red"/>
+          </li>
+    </ul>
+
+
+    <div>
+    <app-input></app-input>
+    </div>
+
+
+
     </div>
 
 </template>
 
 <script>
     export default {
+        components: {
+          'app-input': Input
+        },
         name: "datepage",
         data(){
           return{

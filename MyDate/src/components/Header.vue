@@ -1,7 +1,7 @@
 <template>
     <nav>
       <ul>
-        <li> <router-link v-bind:to="'/'" exact="" >Home</router-link></li>
+        <li> <router-link v-bind:to="'/HelloWorld'" exact="" >Home</router-link></li>
         <li><router-link v-bind:to="'/about'" exact="">About</router-link></li>
         <li><router-link v-bind:to="'/DP'">Date Picker</router-link></li>
       </ul>
