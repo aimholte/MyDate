@@ -17,8 +17,46 @@
 
 <script>
   import header from './components/Header'
+  import {initializeApp} from 'firebase'
+
+  const app = initializeApp({
+       apiKey: "AIzaSyBN47cxSSxFRWGUT3w28BiAvtSVGRBQAi0",
+       authDomain: "mydate-database.firebaseapp.com",
+       databaseURL: "https://mydate-database.firebaseio.com",
+       projectId: "mydate-database",
+       storageBucket: "mydate-database.appspot.com",
+       messagingSenderId: "913904205801"
+
+  });
+
+  export const db = app.database();
+  export const namesRef = db.ref('names');
+
+
+ //  import Firebase from  "firebase"
+ //  let config = {
+ //    apiKey: "AIzaSyBN47cxSSxFRWGUT3w28BiAvtSVGRBQAi0",
+ //    authDomain: "mydate-database.firebaseapp.com",
+ //    databaseURL: "https://mydate-database.firebaseio.com",
+ //    projectId: "mydate-database",
+ //    storageBucket: "mydate-database.appspot.com",
+ //    messagingSenderId: "913904205801"
+ //  };
+ //
+ // let starter = Firebase.initialize(config);
+ // let db = starter.openDatabase();
+ //
+ //
+ // let DateRef = db.ref('Name');
+
+
+
+
   export default {
     name: 'app',
+    // firebase: {
+    //   name: DateRef
+    // },
     components:{
 
       'app-header': header
@@ -46,12 +84,8 @@
     -moz-osx-font-smoothing: grayscale;
     text-align-all: center;
     color: #2c3e50;
-    /*margin-top: 60px;*/
-    /*background-image: url("./assets/Date.jpg");*/
-    border-image: url("./assets/PerfectDAte.png");
-    /*!*list-style-image: url("./assets/PerfectDAte.png");*!*/
-    /*border-image-repeat: repeat;*/
-    /*mask-image: url("./assets/PerfectDAte.png");*/
+
+    /*background-image: url("./assets/PerfectDAte.png");*/
 
 
   }

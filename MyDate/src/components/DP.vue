@@ -1,6 +1,6 @@
 
 <template>
-    <div id ="DP">
+    <div id ="DsatePicker">
         <!--Header-->
       <br>
       <h2 class="centerTex">Date Categories</h2>
@@ -138,7 +138,7 @@
 
 
   }
-  #DP{
+  #DatePicker{
     text-align: left;
   }
   h3{
