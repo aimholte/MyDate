@@ -4,11 +4,14 @@
     <h1>
       About
     </h1>
-   MyDate is a date planning app that customizes personal date ideas just for you.
-    <br>
-    All you have to do is select your price and date category!
-    <br>
-    Click Date Picker to begin.
+    <p>
+      MyDate is a date planning app that customizes personal date ideas just for you.
+      <br>
+      All you have to do is select your price and date category!
+      <br>
+      Click Date Picker to begin.
+    </p>
+
 
   </div>
 </template>
@@ -28,6 +31,8 @@
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
-    background-image: url("/MyDate/src/assets/MyDateLogo.png");
+    /*background-image: url("../assets/MyDateLogo.png");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center top;*/
   }
 </style>
