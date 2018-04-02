@@ -4,6 +4,13 @@
 <template>
 
     <div id="DatePage">
+
+      <nav>
+        <label class="centerup">Category</label>
+        <select class="centerup" v-model="selectedType">
+          <option v-for="type in types">{{type}}</option>
+        </select>
+      </nav>
       <h1>
         Your Dates
       </h1>
@@ -180,13 +187,13 @@
     margin: 0 10px;
   }
   a{
-    color: #fff;
+    color: firebrick;
     text-decoration: none;
     padding: 6px 8px;
     border-radius: 10px;
   }
   nav{
-    background: #444;
+    background: firebrick;
     padding: 14px 0;
     margin-bottom: 40px;
   }

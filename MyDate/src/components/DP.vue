@@ -91,13 +91,13 @@
 
 </template>
 
-<script>
+<script  >
     export default {
         name: "d-p",
      // Holds data for the dp page to access
       data(){
           return{
-            categories:[ ],
+            categories:"",
 
             types: ["Active", "City","Vintage","SomethingNew"]
 

@@ -1,6 +1,6 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-
+import './Database'
 import Vue from 'vue'
 import App from './App'
 import VueFire from 'vuefire'
@@ -24,6 +24,10 @@ import Money from './components/Money'
 import datepage from './components/DatePage'
 //import Database
 import EventData from "./assets/Event_Ideas"
+// import Display
+import practiceDisplay from "./components/PracticeDisplay"
+
+
 
 console.log(EventData);
 
@@ -45,6 +49,9 @@ const routes =[
   {
     path: "/datepage", component: datepage
   },
+  {
+    path: "/display", component: practiceDisplay
+  }
 ];
 
 const router = new VueRouter ({
