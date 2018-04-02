@@ -29,6 +29,7 @@ import practiceDisplay from "./components/PracticeDisplay"
 
 
 
+
 console.log(EventData);
 
 
@@ -51,7 +52,8 @@ const routes =[
   },
   {
     path: "/display", component: practiceDisplay
-  }
+  },
+
 ];
 
 const router = new VueRouter ({
