@@ -16,47 +16,16 @@
 </template>
 
 <script>
-  import header from './components/Header'
-  import {initializeApp} from 'firebase'
-
-  const app = initializeApp({
-       apiKey: "AIzaSyBN47cxSSxFRWGUT3w28BiAvtSVGRBQAi0",
-       authDomain: "mydate-database.firebaseapp.com",
-       databaseURL: "https://mydate-database.firebaseio.com",
-       projectId: "mydate-database",
-       storageBucket: "mydate-database.appspot.com",
-       messagingSenderId: "913904205801"
-
-  });
-
-  export const db = app.database();
-  export const namesRef = db.ref('names');
+import header from './components/Header'
 
 
- //  import Firebase from  "firebase"
- //  let config = {
- //    apiKey: "AIzaSyBN47cxSSxFRWGUT3w28BiAvtSVGRBQAi0",
- //    authDomain: "mydate-database.firebaseapp.com",
- //    databaseURL: "https://mydate-database.firebaseio.com",
- //    projectId: "mydate-database",
- //    storageBucket: "mydate-database.appspot.com",
- //    messagingSenderId: "913904205801"
- //  };
- //
- // let starter = Firebase.initialize(config);
- // let db = starter.openDatabase();
- //
- //
- // let DateRef = db.ref('Name');
 
 
 
 
   export default {
     name: 'app',
-    // firebase: {
-    //   name: DateRef
-    // },
+
     components:{
 
       'app-header': header
