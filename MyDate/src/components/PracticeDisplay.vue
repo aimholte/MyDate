@@ -3,26 +3,46 @@
   <!--<label>Name</label>-->
   <!--<input type = "text" v-model="name"/>-->
   <!--<button @click ="submitName()">Add</button>-->
-  <ul>
-    <li v-for="personName of names" v-bind:key = "personName['.key']">
-      <p>
-        {{personName.name}}
-      </p>
-      <p>
-        {{personName.price}}
-      </p>
-      <p>
-        {{personName.category}}
-      </p>
-      <p>
-        {{personName.type}}
-      </p>
+  <nav>
+    <label class="centerup">Category</label>
+    <select class="centerup" v-model="selectedType">
+      <option v-for="type in types">{{type}}</option>
+    </select>
+    <label>Price</label>
+    <select v-model="SP">
+      <option v-for="num in numbers">{{num}}</option>
+    </select>
+  </nav>
 
-      <button @click = "removeName(personName['.key'])">
-        Remove
-      </button>
-    </li>
-  </ul>
+  <div class="row">
+    <ul>
+
+      <li v-for="date of names" v-bind:key = "date['.key']">
+        <div class="left">
+          <!--<div v-if="date.category"></div>-->
+          <p>
+            {{date.name}}
+          </p>
+          <p>
+            $ {{date.price}}
+          </p>
+          <p>
+            {{date.category}}
+          </p>
+          <p>
+            {{date.type}}
+          </p>
+        </div>
+
+
+        <button @click = "removeName(date['.key'])">
+          Remove
+        </button>
+      </li>
+    </ul>
+  </div>
+
+
 
 </div>
 </template>
@@ -62,6 +82,21 @@
   button{
     background-color: transparent;
     border: 2px solid black;
+  }
+  .column{
+    float: left;
+    padding: 10px;
+  }
+  .left, .right {
+    width: 350px;
+  }
+  .middle{
+    width: 350px;
+  }
+  .row{
+    content: "";
+    display: table;
+    clear: both;
   }
 
 </style>

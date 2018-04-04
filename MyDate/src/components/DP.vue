@@ -3,17 +3,22 @@
     <div id ="DatePicker">
         <!--Header-->
       <br>
+      <h1>{{title}}</h1>
+      <button v-on:click="changeTitle()">Test</button>
+
       <h2 class="centerTex">Date Categories</h2>
 
       <!--<div class="columns">-->
         <!--Active-->
+      <form action = "" method="post">
       <div class="row">
         <div class="column left">
-          <label>Active</label>
-          <input type="checkbox" value="Active" v-model="categories"/>
+
+          <label>
+            Active
+            <input :msg="message" type="radio" id = "active" value="Active" v-model="categories"/>
+          </label>
           <!--<input type="checkbox" value="Active" v-model="categories">-->
-
-
           <p>
             Feel like getting this first date moving!? <br>
             This categories has options like: <br>
@@ -21,25 +26,26 @@
           </p>
 
           <!--City-->
-          <label >City</label>
-          <input type="checkbox" value="City" v-model="categories">
+          <label >City
+            <input type="radio" id="city" value="City" v-model="categories"/>
+          </label>
+
           <br>
           <p>
             Want to show them what your city has to offer? <br>
             This category has options like:<br>
             Museums, Sporting Events, and Concerts<br>
           </p>
-          <p>
-            You've selected:
-          </p>
-          <ul>
-            <li class="alltheright" v-for="category in categories">{{category}}</li>
-          </ul>
+
+          <span> You've selected: {{categories}}</span>
         </div>
 
         <div class="column right">
-          <label>Something New</label>
-          <input type="checkbox" value="Something New" v-model="categories">
+          <!--SomethingNew-->
+          <label>Something New
+            <input type="radio" value="Something New" v-model="categories"/>
+          </label>
+
           <br>
           <p>
             Want to spice things up?! <br>
@@ -50,8 +56,10 @@
 
 
           <!--Vintage-->
-          <label >Vintage</label>
-          <input type="checkbox" value="Vintage" v-model="categories">
+          <label>Vintage
+            <input type="radio" value="Vintage" v-model="categories"/>
+          </label>
+
 
           <p>
             Want to get that nostalgic feel out of ya?! <br>
@@ -59,15 +67,18 @@
             Drive ins, Bowling, and more<br>
           </p>
 
+
           <!--Spits out what categories you've selected-->
 
         </div>
+
       </div>
+      </form>
 
 
 
 
-        <!--SomethingNew-->
+
 
       <!--</div>-->
 
@@ -79,23 +90,9 @@
       <!--</select>-->
 
 
-      <!--Price Points-->
-      <!--<h3>Price Selector</h3>-->
 
-      <!--<input type="checkbox" id="HT">-->
-      <!--<label for="HT">High Tier</label>-->
-        <!--<br>-->
-      <!--<input type="checkbox" id="MT">-->
-      <!--<label for="MT">Middle Tier</label>-->
-      <!--<br>-->
-      <!--<input type="checkbox" id="LT">-->
-      <!--<label for="LT">Low Tier</label>-->
 
-      <!--Button Practice-->
-      <!--<script type="text/javascript"></script>-->
-      <!--<script :src="main.js"></script>-->
 
-      <!--<button class="chillright">Next</button>-->
       <nav>
         <ul>
           <li><router-link class="chillright image"  v-bind:to="'/amount'" tag="img" src="https://www.freeiconspng.com/uploads/ball-right-arrow-icon-27.png">Next</router-link></li>
@@ -106,15 +103,35 @@
 
 </template>
 
-<script  >
-    export default {
+<script>
+
+
+  import {bus} from "../main"
+  export default {
         name: "d-p",
+
      // Holds data for the dp page to access
       data(){
           return{
-            categories:"",
+            props:{
+              title:{
+                type: String
+              }
+            },
+            categories:[],
 
-            types: ["Active", "City","Vintage","SomethingNew"]
+            types: ["Active", "City","Vintage","SomethingNew"],
+            message:"Testing",
+            title: "Vue Ninjas"
+
+
+          }
+
+      },
+      methods:{
+          changeTitle: function () {
+            this.title = "Vue Wizards";
+            bus.$emit('titleChanged','Vue Wizards');
 
           }
 
