@@ -24,7 +24,7 @@
 
 console.log("--------> HelloWorld script tag")
 export default {
-  name: 'HelloWorld',
+  name: 'HomePage',
   data() {
     console.log("--------> HelloWorld data")
     return {

@@ -1,32 +1,32 @@
+
+
+
 <template>
 
     <div id="DatePage">
-    <h1>
-      Your Dates:
-    </h1>
+      <h1>
+        Your Dates
+      </h1>
+
+
+
     <ul>
-          <li v-for="place in results">
+                  <li v-for="place in results">
 
 
-             <div style="width: 300px;
-                border-style:solid; border-width:1; ">
-                <span id="long">{{place.name}}.</span>
-             </div>
-             <div style="width: 300px;
-                border-style:solid; border-width:1; ">
-                <span id="true">{{place.vicinity  }}.</span>
-             </div>
+                      <div style="width: 300px; border-style: solid; border-width: 1px;
+                        align-items: left; display: inline-block; text-align: left;
+                          " align="left" >
+                        <span id="long">{{place.name}}.</span>
+                        <span id="true">{{place.vicinity}}.</span>
+                      </div>
 
 
 
-              <hr color="red"/>
-          </li>
+                      <hr color="red"/>
+                  </li>
     </ul>
 
-
-    <div>
-    <app-input></app-input>
-    </div>
 
 
 
@@ -36,9 +36,6 @@
 
 <script>
     export default {
-        components: {
-          'app-input': Input
-        },
         name: "datepage",
         data(){
           return{
@@ -164,5 +161,34 @@
 </script>
 
 <style scoped>
+  .everythingLeft {
+    text-align: left;
+  }
+  .everythingRight{
+    text-align: right;
+  }
+  .center {
+    text-align: center;
+  }
+  ul{
+    list-style-type: none;
+    text-align: center;
+    margin: 0;
+  }
+  li{
+    display: inline-block;
+    margin: 0 10px;
+  }
+  a{
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 8px;
+    border-radius: 10px;
+  }
+  nav{
+    background: #444;
+    padding: 14px 0;
+    margin-bottom: 40px;
+  }
 
 </style>
