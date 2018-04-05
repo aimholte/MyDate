@@ -6,16 +6,16 @@
     The interactive Date Planner App.
     Login or Click the Heart to begin.
     Click Date Picker to begin.
-    <br>
-    Or Click About to learn More.<br>
-  <input type="text" placeholder="Email"/><br>
-    <input type="password" placeholder="Password"><br/>
-    <button v-bind:onclick="signIn">Connect</button>
-    <p>
-      You don't have an account? You can <router-link v-bind:to ="'/signUp'">crete one</router-link>
-    </p>
+    <!--<br>-->
+    <!--Or Click About to learn More.<br>-->
+  <!--<input type="text" placeholder="Email"/><br>-->
+    <!--<input type="password" placeholder="Password"><br/>-->
+    <!--<button v-bind:onclick="signIn">Connect</button>-->
+    <!--<p>-->
+      <!--You don't have an account? You can <router-link v-bind:to ="'/signUp'">crete one</router-link>-->
+    <!--</p>-->
 
-    <router-view></router-view>
+    <!--<router-view></router-view>-->
   </div>
 
 
@@ -28,7 +28,7 @@
 
 </style>
 <script>
-import firebase from 'firebase'
+// import firebase from 'firebase'
 
 export default {
   name: 'HomePage',
@@ -40,19 +40,19 @@ export default {
     }
   },
   methods: {
-    signIn: function () {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
-        function (user) {
-          alert("Well done! You signed in ")
-
-        },
-        function(error){
-          alert('Oops.'+error.message)
-        }
-      )
-
-
-    }
+    // signIn: function () {
+    //   firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
+    //     function (user) {
+    //       alert("Well done! You signed in ")
+    //
+    //     },
+    //     function(error){
+    //       alert('Oops.'+error.message)
+    //     }
+    //   )
+    //
+    //
+    // }
   }
 }
 </script>

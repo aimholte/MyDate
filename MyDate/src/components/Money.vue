@@ -52,7 +52,8 @@
             desireAmount: "",
             types: ["Active","City","Something New","Vintage"],
             selectedType: "",
-            title:""
+
+
           }
 
       },

@@ -3,14 +3,14 @@
 
 import Vue from 'vue'
 import App from './App'
-import VueFire from 'vuefire'
+// import VueFire from 'vuefire'
 import CheckboxRadio from 'vue-checkbox-radio';
 
 Vue.use(CheckboxRadio);
 
 import VueRouter from 'vue-router'
 Vue.use(VueRouter);
-Vue.use(VueFire);
+// Vue.use(VueFire);
 
 //import the Hello component
 import Home from './components/HelloWorld'
@@ -31,7 +31,7 @@ import SignUp from './components/SignUp'
 
 
 
-import firebase from 'firebase'
+// import firebase from 'firebase'
 
 
 
@@ -72,15 +72,15 @@ Vue.config.productionTip = false;
 
 
 
-let config = {
-  apiKey: "AIzaSyDuT479lV1X3i2zSMA0fossYWgUpXqHszY",
-  authDomain: "mydate-login.firebaseapp.com",
-  databaseURL: "https://mydate-login.firebaseio.com",
-  projectId: "mydate-login",
-  storageBucket: "mydate-login.appspot.com",
-  messagingSenderId: "539033525072"
-};
-firebase.initializeApp(config);
+// let config = {
+//   apiKey: "AIzaSyDuT479lV1X3i2zSMA0fossYWgUpXqHszY",
+//   authDomain: "mydate-login.firebaseapp.com",
+//   databaseURL: "https://mydate-login.firebaseio.com",
+//   projectId: "mydate-login",
+//   storageBucket: "mydate-login.appspot.com",
+//   messagingSenderId: "539033525072"
+// };
+// firebase.initializeApp(config);
 
 /* eslint-disable no-new */
 

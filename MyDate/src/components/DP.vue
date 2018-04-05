@@ -4,6 +4,7 @@
         <!--Header-->
       <br>
       <h1>{{title}}</h1>
+
       <button v-on:click="changeTitle()">Test</button>
 
       <h2 class="centerTex">Date Categories</h2>
