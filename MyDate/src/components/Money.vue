@@ -1,12 +1,18 @@
 <template>
 <div id="amount">
   <nav>
-    <label class="centerup">Category</label>
-    <select class="centerup" v-model="selectedType">
+    <label class="centerup black" >Category</label>
+    <select class="centerup custom-select" v-model="selectedType">
+
       <option v-for="type in types">{{type}}</option>
     </select>
   </nav>
   <h1 class="centerup">Select A Price</h1>
+
+  <h3>{{title}}</h3>
+
+
+
 
   <!--Selection Box-->
   <label class="centerup"> How Much Would You like to spend</label>
@@ -22,7 +28,7 @@
 
 
   <ul>
-      <li><router-link class="centerup" v-bind:to="'/datepage'">See Your Perfect Date</router-link></li>
+      <li><router-link class="centerup" v-bind:to="'/datePage '">See Your Perfect Date</router-link></li>
   </ul>
 
 
@@ -31,17 +37,31 @@
 
 <script>
    import "./DP"
-    export default {
+   import {bus} from "../main"
+
+   export default {
         name: "amount",
+        props:{
+            title:{
+              type: String
+        }
+        },
       data(){
           return{
             numbers: [0,5,10,15,20,25,30,35,40,45,50,55,60,65,75,80,85,90,95,100],
             desireAmount: "",
             types: ["Active","City","Something New","Vintage"],
-            selectedType: ""
+            selectedType: "",
+
+
           }
 
-      }
+      },
+       created(){
+          bus.$on('titleChanged',(data) => {
+            this.title = data;
+          } )
+       }
     }
 </script>
 
@@ -74,6 +94,12 @@ a{
   padding: 6px 8px;
   border-radius: 10px;
 }
+  .black{
+    color: black;
+  }
+  .custom-select select{
+    display: none;
+  }
 </style>
 
 
