@@ -37,6 +37,11 @@
   const GOOGLE_PLACES_ADDRESS = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.940753,-93.179233&radius=1000&type=";
   const GOOGLE_PLACES_DETAIL_SEARCH = "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
   const PHOTO_MAX_WITH = 500;
+  const ACTIVE = ['night_club', 'park', 'zoo', 'amusement_park', 'gym'];
+  const HITTING_THE_CITY = ['art_gallery', 'museum', 'casino', 'stadium'];
+  const OLD_SCHOOL = ['mall', 'bar', 'movie_theater', 'bowling_alley'];
+  const SOMETHING_NEW = ['spa', 'aquarium', 'bakery', 'book_store'];
+  const TEST = ['cafe', 'store', 'bar'];
 
   import axios from 'axios';
   export default {
@@ -45,13 +50,16 @@
       return {
         msg: 'Search',
         query: '',
-        results: '',
-        more: ''
+        results: [],
+        more: '',
+        lat: '',
+        long: ''
       }
     },
     methods: {
 
-      async getResult(placeID) {
+      async getResult() {
+
         function formatResultDetailSearch(result) {
           var r = {};
           r['phoneNumber'] = result.formatted_phone_number;
@@ -61,6 +69,7 @@
           r['googleurl'] = result.url;
           r['photos'] = result.photos;
           r['name'] = result.name;
+          r['id'] = result.place_id;
           return r;
         }
 
@@ -77,33 +86,46 @@
         }
 
 
-        function formatResults(results) {
-          let resultlist = [];
-          for(let i = 0; i < results.length; i++) {
-            resultlist[i] = formatResult(results[i]);
+        async function getDetails(data) {
+          let r = [];
+          for(let i = 0; i < data.length; i++) {
+            let json = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[i].place_id + '&key=' + API_KEY)
+            r[i] = json.data.result;
           }
-          return resultlist;
+          console.log(r);
+          return r;
         }
 
-        axios.get(PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + "cafe" + "&key=" +API_KEY)
-          .then(response => {
-            let data = response.data.results;
-            let cleandata = [];
-            for(let j = 0; j < data.length; j++) {
-              cleandata[j] = formatResult(data[j]);
+        for(let h = 0; h < TEST.length; h++) {
+          let raw = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + TEST[h] + "&key=" +API_KEY);
+          let data = raw.data.results;
+          let cleandata = [];
+          for(let j = 0; j < data.length; j++) {
+            let dict = {};
+            let detail = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[j].place_id + "&key=" + API_KEY);
+            let detaildata = detail.data.result;
+            dict['place search data'] = formatResult(data[j]);
+            dict['place details data'] = detaildata;
+            cleandata[j] = dict;
+          }
+          if(Array.isArray(this.more) == true) {
+            for(let o = 0; o < cleandata.length; o++) {
+              this.more.push(cleandata[o]);
             }
+          }
+          else {
             this.more = cleandata;
-            let r = [];
-            for(let i = 0; i < data.length; i++) {
-              axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[i].place_id + '&key=' + API_KEY)
-                .then(response => {
+          }
+          let r = [];
+          let detaildata = getDetails(data);
+          this.results = detaildata;
+        }
 
-                  var detailSearch = formatResultDetailSearch(response.data.result);
-                  r[i] = [detailSearch];
-                });
-            }
-            this.results = r;
-          });
+        navigator.geolocation.getCurrentPosition(position => {
+          this.lat = position.coords.latitude;
+          this.long = position.coords.longitude;
+        });
+
       }
     }
   }
@@ -130,3 +152,4 @@
     color: #42b983;
   }
 </style>
+
