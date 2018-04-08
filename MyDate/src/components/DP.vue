@@ -3,9 +3,8 @@
     <div id ="DatePicker">
         <!--Header-->
       <br>
-      <h1>{{title}}</h1>
 
-      <button v-on:click="changeTitle()">Test</button>
+
 
       <h2 class="centerTex">Date Categories</h2>
 
@@ -38,7 +37,6 @@
             Museums, Sporting Events, and Concerts<br>
           </p>
 
-          <span> You've selected: {{categories}}</span>
         </div>
 
         <div class="column right">
@@ -67,6 +65,7 @@
             This categories has options like: <br>
             Drive ins, Bowling, and more<br>
           </p>
+          <span> You've selected: {{categories}}</span>
 
 
           <!--Spits out what categories you've selected-->
@@ -122,19 +121,15 @@
             categories:[],
 
             types: ["Active", "City","Vintage","SomethingNew"],
-            message:"Testing",
-            title: "Vue Ninjas"
+
 
 
           }
 
       },
       methods:{
-          changeTitle: function () {
-            this.title = "Vue Wizards";
-            bus.$emit('titleChanged','Vue Wizards');
 
-          }
+
 
       }
 
