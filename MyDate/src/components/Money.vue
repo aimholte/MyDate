@@ -1,6 +1,11 @@
 <template>
 <div id="amount">
-
+  <nav>
+    <label class="centerup">Category</label>
+    <select class="centerup" v-model="selectedType">
+      <option v-for="type in types">{{type}}</option>
+    </select>
+  </nav>
   <h1 class="centerup">Select A Price</h1>
 
   <!--Selection Box-->
@@ -15,21 +20,25 @@
 
 
 
-  <nav>
-    <ul>
+
+  <ul>
       <li><router-link class="centerup" v-bind:to="'/datepage'">See Your Perfect Date</router-link></li>
-    </ul>
-  </nav>
+  </ul>
+
+
 </div>
 </template>
 
 <script>
+   import "./DP"
     export default {
         name: "amount",
       data(){
           return{
             numbers: [0,5,10,15,20,25,30,35,40,45,50,55,60,65,75,80,85,90,95,100],
-            desireAmount: ""
+            desireAmount: "",
+            types: ["Active","City","Something New","Vintage"],
+            selectedType: ""
           }
 
       }
@@ -44,4 +53,27 @@
   margin-right: auto;
 
 }
+
+ul{
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+}
+li{
+  display: inline-block;
+  margin: 0 10px;
+}
+nav{
+  background: firebrick;
+  padding: 14px 0;
+  margin-bottom: 40px;
+}
+a{
+  color: crimson;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 10px;
+}
 </style>
+
+

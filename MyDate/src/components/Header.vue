@@ -1,9 +1,9 @@
 <template>
     <nav>
       <ul>
-        <li> <router-link v-bind:to="'/HelloWorld'" exact="" >Home</router-link></li>
-        <li><router-link v-bind:to="'/about'" exact="">About</router-link></li>
-        <li><router-link v-bind:to="'/DP'">Date Picker</router-link></li>
+        <li> <router-link v-bind:to="'/'" exact="" tag="img" src="http://icons.iconarchive.com/icons/graphicloads/colorful-long-shadow/256/Home-icon.png"  >Home</router-link></li>
+        <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://www.freeiconspng.com/uploads/information-icon-5.png">About</router-link></li>
+        <li><router-link v-bind:to="'/DP'"  exact="" tag="img" src="http://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Favorite-Heart-icon.png">DatePicker</router-link></li>
       </ul>
     </nav>
 </template>
@@ -38,5 +38,9 @@
   .router-link-active{
     background: #eee;
     color: #444;
+  }
+  img{
+    width: 75px;
+    height: 75px;
   }
 </style>

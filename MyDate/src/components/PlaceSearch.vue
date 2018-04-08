@@ -4,28 +4,6 @@
     <form v-on:submit.prevent="getResult(query)">
       <input type="text" placeholder="Type in your search" v-model="query" />
     </form>
-    <div class="results" v-if="results">
-      <ul>
-        <li v-for = "result in results">
-          {{ result.name }}
-          <br/>
-          Address:
-          {{ result.address }}
-          <br/>
-          Average Google Rating:
-          {{ result.rating }}
-          <p v-if="result.open_now">
-            Open now!
-          </p>
-          <p v-else>
-            Closed
-          </p>
-          <img v-bind:src="result.icon" />
-          <br/>
-          <img v-bind:src="result.photo"/>
-        </li>
-      </ul>
-    </div>
   </div>
 </template>
 
@@ -50,44 +28,32 @@
     methods: {
 
       getResult(query) {
-        function formatResult(result) {
-          var r = {};
-          r['id'] = result.place_id;
-          r['name'] = result.name;
-          r['photo'] = PROXY_ADDRESS + PHOTO_LIBRARY + PHOTO_MAX_WITH + "&photoreference="
-            + result.photos[0].photo_reference + "&key=" + API_KEY;
-          r['icon'] = result.icon;
-          r['rating'] = result.rating;
-          r['address'] = result.vicinity;
-          r['types'] = result.types;
-          r['open_now'] = result['opening_hours'].open_now;
-          return r;
-        }
 
-        function formatResultDetailSearch(result, id) {
-          var r = {};
-          r['phone number'] = result.formatted_phone_number;
-          r['hours'] = result.weekday_text;
-          r['reviews'] = result.reviews;
-          r['website'] = result.website;
-          return r;
-
-        }
-
-        axios.get(PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + query + '&key=' + API_KEY).then(response => {
-          //console.log(PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + query + '&key=' + API_KEY);
-          //console.log(formatResult(response.data.results[0]));
-          var placeID = response.data.results.place_id;
-          var placeSearch = formatResult(response.data.results[0]);
-          var detailSearch = formatResultDetailSearch(response.data.results[0], placeID);
-          this.results = [Object.assign({}, placeSearch, detailSearch)];
-          console.log(this.results);
-        });
+        axios.get(PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + query + '&key=' + API_KEY)
+          .then(response => {
+            var r = [];
+            console.log(response.data.results[0].photos[0].photo_reference);
+            for (var i = 0; i < response.data.results.length; i++) {
+              var temp = {};
+              temp['name'] = response.data.results[i].name;
+              temp['opennow'] = response.data.results[i].opening_hours.open_now;
+              temp['placeid'] = response.data.results[i].place_id;
+              temp['rating'] = response.data.results[i].rating;
+              temp['icon'] = response.data.results[i].icon;
+              temp['address'] = response.data.results[i].vicinity;
+              temp['types'] = response.data.results[i].types;
+              temp['photoref'] = response.data.results[i].photos;
+              r[i] = temp;
+            }
+            console.log(r);
+            this.results = r;
+          })
+          .catch(error => {
+            alert("Sorry, an error occurred. Please try a different request.");
+            this.results = '';
+            console.log(this.results);
+          });
       }
-
-
-
-
     }
   }
 </script>
@@ -113,4 +79,3 @@
     color: #42b983;
   }
 </style>
-
