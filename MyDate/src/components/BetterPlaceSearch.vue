@@ -1,8 +1,8 @@
 <template>
   <div class="search">
-    <h2>Type in the place id you want more info for</h2>
+    <h2>Press enter to run the search</h2>
     <form v-on:submit.prevent="getResult(query)">
-      <input type="text" placeholder="Type a valid place id here" v-model="query" />
+      <input type="text" placeholder="Press enter get results!" v-model="query" />
     </form>
     <div class="results" v-if="results">
       <ul>
@@ -41,7 +41,7 @@
   const HITTING_THE_CITY = ['art_gallery', 'museum', 'casino', 'stadium'];
   const OLD_SCHOOL = ['mall', 'bar', 'movie_theater', 'bowling_alley'];
   const SOMETHING_NEW = ['spa', 'aquarium', 'bakery', 'book_store'];
-  const TEST = ['cafe', 'store', 'bar'];
+  const TEST = ['night_club','cafe', 'store', 'bar'];
 
   import axios from 'axios';
   export default {
@@ -81,7 +81,13 @@
           r['rating'] = result.rating;
           r['address'] = result.vicinity;
           r['types'] = result.types;
-          r['open_now'] = result['opening_hours'].open_now;
+          if(result.opening_hours !== undefined) {
+            r['open_now'] = result['opening_hours'].open_now;
+          }
+          else {
+            r['open_now'] = true;
+          }
+
           return r;
         }
 
@@ -89,37 +95,40 @@
         async function getDetails(data) {
           let r = [];
           for(let i = 0; i < data.length; i++) {
-            let json = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[i].place_id + '&key=' + API_KEY)
+            let json = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[i].place_id + '&key=' + API_KEY);
             r[i] = json.data.result;
           }
-          console.log(r);
           return r;
         }
 
         for(let h = 0; h < TEST.length; h++) {
-          let raw = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + TEST[h] + "&key=" +API_KEY);
-          let data = raw.data.results;
-          let cleandata = [];
-          for(let j = 0; j < data.length; j++) {
-            let dict = {};
-            let detail = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[j].place_id + "&key=" + API_KEY);
-            let detaildata = detail.data.result;
-            dict['place search data'] = formatResult(data[j]);
-            dict['place details data'] = detaildata;
-            cleandata[j] = dict;
-          }
-          if(Array.isArray(this.more) == true) {
-            for(let o = 0; o < cleandata.length; o++) {
-              this.more.push(cleandata[o]);
+          let raw = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + OLD_SCHOOL[h] + "&key=" +API_KEY);
+          console.log(raw.data.status);
+          if(raw.data.status !== 'ZERO_RESULTS') {
+            let data = raw.data.results;
+            let cleandata = [];
+            for(let j = 0; j < data.length; j++) {
+              let dict = {};
+              let detail = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[j].place_id + "&key=" + API_KEY);
+              let detaildata = detail.data.result;
+              dict['place search data'] = formatResult(data[j]);
+              dict['place details data'] = detaildata;
+              cleandata[j] = dict;
             }
+            if(Array.isArray(this.more) == true) {
+              for(let o = 0; o < cleandata.length; o++) {
+                this.more.push(cleandata[o]);
+              }
+            }
+            else {
+              this.more = cleandata;
+            }
+            let r = [];
+            let detaildata = getDetails(data);
+            this.results = detaildata;
           }
-          else {
-            this.more = cleandata;
-          }
-          let r = [];
-          let detaildata = getDetails(data);
-          this.results = detaildata;
         }
+
 
         navigator.geolocation.getCurrentPosition(position => {
           this.lat = position.coords.latitude;
@@ -152,4 +161,3 @@
     color: #42b983;
   }
 </style>
-
