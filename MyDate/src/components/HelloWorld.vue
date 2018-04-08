@@ -2,13 +2,20 @@
 <template>
   <div id="hello" >
 
-    <h1>{{ msg }}</h1>
+    <h1>Welcome to MyDate</h1>
     The interactive Date Planner App.
+    Login or Click the Heart to begin.
     Click Date Picker to begin.
-    <br>
-    Or Click About to learn More.
+    <!--<br>-->
+    <!--Or Click About to learn More.<br>-->
+  <!--<input type="text" placeholder="Email"/><br>-->
+    <!--<input type="password" placeholder="Password"><br/>-->
+    <!--<button v-bind:onclick="signIn">Connect</button>-->
+    <!--<p>-->
+      <!--You don't have an account? You can <router-link v-bind:to ="'/signUp'">crete one</router-link>-->
+    <!--</p>-->
 
-
+    <!--<router-view></router-view>-->
   </div>
 
 
@@ -21,15 +28,31 @@
 
 </style>
 <script>
+// import firebase from 'firebase'
 
-console.log("--------> HelloWorld script tag")
 export default {
   name: 'HomePage',
   data() {
-    console.log("--------> HelloWorld data")
+
     return {
-      msg: 'Welcome to My Date'
+      email:"",
+      password:""
     }
+  },
+  methods: {
+    // signIn: function () {
+    //   firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
+    //     function (user) {
+    //       alert("Well done! You signed in ")
+    //
+    //     },
+    //     function(error){
+    //       alert('Oops.'+error.message)
+    //     }
+    //   )
+    //
+    //
+    // }
   }
 }
 </script>
@@ -43,6 +66,26 @@ export default {
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
-
+  }
+  .login{
+    margin-top: 40px;
+  }
+  input{
+    margin: 10px 0;
+    width: 20%;
+    padding: 15px;
+  }
+  button{
+    margin-top: 20px;
+    width: 10%;
+    cursor: pointer;
+  }
+  p{
+    margin-top: 40px;
+    font-size: 13px;
+  }
+  p a {
+    text-decoration: underline;
+    cursor: pointer;
   }
 </style>
