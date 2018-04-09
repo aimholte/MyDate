@@ -5,38 +5,34 @@
 
     <div id="DatePage">
 
-      <nav>
-        <label class="centerup">Category</label>
-        <select class="centerup" v-model="selectedType">
-          <option v-for="type in types">{{type}}</option>
-        </select>
-        <label>Price</label>
-          <select v-model="SP">
-            <option v-for="num in numbers">{{num}}</option>
-          </select>
-      </nav>
       <h1>
         Your Dates
       </h1>
+      <div class="row">
+        <div class="left">
+          <ul>
+            <li v-for="place in results">
 
 
-
-    <ul>
-                  <li v-for="place in results">
-
-
-                      <div style="width: 300px; border-style: solid; border-width: 1px;
+              <div style="width: 300px; border-style: solid; border-width: 1px;
                         align-items: left; display: inline-block; text-align: left;
                           " align="left" >
-                        <span id="long">{{place.name}}.</span>
-                        <span id="true">{{place.vicinity}}.</span>
-                      </div>
+                <span id="long">{{place.name}}.</span>
+                <span id="true">{{place.vicinity}}.</span>
+                <!--<button :onclick="removeDate(index)">X</button>-->
+
+
+              </div>
 
 
 
-                      <hr color="red"/>
-                  </li>
-    </ul>
+              <hr color="orange"/>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
 
 
 
@@ -48,6 +44,12 @@
 <script>
     export default {
         name: "datepage",
+      methods:{
+          removeDate:function (index) {
+            this.place.splice(index,1);
+          }
+
+      },
         data(){
           return{
                     "html_attributions" : [],
@@ -166,11 +168,8 @@
                     ],
                     "status" : "OK",
 
-            // variables
-                    SP: "",
-                    numbers: [0,5,10,15,20,25,30,35,40,45,50,55,60,65,75,80,85,90,95,100],
-                    types: ["Active","City","Something New","Vintage"],
-                    selectedType: ""
+
+
                  }
         }
 
@@ -178,6 +177,9 @@
 </script>
 
 <style scoped>
+  #Datepage{
+    background: #323b39;
+  }
   .everythingLeft {
     text-align: left;
   }
@@ -206,6 +208,30 @@
     background: firebrick;
     padding: 14px 0;
     margin-bottom: 40px;
+  }
+  .column{
+    float: left;
+    padding: 10px;
+  }
+  .left, .right {
+    width: 350px;
+  }
+  .middle{
+    width: 350px;
+  }
+  .row{
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .selections{
+  width: 300px;
+    border-style: solid;
+    border-width: 1px;
+    align-items: left;
+    display: inline-block;
+    text-align: left;
+    align:left;
   }
 
 </style>

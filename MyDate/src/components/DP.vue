@@ -14,11 +14,11 @@
       <div class="row">
         <div class="column left">
           <img class="icon" src="https://png.icons8.com/metro/1600/running-rabbit.png"/>
-          <label>
+          <label class="writing">
             Active
             <input  type="radio" id = "active" value="Active" v-model="categories"/>
           </label>
-          <p>
+          <p class="writing">
             Feel like getting this first date moving!? <br>
             This categories has options like: <br>
             Hiking, Skydiving, and Surfing<br>
@@ -26,12 +26,12 @@
 
           <!--City-->
           <img class="icon" src="https://png.icons8.com/metro/1600/building.png"/>
-          <label >City
+          <label class="writing" >City
             <input type="radio" id="city" value="City" v-model="categories"/>
           </label>
 
           <br>
-          <p>
+          <p class="writing">
             Want to show them what your city has to offer? <br>
             This category has options like:<br>
             Museums, Sporting Events, and Concerts<br>
@@ -42,12 +42,12 @@
         <div class="column middle">
           <!--SomethingNew-->
           <img class="icon" src="https://cdn3.iconfinder.com/data/icons/creative-and-idea/500/Idea-thinking-think-concept_13-512.png"/>
-          <label>Something New
+          <label class="writing">Something New
             <input type="radio" value="Something New" v-model="categories"/>
           </label>
 
           <br>
-          <p>
+          <p class="writing">
             Want to spice things up?! <br>
             This categories has options like: <br>
             Going to a Bookstore, Ghost town, and more<br>
@@ -57,17 +57,17 @@
 
           <!--Vintage-->
           <img class="icon" src="https://cdn0.iconfinder.com/data/icons/music-and-multimedia/80/Music_multimedia-07-512.png"/>
-          <label>Vintage
+          <label class="writing">Vintage
             <input type="radio" value="Vintage" v-model="categories"/>
           </label>
 
 
-          <p>
+          <p class="writing">
             Want to get that nostalgic feel out of ya?! <br>
             This categories has options like: <br>
             Drive ins, Bowling, and more<br>
           </p>
-          <span> You've selected: {{categories}}</span>
+          <span class="selection"> You've selected: {{categories}}</span>
 
 
           <!--Spits out what categories you've selected-->
@@ -89,7 +89,7 @@
             <option class="centerup"  v-for="num in numbers">{{num}}</option>
 
           </select>
-          <p class="centerup">
+          <p class="centerup writing">
             You want to spend: $ {{desireAmount}}
           </p>
 
@@ -101,24 +101,6 @@
 
       </div>
       </form>
-
-
-
-
-
-
-      <!--</div>-->
-
-
-      <!--Selection Box-->
-      <!--<label> Test</label>-->
-      <!--<select v-model="testAnswer">-->
-        <!--<option v-for="type in types">{{type}}</option>-->
-      <!--</select>-->
-
-
-
-
 
       <nav>
         <ul>
@@ -165,6 +147,9 @@
     }
 </script>
 <style>
+  #DatePicker{
+    background: #323b39;
+  }
   #checkboxes input{
     display: inline-block;
     margin-left: 10px;
@@ -244,6 +229,13 @@
   .icon{
     width: 75px;
     height: 75px;
+  }
+  .selection{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .writing{
+    font-size: 18px;
   }
 
 
