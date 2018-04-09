@@ -3,9 +3,12 @@
   <div id="hello" >
 
     <h1>Welcome to MyDate</h1>
-    The interactive Date Planner App.
-    Login or Click the Heart to begin.
-    Click Date Picker to begin.
+    <p>
+      The interactive Date Planner App. This app is to help you find the perfect date for the perfect time!
+      Click the Heart above to begin.
+
+    </p>
+
     <!--<br>-->
     <!--Or Click About to learn More.<br>-->
   <!--<input type="text" placeholder="Email"/><br>-->

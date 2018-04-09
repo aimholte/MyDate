@@ -41,6 +41,7 @@ import header from './components/Header'
     text-align-all: center;
     color: #2c3e50;
 
+
     /*background-image: url("./assets/PerfectDAte.png");*/
 
 
