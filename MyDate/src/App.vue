@@ -2,13 +2,14 @@
   <div id="app" >
     <!-- the router outlet, where all matched components would ber viewed -->
     <app-header></app-header>
-    <img src="./assets/MyDateLogo.png" class="centerPic"/>
+    <!--<img src="./assets/MyDateLogo.png" class="centerPic"/>-->
 
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+  // import header piece
 import header from './components/Header'
 
 
@@ -39,7 +40,10 @@ import header from './components/Header'
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align-all: center;
-    color: #2c3e50;
+    color: #b1973c;
+
+    /*background-color: #323b39;*/
+
 
     /*background-image: url("./assets/PerfectDAte.png");*/
 

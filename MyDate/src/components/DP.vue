@@ -13,25 +13,25 @@
       <form action = "" method="post">
       <div class="row">
         <div class="column left">
-
-          <label>
+          <img class="icon" src="https://png.icons8.com/metro/1600/running-rabbit.png"/>
+          <label class="writing">
             Active
-            <input :msg="message" type="radio" id = "active" value="Active" v-model="categories"/>
+            <input  type="radio" id = "active" value="Active" v-model="categories"/>
           </label>
-          <!--<input type="checkbox" value="Active" v-model="categories">-->
-          <p>
+          <p class="writing">
             Feel like getting this first date moving!? <br>
             This categories has options like: <br>
             Hiking, Skydiving, and Surfing<br>
           </p>
 
           <!--City-->
-          <label >City
+          <img class="icon" src="https://png.icons8.com/metro/1600/building.png"/>
+          <label class="writing" >City
             <input type="radio" id="city" value="City" v-model="categories"/>
           </label>
 
           <br>
-          <p>
+          <p class="writing">
             Want to show them what your city has to offer? <br>
             This category has options like:<br>
             Museums, Sporting Events, and Concerts<br>
@@ -39,14 +39,15 @@
 
         </div>
 
-        <div class="column right">
+        <div class="column middle">
           <!--SomethingNew-->
-          <label>Something New
+          <img class="icon" src="https://cdn3.iconfinder.com/data/icons/creative-and-idea/500/Idea-thinking-think-concept_13-512.png"/>
+          <label class="writing">Something New
             <input type="radio" value="Something New" v-model="categories"/>
           </label>
 
           <br>
-          <p>
+          <p class="writing">
             Want to spice things up?! <br>
             This categories has options like: <br>
             Going to a Bookstore, Ghost town, and more<br>
@@ -55,47 +56,55 @@
 
 
           <!--Vintage-->
-          <label>Vintage
+          <img class="icon" src="https://cdn0.iconfinder.com/data/icons/music-and-multimedia/80/Music_multimedia-07-512.png"/>
+          <label class="writing">Vintage
             <input type="radio" value="Vintage" v-model="categories"/>
           </label>
 
 
-          <p>
+          <p class="writing">
             Want to get that nostalgic feel out of ya?! <br>
             This categories has options like: <br>
             Drive ins, Bowling, and more<br>
           </p>
-          <span> You've selected: {{categories}}</span>
+          <span class="selection"> You've selected: {{categories}}</span>
 
 
           <!--Spits out what categories you've selected-->
 
         </div>
 
+        <div class="column right">
+
+          <h1 class="centerTex">Select A Price</h1>
+
+
+
+
+
+
+          <!--Selection Box-->
+          <label class="centerup"> How Much Would You like to spend</label>
+          <select  class="centerup" v-model="desireAmount">
+            <option class="centerup"  v-for="num in numbers">{{num}}</option>
+
+          </select>
+          <p class="centerup writing">
+            You want to spend: $ {{desireAmount}}
+          </p>
+
+
+
+
+
+        </div>
+
       </div>
       </form>
 
-
-
-
-
-
-      <!--</div>-->
-
-
-      <!--Selection Box-->
-      <!--<label> Test</label>-->
-      <!--<select v-model="testAnswer">-->
-        <!--<option v-for="type in types">{{type}}</option>-->
-      <!--</select>-->
-
-
-
-
-
       <nav>
         <ul>
-          <li><router-link class="chillright image"  v-bind:to="'/amount'" tag="img" src="https://www.freeiconspng.com/uploads/ball-right-arrow-icon-27.png">Next</router-link></li>
+          <li><router-link class="chillright image"  v-bind:to="'/datepage'" tag="img" src="https://www.freeiconspng.com/uploads/ball-right-arrow-icon-27.png">Next</router-link></li>
         </ul>
       </nav>
     </div>
@@ -121,6 +130,8 @@
             categories:[],
 
             types: ["Active", "City","Vintage","SomethingNew"],
+            numbers: [0,5,10,15,20,25,30,35,40,45,50,55,60,65,75,80,85,90,95,100],
+            desireAmount: "",
 
 
 
@@ -136,6 +147,9 @@
     }
 </script>
 <style>
+  #DatePicker{
+    background: #323b39;
+  }
   #checkboxes input{
     display: inline-block;
     margin-left: 10px;
@@ -195,6 +209,7 @@
     column-width: 200px;
     column-gap: 40px;
     height: 400px;
+    font-size: 13px;
   }
   .column{
     float: left;
@@ -210,6 +225,17 @@
     content: "";
     display: table;
     clear: both;
+  }
+  .icon{
+    width: 75px;
+    height: 75px;
+  }
+  .selection{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .writing{
+    font-size: 18px;
   }
 
 

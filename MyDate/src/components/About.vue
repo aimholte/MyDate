@@ -29,10 +29,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-    /*background-image: url("../assets/MyDateLogo.png");*/
-    /*background-repeat: no-repeat;*/
-    /*background-position: center top;*/
+    color: #b1973c;
+    background: #323b39;
   }
 </style>

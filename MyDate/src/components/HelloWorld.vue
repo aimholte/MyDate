@@ -3,40 +3,28 @@
   <div id="hello" >
 
     <h1>Welcome to MyDate</h1>
-    The interactive Date Planner App.
-    Login or Click the Heart to begin.
-    Click Date Picker to begin.
-    <!--<br>-->
-    <!--Or Click About to learn More.<br>-->
-  <!--<input type="text" placeholder="Email"/><br>-->
-    <!--<input type="password" placeholder="Password"><br/>-->
-    <!--<button v-bind:onclick="signIn">Connect</button>-->
-    <!--<p>-->
-      <!--You don't have an account? You can <router-link v-bind:to ="'/signUp'">crete one</router-link>-->
-    <!--</p>-->
+    <p class="textSize">
+      The interactive Date Planner App.<br>
+      This app is to help you find the perfect date for the perfect time!
+     <br> Click the Heart above to begin.
 
-    <!--<router-view></router-view>-->
-
-
-
-    <video autoplay loop id="video-background" muted plays-inline>
-        <source src="https://gcs-vimeo.akamaized.net/exp=1523320396~acl=%2A%2F775691538.mp4%2A~hmac=3624c67cf9ea7c259b16a3f8446d9e0990b699ad9384fcc1ba4c62da1d139ad4/vimeo-prod-skyfire-std-us/01/4428/8/222141169/775691538.mp4" type="video/mp4">
+    </p>
+    <video autoplay loop muted id="video-background" plays-inline>
+      <source src="https://09-lvl3-pdl.vimeocdn.com/01/4700/4/123504120/350950598.mp4?expires=1523322042&token=0d6c06d8a9e5514d1c9ca">
     </video>
-
   </div>
-
 
 
 </template>
 
 <style>
+  /*MyDate Logo*/
   body{
     background-image: url("/MyDate/src/assets/PerfectDAte.png");
   }
 
 </style>
 <script>
-// import firebase from 'firebase'
 
 export default {
   name: 'HomePage',
@@ -48,20 +36,10 @@ export default {
     }
   },
   methods: {
-    // signIn: function () {
-    //   firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
-    //     function (user) {
-    //       alert("Well done! You signed in ")
-    //
-    //     },
-    //     function(error){
-    //       alert('Oops.'+error.message)
-    //     }
-    //   )
-    //
-    //
-    // }
+
+
   }
+
 }
 </script>
 
@@ -72,7 +50,7 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: #b1973c;
     margin-top: 60px;
   }
   .login{
@@ -96,15 +74,20 @@ export default {
     text-decoration: underline;
     cursor: pointer;
   }
-  #video-background {
-  /*  making the video fullscreen  */
+  #video-background{
     position: fixed;
     right: 0;
     bottom: 0;
-    min-width: 100%;
     min-height: 100%;
+    min-width: 100%;
     width: auto;
     height: auto;
     z-index: -100;
+
+  }
+  .textSize{
+    font-size: 20px;
+    text-outline: black 40px;
+    font-weight: bold;
   }
 </style>
