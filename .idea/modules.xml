@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/software-design.iml" filepath="$PROJECT_DIR$/.idea/software-design.iml" />
       <module fileurl="file://$PROJECT_DIR$/../vue-router/vue-router.iml" filepath="$PROJECT_DIR$/../vue-router/vue-router.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../vue-videobg/vue-videobg.iml" filepath="$PROJECT_DIR$/../vue-videobg/vue-videobg.iml" />
     </modules>
   </component>
 </project>
