@@ -58,7 +58,7 @@
 
      </div>
 
-     <div style="width: 300px; border-color:blue;
+     <div style="width: 400px; border-color:blue;
                     border-style:solid; border-width:1;display:left;">
         <h2>
                   Date 2
@@ -67,9 +67,10 @@
                     <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
 
               <div>
+                            {{meal2.name}}
+
                    <button v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Place</button>
 
-              {{meal2.name}}
 
               </div>
      {{Date2Close.name}}
@@ -77,7 +78,7 @@
 
      </div>
 
-     <div style="width: 300px; border-color:#b1973c;
+     <div style="width: 400px; border-color:#b1973c;
                       border-style:solid; border-width:1;display:left;">
            <h2>
               Date 3
@@ -86,9 +87,9 @@
                                <button v-if="ButtonsVisible" v-on:click="NewDate3Open()">Find New Place</button>
 
               <div>
-                                        <button v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Place</button>
-
               {{meal3.name}}
+                 <button v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Place</button>
+
               </div>
      {{Date3Close.name}}
                                <button v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
@@ -671,7 +672,7 @@
               shuffling(array)
               sorter;
               this.initial;
-              },
+                },
 
         }
 
@@ -750,7 +751,7 @@
     clear: both;
   }
   .dateBox1{
-   width: 300px;
+   width: 400px;
     border-color: #b1973c ;
     border-style:solid;
     border-width:1;
