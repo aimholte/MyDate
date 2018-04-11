@@ -48,6 +48,10 @@
     text-align: center;
     color: #b1973c;
     background: #323b39;
+    min-height: 100%;
+  }
+  body{
+    min-height: 100%;
   }
   ul{
     list-style-type: none;

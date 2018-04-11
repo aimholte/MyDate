@@ -6,20 +6,25 @@
     <div id="DatePage">
 
 
-
+        <!--NavBar-->
       <nav>
-        <label class="centerup">Category</label>
-        <select class="centerup" v-model="selectedType">
-          <option v-for="type in types">{{type}}</option>
-        </select>
-        <label>Price</label>
-          <select v-model="SP">
-            <option v-for="num in numbers">{{num}}</option>
-          </select>
+        <ul>
+          <!--<img src="MDLogo.png" class="centerPic">-->
+
+          <li>  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>
+          <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
+          <li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png"></router-link></li>
+        </ul>
       </nav>
+
+
+      <!--Header-->
       <h1>
         Your Dates
       </h1>
+      <!--Button to generate Dates-->
+      <h1><button class="middle" v-on:click="shuffling(myMessage); sorter(); initial()">Generate Your Date!</button></h1>
+      <br>
 
       <div v-if='this.allPlaceShown === true'>
           <label>All places have been shown.</label>
@@ -29,22 +34,19 @@
                 <label>All meals have been shown.</label>
        </div>
 
-     <div >
-                 <button v-on:click="shuffling(myMessage); sorter(); initial()">Sort API</button>
-     </div>
 
-
-     <div style="width: 300px; border-color:blue;
-          border-style:solid; border-width:1;display:left;">
+        <!--Date Box 1-->
+     <div class="left dateBox1">
         <h2>
           Date 1
         </h2>
+       <p>
+         {{Date1Open.name}}
+         <button v-on:click="NewDate1Open()">Find New Place</button>
+       </p>
 
 
-            {{Date1Open.name}}
-                    <button v-on:click="NewDate1Open()">Find New Place</button>
-
-            <div>
+       <div>
             {{meal1.name}}
                     <button v-on:click="NewMeal1()">Find New Place</button>
 
@@ -73,7 +75,7 @@
 
      </div>
 
-     <div style="width: 300px; border-color:blue;
+     <div style="width: 300px; border-color:#b1973c;
                       border-style:solid; border-width:1;display:left;">
            <h2>
               Date 3
@@ -670,7 +672,11 @@
     }
 </script>
 
-<style scoped>
+<style >
+  #DatePage{
+    background: #323b39;
+    color: #b1973c;
+  }
   .everythingLeft {
     text-align: left;
   }
@@ -696,13 +702,52 @@
     border-radius: 10px;
   }
   nav{
-    background: firebrick;
+    background: #fd5e53;
     padding: 14px 0;
     margin-bottom: 40px;
   }
-  h3, button{
+  h3{
       float: left;
       margin: 0;
+  }
+  button{
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color:#323b39 ;
+    font-size: 10px;
+    background:  #fd5e53;
+
+  }
+  .columns {
+    columns: 3;
+    column-width: 200px;
+    column-gap: 40px;
+    height: 400px;
+    font-size: 13px;
+  }
+  .column{
+    float: left;
+    padding: 10px;
+  }
+  .left, .right {
+    width: 350px;
+  }
+  .middle{
+    width: 350px;
+  }
+  .row{
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .dateBox1{
+   width: 300px;
+    border-color: #b1973c ;
+    border-style:solid;
+    border-width:1;
   }
 
 </style>
