@@ -40,19 +40,21 @@
         <h2>
           Date 1
         </h2>
+
        <p>
          {{Date1Open.name}}
-         <button v-on:click="NewDate1Open()">Find New Place</button>
-       </p>
 
+         <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
+
+       </p>
 
        <div>
             {{meal1.name}}
-                    <button v-on:click="NewMeal1()">Find New Place</button>
+                    <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Place</button>
 
             </div>
      {{Date1Close.name}}
-             <button v-on:click="NewDate1Close()">Find New Place</button>
+             <button v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
 
      </div>
 
@@ -62,16 +64,16 @@
                   Date 2
         </h2>
      {{Date2Open.name}}
-                    <button v-on:click="NewDate2Open()">Find New Place</button>
+                    <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
 
               <div>
-                   <button v-on:click="NewMeal2()">Find New Place</button>
+                   <button v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Place</button>
 
               {{meal2.name}}
 
               </div>
      {{Date2Close.name}}
-                  <button v-on:click="NewDate2Close()">Find New Place</button>
+                  <button v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
 
      </div>
 
@@ -81,15 +83,15 @@
               Date 3
            </h2>
      {{Date3Open.name}}
-                               <button v-on:click="NewDate3Open()">Find New Place</button>
+                               <button v-if="ButtonsVisible" v-on:click="NewDate3Open()">Find New Place</button>
 
               <div>
-                                        <button v-on:click="NewMeal3()">Find New Place</button>
+                                        <button v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Place</button>
 
               {{meal3.name}}
               </div>
      {{Date3Close.name}}
-                               <button v-on:click="NewDate3Close()">Find New Place</button>
+                               <button v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
 
      </div>
 
@@ -127,6 +129,7 @@
         data(){
           return{
                     Randomqueue: [],
+                    ButtonsVisible: false,
                     Mealqueue : [],
                     Placequeue : [],
                     allPlaceShown: false,
@@ -619,6 +622,8 @@
                   place["showed"] = "false";
                 }
               }
+            this.ButtonsVisible='true';
+
             },
             initial: function () {
               this.meal1=this.Mealqueue.shift();
@@ -666,7 +671,8 @@
               shuffling(array)
               sorter;
               this.initial;
-              }
+              },
+
         }
 
     }
