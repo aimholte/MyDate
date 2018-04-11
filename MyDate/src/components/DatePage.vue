@@ -3,7 +3,18 @@
 
 <template>
 
-    <div id="DatePage">
+    <div id="datePage" class="display">
+      <!--Nav Bar-->
+      <nav class="navBar">
+        <!--Router links to home, about, and date picker page-->
+        <ul>
+          <!--<img src="MDLogo.png" class="centerPic">-->
+
+          <li>  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>
+          <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
+          <li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png"></router-link></li>
+        </ul>
+      </nav>
 
       <h1>
         Your Dates
@@ -19,6 +30,7 @@
                           " align="left" >
                 <span id="long">{{place.name}}.</span>
                 <span id="true">{{place.vicinity}}.</span>
+
                 <!--<button :onclick="removeDate(index)">X</button>-->
 
 
@@ -176,10 +188,11 @@
     }
 </script>
 
-<style scoped>
-  #Datepage{
+<style >
+  #datepage{
     background: #323b39;
   }
+
   .everythingLeft {
     text-align: left;
   }
@@ -232,6 +245,15 @@
     display: inline-block;
     text-align: left;
     align:left;
+  }
+  .display{
+
+  background: #323b39;
+
+  }
+  .navBar{
+    background: #fd5e53 ;
+
   }
 
 </style>

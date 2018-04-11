@@ -1,7 +1,7 @@
 <template>
   <div id="app" >
     <!-- the router outlet, where all matched components would ber viewed -->
-    <app-header></app-header>
+    <!--<app-header></app-header>-->
     <!--<img src="./assets/MyDateLogo.png" class="centerPic"/>-->
 
     <router-view></router-view>
@@ -41,6 +41,10 @@ import header from './components/Header'
     -moz-osx-font-smoothing: grayscale;
     text-align-all: center;
     color: #b1973c;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+
 
     /*background-color: #323b39;*/
 

@@ -1,6 +1,20 @@
 
 <template>
     <div id ="DatePicker">
+      <nav class="navBar">
+        <!--Router links to home, about, and date picker page-->
+        <div>
+          <ul class="NavUl">
+            <!--<img src="MDLogo.png" class="centerPic">-->
+
+            <li class="Navli">  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>
+            <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
+            <li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png"></router-link></li>
+          </ul>
+
+        </div>
+
+      </nav>
         <!--Header-->
       <br>
 
@@ -90,7 +104,7 @@
 
           </select>
           <p class="centerup writing">
-            You want to spend: $ {{desireAmount}}
+            You want to spend:  {{desireAmount}}
           </p>
 
 
@@ -127,10 +141,10 @@
                 type: String
               }
             },
-            categories:[],
+            categories:"",
 
             types: ["Active", "City","Vintage","SomethingNew"],
-            numbers: [0,5,10,15,20,25,30,35,40,45,50,55,60,65,75,80,85,90,95,100],
+            numbers: ["$","$$","$$$","$$$$"],
             desireAmount: "",
 
 
@@ -194,12 +208,12 @@
     position:static;
     top: 70px;
   }
-  ul{
+  .NavUl{
     list-style-type: none;
     text-align: center;
     margin: 0;
   }
-  li{
+  .Navli{
     display: inline-block;
     margin: 0 10px;
   }
@@ -236,6 +250,33 @@
   }
   .writing{
     font-size: 18px;
+  }
+  ul{
+    list-style-type: none;
+
+    text-align: center;
+    margin: 0;
+  }
+  li{
+    display: inline-block;
+    margin: 0 10px;
+  }
+  a{
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 8px;
+    border-radius: 10px;
+  }
+
+
+  img{
+    width: 75px;
+    height: 75px;
+  }
+  .navBar{
+    background: #fd5e53 ;
+    padding: 14px 0;
+    margin-bottom: 0px;
   }
 
 

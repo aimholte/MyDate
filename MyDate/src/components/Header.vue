@@ -1,7 +1,7 @@
 <!--Provides a header at the top of the page-->
 <template class="body">
 
-  <nav>
+  <nav class="Navbar">
       <!--Router links to home, about, and date picker page-->
       <ul>
         <!--<img src="MDLogo.png" class="centerPic">-->
@@ -44,11 +44,15 @@
     padding: 14px 0;
     margin-bottom: 0px;
 
-
   }
 
   img{
     width: 75px;
     height: 75px;
   }
+  .Navbar{
+    opacity: .5;
+    filter: alpha(opacity=50);
+  }
+
 </style>
