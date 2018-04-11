@@ -58,6 +58,7 @@
           <img class="icon" src="https://cdn3.iconfinder.com/data/icons/creative-and-idea/500/Idea-thinking-think-concept_13-512.png"/>
           <label class="writing">Something New
             <input type="radio" value="Something New" v-model="categories"/>
+
           </label>
 
           <br>
@@ -104,7 +105,7 @@
 
           </select>
           <p class="centerup writing">
-            You want to spend:  {{desireAmount}}
+            You want to spend:  {{APItypes}}
           </p>
 
 
@@ -142,7 +143,6 @@
               }
             },
             categories:"",
-
             types: ["Active", "City","Vintage","SomethingNew"],
             numbers: ["$","$$","$$$","$$$$"],
             desireAmount: "",
