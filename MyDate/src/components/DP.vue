@@ -1,5 +1,4 @@
-
-<template>
+<template xmlns:v-on="http://www.w3.org/1999/xhtml">
     <div id ="DatePicker">
       <nav class="navBar">
         <!--Router links to home, about, and date picker page-->
@@ -30,7 +29,7 @@
           <img class="icon" src="https://png.icons8.com/metro/1600/running-rabbit.png"/>
           <label class="writing">
             Active
-            <input  type="radio" id = "active" value="Active" v-model="categories"/>
+            <input  type="radio" id = "active" value="Active" v-model="category" v-on:click="categorytypes=['art_gallery', 'museum', 'casino', 'stadium']"/>
           </label>
           <p class="writing">
             Feel like getting this first date moving!? <br>
@@ -41,7 +40,7 @@
           <!--City-->
           <img class="icon" src="https://png.icons8.com/metro/1600/building.png"/>
           <label class="writing" >City
-            <input type="radio" id="city" value="City" v-model="categories"/>
+            <input type="radio" id="city" value="City" v-model="category" v-on:click="categorytypes=['art_gallery', 'museum', 'casino', 'stadium']"/>
           </label>
 
           <br>
@@ -57,7 +56,8 @@
           <!--SomethingNew-->
           <img class="icon" src="https://cdn3.iconfinder.com/data/icons/creative-and-idea/500/Idea-thinking-think-concept_13-512.png"/>
           <label class="writing">Something New
-            <input type="radio" value="Something New" v-model="categories"/>
+            <input type="radio" value="Something New" v-model="category" v-on:click="categorytypes=['spa','aquarium','bakery','book_store']"/>
+
           </label>
 
           <br>
@@ -72,7 +72,7 @@
           <!--Vintage-->
           <img class="icon" src="https://cdn0.iconfinder.com/data/icons/music-and-multimedia/80/Music_multimedia-07-512.png"/>
           <label class="writing">Vintage
-            <input type="radio" value="Vintage" v-model="categories"/>
+            <input type="radio" value="Vintage" v-model="category" v-on:click="categorytypes=['mall','bar','movie_theater','bowling_alley']"/>
           </label>
 
 
@@ -99,7 +99,7 @@
 
           <!--Selection Box-->
           <label class="centerup"> How Much Would You like to spend</label>
-          <select  class="centerup" v-model="desireAmount">
+          <select  class="centerup" v-model="desireAmount" v-on:click="budget=desireAmount.length-1">
             <option class="centerup"  v-for="num in numbers">{{num}}</option>
 
           </select>
@@ -121,6 +121,7 @@
           <li><router-link class="chillright image"  v-bind:to="'/datepage'" tag="img" src="https://www.freeiconspng.com/uploads/ball-right-arrow-icon-27.png">Next</router-link></li>
         </ul>
       </nav>
+      <datepage :categorytypes="categorytypes" :budget="budget"></datepage>
     </div>
 
 
@@ -130,8 +131,10 @@
 
 
   import {bus} from "../main"
+  import Datepage from "./DatePage.vue";
   export default {
-        name: "d-p",
+    components: {Datepage},
+    name: "d-p",
 
      // Holds data for the dp page to access
       data(){
@@ -144,19 +147,20 @@
             categories:"",
 
             types: ["Active", "City","Vintage","SomethingNew"],
-            numbers: ["$","$$","$$$","$$$$"],
-            desireAmount: "",
-
-
-
-          }
+            numbers: ["$","$$","$$$","$$$$", "$$$$$"],
+            desireAmount: "$",
+            categorytypes: [],
+            budget: 0
+            }
 
       },
       methods:{
+        setVintage: function() {
+          this.categorytypes = ['mall','bar','movie_theater','bowling_alley']
+        }
 
+      },
 
-
-      }
 
     }
 </script>
