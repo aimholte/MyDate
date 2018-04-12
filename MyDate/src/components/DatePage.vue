@@ -126,7 +126,17 @@
 <script>
 
     export default {
-        name: "datepage",
+      name: "datepage",
+      props: {
+        categorytypes: {
+          type: Array,
+          required: true
+        },
+        budget: {
+          type: Number,
+          required: true
+        }
+      },
         data(){
           return{
                     Randomqueue: [],
