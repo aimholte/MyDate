@@ -4,14 +4,12 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "firebase": "^4.12.1",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1",
     "vue": "^2.5.16",
-    "vue-router": "^3.0.1",
-    "vuefire": "^1.4.5"
+    "vue-router": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

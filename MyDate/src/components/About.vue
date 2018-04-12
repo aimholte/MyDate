@@ -72,7 +72,7 @@
   nav{
     background: #fd5e53 ;
     padding: 14px 0;
-    margin-bottom: 0px;}
+    margin-bottom: 0;}
   img{
     width: 75px;
     height: 75px;
