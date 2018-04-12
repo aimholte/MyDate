@@ -34,27 +34,7 @@
                 <label>All meals have been shown.</label>
        </div>
 
-            <div class="row">
-              <!--Date Box 1-->
-              <div class="left column dateBox1">
-                <h2>
-                  Date 1
-                </h2>
-                <p>
-                  {{Date1Open.name}}
-                  <button v-on:click="NewDate1Open()">Find New Place</button>
-                </p>
 
-
-                <div>
-                  {{meal1.name}}
-                  <button v-on:click="NewMeal1()">Find New Place</button>
-
-                </div>
-                {{Date1Close.name}}
-                <button v-on:click="NewDate1Close()">Find New Place</button>
-
-<<<<<<< Updated upstream
         <!--Date Box 1-->
      <div class="left dateBox1">
         <h2>
@@ -75,23 +55,10 @@
             </div>
      {{Date1Close.name}}
              <button v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
-=======
-              </div>
-                <!--Date Box 2-->
-              <div class="middle column dateBox1">
-                <h2>
-                  Date 2
-                </h2>
-                {{Date2Open.name}}
-                <button v-on:click="NewDate2Open()">Find New Place</button>
->>>>>>> Stashed changes
 
-                <div>
-                  {{meal2.name}}
-                  <button v-on:click="NewMeal2()">Find New Place</button>
+     </div>
 
-<<<<<<< Updated upstream
-     <div style="width: 300px; border-color:blue;
+     <div style="width: 400px; border-color:blue;
                     border-style:solid; border-width:1;display:left;">
         <h2>
                   Date 2
@@ -100,35 +67,18 @@
                     <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
 
               <div>
+                            {{meal2.name}}
+
                    <button v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Place</button>
-=======
 
->>>>>>> Stashed changes
-
-                </div>
-                {{Date2Close.name}}
-                <button v-on:click="NewDate2Close()">Find New Place</button>
 
               </div>
-<<<<<<< Updated upstream
      {{Date2Close.name}}
                   <button v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
-=======
-                  <!--Date Box 3-->
-              <div class="right column dateBox1">
-                <h2>
-                  Date 3
-                </h2>
-                {{Date3Open.name}}
-                <button v-on:click="NewDate3Open()">Find New Place</button>
->>>>>>> Stashed changes
 
-                <div>
-                  {{meal3.name}}
-                  <button v-on:click="NewMeal3()">Find New Place</button>
+     </div>
 
-<<<<<<< Updated upstream
-     <div style="width: 300px; border-color:#b1973c;
+     <div style="width: 400px; border-color:#b1973c;
                       border-style:solid; border-width:1;display:left;">
            <h2>
               Date 3
@@ -137,22 +87,14 @@
                                <button v-if="ButtonsVisible" v-on:click="NewDate3Open()">Find New Place</button>
 
               <div>
-                                        <button v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Place</button>
-=======
-
-                </div>
-                {{Date3Close.name}}
-                <button v-on:click="NewDate3Close()">Find New Place</button>
->>>>>>> Stashed changes
+              {{meal3.name}}
+                 <button v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Place</button>
 
               </div>
-<<<<<<< Updated upstream
      {{Date3Close.name}}
                                <button v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
-=======
->>>>>>> Stashed changes
 
-            </div>
+     </div>
 
 
 
@@ -185,16 +127,6 @@
 
     export default {
         name: "datepage",
-        props: {
-          categorytypes: {
-            type: Array,
-            required: true
-          },
-          budget: {
-            type: Number,
-            required: true
-          }
-      },
         data(){
           return{
                     Randomqueue: [],
@@ -740,7 +672,7 @@
               shuffling(array)
               sorter;
               this.initial;
-              },
+                },
 
         }
 
@@ -749,10 +681,9 @@
 
 <style >
   #DatePage{
-    color: #F49F75 ;
-    background: #130E2E ;
+    background: #323b39;
+    color: #b1973c;
   }
-
   .everythingLeft {
     text-align: left;
   }
@@ -807,7 +738,6 @@
   .column{
     float: left;
     padding: 10px;
-    column-gap: 10px;
   }
   .left, .right {
     width: 350px;
@@ -822,7 +752,7 @@
   }
   .dateBox1{
    width: 400px;
-    border-color: #fd5e53 ;
+    border-color: #b1973c ;
     border-style:solid;
     border-width:1;
   }
