@@ -4,9 +4,7 @@
 <template>
 
     <div id="DatePage">
-
-
-        <!--NavBar-->
+      <!--NavBar-->
       <nav>
         <ul>
           <!--<img src="MDLogo.png" class="centerPic">-->
@@ -27,157 +25,114 @@
       <br>
 
       <div v-if='this.allPlaceShown === true'>
-          <label>All places have been shown.</label>
+        <label>All places have been shown.</label>
       </div>
 
-       <div v-if='this.allMealsShown === true'>
-                <label>All meals have been shown.</label>
-       </div>
+      <div v-if='this.allMealsShown === true'>
+        <label>All meals have been shown.</label>
+      </div>
 
-            <div class="row">
-              <!--Date Box 1-->
-              <div class="left column dateBox1">
-                <h2>
-                  Date 1
-                </h2>
-                <p>
-                  {{Date1Open.name}}
-                  <button v-on:click="NewDate1Open()">Find New Place</button>
-                </p>
-
-
-                <div>
-                  {{meal1.name}}
-                  <button v-on:click="NewMeal1()">Find New Place</button>
-
-                </div>
-                {{Date1Close.name}}
-                <button v-on:click="NewDate1Close()">Find New Place</button>
-
-<<<<<<< Updated upstream
+      <div class="row">
         <!--Date Box 1-->
-     <div class="left dateBox1">
-        <h2>
-          Date 1
-        </h2>
-
-       <p>
-         {{Date1Open.name}}
-
-         <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
-
-       </p>
-
-       <div>
+        <div class="left column dateBox1">
+          <h2>
+            Date 1
+          </h2>
+          <!--Date Opener-->
+          <p>
+            {{Date1Open.name}}
+            <button v-on:click="NewDate1Open()">Find New Place</button>
+          </p>
+          <!--Date Meal-->
+          <p>
             {{meal1.name}}
-                    <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Place</button>
+            <button v-on:click="NewMeal1()">Find New Meal</button>
+          </p>
+          <!--Date Closer-->
+          <p>
+            {{Date1Close.name}}
+            <button v-on:click="NewDate1Close()">Find New Place</button>
+          </p>
+        </div>
+        <!--Date Box 2-->
+        <div class="middle column dateBox1">
+          <h2>
+            Date 2
+          </h2>
+          <!--Date Opener-->
+          <p>
+            {{Date2Open.name}}
+            <button v-on:click="NewDate2Open()">Find New Place</button>
+          </p>
+          <!--Date Meal-->
+          <p>
+            {{meal2.name}}
+            <button v-on:click="NewMeal2()">Find New Meal</button>
+          </p>
+          <!--Date Closer-->
+          <p>
+            {{Date2Close.name}}
+            <button v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
 
-            </div>
-     {{Date1Close.name}}
-             <button v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
-=======
-              </div>
-                <!--Date Box 2-->
-              <div class="middle column dateBox1">
-                <h2>
-                  Date 2
-                </h2>
-                {{Date2Open.name}}
-                <button v-on:click="NewDate2Open()">Find New Place</button>
->>>>>>> Stashed changes
-
-                <div>
-                  {{meal2.name}}
-                  <button v-on:click="NewMeal2()">Find New Place</button>
-
-<<<<<<< Updated upstream
-     <div style="width: 300px; border-color:blue;
-                    border-style:solid; border-width:1;display:left;">
-        <h2>
-                  Date 2
-        </h2>
-     {{Date2Open.name}}
-                    <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
-
-              <div>
-                   <button v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Place</button>
-=======
-
->>>>>>> Stashed changes
-
-                </div>
-                {{Date2Close.name}}
-                <button v-on:click="NewDate2Close()">Find New Place</button>
-
-              </div>
-<<<<<<< Updated upstream
-     {{Date2Close.name}}
-                  <button v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
-=======
-                  <!--Date Box 3-->
-              <div class="right column dateBox1">
-                <h2>
-                  Date 3
-                </h2>
-                {{Date3Open.name}}
-                <button v-on:click="NewDate3Open()">Find New Place</button>
->>>>>>> Stashed changes
-
-                <div>
-                  {{meal3.name}}
-                  <button v-on:click="NewMeal3()">Find New Place</button>
-
-<<<<<<< Updated upstream
-     <div style="width: 300px; border-color:#b1973c;
-                      border-style:solid; border-width:1;display:left;">
-           <h2>
-              Date 3
-           </h2>
-     {{Date3Open.name}}
-                               <button v-if="ButtonsVisible" v-on:click="NewDate3Open()">Find New Place</button>
-
-              <div>
-                                        <button v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Place</button>
-=======
-
-                </div>
-                {{Date3Close.name}}
-                <button v-on:click="NewDate3Close()">Find New Place</button>
->>>>>>> Stashed changes
-
-              </div>
-<<<<<<< Updated upstream
-     {{Date3Close.name}}
-                               <button v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
-=======
->>>>>>> Stashed changes
-
-            </div>
-
-
-
-
-    <ul>
-                  <li v-for="place in results">
-
-
-                      <div style="width: 300px; border-style: solid; border-width: 1px;
-                        align-items: left; display: inline-block; text-align: left;
-                          " align="left" >
-                        <span id="long">{{place.name}}.</span>
-                        <span id="true">{{place.vicinity}}.</span>
-                      </div>
-
-
-
-                      <hr color="red"/>
-                  </li>
-    </ul>
-
+          </p>
+        </div>
+        <!--Date Box 3-->
+        <div class="right column dateBox1">
+          <h2>
+            Date 3
+          </h2>
+          <!--Date Opener-->
+          <p>
+            {{Date3Open.name}}
+            <button v-on:click="NewDate3Open()">Find New Place</button>
+          </p>
+          <!--Date Meal-->
+          <p>
+            {{meal3.name}}
+            <button v-on:click="NewMeal3()">Find New Meal</button>
+          </p>
+          <!--Date Closer-->
+          <p>
+            {{Date3Close.name}}
+            <button v-on:click="NewDate3Close()">Find New Place</button>
+          </p>
+        </div>
+      </div>
 
 
 
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                  <!--<ul>-->
+                                <!--<li v-for="place in results">-->
+
+
+                                    <!--<div style="width: 300px; border-style: solid; border-width: 1px;-->
+                                      <!--align-items: left; display: inline-block; text-align: left;-->
+                                        <!--" align="left" >-->
+                                      <!--<span id="long">{{place.name}}.</span>-->
+                                      <!--<span id="true">{{place.vicinity}}.</span>-->
+                                    <!--</div>-->
+
+
+
+                                    <!--<hr color="red"/>-->
+                                <!--</li>-->
+                  <!--</ul>-->
+                <!---->
+
+
 
 </template>
 
@@ -739,8 +694,9 @@
 
 <style >
   #DatePage{
-    color: #F49F75 ;
-    background: #130E2E ;
+    color: whitesmoke ;
+    background: #398EA1 ;
+    min-height: 100%;
   }
 
   .everythingLeft {
@@ -811,10 +767,11 @@
     clear: both;
   }
   .dateBox1{
-   width: 400px;
+   width: 450px;
+    height: 350px;
     border-color: #fd5e53 ;
     border-style:solid;
-    border-width:1;
+    border-width:1px;
   }
 
 </style>

@@ -8,8 +8,8 @@
             <!--<img src="MDLogo.png" class="centerPic">-->
 
             <li class="Navli">  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>
-            <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
-            <li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png"></router-link></li>
+            <li class="Navli"><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
+            <li class="Navli"><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png">DP</router-link></li>
           </ul>
 
         </div>
@@ -100,12 +100,11 @@
 
           <!--Selection Box-->
           <label class="centerup"> How Much Would You like to spend</label>
-          <select  class="centerup" v-model="desireAmount">
-            <option class="centerup"  v-for="num in numbers">{{num}}</option>
-
+          <select class="centerup" v-model="desireAmount">
+            <option class="centerup"  v-for="num in numbers">{{num}}</option>s
           </select>
           <p class="centerup writing">
-            You want to spend:  {{APItypes}}
+            You want to spend:  {{desireAmount}}
           </p>
 
 
@@ -162,7 +161,8 @@
 </script>
 <style>
   #DatePicker{
-    background: #323b39;
+    color: whitesmoke ;
+    background: #398EA1 ;
   }
   #checkboxes input{
     display: inline-block;

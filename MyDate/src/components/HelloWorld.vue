@@ -64,12 +64,10 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #b1973c;
+    color: #398EA1;
     margin-top: 60px;
   }
-  .login{
-    margin-top: 40px;
-  }
+
   input{
     margin: 10px 0;
     width: 20%;
