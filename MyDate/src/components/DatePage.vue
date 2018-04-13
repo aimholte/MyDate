@@ -124,6 +124,7 @@
 </template>
 
 <script>
+  import lodash from 'lodash';
 
     export default {
       name: "datepage",
@@ -157,14 +158,16 @@
                     Date3Close:"",
                     msg: 'Welcome to Your Vue.js App',
                     color:"red",
-            results:'',
+                     results:'',
+            parameters: {},
 
 
             // variables
                     SP: "",
                     numbers: [0,5,10,15,20,25,30,35,40,45,50,55,60,65,75,80,85,90,95,100],
                     types: ["Active","City","Something New","Vintage"],
-                    selectedType: ""
+                    selectedType: "",
+            isSearching: false
                  }
         },
         methods:{
@@ -359,13 +362,24 @@
       watch: {
           budget:function() {
           console.log('data updated.');
+          console.log(this.budget);
+          this.parameters['budget'] = this.budget;
           //Will add more api stuff here
         },
         categorytypes: function() {
-            console.log('data updated.');
-            //Will add more api stuff here
+          console.log('data updated.');
+          console.log(this.categorytypes);
+          this.parameters['categories'] = this.categorytypes;
+          //Will add more api stuff here
         }
+
+      },
+      updated: {
+          test: function() {
+            console.log('Data updated.')
+          }
       }
+
 
     }
 </script>
