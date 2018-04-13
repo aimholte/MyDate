@@ -5,26 +5,16 @@
 
     <div id="DatePage">
 
-
-        <!--NavBar-->
-      <nav>
-        <ul>
-          <!--<img src="MDLogo.png" class="centerPic">-->
-
-          <li>  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>
-          <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
-          <li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png"></router-link></li>
-        </ul>
-      </nav>
-
-
       <!--Header-->
       <h1>
         Your Dates
       </h1>
       <!--Button to generate Dates-->
-      <h1><button class="middle" v-on:click="shuffling(myMessage); sorter(); initial()">Generate Your Date!</button></h1>
+      <h1><button class="middle" v-on:click="getResult()">Search For Results!</button>
+      <span class="middle" v-if="searchCompleted">Search completed!</span></h1>
       <br>
+
+      <button class="middle" v-on:click="shuffling(this.results); sorter(); initial()">Generate Your Dates!</button>
 
       <div v-if='this.allPlaceShown === true'>
           <label>All places have been shown.</label>
@@ -106,8 +96,14 @@
                       <div style="width: 300px; border-style: solid; border-width: 1px;
                         align-items: left; display: inline-block; text-align: left;
                           " align="left" >
-                        <span id="long">{{place.name}}.</span>
-                        <span id="true">{{place.vicinity}}.</span>
+                        <span id="long">{{place.placeSearch.name}}</span>
+                        <br>
+                        <span id="true">{{place.placeSearch.address}}</span>
+                        <br/>
+                        <span>Phone Number:{{place.placeDetails.formatted_phone_number}}</span>
+                        <br/>
+                        <span> Average Google Rating: {{place.placeSearch.rating}}</span>
+                        <br/>
                       </div>
 
 
@@ -125,6 +121,14 @@
 
 <script>
   import lodash from 'lodash';
+  import axios from 'axios';
+
+  const API_KEY = "AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk";
+  const PROXY_ADDRESS = "https://cors-anywhere.herokuapp.com/";
+  const PHOTO_LIBRARY = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=";
+  const GOOGLE_PLACES_ADDRESS = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.940753,-93.179233&radius=1000&type=";
+  const GOOGLE_PLACES_DETAIL_SEARCH = "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
+  const PHOTO_MAX_WITH = 500;
 
     export default {
       name: "datepage",
@@ -158,8 +162,9 @@
                     Date3Close:"",
                     msg: 'Welcome to Your Vue.js App',
                     color:"red",
-                     results:'',
-            parameters: {},
+                     results:"",
+            parameters: {'budget':0, 'categories':[]},
+            searchCompleted: false,
 
 
             // variables
@@ -350,14 +355,85 @@
                 return array;
               },
               shuffling: function(array){
-              this.Randomqueue=this.shuffle(array);
+                if(this.searchCompleted == true) {
+                  this.Randomqueue=this.shuffle(array);
+                }
               },
               queueFunctions: function(array){
               shuffling(array)
               sorter;
               this.initial;
                 },
+          async getResult() {
+                if(this.searchCompleted == true) {
+                  this.searchCompleted = false;
+                }
+            function formatResultDetailSearch(result) {
+              var r = {};
+              r['phoneNumber'] = result.formatted_phone_number;
+              r['hours'] = result.opening_hours.weekday_text;
+              r['reviews'] = result.reviews;
+              r['website'] = result.website;
+              r['googleurl'] = result.url;
+              r['photos'] = result.photos;
+              r['name'] = result.name;
+              r['id'] = result.place_id;
+              return r;
+            }
 
+            function formatResult(result) {
+              var r = {};
+              r['id'] = result.place_id;
+              r['name'] = result.name;
+              r['icon'] = result.icon;
+              r['rating'] = result.rating;
+              r['address'] = result.vicinity;
+              r['types'] = result.types;
+              if (result.opening_hours !== undefined) {
+                r['open_now'] = result['opening_hours'].open_now;
+              }
+              else {
+                r['open_now'] = true;
+              }
+              return r;
+            }
+
+            async function getDetails(data) {
+              let r = [];
+              for (let i = 0; i < data.length; i++) {
+                let json = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[i].place_id + '&key=' + API_KEY);
+                r[i] = json.data.result;
+              }
+              return r;
+            }
+
+            for (let h = 0; h < this.parameters.categories.length; h++) {
+              let raw = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.parameters.categories[h] + "&maxprice=" + this.parameters.budget + "&key=" + API_KEY);
+              console.log(raw.data.status);
+              if (raw.data.status !== 'ZERO_RESULTS') {
+                let data = raw.data.results;
+                let cleandata = [];
+                for (let j = 0; j < data.length; j++) {
+                  let dict = {};
+                  let detail = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[j].place_id + "&key=" + API_KEY);
+                  let detaildata = detail.data.result;
+                  dict['placeSearch'] = formatResult(data[j]);
+                  dict['placeDetails'] = detaildata;
+                  cleandata[j] = dict;
+                  console.log(cleandata[j]);
+                }
+                if (Array.isArray(this.results) == true) {
+                  for (let o = 0; o < cleandata.length; o++) {
+                    this.results.push(cleandata[o]);
+                  }
+                }
+                else {
+                  this.results = cleandata;
+                }
+              }
+            }
+            this.searchCompleted  = true;
+          }
         },
       watch: {
           budget:function() {
@@ -373,11 +449,6 @@
           //Will add more api stuff here
         }
 
-      },
-      updated: {
-          test: function() {
-            console.log('Data updated.')
-          }
       }
 
 

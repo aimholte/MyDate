@@ -81,7 +81,7 @@
             This categories has options like: <br>
             Drive ins, Bowling, and more<br>
           </p>
-          <span class="selection"> You've selected: {{categories}}</span>
+          <span class="selection"> You've selected: {{ category }}</span>
 
 
           <!--Spits out what categories you've selected-->
@@ -116,11 +116,6 @@
       </div>
       </form>
 
-      <nav>
-        <ul>
-          <li><router-link class="chillright image"  v-bind:to="'/datepage'" tag="img" src="https://www.freeiconspng.com/uploads/ball-right-arrow-icon-27.png">Next</router-link></li>
-        </ul>
-      </nav>
       <datepage :categorytypes="categorytypes" :budget="budget"></datepage>
     </div>
 
@@ -146,6 +141,7 @@
               }
             },
             categories:"",
+            category:"",
 
             types: ["Active", "City","Vintage","SomethingNew"],
             numbers: ["$","$$","$$$","$$$$", "$$$$$"],
