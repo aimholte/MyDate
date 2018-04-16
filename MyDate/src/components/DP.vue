@@ -107,6 +107,12 @@
             You want to spend:  {{desireAmount}}
           </p>
 
+          <!--Location Box-->
+          <h1 class="centerdown"> Enter a Location to Search </h1>
+          <input class="centerdown" type="text" id="txtPlaces" placeholder="Enter a location" v-on:form.submit="setPosition"/>
+
+
+
 
 
 
@@ -147,7 +153,9 @@
             numbers: ["$","$$","$$$","$$$$", "$$$$$"],
             desireAmount: "$",
             categorytypes: [],
-            budget: 0
+            budget: 0,
+            latitude:'',
+            longitude: ''
             }
 
       },
