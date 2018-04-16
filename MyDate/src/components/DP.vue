@@ -109,8 +109,8 @@
 
           <!--Location Box-->
           <h1 class="centerdown"> Enter a Location to Search </h1>
-          <input class="centerdown" type="text" id="txtPlaces" placeholder="Enter a location" v-on:form.submit="setPosition"/>
-
+          <input class="centerdown" type="text" id="txtPlaces" ref="autocomplete" placeholder="Enter a location" v-on:form.submit.prevent="setPosition"/>
+          <button class="currentLocation" v-on:click.prevent="useCurrentLocation"> <b>Use Your Current Location</b></button>
 
 
 
@@ -122,10 +122,8 @@
       </div>
       </form>
 
-      <datepage :categorytypes="categorytypes" :budget="budget"></datepage>
+      <datepage :categorytypes="categorytypes" :budget="budget" :latitude="latitude" :longitude="longitude"></datepage>
     </div>
-
-
 </template>
 
 <script>
@@ -154,8 +152,8 @@
             desireAmount: "$",
             categorytypes: [],
             budget: 0,
-            latitude:'',
-            longitude: ''
+            latitude:0,
+            longitude: 0
             }
 
       },
@@ -180,11 +178,41 @@
 
         setBudget: _.debounce(function() {
           this.budget = this.desireAmount.length-1;
-        },3000)
+        },3000),
 
+        useCurrentLocation: function() {
+          alert('By pressing this button, you are giving permission for MyDate to use your current location to' +
+            ' locate the best possible dates near you!');
+          navigator.geolocation.getCurrentPosition(position => {
+            this.latitude = position.coords.latitude;
+            this.longitude = position.coords.longitude;
+            console.log(this.latitude);
+            console.log(this.longitude);
+          });
+        },
 
+        setLocation: function () {
+          navigator.geolocation.getCurrentPosition(position => {
+            console.log(position.coords.latitude);
+          });
+        }
 
-      }
+      },
+    mounted() {
+      this.autocomplete = new google.maps.places.Autocomplete(
+        (this.$refs.autocomplete),
+        {types: ['geocode']}
+      );
+      this.autocomplete.addListener('place_changed', () => {
+        let place = this.autocomplete.getPlace();
+        let ac = place.address_components;
+        this.latitude = place.geometry.location.lat();
+        this.longitude = place.geometry.location.lng();
+        let city = ac[0]["short_name"];
+
+        console.log(`The user picked ${city} with the coordinates ${this.latitude}, ${this.longitude}`);
+      });
+    }
 
 
     }

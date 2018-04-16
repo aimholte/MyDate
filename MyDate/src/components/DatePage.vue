@@ -140,6 +140,14 @@
         budget: {
           type: Number,
           required: true
+        },
+        latitude: {
+          type: Number,
+          required: true
+        },
+        longitude: {
+          type: Number,
+          required: true
         }
       },
         data(){
@@ -163,7 +171,7 @@
                     msg: 'Welcome to Your Vue.js App',
                     color:"red",
                      results:"",
-            parameters: {'budget':0, 'categories':[]},
+            parameters: {'budget':0, 'categories':[], 'latitude':0, 'longitude':0},
             searchCompleted: false,
 
 
@@ -447,6 +455,14 @@
           console.log(this.categorytypes);
           this.parameters['categories'] = this.categorytypes;
           //Will add more api stuff here
+        },
+        latitude:function() {
+            console.log('data updated.');
+            this.parameters['latitude'] = this.latitude;
+        },
+        longitude:function() {
+            console.log('data updated.');
+            this.parameters['longitude'] = this.longitude;
         }
 
       }
