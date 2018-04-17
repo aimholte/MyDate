@@ -1,200 +1,86 @@
+
 <template>
-  <input
-    ref="autocomplete"
-    type="text"
-    :class="classname"
-    :id="id"
-    :placeholder="placeholder"
-    v-model="autocompleteText"
-    @focus="onFocus()"
-    @blur="onBlur()"
-    @change="onChange"
-    @keypress="onKeyPress"
-    @keyup="onKeyUp"
-  />
+  <div id="app">
+    <h1>Enter Your Desired Location</h1>
+    <input ref="autocomplete"
+           placeholder="Search"
+           class="search-location"
+           onfocus="value = ''"
+           type="text" />
+    <button class="currentLocation" v-on:click="useCurrentLocation"> <b>Use Your Current Location</b></button>
+  </div>
 </template>
 
 <script>
   export default {
-    name: 'VueGoogleAutocomplete',
-    props: {
-      id: {
-        type: String,
-        required: true
-      },
-      classname: String,
-      placeholder: {
-        type: String,
-        default: 'Start typing'
-      },
-      types: {
-        type: String,
-        default: 'address'
-      },
-      country: {
-        type: [String, Array],
-        default: null
-      },
-      enableGeolocation: {
-        type: Boolean,
-        default: false
-      }
-    },
-    data: function () {
+    name: 'autocomplete',
+    data() {
       return {
-        /**
-         * The Autocomplete object.
-         *
-         * @type {Autocomplete}
-         * @link https://developers.google.com/maps/documentation/javascript/reference#Autocomplete
-         */
-        autocomplete: null,
-        /**
-         * Autocomplete input text
-         * @type {String}
-         */
-        autocompleteText: '',
+        latitude: '',
+        longitude: '',
       }
     },
-    watch: {
-      autocompleteText: function (newVal, oldVal) {
-        this.$emit('inputChange', { newVal, oldVal }, this.id);
-      },
-      country: function(newVal, oldVal) {
-        this.autocomplete.setComponentRestrictions({
-          country: this.country === null ? [] : this.country
-        });
-      }
-    },
-    mounted: function() {
-      const options = {};
-      if (this.types) {
-        options.types = [this.types];
-      }
-      if (this.country) {
-        options.componentRestrictions = {
-          country: this.country
-        };
-      }
+    mounted() {
       this.autocomplete = new google.maps.places.Autocomplete(
-        document.getElementById(this.id),
-        options
+        (this.$refs.autocomplete),
+        {types: ['geocode']}
       );
       this.autocomplete.addListener('place_changed', () => {
         let place = this.autocomplete.getPlace();
-        if (!place.geometry) {
-          // User entered the name of a Place that was not suggested and
-          // pressed the Enter key, or the Place Details request failed.
-          this.$emit('no-results-found', place, this.id);
-          return;
-        }
-        let addressComponents = {
-          street_number: 'short_name',
-          route: 'long_name',
-          locality: 'long_name',
-          administrative_area_level_1: 'short_name',
-          administrative_area_level_2: 'county',
-          country: 'long_name',
-          postal_code: 'short_name'
-        };
-        let returnData = {};
-        if (place.address_components !== undefined) {
-          // Get each component of the address from the place details
-          for (let i = 0; i < place.address_components.length; i++) {
-            let addressType = place.address_components[i].types[0];
-            if (addressComponents[addressType]) {
-              let val = place.address_components[i][addressComponents[addressType]];
-              returnData[addressType] = val;
-            }
-          }
-          returnData['latitude'] = place.geometry.location.lat();
-          returnData['longitude'] = place.geometry.location.lng();
-          // return returnData object and PlaceResult object
-          this.$emit('placechanged', returnData, place, this.id);
-          // update autocompleteText then emit change event
-          this.autocompleteText = document.getElementById(this.id).value
-          this.onChange()
-        }
+        let ac = place.address_components;
+        this.latitude = place.geometry.location.lat();
+        this.longitude = place.geometry.location.lng();
+        let city = ac[0]["short_name"];
+
+        console.log(`The user picked ${city} with the coordinates ${this.latitude}, ${this.longitude}`);
       });
     },
-    methods: {
-      /**
-       * When the input gets focus
-       */
-      onFocus() {
-        this.geolocate();
-        this.$emit('focus');
-      },
-      /**
-       * When the input loses focus
-       */
-      onBlur() {
-        this.$emit('blur');
-      },
-      /**
-       * When the input got changed
-       */
-      onChange() {
-        this.$emit('change', this.autocompleteText);
-      },
-      /**
-       * When a key gets pressed
-       * @param  {Event} event A keypress event
-       */
-      onKeyPress(event) {
-        this.$emit('keypress', event);
-      },
-      /**
-       * When a keyup occurs
-       * @param  {Event} event A keyup event
-       */
-      onKeyUp(event) {
-        this.$emit('keyup', event);
-      },
-      /**
-       * Clear the input
-       */
-      clear() {
-        this.autocompleteText = ''
-      },
-      /**
-       * Focus the input
-       */
-      focus() {
-        this.$refs.autocomplete.focus()
-      },
-      /**
-       * Blur the input
-       */
-      blur() {
-        this.$refs.autocomplete.blur()
-      },
-      /**
-       * Update the value of the input
-       * @param  {String} value
-       */
-      update (value) {
-        this.autocompleteText = value
-      },
-      // Bias the autocomplete object to the user's geographical location,
-      // as supplied by the browser's 'navigator.geolocation' object.
-      geolocate() {
-        if (this.enableGeolocation) {
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-              let geolocation = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-              };
-              let circle = new google.maps.Circle({
-                center: geolocation,
-                radius: position.coords.accuracy
-              });
-              this.autocomplete.setBounds(circle.getBounds());
-            });
-          }
-        }
+    methods:{
+      useCurrentLocation: function() {
+        navigator.geolocation.getCurrentPosition(position => {
+          this.latitude = position.coords.latitude;
+          this.longitude = position.coords.longitude;
+          console.log(this.latitude);
+          console.log(this.longitude);
+        });
       }
     }
   }
 </script>
+
+
+<style>
+  *, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+
+  body {
+    background-color: #dcdde1;
+    color: #2f3640;
+  }
+
+  .search-location {
+    display: block;
+    width: 18vw;
+    margin: 0 auto;
+    margin-top: 5vw;
+    margin-bottom: 1vw;
+    font-size: 20px;
+    font-weight: 400;
+    outline: none;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  .currentLocation {
+    font-size: 20px;
+    text-align: center;
+    color: #2f3640;
+  }
+</style>
+
+
