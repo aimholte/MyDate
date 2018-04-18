@@ -58,7 +58,7 @@
                     <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
 
               <div>
-                            {{meal2.placeSearch.name}}
+                            {{meal2.name}}
 
                    <button v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Place</button>
 
