@@ -327,7 +327,6 @@ let myMessage =[
   }
 ];
 
-let Randomqueue = [];
 
 function Sorter(result,queue1,queue2) {
 
@@ -401,11 +400,17 @@ function shuffle(array) {
 
   return array;
 }
+let Randomqueue = [];
 
+
+function filler(array) {
+  for (let i = 0; i < array.length; i++) {
+    let place = array[i];
+    Randomqueue.push(place);
+  }
+}
 let Mealqueue=[];
 let Placequeue=[];
 
-Sorter(myMessage, Mealqueue,Placequeue);
-initial();
-shuffle(myMessage);
-  console.log(Randomqueue);
+filler(myMessage);
+console.log(Randomqueue);

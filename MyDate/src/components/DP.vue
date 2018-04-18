@@ -112,6 +112,7 @@
           <!--Location Box-->
           <h1 class="centerdown"> Enter a Location to Search </h1>
           <input class="centerdown" type="text" id="txtPlaces" ref="autocomplete" placeholder="Enter a location" v-on:form.submit.prevent="setPosition"/>
+          <br>
           <button class="currentLocation" v-on:click.prevent="useCurrentLocation"> <b>Use Your Current Location</b></button>
 
 
@@ -215,7 +216,6 @@
         console.log(`The user picked ${city} with the coordinates ${this.latitude}, ${this.longitude}`);
       });
     }
-
 
     }
 </script>
