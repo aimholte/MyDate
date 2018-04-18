@@ -4,17 +4,21 @@
 <template>
 
     <div id="DatePage">
+      <br/>
+      <nav class="secondPage">
+        <br>
+        <h1 class="center titles"  >
+          Your Prefect Date
+        </h1>
+      </nav>
 
       <!--Header-->
-      <h1>
-        Your Dates
-      </h1>
+
       <!--Button to generate Dates-->
       <h1><button class="middle" v-on:click="getResult()">Search For Results!</button>
       <span class="middle" v-if="searchCompleted">Search completed!</span></h1>
       <br>
 
-      <button class="middle" v-on:click="shuffling(this.results); sorter(); initial()">Generate Your Dates!</button>
 
       <div v-if='this.allPlaceShown === true'>
         <label>All places have been shown.</label>
@@ -26,7 +30,7 @@
 
       <div class="row">
         <!--Date Box 1-->
-        <div class="left column dateBox1">
+        <div class="left column">
           <h2>
             Date 1
           </h2>
@@ -47,7 +51,7 @@
           </p>
         </div>
         <!--Date Box 2-->
-        <div class="middle column dateBox1">
+        <div class="middle column ">
           <h2>
             Date 2
           </h2>
@@ -69,7 +73,7 @@
           </p>
         </div>
         <!--Date Box 3-->
-        <div class="right column dateBox1">
+        <div class="right column ">
           <h2>
             Date 3
           </h2>
@@ -512,6 +516,11 @@
     padding: 14px 0;
     margin-bottom: 40px;
   }
+  .secondPage{
+    background: #fd5e53;
+    padding: 1px 0;
+    margin-bottom: 0px;
+  }
   h3{
       float: left;
       margin: 0;
@@ -540,10 +549,10 @@
     column-gap: 10px;
   }
   .left, .right {
-    width: 350px;
+    width: 450px;
   }
   .middle{
-    width: 350px;
+    width: 450px;
   }
   .row{
     content: "";
@@ -555,7 +564,27 @@
     height: 350px;
     border-color: #fd5e53 ;
     border-style:solid;
-    border-width:1px;
+    border-width:8px;
   }
+  .customAlert{
+
+    display: none;
+    position: fixed;
+    max-width: 25%;
+    min-width: 250px !important;
+    min-height: 20%;
+    height: 200px;
+    left: 50%;
+    top: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-left: -12.5%;
+    margin-top: -5.2%;
+    background: #088A68;
+  }
+  .titles{
+    font-size: 40px;
+  }
+
 
 </style>

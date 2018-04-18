@@ -54,7 +54,8 @@
 
         <div class="column middle">
           <!--SomethingNew-->
-          <img class="icon" src="https://cdn3.iconfinder.com/data/icons/creative-and-idea/500/Idea-thinking-think-concept_13-512.png"/>
+          <!--<img class="icon" src="https://cdn3.iconfinder.com/data/icons/creative-and-idea/500/Idea-thinking-think-concept_13-512.png"/>-->
+          <img class="icon" src="https://images.vexels.com/media/users/3/128092/isolated/preview/b93c119029c78b0106e34486e9c70f26-idea-hand-drawn-icon-by-vexels.png"/>
           <label class="writing">Something New
             <input type="radio" value="Something New" v-model="category" v-on:click="setSomethingNew"/>
 
@@ -70,7 +71,8 @@
 
 
           <!--Vintage-->
-          <img class="icon" src="https://cdn0.iconfinder.com/data/icons/music-and-multimedia/80/Music_multimedia-07-512.png"/>
+          <!--<img class="icon" src="https://cdn0.iconfinder.com/data/icons/music-and-multimedia/80/Music_multimedia-07-512.png"/>-->
+          <img class="icon" src="https://image.flaticon.com/icons/png/512/57/57894.png"/>
           <label class="writing">Vintage
             <input type="radio" value="Vintage" v-model="category" v-on:click="setVintage">
           </label>
