@@ -86,36 +86,6 @@
                                <button v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
 
      </div>
-
-
-
-
-    <ul>
-                  <li v-for="place in results">
-
-
-                      <div style="width: 300px; border-style: solid; border-width: 1px;
-                        align-items: left; display: inline-block; text-align: left;
-                          " align="left" >
-                        <span id="long">{{place.placeSearch.name}}</span>
-                        <br>
-                        <span id="true">{{place.placeSearch.address}}</span>
-                        <br/>
-                        <span>Phone Number:{{place.placeDetails.formatted_phone_number}}</span>
-                        <br/>
-                        <span> Average Google Rating: {{place.placeSearch.rating}}</span>
-                        <br/>
-                      </div>
-
-
-
-                      <hr color="red"/>
-                  </li>
-    </ul>
-
-
-
-
     </div>
 
 </template>
@@ -127,7 +97,7 @@
   const API_KEY = "AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk";
   const PROXY_ADDRESS = "https://cors-anywhere.herokuapp.com/";
   const PHOTO_LIBRARY = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=";
-  const GOOGLE_PLACES_ADDRESS = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.940753,-93.179233&radius=2000&type=";
+  const GOOGLE_PLACES_ADDRESS = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.940753,-93.179233&radius=50000&type=";
   const GOOGLE_PLACES_DETAIL_SEARCH = "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
   const PHOTO_MAX_WITH = 500;
 
