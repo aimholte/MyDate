@@ -127,7 +127,7 @@
   const API_KEY = "AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk";
   const PROXY_ADDRESS = "https://cors-anywhere.herokuapp.com/";
   const PHOTO_LIBRARY = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=";
-  const GOOGLE_PLACES_ADDRESS = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.940753,-93.179233&radius=1000&type=";
+  const GOOGLE_PLACES_ADDRESS = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.940753,-93.179233&radius=2000&type=";
   const GOOGLE_PLACES_DETAIL_SEARCH = "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
   const PHOTO_MAX_WITH = 500;
 
@@ -436,13 +436,23 @@
                   let detaildata = detail.data.result;
                   dict['placeSearch'] = formatResult(data[j]);
                   dict['placeDetails'] = detaildata;
-                  cleandata[j] = dict;
-                  console.log(cleandata[j]);
+                  if(cleandata.includes(Object(dict)) == false) {
+                    cleandata[j] = dict;
+                    console.log(cleandata[j]);
+                  }
+                  else{
+                    console.log('duplicate found');
+                  }
                 }
 
                 if (Array.isArray(this.results) == true) {
                   for (let o = 0; o < cleandata.length; o++) {
-                    this.results.push(cleandata[o]);
+                    if(this.results.includes(Object(cleandata[o])) == false) {
+                      this.results.push(cleandata[o]);
+                    }
+                    else {
+                      console.log('duplicate found');
+                    }
                   }
                 }
                 else {
