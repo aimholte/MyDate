@@ -5,27 +5,25 @@
 
     <div id="DatePage">
 
-      <!--Header-->
-      <h1>
-        Your Dates
-      </h1>
-      <!--Button to generate Dates-->
-      <h1><button class="middle" v-on:click="getResult()">Search For Results!</button>
-      <span class="middle" v-if="searchCompleted">Search completed!</span></h1>
-      <br>
+        <!--Header-->
+        <h1>
+            Your Dates
+        </h1>
+        <!--Button to generate Dates-->
+            <h1><button class="middle" v-on:click="getResult()">Search For Results!</button>
+            <span class="middle" v-if="searchCompleted">Search completed!</span></h1>
+        <br>
+        <button class="middle" v-on:click="shuffling(); sorter(); initial();">Generate Your Dates!</button>
 
-      <button class="middle" v-on:click="shuffling(this.results); sorter(); initial()">Generate Your Dates!</button>
-
-      <div v-if='this.allPlaceShown === true'>
+      <div v-if='allPlaceShown'>
           <label>All places have been shown.</label>
       </div>
 
-       <div v-if='this.allMealsShown === true'>
-                <label>All meals have been shown.</label>
+       <div v-if='allMealsShown'>
+           <label>All meals have been shown.</label>
        </div>
 
-
-        <!--Date Box 1-->
+       <!--Date Box 1-->
      <div class="left dateBox1">
         <h2>
           Date 1
@@ -39,7 +37,10 @@
        </p>
 
        <div>
-            {{meal1.name}}
+       <div v-if='ButtonsVisible'>
+                   {{meal1.placeSearch.name}}
+
+             </div>
                     <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Place</button>
 
             </div>
@@ -57,7 +58,7 @@
                     <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
 
               <div>
-                            {{meal2.name}}
+                            {{meal2.placeSearch.name}}
 
                    <button v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Place</button>
 
@@ -159,7 +160,7 @@
                     allPlaceShown: false,
                     allMealsShown: false,
                     n:0,
-                    meal1 : [],
+                    meal1 : "",
                     meal2:"",
                     meal3:"",
                     Date1Open:"",
@@ -170,7 +171,7 @@
                     Date3Close:"",
                     msg: 'Welcome to Your Vue.js App',
                     color:"red",
-                     results:"",
+                    results:"",
             parameters: {'budget':0, 'categories':[], 'latitude':0, 'longitude':0},
             searchCompleted: false,
 
@@ -184,13 +185,7 @@
                  }
         },
         methods:{
-            changer: function(){
 
-              for(let i=0; i<this.myMessage.length; i++){
-
-              this.n =1;
-            }
-            },
             NewDate1Open: function(){
               this.Placequeue.push(this.Date1Open);
               let newPlace=this.Placequeue.shift();
@@ -198,61 +193,60 @@
                   newPlace.showed="true";
               }
               else {
-              this.allPlaceShown=true;
+                  this.allPlaceShown=true;
               }
              return this.Date1Open=newPlace;
-
-
             },
+
             NewMeal1: function(){
               this.Mealqueue.push(this.meal1);
               let newPlace=this.Mealqueue.shift();
               if (newPlace.showed=="false"){
                   newPlace.showed="true";
-              }
+                }
               else {
                    this.allMealsShown=true;
-              }
+               }
               return this.meal1=newPlace;
               },
+
             NewDate1Close: function(){
-                this.Placequeue.push(this.Date1Close);
-                let newPlace=this.Placequeue.shift();
-                if (newPlace.showed=="false"){
-                     newPlace.showed="true";
-                 }
-                 else {
+              this.Placequeue.push(this.Date1Close);
+               let newPlace=this.Placequeue.shift();
+               if (newPlace.showed=="false"){
+                    newPlace.showed="true";
+                   }
+                else {
                   this.allPlaceShown=true;
-                                  }
+                   }
                  return this.Date1Close=newPlace;
                  },
 
               NewDate2Open: function(){
-                            this.Placequeue.push(this.Date2Open);
-                            let newPlace=this.Placequeue.shift();
-                            if (newPlace.showed=="false"){
-                                newPlace.showed="true";
-                            }
-                            else {
-                            this.allPlaceShown=true;
-                               }
-                            return this.Date2Open=newPlace;
+                this.Placequeue.push(this.Date2Open);
+                let newPlace=this.Placequeue.shift();
+                if (newPlace.showed=="false"){
+                    newPlace.showed="true";
+                    }
+                else {
+                   this.allPlaceShown=true;
+                     }
+                return this.Date2Open=newPlace;
 
 
-                          },
-                          NewMeal2: function(){
-                            this.Mealqueue.push(this.meal2);
-                            let newPlace=this.Mealqueue.shift();
-                            if (newPlace.showed=="false"){
-                                          newPlace.showed="true";
-                                        }
-                                        else {
-                                          this.allMealsShown=true;
-                                        }
-                                        return this.meal2=newPlace;
+               },
 
-
-                                      },
+               NewMeal2: function(){
+                this.Mealqueue.push(this.meal2);
+                let newPlace=this.Mealqueue.shift();
+                if (newPlace.showed=="false"){
+                    newPlace.showed="true";
+                  }
+                 else {
+                    this.allMealsShown=true;
+                    }
+                 return this.meal2=newPlace;
+                },
                           NewDate2Close: function(){
                                       this.Placequeue.push(this.Date2Close);
                                         let newPlace=this.Placequeue.shift();
@@ -310,7 +304,7 @@
             sorter: function() {
               for (let i = 0; i < this.Randomqueue.length; i++) {
                 let place = this.Randomqueue[i];
-                if (place.types.includes("restaurant") || place.types.includes("cafe")) {
+                if (place.placeSearch.types.includes("restaurant") || place.placeSearch.types.includes("cafe")) {
                   this.Mealqueue.push(place);
                   place["showed"] = "false";
 
@@ -327,22 +321,27 @@
               this.meal1=this.Mealqueue.shift();
               this.meal2=this.Mealqueue.shift();
               this.meal3=this.Mealqueue.shift();
+              /*
               this.Date1Open=this.Placequeue.shift();
               this.Date2Open=this.Placequeue.shift();
               this.Date3Open=this.Placequeue.shift();
               this.Date1Close=this.Placequeue.shift();
               this.Date2Close=this.Placequeue.shift();
               this.Date3Close=this.Placequeue.shift();
+              */
 
               this.meal1.showed="true";
               this.meal2.showed="true";
               this.meal3.showed="true";
+              /*
               this.Date1Open.showed="true";
               this.Date2Open.showed="true";
               this.Date3Open.showed="true";
               this.Date1Close.showed="true";
               this.Date2Close.showed="true";
               this.Date3Close.showed="true";
+              */
+
               },
               shuffle: function(array) {
                 let currentIndex = array.length, temporaryValue, randomIndex;
@@ -364,9 +363,19 @@
               },
               shuffling: function(array){
                 if(this.searchCompleted == true) {
-                  this.Randomqueue=this.shuffle(array);
+                  this.Randomqueue=this.results
+                  this.Randomqueue=this.shuffle(this.Randomqueue);
                 }
               },
+
+              filler: function(){
+
+                console.log("Hello Humans");
+                this.Randomqueue=this.results
+                console.log("Goodbye Humans");
+
+              },
+
               queueFunctions: function(array){
               shuffling(array)
               sorter;
@@ -430,6 +439,7 @@
                   cleandata[j] = dict;
                   console.log(cleandata[j]);
                 }
+
                 if (Array.isArray(this.results) == true) {
                   for (let o = 0; o < cleandata.length; o++) {
                     this.results.push(cleandata[o]);
