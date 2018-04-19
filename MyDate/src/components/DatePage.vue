@@ -13,7 +13,7 @@
             <h1><button class="middle" v-on:click="getResult()">Search For Results!</button>
             <span class="middle" v-if="searchCompleted">Search completed!</span></h1>
         <br>
-        <button class="middle" v-on:click="shuffling(); sorter(); initial();">Generate Your Dates!</button>
+        <button class="middle" v-on:click="shuffling(); doubleCheck(); sorter(); initial();">Generate Your Dates!</button>
 
       <div v-if='allPlaceShown'>
           <label>All places have been shown.</label>
@@ -127,7 +127,7 @@
   const API_KEY = "AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk";
   const PROXY_ADDRESS = "https://cors-anywhere.herokuapp.com/";
   const PHOTO_LIBRARY = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=";
-  const GOOGLE_PLACES_ADDRESS = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.940753,-93.179233&radius=2000&type=";
+  const GOOGLE_PLACES_ADDRESS = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.940753,-93.179233&radius=50000&type=";
   const GOOGLE_PLACES_DETAIL_SEARCH = "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
   const PHOTO_MAX_WITH = 500;
 
@@ -367,7 +367,27 @@
                   this.Randomqueue=this.shuffle(this.Randomqueue);
                 }
               },
+              doubleCheck: function(){
 
+                let newQueue = [];
+                let idlist = [];
+
+                for (let i = 0; i < this.Randomqueue.length;  i++){
+                  let id = this.Randomqueue[i].placeSearch.name;
+                  console.log(id);
+                  if (idlist.includes(id)){
+                    let joshBeard = "cool";
+                    console.log("False");
+                  }
+                  else{
+                    newQueue.push(this.Randomqueue[i]);
+                    idlist.push(id);
+                    console.log("True");
+                  }
+
+                }
+                this.Randomqueue = newQueue;
+              },
               filler: function(){
 
                 console.log("Hello Humans");

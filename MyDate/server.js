@@ -5,7 +5,7 @@
 /////////////////////////////
 
 // Include the cluster module
-const = require('cluster');
+const cluster = require('cluster');
 
 //code to run if we are in the master process
 if (cluser.isMaster){
