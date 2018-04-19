@@ -3,14 +3,13 @@
 
 import Vue from 'vue'
 import App from './App'
-// import VueFire from 'vuefire'
 import CheckboxRadio from 'vue-checkbox-radio';
 
 Vue.use(CheckboxRadio);
 
 import VueRouter from 'vue-router'
 Vue.use(VueRouter);
-// Vue.use(VueFire);
+
 
 //import the Hello component
 import Home from './components/HelloWorld'
@@ -27,7 +26,6 @@ import EventData from "./assets/Event_Ideas"
 // import Display
 import practiceDisplay from "./components/PracticeDisplay"
 
-import SignUp from './components/SignUp'
 
 
 
@@ -54,9 +52,7 @@ const routes =[
   {
     path: "/display", component: practiceDisplay
   },
-  {
-    path:'/signUp', component:SignUp
-  }
+
 
 ];
 

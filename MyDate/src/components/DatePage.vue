@@ -4,6 +4,13 @@
 <template>
 
     <div id="DatePage">
+      <br/>
+      <nav class="secondPage">
+        <br>
+        <h1 class="center titles"  >
+          Your Prefect Date
+        </h1>
+      </nav>
 
         <!--Header-->
         <h1>
@@ -23,6 +30,47 @@
            <label>All meals have been shown.</label>
        </div>
 
+      <div class="row">
+        <!--Date Box 1-->
+        <div class="left column">
+          <h2>
+            Date 1
+          </h2>
+          <!--Date Opener-->
+          <p>
+            {{Date1Open.name}}
+            <button v-on:click="NewDate1Open()">Find New Place</button>
+          </p>
+          <!--Date Meal-->
+          <p>
+            {{meal1.name}}
+            <button v-on:click="NewMeal1()">Find New Meal</button>
+          </p>
+          <!--Date Closer-->
+          <p>
+            {{Date1Close.name}}
+            <button v-on:click="NewDate1Close()">Find New Place</button>
+          </p>
+        </div>
+        <!--Date Box 2-->
+        <div class="middle column ">
+          <h2>
+            Date 2
+          </h2>
+          <!--Date Opener-->
+          <p>
+            {{Date2Open.name}}
+            <button v-on:click="NewDate2Open()">Find New Place</button>
+          </p>
+          <!--Date Meal-->
+          <p>
+            {{meal2.name}}
+            <button v-on:click="NewMeal2()">Find New Meal</button>
+          </p>
+          <!--Date Closer-->
+          <p>
+            {{Date2Close.name}}
+            <button v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
        <!--Date Box 1-->
      <div class="left dateBox1">
         <h2>
@@ -67,25 +115,30 @@
      {{Date2Close.name}}
                   <button v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
 
-     </div>
-
-     <div style="width: 400px; border-color:#b1973c;
-                      border-style:solid; border-width:1;display:left;">
-           <h2>
-              Date 3
-           </h2>
-     {{Date3Open.name}}
-                               <button v-if="ButtonsVisible" v-on:click="NewDate3Open()">Find New Place</button>
-
-              <div>
-              {{meal3.name}}
-                 <button v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Place</button>
-
-              </div>
-     {{Date3Close.name}}
-                               <button v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
-
-     </div>
+          </p>
+        </div>
+        <!--Date Box 3-->
+        <div class="right column ">
+          <h2>
+            Date 3
+          </h2>
+          <!--Date Opener-->
+          <p>
+            {{Date3Open.name}}
+            <button v-on:click="NewDate3Open()">Find New Place</button>
+          </p>
+          <!--Date Meal-->
+          <p>
+            {{meal3.name}}
+            <button v-on:click="NewMeal3()">Find New Meal</button>
+          </p>
+          <!--Date Closer-->
+          <p>
+            {{Date3Close.name}}
+            <button v-on:click="NewDate3Close()">Find New Place</button>
+          </p>
+        </div>
+      </div>
 
 
 
@@ -513,8 +566,9 @@
 
 <style >
   #DatePage{
-    background: #323b39;
-    color: #b1973c;
+    color: whitesmoke ;
+    background: #398EA1 ;
+    min-height: 100%;
   }
   .everythingLeft {
     text-align: left;
@@ -545,6 +599,11 @@
     padding: 14px 0;
     margin-bottom: 40px;
   }
+  .secondPage{
+    background: #fd5e53;
+    padding: 1px 0;
+    margin-bottom: 0px;
+  }
   h3{
       float: left;
       margin: 0;
@@ -570,12 +629,13 @@
   .column{
     float: left;
     padding: 10px;
+    column-gap: 10px;
   }
   .left, .right {
-    width: 350px;
+    width: 450px;
   }
   .middle{
-    width: 350px;
+    width: 450px;
   }
   .row{
     content: "";
@@ -583,10 +643,31 @@
     clear: both;
   }
   .dateBox1{
-   width: 400px;
-    border-color: #b1973c ;
+   width: 450px;
+    height: 350px;
+    border-color: #fd5e53 ;
     border-style:solid;
-    border-width:1;
+    border-width:8px;
   }
+  .customAlert{
+
+    display: none;
+    position: fixed;
+    max-width: 25%;
+    min-width: 250px !important;
+    min-height: 20%;
+    height: 200px;
+    left: 50%;
+    top: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-left: -12.5%;
+    margin-top: -5.2%;
+    background: #088A68;
+  }
+  .titles{
+    font-size: 40px;
+  }
+
 
 </style>
