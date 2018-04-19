@@ -163,25 +163,25 @@
       methods: {
 
         setVintage: _.debounce(function() {
-          this.categorytypes = ['mall','bar','movie_theater','bowling_alley', 'restaurant', 'cafe'];
+          this.categorytypes = ['shopping_mall','bar','movie_theater','bowling_alley', 'restaurant', 'cafe'];
           console.log(this.categorytypes);
-        },3000),
+        },0),
 
         setActive: _.debounce(function() {
           this.categorytypes = ['night_club', 'zoo', 'park', 'amusement_park', 'gym', 'restaurant', 'cafe'];
-        },3000),
+        },0),
 
         setSomethingNew: _.debounce(function() {
           this.categorytypes = ['spa', 'aquarium', 'bakery', 'book_store' , 'restaurant', 'cafe'];
-        },3000),
+        },0),
 
         setCity: _.debounce(function() {
           this.categorytypes = ['art_gallery', 'museum', 'casino', 'stadium', 'restaurant', 'cafe'];
-        },3000),
+        },0),
 
         setBudget: _.debounce(function() {
           this.budget = this.desireAmount.length-1;
-        },3000),
+        },0),
 
         useCurrentLocation: function() {
           alert('By pressing this button, you are giving permission for MyDate to use your current location to' +
@@ -211,9 +211,10 @@
         let ac = place.address_components;
         this.latitude = place.geometry.location.lat();
         this.longitude = place.geometry.location.lng();
-        let city = ac[0]["short_name"];
+        let city = ac[2]["short_name"];
 
         console.log(`The user picked ${city} with the coordinates ${this.latitude}, ${this.longitude}`);
+        alert(`You are now searching for dates in ${city}!`)
       });
     }
 
