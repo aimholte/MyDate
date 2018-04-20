@@ -15,7 +15,7 @@
     </h1>
     <!--Button to generate Dates-->
     <h1><button class="middle" v-on:click="getResult()">Search For Results!</button>
-      <span class="middle" v-if="searchCompleted">Search completed!</span></h1>
+      <span class="middle" v-if="searchCompleted">Search Done!</span></h1>
     <br>
     <button class="middle" v-on:click="shuffling(); doubleCheck(); sorter(); initial();">Generate Your Dates!</button>
 
