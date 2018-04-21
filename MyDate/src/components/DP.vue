@@ -85,6 +85,13 @@
           </p>
           <span class="selection"> You've selected: {{ category }}</span>
 
+          <div class="selectDistance">
+            <h1>Miles You Are Willing to Travel:</h1>
+            <input type="range" min="1" max="30" value="15" class="slider" id="myRange" v-model="miles">
+            <span class="centerup"><b>{{miles}} miles</b></span>
+          </div>
+
+
 
           <!--Spits out what categories you've selected-->
 
@@ -100,16 +107,26 @@
 
 
           <!--Selection Box-->
-          <label class="centerup"> How Much Would You like to spend</label>
-          <select  class="centerup" v-model="desireAmount" v-on:click="setBudget">
+          <label class="centerup"> Enter the Most You Would Want to Spend</label>
+          <select  class="centerup" v-model="maxAmount" v-on:click="setMaxBudget(); setMinimum()">
             <option class="centerup"  v-for="num in numbers">{{num}}</option>
 
           </select>
           <p class="centerup writing">
-            You want to spend:  {{desireAmount}}
+            Maximum Amount:  {{maxAmount}}
           </p>
 
-          <!--Location Box-->
+
+          <label class="centerup">Minimum You Want to Spend</label>
+          <select class="centerup" v-model="minAmount" v-on:click="setMinBudget">
+            <option class="centerup" v-for="num in minnumbers">{{num}}</option>
+          </select>
+          <p class="centerup writing">
+             Minimum Amount: {{minAmount}}
+          </p>
+
+
+            <!--Location Box-->
           <h1 class="centerdown"> Enter a Location to Search </h1>
           <input class="centerdown" type="text" id="txtPlaces" ref="autocomplete" placeholder="Enter a location" v-on:form.submit.prevent="setPosition"/>
           <br>
@@ -125,7 +142,7 @@
       </div>
       </form>
 
-      <datepage :categorytypes="categorytypes" :budget="budget" :latitude="latitude" :longitude="longitude"></datepage>
+      <datepage :categorytypes="categorytypes" :maxBudget="maxBudget"  :minBudget="minBudget" :latitude="latitude" :longitude="longitude" :radius="radius"></datepage>
     </div>
 </template>
 
@@ -139,86 +156,113 @@
     components: {Datepage},
     name: "d-p",
 
-     // Holds data for the dp page to access
-      data(){
-          return{
-            props:{
-              title:{
-                type: String
-              }
-            },
-            categories:"",
-            category:"",
-
-            types: ["Active", "City","Vintage","SomethingNew"],
-            numbers: ["$","$$","$$$","$$$$", "$$$$$"],
-            desireAmount: "$",
-            categorytypes: [],
-            budget: 0,
-            latitude:0,
-            longitude: 0
-            }
-
-      },
-      methods: {
-
-        setVintage: _.debounce(function() {
-          this.categorytypes = ['shopping_mall','bar','movie_theater','bowling_alley', 'restaurant', 'cafe'];
-          console.log(this.categorytypes);
-        },0),
-
-        setActive: _.debounce(function() {
-          this.categorytypes = ['night_club', 'zoo', 'park', 'amusement_park', 'gym', 'restaurant', 'cafe'];
-        },0),
-
-        setSomethingNew: _.debounce(function() {
-          this.categorytypes = ['spa', 'aquarium', 'bakery', 'book_store' , 'restaurant', 'cafe'];
-        },0),
-
-        setCity: _.debounce(function() {
-          this.categorytypes = ['art_gallery', 'museum', 'casino', 'stadium', 'restaurant', 'cafe'];
-        },0),
-
-        setBudget: _.debounce(function() {
-          this.budget = this.desireAmount.length-1;
-        },0),
-
-        useCurrentLocation: function() {
-          alert('By pressing this button, you are giving permission for MyDate to use your current location to' +
-            ' locate the best possible dates near you!');
-          navigator.geolocation.getCurrentPosition(position => {
-            this.latitude = position.coords.latitude;
-            this.longitude = position.coords.longitude;
-            console.log(this.latitude);
-            console.log(this.longitude);
-          });
+    // Holds data for the dp page to access
+    data() {
+      return {
+        props: {
+          title: {
+            type: String
+          }
         },
+        categories: "",
+        category: "",
 
-        setLocation: function () {
-          navigator.geolocation.getCurrentPosition(position => {
-            console.log(position.coords.latitude);
-          });
-        }
+        types: ["Active", "City", "Vintage", "SomethingNew"],
+        numbers: ["$", "$$", "$$$", "$$$$", "$$$$$"],
+        minnumbers: ['$', '$$', '$$$'],
+        desireAmount: "$",
+        maxAmount:"$$$$",
+        minAmount: "$",
+        categorytypes: [],
+        budget: 0,
+        maxBudget: 4,
+        minBudget: 0,
+        latitude: 0,
+        longitude: 0,
+        miles: 15,
+        radius: 24150
+      }
 
+    },
+    methods: {
+
+      setMinimum: _.debounce(function() {
+        this.minnumbers = this.numbers.slice(0,this.maxBudget);
+      },500),
+
+      setVintage: _.debounce(function () {
+        this.categorytypes = ['shopping_mall', 'bar', 'movie_theater', 'bowling_alley', 'restaurant', 'cafe'];
+        console.log(this.categorytypes);
+      }, 0),
+
+      setActive: _.debounce(function () {
+        this.categorytypes = ['night_club', 'zoo', 'park', 'amusement_park', 'gym', 'restaurant', 'cafe'];
+      }, 0),
+
+      setSomethingNew: _.debounce(function () {
+        this.categorytypes = ['spa', 'aquarium', 'bakery', 'book_store', 'restaurant', 'cafe'];
+      }, 0),
+
+      setCity: _.debounce(function () {
+        this.categorytypes = ['art_gallery', 'museum', 'casino', 'stadium', 'restaurant', 'cafe'];
+      }, 0),
+
+      setBudget: _.debounce(function () {
+        this.budget = this.desireAmount.length - 1;
+      }, 0),
+
+      setMaxBudget: function() {
+        this.maxBudget = this.maxAmount.length-1;
       },
-    mounted() {
-      this.autocomplete = new google.maps.places.Autocomplete(
-        (this.$refs.autocomplete),
-        {types: ['geocode']}
-      );
-      this.autocomplete.addListener('place_changed', () => {
-        let place = this.autocomplete.getPlace();
-        let ac = place.address_components;
-        this.latitude = place.geometry.location.lat();
-        this.longitude = place.geometry.location.lng();
-        let city = ac[2]["short_name"];
 
-        console.log(`The user picked ${city} with the coordinates ${this.latitude}, ${this.longitude}`);
-        alert(`You are now searching for dates in ${city}!`)
-      });
-    }
+      setMinBudget: function() {
+        this.minBudget = this.minAmount.length-1;
+      },
 
+      useCurrentLocation: function () {
+        alert('By pressing this button, you are giving permission for MyDate to use your current location to' +
+          ' locate the best possible dates near you!');
+        navigator.geolocation.getCurrentPosition(position => {
+          this.latitude = position.coords.latitude;
+          this.longitude = position.coords.longitude;
+          console.log(this.latitude);
+          console.log(this.longitude);
+        });
+      },
+
+      setLocation: function () {
+        navigator.geolocation.getCurrentPosition(position => {
+          console.log(position.coords.latitude);
+        });
+      }
+
+    },
+    watch: {
+      miles: function () {
+        this.radius = Number(this.miles) * 1610;
+      },
+      desireAmount: function() {
+        this.minnumbers = this.numbers.slice(1,this.budget);
+        console.log(this.numbers.slice(0,this.budget));
+      },
+      mounted() {
+        this.autocomplete = new google.maps.places.Autocomplete(
+          (this.$refs.autocomplete),
+          {types: ['geocode']}
+        );
+        this.autocomplete.addListener('place_changed', () => {
+          let place = this.autocomplete.getPlace();
+          let ac = place.address_components;
+          this.latitude = place.geometry.location.lat();
+          this.longitude = place.geometry.location.lng();
+          let city = ac[2]["short_name"];
+
+          console.log(`The user picked ${city} with the coordinates ${this.latitude}, ${this.longitude}`);
+          alert(`You are now searching for dates in ${city}!`)
+        });
+      },
     }
+  }
 </script>
 <style>
   #DatePicker{
@@ -340,6 +384,35 @@
     margin-bottom: 0px;
   }
 
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #222222;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+  }
 
 
 </style>

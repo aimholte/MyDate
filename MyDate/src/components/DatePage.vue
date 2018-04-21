@@ -1,6 +1,14 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml">
 
   <div id="DatePage">
+    <!--<div>-->
+      <!--<div class="sk-wave">-->
+      <!--<div class="sk-rect sk-rect1"></div>-->
+      <!--<div class="sk-rect sk-rect2"></div>-->
+      <!--<div class="sk-rect sk-rect3"></div>-->
+      <!--<div class="sk-rect sk-rect4"></div>-->
+      <!--<div class="sk-rect sk-rect5"></div>-->
+    <!--</div>-->
     <br/>
     <nav class="secondPage">
       <br>
@@ -94,8 +102,7 @@
 
       </div>
 
-      <div style="width: 400px; border-color:blue;
-                    border-style:solid; border-width:1;display:left;">
+      <div>
         <h2>
           Date 2
         </h2>
@@ -112,7 +119,6 @@
         {{Date2Close.name}}
         <button v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
 
-        </p>
       </div>
       <!--Date Box 3-->
       <div class="right column ">
@@ -189,7 +195,11 @@
         type: Array,
         required: true
       },
-      budget: {
+      maxBudget: {
+        type: Number,
+        required: true
+      },
+      minBudget: {
         type: Number,
         required: true
       },
@@ -198,6 +208,10 @@
         required: true
       },
       longitude: {
+        type: Number,
+        required: true
+      },
+      radius: {
         type: Number,
         required: true
       }
@@ -223,7 +237,7 @@
         msg: 'Welcome to Your Vue.js App',
         color:"red",
         results:"",
-        parameters: {'budget':0, 'categories':[], 'latitude':0, 'longitude':0},
+        parameters: {'maxBudget':4, 'minBudget':0 ,'categories':[], 'latitude':0, 'longitude':0, 'radius':24150},
         searchCompleted: false,
 
 
@@ -442,13 +456,13 @@
       filler: function(){
 
         console.log("Hello Humans");
-        this.Randomqueue=this.results
+        this.Randomqueue=this.results;
         console.log("Goodbye Humans");
 
       },
 
       queueFunctions: function(array){
-        shuffling(array)
+        shuffling(array);
         sorter;
         this.initial;
       },
@@ -502,11 +516,11 @@
 
           if((this.parameters.categories[h] == "restaurant") == true) {
             console.log('using price parameter');
-            searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=8000&type=" + this.parameters.categories[h] + "&minprice=" + (this.parameters.budget - 2) + "&maxprice=" + this.parameters.budget + "&key=" + API_KEY;
+            searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&minprice=" + (this.parameters.minBudget) + "&maxprice=" + this.parameters.maxBudget + "&key=" + API_KEY;
           }
           else {
             console.log('not using price parameter');
-            searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=8000&type=" + this.parameters.categories[h] + "&key=" + API_KEY;
+            searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&key=" + API_KEY;
           }
           console.log(searchstring);
           let raw = await axios.get(searchstring);
@@ -567,6 +581,15 @@
       longitude:function() {
         console.log('data updated.');
         this.parameters['longitude'] = this.longitude;
+      },
+      radius: function() {
+        this.parameters['radius'] = this.radius;
+      },
+      maxBudget: function() {
+        this.parameters['maxBudget'] = this.maxBudget;
+      },
+      minBudget: function() {
+        this.parameters['minBudget'] = this.minBudget;
       }
 
     }
@@ -677,6 +700,54 @@
   }
   .titles{
     font-size: 40px;
+  }
+
+  .sk-wave{
+    margin: 40px auto;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px; }
+  .sk-wave .sk-rect {
+    background-color: #333;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+    -webkit-animation: sk-waveStretchDelay 1.2s infinite ease-in-out;
+    animation: sk-waveStretchDelay 1.2s infinite ease-in-out; }
+  .sk-wave .sk-rect1 {
+    -webkit-animation-delay: -1.2s;
+    animation-delay: -1.2s; }
+  .sk-wave .sk-rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s; }
+  .sk-wave .sk-rect3 {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s; }
+  .sk-wave .sk-rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s; }
+  .sk-wave .sk-rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s; }
+
+  @-webkit-keyframes sk-waveStretchDelay {
+    0%, 40%, 100% {
+      -webkit-transform: scaleY(0.4);
+      transform: scaleY(0.4); }
+    20% {
+      -webkit-transform: scaleY(1);
+      transform: scaleY(1); } }
+
+  @keyframes sk-waveStretchDelay {
+    0%, 40%, 100% {
+      -webkit-transform: scaleY(0.4);
+      transform: scaleY(0.4);
+    }
+    20% {
+      -webkit-transform: scaleY(1);
+
+    }
   }
 
 
