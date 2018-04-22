@@ -86,7 +86,6 @@
 
 
 
-
         <div class="column middle">
                 <!--Location Box-->
           <h1 class="centerdown"> Enter a Location to Search </h1>
@@ -160,7 +159,6 @@
 
 
 
-
 </template>
 
 <script>
@@ -170,7 +168,9 @@
   import Datepage from "./DatePage.vue";
   import lodash from 'lodash';
   export default {
-    components: {Datepage},
+    components: {
+      Datepage
+    },
     name: "d-p",
 
     // Holds data for the dp page to access
@@ -251,8 +251,24 @@
         navigator.geolocation.getCurrentPosition(position => {
           console.log(position.coords.latitude);
         });
-      }
+      },
 
+      setPosition: function () {
+        this.autocomplete = new google.maps.places.Autocomplete(
+          (this.$refs.autocomplete),
+          {types: ['geocode']}
+        );
+        this.autocomplete.addListener('place_changed', () => {
+          let place = this.autocomplete.getPlace();
+          let ac = place.address_components;
+          this.latitude = place.geometry.location.lat();
+          this.longitude = place.geometry.location.lng();
+          let city = ac[2]["short_name"];
+
+          console.log(`The user picked ${city} with the coordinates ${this.latitude}, ${this.longitude}`);
+          alert(`You are now searching for dates in ${city}!`)
+        });
+      }
     },
     watch: {
       miles: function () {
