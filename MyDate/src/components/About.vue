@@ -3,20 +3,21 @@
 
 
   <div id="about">
-    <nav class="navBar">
+    <nav>
       <!--Router links to home, about, and date picker page-->
       <ul>
         <!--<img src="MDLogo.png" class="centerPic">-->
 
         <li>  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>
         <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
-        <li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png"></router-link></li>
+        <li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png">DP</router-link></li>
       </ul>
     </nav>
+    <body>
     <h1>
       About
     </h1>
-    <p class="backColor writing">
+    <p class="writing">
       MyDate is a date planning app that customizes personal date ideas just for you.
 
       All you have to do is select your price and date category! MyDate was developed by four college students
@@ -24,9 +25,9 @@
       that comes with dating in today's time. People due to their lack or time or
       creativity to generate or create new, fun, and exciting dates. Below you can learn more about the creators below
       <br>
-
-
     </p>
+    </body>
+
 
 
 
@@ -46,8 +47,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #b1973c;
-    background: #323b39;
+    color: whitesmoke;
+    background:#398EA1 ;
     min-height: 100%;
   }
   body{
@@ -77,12 +78,8 @@
     width: 75px;
     height: 75px;
   }
-  .backColor{
-    background: #323b39;
-  }
-  .navBar{
-    background: #fd5e53 ;
-  }
+
+
   .writing{
     font-size: 20px;
   }
