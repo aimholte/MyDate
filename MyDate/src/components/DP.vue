@@ -1,4 +1,4 @@
-<template xmlns:v-on="http://www.w3.org/1999/xhtml">
+<template xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
     <div id ="DatePicker">
       <nav class="navBar">
         <!--Router links to home, about, and date picker page-->
@@ -10,52 +10,49 @@
             <li class="Navli"><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
             <li class="Navli"><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png">DP</router-link></li>
           </ul>
-
         </div>
-
       </nav>
-        <!--Header-->
+      <!--Header-->
       <br>
-
-
-
-      <h2 class="centerTex">Date Categories</h2>
-
-      <!--<div class="columns">-->
-        <!--Active-->
-      <form action = "" method="post">
       <div class="row">
+
+
+        <!--Left column-->
         <div class="column left">
-          <img class="icon" src="https://png.icons8.com/metro/1600/running-rabbit.png"/>
-          <label class="writing">
-            Active
-            <input  type="radio" id = "active" value="Active" v-model="category" v-on:click="setActive"/>
-          </label>
-          <p class="writing">
-            Feel like getting this first date moving!? <br>
-            This categories has options like: <br>
-            Hiking, Skydiving, and Surfing<br>
-          </p>
+          <h1 class="centerup">Date Categories</h1>
 
-          <!--City-->
-          <img class="icon" src="https://png.icons8.com/metro/1600/building.png"/>
-          <label class="writing" >City
-            <input type="radio" id="city" value="City" v-model="category" v-on:click="setCity"/>
-          </label>
+          <!--Active-->
+          <div action = "" method="post">
 
-          <br>
-          <p class="writing">
-            Want to show them what your city has to offer? <br>
-            This category has options like:<br>
-            Museums, Sporting Events, and Concerts<br>
-          </p>
+            <img class="icon" src="https://png.icons8.com/metro/1600/running-rabbit.png"/>
+            <label class="writing">
+              Active
+              <input  type="radio" id = "active" value="Active" v-model="category" v-on:click="setActive"/>
+            </label>
+            <p class="writing">
+              Feel like getting this first date moving!? <br>
+              This categories has options like: <br>
+              Hiking, Skydiving, and Surfing<br>
+            </p>
 
-        </div>
+            <!--City-->
+            <img class="icon" src="https://png.icons8.com/metro/1600/building.png"/>
+            <label class="writing" >City
+              <input type="radio" id="city" value="City" v-model="category" v-on:click="setCity"/>
+            </label>
 
-        <div class="column middle">
+            <br>
+            <p class="writing">
+              Want to show them what your city has to offer? <br>
+              This category has options like:<br>
+              Museums, Sporting Events, and Concerts<br>
+            </p>
+          </div>
+          <!--Something New-->
+
           <!--SomethingNew-->
           <!--<img class="icon" src="https://cdn3.iconfinder.com/data/icons/creative-and-idea/500/Idea-thinking-think-concept_13-512.png"/>-->
-          <img class="icon" src="https://images.vexels.com/media/users/3/128092/isolated/preview/b93c119029c78b0106e34486e9c70f26-idea-hand-drawn-icon-by-vexels.png"/>
+          <img class="icon" src="http://cdn.onlinewebfonts.com/svg/img_453906.png"/>
           <label class="writing">Something New
             <input type="radio" value="Something New" v-model="category" v-on:click="setSomethingNew"/>
 
@@ -83,67 +80,87 @@
             This categories has options like: <br>
             Drive ins, Bowling, and more<br>
           </p>
-          <span class="selection"> You've selected: {{ category }}</span>
+            <!--Spits out what categories you've selected-->
+        </div>
 
+
+
+
+
+        <div class="column middle">
+                <!--Location Box-->
+          <h1 class="centerdown"> Enter a Location to Search </h1>
+          <input class="centerdown" type="text" id="txtPlaces" ref="autocomplete" placeholder="Enter a location" v-on:form.submit.prevent="setPosition"/>
+          <br>
+          <button class="currentLocation" v-on:click.prevent="useCurrentLocation"> <b>Use Your Current Location</b></button>
           <div class="selectDistance">
             <h1>Miles You Are Willing to Travel:</h1>
             <input type="range" min="1" max="30" value="15" class="slider" id="myRange" v-model="miles">
             <span class="centerup"><b>{{miles}} miles</b></span>
           </div>
-
-
-
-          <!--Spits out what categories you've selected-->
-
-        </div>
-
-        <div class="column right">
-
-          <h1 class="centerTex">Select A Price</h1>
-
-
-
-
-
-
-          <!--Selection Box-->
-          <label class="centerup"> Enter the Most You Would Want to Spend</label>
-          <select  class="centerup" v-model="maxAmount" v-on:click="setMaxBudget(); setMinimum()">
-            <option class="centerup"  v-for="num in numbers">{{num}}</option>
-
-          </select>
-          <p class="centerup writing">
-            Maximum Amount:  {{maxAmount}}
-          </p>
-
-
-          <label class="centerup">Minimum You Want to Spend</label>
-          <select class="centerup" v-model="minAmount" v-on:click="setMinBudget">
-            <option class="centerup" v-for="num in minnumbers">{{num}}</option>
-          </select>
-          <p class="centerup writing">
-             Minimum Amount: {{minAmount}}
-          </p>
-
-
-            <!--Location Box-->
-          <h1 class="centerdown"> Enter a Location to Search </h1>
-          <input class="centerdown" type="text" id="txtPlaces" ref="autocomplete" placeholder="Enter a location" v-on:form.submit.prevent="setPosition"/>
           <br>
-          <button class="currentLocation" v-on:click.prevent="useCurrentLocation"> <b>Use Your Current Location</b></button>
-
-
-
-
-
+          <div>
+                 <span class="selection">You've Selected: {{category}}</span>
+            <p class="centerup writing">Minimum Amount {{minAmount}}</p>
+            <p class="centerup writing">Maximum Amount: {{maxAmount}}</p>
+            <p class=" centerup writing">Date Max Distance: {{miles}}</p>
+          </div>
 
         </div>
+                <!--Right column-->
+
+      <div class="column right">
+                   <h1 class="centerTex">Select A Price</h1>
+                   <label class="centerup"> Enter the Most You Would Want to Spend</label>
+                   <select  class="centerup" v-model="maxAmount" v-on:click="setMaxBudget(); setMinimum()">
+                               <option class="centerup"  v-for="num in numbers">{{num}}</option>
+                   </select>
+                    <p class="centerup writing">
+                              Maximum Amount:  {{maxAmount}}
+                    </p>
+                    <label class="centerup">Minimum You Want to Spend</label>
+                    <select class="centerup" v-model="minAmount" v-on:click="setMinBudget">
+                                <option class="centerup" v-for="num in minnumbers">{{num}}</option>
+                    </select>
+                    <p class="centerup writing">
+                                  Minimum Amount: {{minAmount}}
+                    </p>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       </div>
-      </form>
+
+
+
+
+
+
 
       <datepage :categorytypes="categorytypes" :maxBudget="maxBudget"  :minBudget="minBudget" :latitude="latitude" :longitude="longitude" :radius="radius"></datepage>
     </div>
+
+
+
+
+
+
+
+
 </template>
 
 <script>
@@ -267,7 +284,7 @@
 <style>
   #DatePicker{
     color: whitesmoke ;
-    background: #398EA1 ;
+    background: #4F4E4C ;
   }
   #checkboxes input{
     display: inline-block;
@@ -333,9 +350,14 @@
   .column{
     float: left;
     padding: 10px;
+    column-gap: 50px;
   }
-  .left, .right {
-    width: 350px;
+  .left {
+    width: 600px;
+  }
+  .right{
+    width: 300px;
+
   }
   .middle{
     width: 350px;
