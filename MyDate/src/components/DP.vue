@@ -31,7 +31,7 @@
             </label>
             <p class="writing">
               Feel like getting this first date moving!? <br>
-              This categories has options like: <br>
+              This categor has options like: <br>
               Hiking, Skydiving, and Surfing<br>
             </p>
 
@@ -115,16 +115,16 @@
                    <select  class="centerup" v-model="maxAmount" v-on:click="setMaxBudget(); setMinimum()">
                                <option class="centerup"  v-for="num in numbers">{{num}}</option>
                    </select>
-                    <p class="centerup writing">
-                              Maximum Amount:  {{maxAmount}}
-                    </p>
+                       <br>
+
+
                     <label class="centerup">Minimum You Want to Spend</label>
                     <select class="centerup" v-model="minAmount" v-on:click="setMinBudget">
                                 <option class="centerup" v-for="num in minnumbers">{{num}}</option>
                     </select>
-                    <p class="centerup writing">
-                                  Minimum Amount: {{minAmount}}
-                    </p>
+
+
+
       </div>
 
 

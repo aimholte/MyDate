@@ -12,8 +12,9 @@
       </ul>
     </nav>
 
-    <h1>Welcome to MyDate</h1>
+
     <p class="textSize dateOption centTextBox">
+      Welcome to MyDate! <br>
       The interactive Date Planner App.<br>
       This app is to help you find the perfect date for the perfect time!
      <br> Click the Heart above to begin.
@@ -64,7 +65,7 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #398EA1;
+    color: whitesmoke;
     margin-top: 60px;
   }
 
@@ -108,7 +109,7 @@ export default {
     background-color: black;
     /*border: 3px solid  #b1973c ;*/
     width: 500px;
-    height: 125px;
+    height: 140px;
     position: relative;
     display: inline-block;
     left: auto;
