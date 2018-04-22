@@ -23,8 +23,10 @@
     </h1>
 
     <!--Button to generate Dates-->
-    <h1>Press this one first to Search for Dates <button class="middle mid" v-on:click="getResult()">Search For Results!</button>
-      <span class="middle mid" v-if="searchCompleted">Search Done!</span></h1>
+    <h1>Press this one first to Search for Dates <button class="middle mid" v-on:click="getResult()">Search For Results!</button></h1>
+      <div v-if="isSearching">
+        <div class="loader"></div>
+      </div>
     <br>
     <h1>
       Then press this one, when it's finished, to display your dates
@@ -410,6 +412,7 @@
         this.initial;
       },
       async getResult() {
+        this.isSearching = true;
         if(this.searchCompleted == true) {
           this.searchCompleted = false;
         }
@@ -502,6 +505,7 @@
           }
         }
         this.searchCompleted  = true;
+        this.isSearching = false;
       }
     },
     watch: {
@@ -700,6 +704,28 @@
       -webkit-transform: scaleY(1);
 
     }
+  }
+
+  .loader {
+    position: absolute;
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #fd5e53;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 
 
