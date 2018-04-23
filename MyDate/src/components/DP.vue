@@ -106,16 +106,13 @@
           <select  class="centerup" v-model="maxAmount" v-on:click="setMaxBudget(); setMinimum()">
             <option class="centerup"  v-for="num in numbers">{{num}}</option>
           </select>
-          <p class="centerup writing">
-            Maximum Amount:  {{maxAmount}}
-          </p>
+          <br>
+
           <label class="centerup">Minimum You Want to Spend</label>
           <select class="centerup" v-model="minAmount" v-on:click="setMinBudget">
             <option class="centerup" v-for="num in minnumbers">{{num}}</option>
           </select>
-          <p class="centerup writing">
-            Minimum Amount: {{minAmount}}
-          </p>
+
           <!--Location Box-->
           <h1 class="centerdown"> Enter a Location to Search </h1>
           <input class="centerdown" type="text" id="txtPlaces" ref="autocomplete" placeholder="Enter a location" v-on:form.submit.prevent="setPosition"/>

@@ -50,18 +50,48 @@
         </h2>
         <!--Date Opener-->
         <p v-if="ButtonsVisible">
-          {{Date1Open.placeSearch.name}}
-          {{Date1Open.placeDetails.formatted_phone_number}}
+          <!--Date name-->
+          {{Date1Open.placeSearch.name}}<br>
+          <!--Date location-->
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{Date1Open.placeDetails.formatted_address}} <br>
+          <!--Date phone number-->
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{Date1Open.placeDetails.formatted_phone_number}} <br>
+          <!--Date Rating-->
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{Date1Open.placeDetails.rating}}<br>
+          <!--Date Website-->
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          {{Date1Open.placeDetails.website}}<br>
+          <!--<img class="minicons" src="https://cdn0.iconfinder.com/data/icons/feather/96/clock-512.png">-->
+          <!--{{Date1Open.placeDetails.opening_hours.}}<br>-->
           <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
         </p>
         <!--Date Meal-->
         <p v-if="ButtonsVisible">
-          {{meal1.placeSearch.name}}
+          {{meal1.placeSearch.name}}<br>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{meal1.placeDetails.formatted_address}}<br>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{meal1.placeDetails.formatted_phone_number}}<br>
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{meal1.placeDetails.rating}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          {{meal1.placeDetails.website}}<br>
           <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
         </p>
         <!--Date Closer-->
         <p v-if="ButtonsVisible">
-          {{Date1Close.placeSearch.name}}
+          {{Date1Close.placeSearch.name}}<br>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{Date1Close.placeDetails.formatted_address}}<br>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{Date1Close.placeDetails.formatted_phone_number}}<br>
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{Date1Close.placeDetails.rating}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          {{Date1Close.placeDetails.website}}<br>
           <button v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
         </p>
       </div>
@@ -71,18 +101,47 @@
           Date 2
         </h2>
         <!--Date Opener-->
-        <p>
-          {{Date2Open.name}}
+        <p v-if="ButtonsVisible">
+          <!--Date name-->
+          {{Date2Open.placeSearch.name}}<br>
+          <!--Date location-->
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{Date2Open.placeDetails.formatted_address}} <br>
+          <!--Date phone number-->
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{Date2Open.placeDetails.formatted_phone_number}} <br>
+          <!--Date Rating-->
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{Date2Open.placeDetails.rating}}<br>
+          <!--Date Website-->
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          {{Date2Open.placeDetails.website}}<br>
           <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
         </p>
         <!--Date Meal-->
-        <p>
-          {{meal2.name}}
+        <p v-if="ButtonsVisible">
+          {{meal2.placeSearch.name}}<br>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{meal2.placeDetails.formatted_address}}<br>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{meal2.placeDetails.formatted_phone_number}}<br>
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{meal2.placeDetails.rating}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          {{meal2.placeDetails.website}}<br>
           <button  v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Meal</button>
         </p>
         <!--Date Closer-->
-        <p>
-          {{Date2Close.name}}
+        <p v-if="ButtonsVisible">
+          {{Date2Close.placeSearch.name}}<br>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{Date2Close.placeDetails.formatted_address}}<br>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{Date2Close.placeDetails.formatted_phone_number}}<br>
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{Date2Close.placeDetails.rating}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          {{Date2Close.placeDetails.website}}<br>
           <button v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
           <!--Date Box 1-->
         </p>
@@ -94,18 +153,46 @@
           Date 3
         </h2>
         <!--Date Opener-->
-        <p>
-          {{Date3Open.name}}
+        <p v-if="ButtonsVisible">
+          {{Date3Open.placeSearch.name}}<br>
+          <!--Date location-->
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{Date3Open.placeDetails.formatted_address}} <br>
+          <!--Date phone number-->
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{Date3Open.placeDetails.formatted_phone_number}} <br>
+          <!--Date Rating-->
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{Date3Open.placeDetails.rating}}<br>
+          <!--Date Website-->
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          {{Date3Open.placeDetails.website}}<br>
           <button  v-if="ButtonsVisible" v-on:click="NewDate3Open()">Find New Place</button>
         </p>
         <!--Date Meal-->
-        <p>
-          {{meal3.name}}
+        <p v-if="ButtonsVisible">
+          {{meal3.placeSearch.name}}<br>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{meal3.placeDetails.formatted_address}}<br>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{meal3.placeDetails.formatted_phone_number}}<br>
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{meal3.placeDetails.rating}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          {{meal3.placeDetails.website}}<br>
           <button  v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Meal</button>
         </p>
         <!--Date Closer-->
-        <p>
-          {{Date3Close.name}}
+        <p v-if="ButtonsVisible">
+          {{Date3Close.placeSearch.name}}<br>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{Date3Close.placeDetails.formatted_address}}<br>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{Date3Close.placeDetails.formatted_phone_number}}<br>
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{Date3Close.placeDetails.rating}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          {{Date3Close.placeDetails.website}}<br>
           <button  v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
         </p>
       </div>
@@ -727,6 +814,10 @@
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+  .minicons{
+    width: 20px;
+    height: 22px;
   }
 
 
