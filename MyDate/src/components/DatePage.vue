@@ -49,17 +49,17 @@
           Date 1
         </h2>
         <!--Date Opener-->
-        <p>
+        <p v-if="ButtonsVisible">
           {{Date1Open.placeSearch.name}}
           <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
         </p>
         <!--Date Meal-->
-        <p>
+        <p v-if="ButtonsVisible">
           {{meal1.placeSearch.name}}
           <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
         </p>
         <!--Date Closer-->
-        <p>
+        <p v-if="ButtonsVisible">
           {{Date1Close.placeSearch.name}}
           <button v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
         </p>
