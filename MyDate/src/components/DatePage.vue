@@ -51,6 +51,7 @@
         <!--Date Opener-->
         <p v-if="ButtonsVisible">
           {{Date1Open.placeSearch.name}}
+          {{Date1Open.placeDetails.formatted_phone_number}}
           <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
         </p>
         <!--Date Meal-->
