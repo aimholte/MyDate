@@ -64,6 +64,8 @@
           <!--Date Website-->
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{Date1Open.placeDetails.website}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{Date1Open.placeDetails.reviews[1].text}}"
           <!--<img class="minicons" src="https://cdn0.iconfinder.com/data/icons/feather/96/clock-512.png">-->
           <!--{{Date1Open.placeDetails.opening_hours.}}<br>-->
           <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
@@ -79,6 +81,8 @@
           {{meal1.placeDetails.rating}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{meal1.placeDetails.website}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{meal1.placeDetails.reviews[1].text}}"<br>
           <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
         </p>
         <!--Date Closer-->
@@ -92,6 +96,8 @@
           {{Date1Close.placeDetails.rating}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{Date1Close.placeDetails.website}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{Date1Close.placeDetails.reviews[1].text}}"<br>
           <button v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
         </p>
       </div>
@@ -116,6 +122,8 @@
           <!--Date Website-->
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{Date2Open.placeDetails.website}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{Date2Open.placeDetails.reviews[1].text}}"<br>
           <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
         </p>
         <!--Date Meal-->
@@ -129,6 +137,8 @@
           {{meal2.placeDetails.rating}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{meal2.placeDetails.website}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{meal2.placeDetails.reviews[1].text}}"<br>
           <button  v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Meal</button>
         </p>
         <!--Date Closer-->
@@ -142,6 +152,8 @@
           {{Date2Close.placeDetails.rating}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{Date2Close.placeDetails.website}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{Date2Close.placeDetails.reviews[1].text}}"<br>
           <button v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
           <!--Date Box 1-->
         </p>
@@ -167,6 +179,8 @@
           <!--Date Website-->
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{Date3Open.placeDetails.website}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{Date3Open.placeDetails.reviews[1].text}}" <br>
           <button  v-if="ButtonsVisible" v-on:click="NewDate3Open()">Find New Place</button>
         </p>
         <!--Date Meal-->
@@ -180,6 +194,8 @@
           {{meal3.placeDetails.rating}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{meal3.placeDetails.website}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{meal3.placeDetails.reviews[1].text}}"<br>
           <button  v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Meal</button>
         </p>
         <!--Date Closer-->
@@ -193,6 +209,8 @@
           {{Date3Close.placeDetails.rating}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{Date3Close.placeDetails.website}}<br>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{Date3Close.placeDetails.reviews[1].text}}"<br>
           <button  v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
         </p>
       </div>
