@@ -23,7 +23,7 @@
     </h1>
 
     <!--Button to generate Dates-->
-    <h1>Press this one first to Search for Dates <button class="middle mid" v-on:click="getResult()">Search For Results!</button></h1>
+    <h1>Press this one first to Search for Dates <button class="middle mid" v-on:click="clear(); getResult()">Search For Results!</button></h1>
       <div v-if="isSearching">
         <div class="loader"></div>
       </div>
@@ -510,6 +510,17 @@
         this.Randomqueue=this.results;
         console.log("Goodbye Humans");
 
+      },
+      clear: function(){
+        for (let i = 0; i <= this.Mealqueue.length; i++) {
+          this.Mealqueue.pop(i);
+          }
+        for (let i = 0; i <= this.Placequeue.length; i++) {
+          this.Placequeue.pop(i);
+          }
+        for (let i = 0; i <= this.Randomqueue.length; i++) {
+          this.Randomqueue.pop(i);
+          }
       },
 
       queueFunctions: function(array){

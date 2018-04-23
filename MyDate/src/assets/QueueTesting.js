@@ -412,5 +412,10 @@ function filler(array) {
 let Mealqueue=[];
 let Placequeue=[];
 
-filler(myMessage);
-console.log(Randomqueue);
+
+Mealqueue.push(1);
+Mealqueue.push(2);
+for (let i = 0; i <= Mealqueue.length; i++) {
+  Mealqueue.pop(i);
+}
+console.log(Mealqueue);
