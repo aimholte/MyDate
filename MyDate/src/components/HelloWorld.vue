@@ -12,15 +12,16 @@
       </ul>
     </nav>
 
-    <h1>Welcome to MyDate</h1>
+
     <p class="textSize dateOption centTextBox">
+      Welcome to MyDate! <br>
       The interactive Date Planner App.<br>
       This app is to help you find the perfect date for the perfect time!
      <br> Click the Heart above to begin.
 
     </p>
     <video autoplay loop muted id="video-background" plays-inline>
-      <source src="https://09-lvl3-pdl.vimeocdn.com/01/4700/4/123504120/350950598.mp4?expires=1524268993&token=09dbab15e48f46c157dbc">
+      <source src="https://09-lvl3-pdl.vimeocdn.com/01/4700/4/123504120/350950598.mp4?expires=1524507691&token=042624880d9d125cbb6e9">
     </video>
     <!--<video autoplay loop muted id="video-background" plays-inline>-->
       <!--<source src="https://gcs-vimeo.akamaized.net/exp=1523403274~acl=%2A%2F348715371.mp4%2A~hmac=7e643eeed9fb2d296a7d158668eefdbe70aba2793c58acf20e460a326a732d88/vimeo-prod-skyfire-std-us/01/4581/4/122906560/348715371.mp4">-->
@@ -64,7 +65,7 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #398EA1;
+    color: whitesmoke;
     margin-top: 60px;
   }
 
@@ -108,7 +109,7 @@ export default {
     background-color: black;
     /*border: 3px solid  #b1973c ;*/
     width: 500px;
-    height: 125px;
+    height: 140px;
     position: relative;
     display: inline-block;
     left: auto;

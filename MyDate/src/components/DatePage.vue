@@ -13,19 +13,26 @@
     <nav class="secondPage">
       <br>
       <h1 class="center titles"  >
-        Your Prefect Date
+        Your Perfect Date
       </h1>
     </nav>
 
     <!--Header-->
-    <h1>
+    <h1 class="center">
       Your Dates
     </h1>
+
     <!--Button to generate Dates-->
-    <h1><button class="middle" v-on:click="getResult()">Search For Results!</button>
-      <span class="middle" v-if="searchCompleted">Search Done!</span></h1>
+    <h1>Press this one first to Search for Dates <button class="middle mid" v-on:click="getResult()">Search For Results!</button></h1>
+      <div v-if="isSearching">
+        <div class="loader"></div>
+      </div>
     <br>
-    <button class="middle" v-on:click="shuffling(); doubleCheck(); sorter(); initial();">Generate Your Dates!</button>
+    <h1>
+      Then press this one, when it's finished, to display your dates
+      <button class="middle mid" v-on:click="shuffling(); doubleCheck(); sorter(); initial();">Display Your Dates!</button>
+
+    </h1>
 
     <div v-if='allPlaceShown'>
       <label>All places have been shown.</label>
@@ -38,107 +45,67 @@
     <div class="row">
       <!--Date Box 1-->
       <div class="left column">
-        <h2>
+        <h2  v-if="ButtonsVisible">
           Date 1
         </h2>
         <!--Date Opener-->
         <p>
-          {{Date1Open.name}}
-          <button v-on:click="NewDate1Open()">Find New Place</button>
+          {{Date1Open.placeSearch.name}}
+          <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
         </p>
         <!--Date Meal-->
         <p>
-          {{meal1.name}}
-          <button v-on:click="NewMeal1()">Find New Meal</button>
+          {{meal1.placeSearch.name}}
+          <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
         </p>
         <!--Date Closer-->
         <p>
-          {{Date1Close.name}}
-          <button v-on:click="NewDate1Close()">Find New Place</button>
+          {{Date1Close.placeSearch.name}}
+          <button v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
         </p>
       </div>
       <!--Date Box 2-->
-      <div class="middle column ">
-        <h2>
+      <div  class="middle column colorDateTwo ">
+        <h2  v-if="ButtonsVisible">
           Date 2
         </h2>
         <!--Date Opener-->
         <p>
           {{Date2Open.name}}
-          <button v-on:click="NewDate2Open()">Find New Place</button>
+          <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
         </p>
         <!--Date Meal-->
         <p>
           {{meal2.name}}
-          <button v-on:click="NewMeal2()">Find New Meal</button>
+          <button  v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Meal</button>
         </p>
         <!--Date Closer-->
         <p>
           {{Date2Close.name}}
           <button v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
           <!--Date Box 1-->
-          <div class="left dateBox1">
-            <h2>
-              Date 1
-            </h2>
-
-        <p>
-          {{Date1Open.name}}
-
-          <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
-
         </p>
-
-        <div>
-          <div v-if='ButtonsVisible'>
-            {{meal1.placeSearch.name}}
-
-          </div>
-          <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Place</button>
-
-        </div>
-        {{Date1Close.name}}
-        <button v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
-
       </div>
 
-      <div>
-        <h2>
-          Date 2
-        </h2>
-        {{Date2Open.name}}
-        <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
-
-        <div>
-          {{meal2.name}}
-
-          <button v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Place</button>
-
-
-        </div>
-        {{Date2Close.name}}
-        <button v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
-
-      </div>
       <!--Date Box 3-->
       <div class="right column ">
-        <h2>
+        <h2  v-if="ButtonsVisible">
           Date 3
         </h2>
         <!--Date Opener-->
         <p>
           {{Date3Open.name}}
-          <button v-on:click="NewDate3Open()">Find New Place</button>
+          <button  v-if="ButtonsVisible" v-on:click="NewDate3Open()">Find New Place</button>
         </p>
         <!--Date Meal-->
         <p>
           {{meal3.name}}
-          <button v-on:click="NewMeal3()">Find New Meal</button>
+          <button  v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Meal</button>
         </p>
         <!--Date Closer-->
         <p>
           {{Date3Close.name}}
-          <button v-on:click="NewDate3Close()">Find New Place</button>
+          <button  v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
         </p>
       </div>
     </div>
@@ -147,33 +114,11 @@
 
 
 
-  <ul>
-    <li v-for="place in results">
-
-
-      <div style="width: 300px; border-style: solid; border-width: 1px;
-                        align-items: left; display: inline-block; text-align: left;
-                          " align="left" >
-        <span id="long">{{place.placeSearch.name}}</span>
-        <br>
-        <span id="true">{{place.placeSearch.address}}</span>
-        <br/>
-        <span>Phone Number:{{place.placeDetails.formatted_phone_number}}</span>
-        <br/>
-        <span> Average Google Rating: {{place.placeSearch.rating}}</span>
-        <br/>
-      </div>
-
-
-
-      <hr color="red"/>
-    </li>
-  </ul>
 
 
 
 
-  </div>
+
 
 </template>
 
@@ -386,26 +331,26 @@
         this.meal1=this.Mealqueue.shift();
         this.meal2=this.Mealqueue.shift();
         this.meal3=this.Mealqueue.shift();
-        /*
+
         this.Date1Open=this.Placequeue.shift();
         this.Date2Open=this.Placequeue.shift();
         this.Date3Open=this.Placequeue.shift();
         this.Date1Close=this.Placequeue.shift();
         this.Date2Close=this.Placequeue.shift();
         this.Date3Close=this.Placequeue.shift();
-        */
+
 
         this.meal1.showed="true";
         this.meal2.showed="true";
         this.meal3.showed="true";
-        /*
+
         this.Date1Open.showed="true";
         this.Date2Open.showed="true";
         this.Date3Open.showed="true";
         this.Date1Close.showed="true";
         this.Date2Close.showed="true";
         this.Date3Close.showed="true";
-        */
+
 
       },
       shuffle: function(array) {
@@ -467,6 +412,7 @@
         this.initial;
       },
       async getResult() {
+        this.isSearching = true;
         if(this.searchCompleted == true) {
           this.searchCompleted = false;
         }
@@ -516,12 +462,7 @@
 
           if((this.parameters.categories[h] == "restaurant") == true) {
             console.log('using price parameter');
-            if(this.maxBudget > 0) {
-              searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&minprice=" + (this.parameters.minBudget) + "&maxprice=" + this.parameters.maxBudget + "&key=" + API_KEY;
-            }
-            else {
-              searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&maxprice=" + this.parameters.maxBudget + "&key=" + API_KEY;
-            }
+            searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&minprice=" + (this.parameters.minBudget) + "&maxprice=" + this.parameters.maxBudget + "&key=" + API_KEY;
           }
           else {
             console.log('not using price parameter');
@@ -564,6 +505,7 @@
           }
         }
         this.searchCompleted  = true;
+        this.isSearching = false;
       }
     },
     watch: {
@@ -617,6 +559,11 @@
   .center {
     text-align: center;
   }
+  .mid{
+    display: block;
+    left: auto;
+    right: auto;
+  }
   ul{
     list-style-type: none;
     text-align: center;
@@ -653,7 +600,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     color:#323b39 ;
-    font-size: 10px;
+    font-size: 18px;
     background:  #fd5e53;
 
   }
@@ -686,6 +633,10 @@
     border-color: #fd5e53 ;
     border-style:solid;
     border-width:8px;
+  }
+  .colorDateTwo{
+    background: whitesmoke;
+    color: #000;
   }
   .customAlert{
 
@@ -753,6 +704,28 @@
       -webkit-transform: scaleY(1);
 
     }
+  }
+
+  .loader {
+    position: absolute;
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #fd5e53;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 
 
