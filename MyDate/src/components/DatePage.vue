@@ -50,17 +50,17 @@
         </h2>
         <!--Date Opener-->
         <p>
-          {{Date1Open.name}}
+          {{Date1Open.placeSearch.name}}
           <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
         </p>
         <!--Date Meal-->
         <p>
-          {{meal1.name}}
+          {{meal1.placeSearch.name}}
           <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
         </p>
         <!--Date Closer-->
         <p>
-          {{Date1Close.name}}
+          {{Date1Close.placeSearch.name}}
           <button v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
         </p>
       </div>
@@ -331,26 +331,26 @@
         this.meal1=this.Mealqueue.shift();
         this.meal2=this.Mealqueue.shift();
         this.meal3=this.Mealqueue.shift();
-        /*
+
         this.Date1Open=this.Placequeue.shift();
         this.Date2Open=this.Placequeue.shift();
         this.Date3Open=this.Placequeue.shift();
         this.Date1Close=this.Placequeue.shift();
         this.Date2Close=this.Placequeue.shift();
         this.Date3Close=this.Placequeue.shift();
-        */
+
 
         this.meal1.showed="true";
         this.meal2.showed="true";
         this.meal3.showed="true";
-        /*
+
         this.Date1Open.showed="true";
         this.Date2Open.showed="true";
         this.Date3Open.showed="true";
         this.Date1Close.showed="true";
         this.Date2Close.showed="true";
         this.Date3Close.showed="true";
-        */
+
 
       },
       shuffle: function(array) {
