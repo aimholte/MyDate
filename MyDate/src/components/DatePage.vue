@@ -28,9 +28,9 @@
         <div class="loader"></div>
       </div>
     <br>
-    <h1>
+    <h1 v-if="searchCompleted">
       Then press this one, when it's finished, to display your dates
-      <button class="middle mid" v-on:click="shuffling(); doubleCheck(); sorter(); initial();">Display Your Dates!</button>
+      <button v-if="searchCompleted" class="middle mid" v-on:click="shuffling(); doubleCheck(); sorter(); initial();">Display Your Dates!</button>
 
     </h1>
 
@@ -65,7 +65,7 @@
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{Date1Open.placeDetails.website}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{Date1Open.placeDetails.reviews[1].text}}"
+          "{{Date1Open.placeDetails.reviews[0].text}}"
           <!--<img class="minicons" src="https://cdn0.iconfinder.com/data/icons/feather/96/clock-512.png">-->
           <!--{{Date1Open.placeDetails.opening_hours.}}<br>-->
           <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
@@ -82,7 +82,7 @@
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{meal1.placeDetails.website}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{meal1.placeDetails.reviews[1].text}}"<br>
+          "{{meal1.placeDetails.reviews[0].text}}"<br>
           <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
         </p>
         <!--Date Closer-->
@@ -97,7 +97,7 @@
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{Date1Close.placeDetails.website}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{Date1Close.placeDetails.reviews[1].text}}"<br>
+          "{{Date1Close.placeDetails.reviews[0].text}}"<br>
           <button v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
         </p>
       </div>
@@ -123,7 +123,7 @@
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{Date2Open.placeDetails.website}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{Date2Open.placeDetails.reviews[1].text}}"<br>
+          "{{Date2Open.placeDetails.reviews[0].text}}"<br>
           <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
         </p>
         <!--Date Meal-->
@@ -138,7 +138,7 @@
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{meal2.placeDetails.website}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{meal2.placeDetails.reviews[1].text}}"<br>
+          "{{meal2.placeDetails.reviews[0].text}}"<br>
           <button  v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Meal</button>
         </p>
         <!--Date Closer-->
@@ -153,7 +153,7 @@
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{Date2Close.placeDetails.website}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{Date2Close.placeDetails.reviews[1].text}}"<br>
+          "{{Date2Close.placeDetails.reviews[0].text}}"<br>
           <button v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
           <!--Date Box 1-->
         </p>
@@ -180,7 +180,7 @@
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{Date3Open.placeDetails.website}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{Date3Open.placeDetails.reviews[1].text}}" <br>
+          "{{Date3Open.placeDetails.reviews[0].text}}" <br>
           <button  v-if="ButtonsVisible" v-on:click="NewDate3Open()">Find New Place</button>
         </p>
         <!--Date Meal-->
@@ -195,7 +195,7 @@
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{meal3.placeDetails.website}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{meal3.placeDetails.reviews[1].text}}"<br>
+          "{{meal3.placeDetails.reviews[0].text}}"<br>
           <button  v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Meal</button>
         </p>
         <!--Date Closer-->
@@ -210,7 +210,7 @@
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
           {{Date3Close.placeDetails.website}}<br>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{Date3Close.placeDetails.reviews[1].text}}"<br>
+          "{{Date3Close.placeDetails.reviews[0].text}}"<br>
           <button  v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
         </p>
       </div>
