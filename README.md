@@ -26,15 +26,33 @@ Besides vue.js other dependencies were used in our code.
 Described below are all of these dependencies
 and how to install them as well as their use
 in our code.<br/>
-AXIOS<br/>
+**Axios**<br/>
 First to install axios type:
 *npm install --save axios vue-axios*.  In this 
-project Axios is used to handle API requests.
-#####Firebase
+project Axios is used to handle API requests.<br/>
+**Firebase**
 First to install Firebase type:<br/>
 *$ npm init* <br/>
 and then:<br/>
- *$ npm install --save firebase*
+*$ npm install --save firebase*
+This is not used in the current version of our code
+it was scrapped part of the way into development.
+<br/>
+**Vue Checkbox**<br/>
+Into your terminal type:<br/>
+*npm install vue-checkbox-radio --save*
+<br/>
+This dependecy allows for easily formatting and handeling
+of checkboxes and their associated variables.
+<br/>**Vue Router**<br/>
+To install Vue-router type:<br/>
+*npm install vue-router*
+<br/>
+This is used to move between our components in our app
+
+
+
+ 
 
 
 
