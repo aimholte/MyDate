@@ -32,9 +32,9 @@
       </div>
         <span v-if="searchCompleted"><b>Search Completed - Click the Button Below!</b></span>
     <br>
-    <h1>
+    <h1 v-if="searchCompleted">
       Then press this one, when it's finished, to display your dates
-      <button class="middle mid" v-on:click="shuffling(); doubleCheck(); sorter(); initial();">Display Your Dates!</button>
+      <button v-if="searchCompleted" class="middle mid" v-on:click="shuffling(); doubleCheck(); sorter(); initial();">Display Your Dates!</button>
 
     </h1>
 
