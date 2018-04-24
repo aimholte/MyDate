@@ -192,7 +192,7 @@
       },
 
       setVintage: _.debounce(function() {
-        this.categorytypes = ['mall','bar','movie_theater','bowling_alley', 'restaurant', 'cafe'];
+        this.categorytypes = ['shopping_mall','bar','movie_theater','bowling_alley', 'restaurant', 'cafe'];
         console.log(this.categorytypes);
       },0),
 
