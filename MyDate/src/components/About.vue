@@ -59,34 +59,25 @@
     background:#4F4E4C ;
     min-height: 100%;
   }
-  body{
-    min-height: 100%;
-  }
-  ul{
+
+  #about ul{
     list-style-type: none;
 
     text-align: center;
     margin: 0;
   }
-  li{
+  #about li{
     display: inline-block;
     margin: 0 10px;
   }
-  a{
+  #about a{
     color: #fff;
     text-decoration: none;
     padding: 6px 8px;
     border-radius: 10px;
   }
-  nav{
-    background: #fd5e53 ;
-    padding: 14px 0;
-    margin-bottom: 0;}
-  img{
-    width: 75px;
-    height: 75px;
-  }
-  .profilePicture{
+
+  #about .profilePicture{
     width: 200px;
     height: 300px;
     display: inline-block;
@@ -95,7 +86,7 @@
   }
 
 
-  .writing{
+  #about .writing{
     font-size: 20px;
   }
 

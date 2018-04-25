@@ -48,12 +48,12 @@
 
     <div class="row">
       <!--Date Box 1-->
-      <div class="left column">
+      <div class="left column border">
         <h2  v-if="ButtonsVisible">
           Date 1
         </h2>
         <!--Date Opener-->
-        <p v-if="ButtonsVisible">
+        <p v-if="ButtonsVisible" class="bottomBorder">
           <!--Date name-->
           {{Date1Open.placeSearch.name}}<br>
           <!--Date location-->
@@ -690,83 +690,61 @@
     background: #4F4E4C;
     min-height: 100%;
   }
-  .everythingLeft {
-    text-align: left;
-  }
-  .everythingRight{
-    text-align: right;
-  }
-  .center {
+
+
+  #DatePage .center {
     text-align: center;
   }
-  .mid{
+  #DatePage .mid{
     display: block;
     left: auto;
     right: auto;
   }
-  ul{
+  #DatePage ul{
     list-style-type: none;
     text-align: center;
     margin: 0;
   }
-  li{
+  #DatePage li{
     display: inline-block;
     margin: 0 10px;
   }
-  a{
-    color: firebrick;
-    text-decoration: none;
-    padding: 6px 8px;
-    border-radius: 10px;
-  }
-  nav{
-    background: #fd5e53;
-    padding: 14px 0;
-    margin-bottom: 40px;
-  }
-  .secondPage{
+
+
+  #DatePage .secondPage{
     background: #fd5e53;
     padding: 1px 0;
     margin-bottom: 0px;
   }
-  h3{
+  #DatePage h3{
       float: left;
       margin: 0;
   }
-  button{
-    padding-left: 25px;
-    padding-right: 25px;
-    border-radius: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color:#323b39 ;
-    font-size: 18px;
-    background:  #fd5e53;
 
+  #DatePage .border{
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-color: #fd5e53 ;
   }
-  .columns {
-    columns: 3;
-    column-width: 200px;
-    column-gap: 40px;
-    height: 400px;
-    font-size: 13px;
-  }
-  .column{
+
+  #DatePage .column{
     float: left;
     padding: 10px;
     column-gap: 10px;
   }
-  .left, .right {
+  #DatePage .left, .right {
     width: 450px;
   }
-  .middle{
+  #DatePage .middle{
     width: 450px;
   }
-  .row{
+  #DatePage .row{
     content: "";
     display: table;
     clear: both;
   }
+
+
   .dateBox1{
    width: 450px;
     height: 350px;
@@ -794,59 +772,12 @@
     margin-top: -5.2%;
     background: #088A68;
   }
-  .titles{
+  #DatePage .titles{
     font-size: 40px;
   }
 
-  .sk-wave{
-    margin: 40px auto;
-    width: 50px;
-    height: 40px;
-    text-align: center;
-    font-size: 10px; }
-  .sk-wave .sk-rect {
-    background-color: #333;
-    height: 100%;
-    width: 6px;
-    display: inline-block;
-    -webkit-animation: sk-waveStretchDelay 1.2s infinite ease-in-out;
-    animation: sk-waveStretchDelay 1.2s infinite ease-in-out; }
-  .sk-wave .sk-rect1 {
-    -webkit-animation-delay: -1.2s;
-    animation-delay: -1.2s; }
-  .sk-wave .sk-rect2 {
-    -webkit-animation-delay: -1.1s;
-    animation-delay: -1.1s; }
-  .sk-wave .sk-rect3 {
-    -webkit-animation-delay: -1s;
-    animation-delay: -1s; }
-  .sk-wave .sk-rect4 {
-    -webkit-animation-delay: -0.9s;
-    animation-delay: -0.9s; }
-  .sk-wave .sk-rect5 {
-    -webkit-animation-delay: -0.8s;
-    animation-delay: -0.8s; }
 
-  @-webkit-keyframes sk-waveStretchDelay {
-    0%, 40%, 100% {
-      -webkit-transform: scaleY(0.4);
-      transform: scaleY(0.4); }
-    20% {
-      -webkit-transform: scaleY(1);
-      transform: scaleY(1); } }
-
-  @keyframes sk-waveStretchDelay {
-    0%, 40%, 100% {
-      -webkit-transform: scaleY(0.4);
-      transform: scaleY(0.4);
-    }
-    20% {
-      -webkit-transform: scaleY(1);
-
-    }
-  }
-
-  .loader {
+  #DatePage .loader {
     position: absolute;
     border: 8px solid #f3f3f3;
     border-radius: 50%;
@@ -867,9 +798,16 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-  .minicons{
+  #DatePage .minicons{
     width: 20px;
     height: 22px;
+  }
+  #DatePage p .bottomBorder{
+    border-style: dot-dot-dash;
+    border-width: 0px 0px 10px 0px;
+  }
+  #DatePage .biggerFont{
+    font-size: 15px;
   }
 
 

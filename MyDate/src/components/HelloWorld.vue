@@ -1,7 +1,7 @@
 
 <template>
   <div id="hello" >
-    <nav class="Navbar newColor">
+    <nav>
       <!--Router links to home, about, and date picker page-->
       <ul>
         <!--<img src="MDLogo.png" class="centerPic">-->
@@ -69,24 +69,25 @@ export default {
     margin-top: 60px;
   }
 
-  input{
-    margin: 10px 0;
-    width: 20%;
-    padding: 15px;
-  }
-  button{
-    margin-top: 20px;
-    width: 10%;
-    cursor: pointer;
-  }
+  /*button {*/
+    /**/
+  /*}*/
+
+  /*.alert button,*/
+  /*.special button {*/
+    /**/
+  /*}*/
+
+  /*.login .alert button {*/
+    /**/
+  /*}*/
+
+
   p{
     margin-top: 40px;
     font-size: 13px;
   }
-  p a {
-    text-decoration: underline;
-    cursor: pointer;
-  }
+
   #video-background{
     position: fixed;
     right: 0;
@@ -103,7 +104,7 @@ export default {
     text-outline: black 40px;
     font-weight: bold;
   }
-  .dateOption{
+  #hello .dateOption{
     opacity:0.5 ;
     filter: alpha(opacity=50);
     background-color: black;
@@ -120,51 +121,32 @@ export default {
     left: auto;
     right: auto;
   }
-  nav{
+
+
+  #hello nav{
+    opacity: .5;
+    filter: alpha(opacity=50);
     background: #fd5e53 ;
     padding: 14px 0;
     margin-bottom: 0px;
-
   }
 
-  img{
-    width: 75px;
-    height: 75px;
-  }
-  .Navbar{
-    opacity: .5;
-    filter: alpha(opacity=50);
-  }
-  .newColor{
-    background: #fd5e53 ;
-
-  }
-  ul{
+  #hello ul{
     list-style-type: none;
 
     text-align: center;
     margin: 0;
   }
-  li{
+  #hello li{
     display: inline-block;
     margin: 0 10px;
   }
-  a{
+  #hello a{
     color: #fff;
     text-decoration: none;
     padding: 6px 8px;
     border-radius: 10px;
   }
-  nav{
-    background: #fd5e53 ;
-    padding: 14px 0;
-    margin-bottom: 0px;
 
-  }
-
-  img{
-    width: 75px;
-    height: 75px;
-  }
 
 </style>

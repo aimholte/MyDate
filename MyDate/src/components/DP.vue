@@ -266,108 +266,86 @@
 </style>
 
 <style >
-  .centerTex{
+  #DatePicker.centerTex{
     text-align: center;
   }
-  .chillright{
-    text-align: right;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-  }
-  .chillLeft{
-    text-align: left;
-  }
-  .alltheright{
-    text-align: left;
-    display: block;
-  }
+
   #DatePicker{
     text-align: left;
   }
-  .image{
-    width: 75px;
-    height: 75px;
-  }
-  h3{
+
+  #DatePicker h3{
     position: relative;
   }
-  h2{
+  #DatePicker h2{
     position:static;
     top: 70px;
   }
-  .NavUl{
+  #DatePicker .NavUl{
     list-style-type: none;
     text-align: center;
     margin: 0;
   }
-  .Navli{
+  #DatePicker .Navli{
     display: inline-block;
     margin: 0 10px;
   }
-  p{}
-  .columns {
+
+  #DatePicker .columns {
     columns: 3;
     column-width: 200px;
     column-gap: 40px;
     height: 400px;
     font-size: 13px;
   }
-  .column{
+  #DatePicker .column{
     float: left;
     padding: 10px;
     column-gap: 50px;
   }
-  .left {
+  #DatePicker .left {
     width: 600px;
   }
-  .right{
+  #DatePicker .right{
     width: 300px;
   }
-  .middle{
+  #DatePicker .middle{
     width: 350px;
   }
-  .row{
+  #DatePicker .row{
     content: "";
     display: table;
     clear: both;
   }
-  .icon{
+  #DatePicker .icon{
     width: 75px;
     height: 75px;
   }
-  .selection{
+  #DatePicker .selection{
     font-size: 20px;
     font-weight: bold;
   }
-  .writing{
+  #DatePicker .writing{
     font-size: 18px;
   }
-  ul{
+  #DatePicker ul{
     list-style-type: none;
     text-align: center;
     margin: 0;
   }
-  li{
+  #DatePicker li{
     display: inline-block;
     margin: 0 10px;
   }
-  a{
+  #DatePicker a{
     color: #fff;
     text-decoration: none;
     padding: 6px 8px;
     border-radius: 10px;
   }
-  img{
-    width: 75px;
-    height: 75px;
-  }
-  .navBar{
-    background: #fd5e53 ;
-    padding: 14px 0;
-    margin-bottom: 0px;
-  }
-  .slider {
+
+
+  #DatePicker .slider {
     -webkit-appearance: none;
     width: 100%;
     height: 15px;
@@ -378,7 +356,7 @@
     -webkit-transition: .2s;
     transition: opacity .2s;
   }
-  .slider::-webkit-slider-thumb {
+  #DatePicker .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
@@ -387,7 +365,7 @@
     background: #ffffff;
     cursor: pointer;
   }
-  .slider::-moz-range-thumb {
+  #DatePicker .slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
     border-radius: 50%;
