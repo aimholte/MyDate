@@ -19,103 +19,78 @@
 
 
 
-    <h1>Date Categories</h1>
+
 
     <!--<div class="columns">-->
     <!--Active-->
     <form action = "" method="post">
       <div class="row">
         <div class="column left">
-          <img class="icon" src="https://png.icons8.com/metro/1600/running-rabbit.png"/>
-          <label class="writing">
-            Active
-            <input  type="radio" id = "active" value="Active" v-model="category" v-on:click="setActive"/>
-          </label>
-          <p class="writing">
-            Feel like getting this first date moving!? <br>
-            This categories has options like: <br>
-            Hiking, Skydiving, and Surfing<br>
-          </p>
-
-          <!--City-->
-          <img class="icon" src="https://png.icons8.com/metro/1600/building.png"/>
-          <label class="writing" >City
-            <input type="radio" id="city" value="City" v-model="category" v-on:click="setCity"/>
-          </label>
-
-          <br>
-          <p class="writing">
-            Want to show them what your city has to offer? <br>
-            This category has options like:<br>
-            Museums, Sporting Events, and Concerts<br>
-          </p>
-
-          <br>
-          <span class="selection">You've Selected:</span>
-          <p class="centerup writing">Category: {{category}}</p>
-          <p class="centerup writing">Minimum Amount {{minAmount}}</p>
-          <p class="centerup writing">Maximum Amount: {{maxAmount}}</p>
-          <p class=" centerup writing">Maximum Distance: {{miles}} miles</p>
-
-
+          <h1>Date Categories</h1>
+          <div class="iconPadding">
+            <img class="icon" src="https://png.icons8.com/metro/1600/running-rabbit.png"/>
+            <label class="writing">
+              Active
+              <input  type="radio" id = "active" value="Active" v-model="category" v-on:click="setActive"/>
+            </label>
+          </div>
+          <div class="iconPadding">
+            <!--City-->
+            <img class="icon" src="https://png.icons8.com/metro/1600/building.png"/>
+            <label class="writing iconPadding" >City
+              <input type="radio" id="city" value="City" v-model="category" v-on:click="setCity"/>
+            </label>
+          </div>
+          <div class="iconPadding">
+            <!--SomethingNew-->
+            <img class="icon" src="http://cdn.onlinewebfonts.com/svg/img_453906.png"/>
+            <label class="writing">Something New
+              <input type="radio" value="Something New" v-model="category" v-on:click="setSomethingNew"/>
+            </label>
+          </div>
+          <div class="iconPadding">
+            <!--Vintage-->
+            <img class="icon" src="https://image.flaticon.com/icons/png/512/57/57894.png"/>
+            <label class="writing">Vintage
+              <input type="radio" value="Vintage" v-model="category" v-on:click="setVintage">
+            </label>
+          </div>
         </div>
+        <!--<span class="selection">You've Selected:</span>-->
+        <!--<p class="centerup writing">Category: {{category}}</p>-->
+        <!--<p class="centerup writing">Minimum Amount {{minAmount}}</p>-->
+        <!--<p class="centerup writing">Maximum Amount: {{maxAmount}}</p>-->
+        <!--<p class=" centerup writing">Maximum Distance: {{miles}} miles</p>-->
 
-        <div class="column middle">
-          <!--SomethingNew-->
-          <img class="icon" src="http://cdn.onlinewebfonts.com/svg/img_453906.png"/>
-          <label class="writing">Something New
-            <input type="radio" value="Something New" v-model="category" v-on:click="setSomethingNew"/>
-
-          </label>
-
-          <br>
-          <p class="writing">
-            Want to spice things up?! <br>
-            This categories has options like: <br>
-            Going to a Bookstore, Ghost town, and more<br>
-          </p>
-
-          <!--Comment so I can push-->
-
-
-          <!--Vintage-->
-          <img class="icon" src="https://image.flaticon.com/icons/png/512/57/57894.png"/>
-          <label class="writing">Vintage
-            <input type="radio" value="Vintage" v-model="category" v-on:click="setVintage">
-          </label>
-
-
-          <p class="writing">
-            Want to get that nostalgic feel out of ya?! <br>
-            This categories has options like: <br>
-            Drive ins, Bowling, and more<br>
-          </p>
 
 
 
           <!--Spits out what categories you've selected-->
 
 
-        </div>
+
 
         <div class="column right">
           <div class="centerdown">
 
           </div>
           <h1 class="centerTex">Select A Price</h1>
-          <label class="centerup"> Enter the Most You Would Want to Spend</label>
-          <select  class="centerup" v-model="maxAmount" v-on:click="setMaxBudget(); setMinimum()">
+          <label class="centerup biggerFont "> Select the Most You Would Want to Spend</label>
+          <select  class="centerup center" v-model="maxAmount" v-on:click="setMaxBudget(); setMinimum()">
             <option class="centerup"  v-for="num in numbers">{{num}}</option>
           </select>
-          <br>
+          <div>
 
-          <label class="centerup">Minimum You Want to Spend</label>
-          <select class="centerup" v-model="minAmount" v-on:click="setMinBudget">
-            <option class="centerup" v-for="num in minnumbers">{{num}}</option>
-          </select>
+            <label class="centerup biggerFont">Minimum You Want to Spend</label>
+            <select class="centerup" v-model="minAmount" v-on:click="setMinBudget">
+              <option class="centerup" v-for="num in minnumbers">{{num}}</option>
+            </select>
+          </div>
 
+        </div>
+          <div class=" column middle">
           <!--Location Box-->
-          <h1 class="centerdown"> Enter a Location to Search </h1>
+          <h1 class="centerdown"> Enter A Location To Search </h1>
           <input class="centerdown" type="text" id="txtPlaces" ref="autocomplete" placeholder="Enter a location" v-on:form.submit.prevent="setPosition"/>
           <button class="currentLocation" v-on:click.prevent="useCurrentLocation"> <b>Use Your Current Location</b></button>
           <br>
@@ -304,13 +279,13 @@
     column-gap: 50px;
   }
   #DatePicker .left {
-    width: 600px;
+    width: 450px;
   }
   #DatePicker .right{
-    width: 300px;
+    width: 450px;
   }
   #DatePicker .middle{
-    width: 350px;
+    width: 450px;
   }
   #DatePicker .row{
     content: "";
@@ -371,5 +346,17 @@
     border-radius: 50%;
     background: #ffffff;
     cursor: pointer;
+  }
+  #DatePicker .iconPadding{
+    padding: 15px 15px 15px 15px;
+  }
+  #DatePicker .biggerFont{
+    font-size: 22px;
+  }
+  #DatePicker .center{
+    display: inline-block;
+    left: auto;
+    right: auto;
+    justify-content: center;
   }
 </style>
