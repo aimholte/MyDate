@@ -295,7 +295,7 @@
           </p>
           <p>
             <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-            <button><a v-bind:href="Date2Close.placeDetails.website" target="_blank"> </a>Website</button>
+            <button class="buttonWebDir"><a v-bind:href="Date2Close.placeDetails.website" target="_blank"> </a>Website</button>
           </p>
           <p>
             <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
@@ -970,8 +970,8 @@
     border: 8px solid #f3f3f3;
     border-radius: 50%;
     border-top: 8px solid #fd5e53;
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
   }
