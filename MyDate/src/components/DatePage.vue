@@ -18,7 +18,7 @@
 
     <div>
       <transtion name="fade">
-        <button class="method1 buttonFont" v-on:click="getResult()">Search For Results!</button>
+        <button class="method1 buttonFont" v-on:click="clear(); getResult();">Search For Results!</button>
       </transtion>
     </div>
     <br>
@@ -512,6 +512,24 @@
       }
     },
     methods:{
+      clear: function(){
+        let mealLength = this.Mealqueue.length;
+        let placeLength = this.Placequeue.length;
+        let randomLength= this.Randomqueue.length;
+
+        for(let i =0; i<= mealLength; i++){
+          this.Mealqueue.pop(i);
+        }
+        for(let i =0; i<= placeLength; i++){
+          this.Placequeue.pop(i);
+        }
+        for(let i =0; i<= randomLength; i++){
+          this.Randomqueue.pop(i);
+        }
+
+
+
+      },
 
       NewDate1Open: function(){
         this.Placequeue.push(this.Date1Open);
