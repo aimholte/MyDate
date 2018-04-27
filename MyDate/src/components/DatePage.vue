@@ -46,7 +46,7 @@
       <label>All meals have been shown.</label>
     </div>
     <h1 class="center " v-if="ButtonsVisible">
-        Your Three Date Options:
+        Scroll To See Your Three Date Options:
     </h1>
 
       <!--Date Box 1-->
