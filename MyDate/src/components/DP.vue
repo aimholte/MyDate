@@ -249,6 +249,11 @@
   #DatePicker{
     text-align: left;
   }
+  html,body{
+    min-height: 100vh;
+    padding:0;
+    margin:0;
+  }
 
   #DatePicker h3{
     position: relative;

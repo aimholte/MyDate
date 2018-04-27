@@ -15,6 +15,13 @@
     <!--Header-->
 
     <!--Button to generate Dates-->
+
+    <div>
+      <transtion name="fade">
+        <button class="method1 buttonFont" v-on:click="getResult()">Search For Results!</button>
+      </transtion>
+    </div>
+    <br>
     <div>
       <div class="loader method2" v-if="isSearching"></div>
       <h1 v-if="searchCompleted">
@@ -24,22 +31,8 @@
 
       </h1>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
 
-    <div>
-      <transtion name="fade">
-        <button class="method1 buttonFont" v-on:click="getResult()">Search For Results!</button>
-      </transtion>
-    </div>
-
-    <br>
-    <br>
 
 
     <div v-if='allPlaceShown'>
@@ -77,7 +70,7 @@
 
           <p>
             <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-           <button class="buttonWebDir"><a class="directions" v-bind:href="Date1Open.placeDetails.url" target="_blank"> </a>Directions</button>  <br>
+           <button class="buttonWebDir"><a c v-bind:href="Date1Open.placeDetails.url" target="_blank"> </a>Directions</button>
           </p>
           <p>
             <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
@@ -89,7 +82,7 @@
           </p>
           <p>
             <img class="minicons " src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-            <button class="buttonWebDir"><a class="website" v-bind:href="Date1Open.placeDetails.website" target="_blank"></a>Website</button>
+            <button class="buttonWebDir"><a  v-bind:href="Date1Open.placeDetails.website" target="_blank"></a>Website</button>
             <br>
           </p>
           <p>
@@ -876,7 +869,13 @@
   #DatePage{
     color: whitesmoke ;
     background: #4F4E4C;
-    min-height: 100%;
+    min-height: 100vh;
+
+  }
+  html,body{
+    min-height: 100vh;
+    padding:0;
+    margin:0;
   }
 
 
