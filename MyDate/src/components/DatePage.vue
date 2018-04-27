@@ -18,12 +18,13 @@
     <div>
       <button class="method1 buttonFont" v-on:click="getResult()">Search For Results!</button>
     </div>
+    <br>
 
       <div v-if="isSearching">
-        <div class="loader"></div>
+        <div class="loader method2"></div>
         <br>
         <br>
-        <span><b>Searching...</b></span>
+        <span class="method2"><b>Searching...</b></span>
       </div>
     <br>
     <div>
@@ -1010,6 +1011,9 @@
     margin-left: 25%;
 
 
+  }
+  #DatePage .method2{
+    margin-left: 50%;
   }
 
 
