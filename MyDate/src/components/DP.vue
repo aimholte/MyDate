@@ -5,11 +5,12 @@
       <div>
         <ul class="NavUl">
           <!--<img src="MDLogo.png" class="centerPic">-->
-
           <li class="Navli">  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>
           <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
           <li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png"></router-link></li>
+
         </ul>
+
 
       </div>
 
@@ -358,5 +359,10 @@
     left: auto;
     right: auto;
     justify-content: center;
+  }
+  #DatePicker .logo{
+    float: left;
+    width: 15%;
+    height: 5%;
   }
 </style>
