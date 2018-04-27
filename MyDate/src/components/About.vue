@@ -57,7 +57,7 @@
     text-align: center;
     color: whitesmoke;
     background:#4F4E4C ;
-    min-height: 100%;
+    min-height: 100vh;
   }
 
   #about ul{
@@ -75,6 +75,11 @@
     text-decoration: none;
     padding: 6px 8px;
     border-radius: 10px;
+  }
+  html,body{
+    min-height: 100vh;
+    padding:0;
+    margin:0;
   }
 
   #about .profilePicture{
