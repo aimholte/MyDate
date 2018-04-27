@@ -11,11 +11,13 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap-vue": "^2.0.0-rc.9",
     "firebase": "^4.12.1",
     "save": "^2.3.2",
     "vue": "^2.5.2",
     "vue-checkbox-radio": "^0.6.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-spinner": "^1.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -10,7 +10,7 @@
 
 <script>
   // import header piece
-import header from './components/Header'
+import header from './components/Header';
 
 
 
