@@ -16,28 +16,31 @@
 
     <!--Button to generate Dates-->
     <div>
-      <button class="method1 buttonFont" v-on:click="getResult()">Search For Results!</button>
+      <div class="loader method2" v-if="isSearching"></div>
+      <h1 v-if="searchCompleted">
+        <div>
+          <button v-if="searchCompleted" class="method1 buttonFont" v-on:click="shuffling(); doubleCheck(); sorter(); initial(); scrollToDates();">Display Your Dates!</button>
+        </div>
+
+      </h1>
     </div>
     <br>
-
-      <div v-if="isSearching">
-        <div class="loader method2"></div>
-        <br>
-        <br>
-        <span class="method2"><b>Searching...</b></span>
-      </div>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
     <div>
-      <span class="center biggerFont" v-if="searchCompleted"><b>Search Completed - Click the Button Below!</b></span>
+      <transtion name="fade">
+        <button class="method1 buttonFont" v-on:click="getResult()">Search For Results!</button>
+      </transtion>
     </div>
+
     <br>
-    <h1 v-if="searchCompleted">
-      <div>
-        <button v-if="searchCompleted" class="method1 buttonFont" v-on:click="shuffling(); doubleCheck(); sorter(); initial();">Display Your Dates!</button>
-      </div>
+    <br>
 
-
-    </h1>
 
     <div v-if='allPlaceShown'>
       <label>All places have been shown.</label>
@@ -443,6 +446,8 @@
 <script>
   import lodash from 'lodash';
   import axios from 'axios';
+  import DotLoader from "../../node_modules/vue-spinner/src/DotLoader.vue";
+
 
   const API_KEY = "AIzaSyChru3GBEmCa8EcQk-Q9MEnF-klk10yvgk";
   const PROXY_ADDRESS = "https://cors.now.sh/";
@@ -452,6 +457,7 @@
   const PHOTO_MAX_WITH = 500;
 
   export default {
+    components: {DotLoader},
     name: "datepage",
     props: {
       categorytypes: {
@@ -825,6 +831,9 @@
         }
         this.searchCompleted  = true;
         this.isSearching = false;
+      },
+      scrollToDates: function() {
+        document.getElementById( 'middle' ).scrollIntoView();
       }
     },
     watch: {
@@ -1019,5 +1028,29 @@
     margin-left: 50%;
   }
 
+  a.website{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: #fd5e53;
+  }
+
+  a.directions{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: #fd5e53;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
 
 </style>
