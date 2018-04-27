@@ -415,7 +415,27 @@ let Placequeue=[];
 
 Mealqueue.push(1);
 Mealqueue.push(2);
-for (let i = 0; i <= Mealqueue.length; i++) {
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+Mealqueue.push(2);
+let length=Mealqueue.length;
+
+
+for (let i = 0; i <= length; i++) {
   Mealqueue.pop(i);
 }
 console.log(Mealqueue);
