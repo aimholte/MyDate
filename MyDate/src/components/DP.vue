@@ -24,7 +24,7 @@
     <!--<div class="columns">-->
     <!--Active-->
     <form action = "" method="post">
-      <div id="row" class="row">
+      <div class="row">
         <div class="column left">
           <h1>Date Categories</h1>
           <div class="iconPadding">
