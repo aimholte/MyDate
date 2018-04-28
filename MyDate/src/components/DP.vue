@@ -5,12 +5,11 @@
       <div>
         <ul class="NavUl">
           <!--<img src="MDLogo.png" class="centerPic">-->
+
           <li class="Navli">  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>
           <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
           <li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png"></router-link></li>
-
         </ul>
-
 
       </div>
 
@@ -25,7 +24,7 @@
     <!--<div class="columns">-->
     <!--Active-->
     <form action = "" method="post">
-      <div class="row">
+      <div id="row" class="row">
         <div class="column left">
           <h1>Date Categories</h1>
           <div class="iconPadding">
@@ -66,7 +65,7 @@
 
 
 
-          <!--Spits out what categories you've selected-->
+        <!--Spits out what categories you've selected-->
 
 
 
@@ -89,7 +88,7 @@
           </div>
 
         </div>
-          <div class=" column middle">
+        <div class=" column middle">
           <!--Location Box-->
           <h1 class="centerdown"> Enter A Location To Search </h1>
           <input class="centerdown" type="text" id="txtPlaces" ref="autocomplete" placeholder="Enter a location" v-on:form.submit.prevent="setPosition"/>
@@ -231,6 +230,7 @@
   #DatePicker{
     color: whitesmoke ;
     background: #4F4E4C ;
+    zoom: 85%;
   }
   #checkboxes input{
     display: inline-block;
@@ -248,11 +248,6 @@
 
   #DatePicker{
     text-align: left;
-  }
-  html,body{
-    min-height: 100vh;
-    padding:0;
-    margin:0;
   }
 
   #DatePicker h3{
@@ -364,10 +359,5 @@
     left: auto;
     right: auto;
     justify-content: center;
-  }
-  #DatePicker .logo{
-    float: left;
-    width: 15%;
-    height: 5%;
   }
 </style>
