@@ -14,10 +14,10 @@
       </ul>
     </nav>
     <body>
-    <h1>
+    <h1 class="fonts">
       About
     </h1>
-    <p class="writing">
+    <p class="writing fonts">
       MyDate is a date planning app that customizes personal date ideas just for you.
 
       All you have to do is select your price and date category! MyDate was developed by four college students
@@ -93,6 +93,9 @@
 
   #about .writing{
     font-size: 20px;
+  }
+  #about .fonts{
+    font-family: Damascus;
   }
 
 </style>

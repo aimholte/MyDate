@@ -228,9 +228,13 @@
 </script>
 <style>
   #DatePicker{
-    color: whitesmoke ;
-    background: #4F4E4C ;
+    color: #4F4E4C ;
+    /*background: #4F4E4C ;*/
+  /*background: radial-gradient(circle, #fd5e53,#4F4E4C 300px);*/
+   /*background: radial-gradient(circle closest-side,#fd5e53,#4F4E4C);*/
+    background: whitesmoke;
     zoom: 85%;
+    font-family: Damascus;
   }
   #checkboxes input{
     display: inline-block;
@@ -359,5 +363,9 @@
     left: auto;
     right: auto;
     justify-content: center;
+  }
+  #DatePicker .middleColumnColor{
+    background-color: whitesmoke;
+    color: black;
   }
 </style>
