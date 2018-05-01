@@ -1,14 +1,7 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
   <div id="DatePage">
-    <!--<div>-->
-    <!--<div class="sk-wave">-->
-    <!--<div class="sk-rect sk-rect1"></div>-->
-    <!--<div class="sk-rect sk-rect2"></div>-->
-    <!--<div class="sk-rect sk-rect3"></div>-->
-    <!--<div class="sk-rect sk-rect4"></div>-->
-    <!--<div class="sk-rect sk-rect5"></div>-->
-    <!--</div>-->
+
     <br/>
 
 
@@ -185,7 +178,6 @@
         </p>
 
         <button  v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
-
       </div>
     </div>
 
@@ -977,9 +969,11 @@
   }
   #DatePage .left, .right {
     width: 513px;
+    height: 700px;
   }
   #DatePage .middle{
     width: 513px;
+    height: auto;
   }
   #DatePage .row{
     content: "";

@@ -18,7 +18,9 @@
 
           <li>
             <div class="iconPadding">
-              <input name="selector"  type="radio" id = "active" value="Active" v-model="category" v-on:click="setActive"/>
+              <!--<input name="selector"  type="radio" id = "active" value="Active" v-model="category" v-on:click="setActive"/>-->
+
+              <input type="radio" id="active" value="Active" v-model="category" v-on:click="setActive">
               <img class="icon" src="https://png.icons8.com/metro/1600/running-rabbit.png"/>
               <label for="active" class="writing">
                 Active
@@ -458,7 +460,7 @@
   #DatePicker ul li .check{
     display: block;
     position: absolute;
-    border: 5px solid #00004d;
+    border: 5px solid whitesmoke;
     border-radius: 100%;
     height: 25px;
     width: 25px;
@@ -488,7 +490,7 @@
   }
 
   #DatePicker input[type=radio]:checked ~ .check {
-    border: 5px solid #00004d;
+    border: 5px solid whitesmoke;
   }
 
   #DatePicker input[type=radio]:checked ~ .check::before{
