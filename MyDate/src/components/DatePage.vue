@@ -888,6 +888,7 @@
     color: whitesmoke ;
     background: #4F4E4C;
     min-height: 100vh;
+    zoom: 85%;
 
   }
   html,body{
