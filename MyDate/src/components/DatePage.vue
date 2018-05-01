@@ -1,25 +1,42 @@
-<template xmlns:v-on="http://www.w3.org/1999/xhtml">
+<template xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
   <div id="DatePage">
-    <br>
+    <!--<div>-->
+    <!--<div class="sk-wave">-->
+    <!--<div class="sk-rect sk-rect1"></div>-->
+    <!--<div class="sk-rect sk-rect2"></div>-->
+    <!--<div class="sk-rect sk-rect3"></div>-->
+    <!--<div class="sk-rect sk-rect4"></div>-->
+    <!--<div class="sk-rect sk-rect5"></div>-->
+    <!--</div>-->
+    <br/>
+
+
+    <!--Header-->
+
+    <!--Button to generate Dates-->
+
     <div>
       <div class="loader method2" v-if="isSearching"></div>
       <h1 v-if="searchCompleted">
-        <div>
-          <button v-if="searchCompleted" class="method1 buttonFont" v-on:click="shuffling(); doubleCheck(); sorter(); initial();scrollToDates();">Display Your Dates!</button>
-        </div>
 
+        <h2 v-if="showNew">
+          <div>
+            <button v-if="searchCompleted" class="method1 buttonFont" v-on:click="shuffling(); doubleCheck(); sorter(); initial(); scrollToDates();">Display Your Dates!</button>
+          </div>
+        </h2>
       </h1>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
     </div>
-
-
-
-
 
 
     <div>
       <transtion name="fade">
-        <button class="method1 buttonFont" v-on:click="getResult()">Search For Results!</button>
+        <button class="method1 buttonFont" v-on:click="getResult(); checkClickSearchButton();">Search For Results!</button>
       </transtion>
     </div>
 
@@ -466,40 +483,43 @@
         required: true
       }
     },
-    data(){
-      return{
+    data() {
+      return {
         Randomqueue: [],
         ButtonsVisible: false,
-        Mealqueue : [],
-        Placequeue : [],
+        Mealqueue: [],
+        Placequeue: [],
         allPlaceShown: false,
         allMealsShown: false,
-        n:0,
-        meal1 : "",
-        meal2:"",
-        meal3:"",
-        Date1Open:"",
-        Date2Open:"",
-        Date3Open:"",
-        Date1Close:"",
-        Date2Close:"",
-        Date3Close:"",
+        n: 0,
+        meal1: "",
+        meal2: "",
+        meal3: "",
+        Date1Open: "",
+        Date2Open: "",
+        Date3Open: "",
+        Date1Close: "",
+        Date2Close: "",
+        Date3Close: "",
         msg: 'Welcome to Your Vue.js App',
-        color:"red",
-        results:"",
-        parameters: {'maxBudget':4, 'minBudget':0 ,'categories':[], 'latitude':0, 'longitude':0, 'radius':24150},
+        color: "red",
+        results: "",
+        parameters: {'maxBudget': 4, 'minBudget': 0, 'categories': [], 'latitude': 0, 'longitude': 0, 'radius': 24150},
         searchCompleted: false,
+        searchButtonClickCount: 0,
+        showNew: false,
 
 
         // variables
         SP: "",
-        numbers: [0,5,10,15,20,25,30,35,40,45,50,55,60,65,75,80,85,90,95,100],
-        types: ["Active","City","Something New","Vintage"],
+        numbers: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 75, 80, 85, 90, 95, 100],
+        types: ["Active", "City", "Something New", "Vintage"],
         selectedType: "",
         isSearching: false
       }
     },
-    methods:{
+    methods: {
+
       clear: function(){
         let mealLength = this.Mealqueue.length;
         let placeLength = this.Placequeue.length;
@@ -516,172 +536,127 @@
         }
 
 
-
-      },
-      ReviewCheck: function(){
-        if(this.Date1Open.placeDetails.includes("reviews")){
-          ReviewOpen1 = true;
-        }
-        if(this.Date2Open.placeDetails.includes("reviews")){
-          ReviewOpen2=true;
-        }
-        if(this.Date3Open.placeDetails.includes("reviews")){
-          ReviewOpen3= true;
-        }
-        if(this.Date1Close.placeDetails.includes("reviews")){
-          ReviewClose1=  true;
-        }
-        if(this.Date2Close.placeDetails.includes("reviews")){
-          ReviewClose2 = true;
-        }
-        if(this.Date3Close.placeDetails.includes("reviews")){
-          ReviewClose3 = true;
-        }
-        if(this.meal1.placeDetails.includes("reviews")){
-          ReviewMeal1 = true;
-        }
-        if(this.meal2.placeDetails.includes("reviews")){
-          ReviewMeal2 = true;
-        }
-        if(this.meal3.placeDetails.includes("reviews")){
-          ReviewMeal3 = true;
-        }
-
-      },
-      myFunction: function(){
-        document.getElementById("myDropdown").classList.toggle("show");
-        window.onclick = function(event){
-          if (!event.target.matches('.dropbtn')){
-            var dropdowns = document.getElementsByClassName("dropdowncontent");
-            let i;
-            for(i =0; i< dropdowns.length;i++){
-              let openDropdown = dropdowns[i];
-              if(openDropDown.classList.contains('show')){
-                openDropDown.classList.remove('show' +
-                  '')
-              }
-            }
-          }
-        }
       },
 
 
-      NewDate1Open: function(){
+
+
+      NewDate1Open: function () {
         this.Placequeue.push(this.Date1Open);
-        let newPlace=this.Placequeue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Placequeue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allPlaceShown=true;
+          this.allPlaceShown = true;
         }
-        return this.Date1Open=newPlace;
+        return this.Date1Open = newPlace;
       },
 
-      NewMeal1: function(){
+      NewMeal1: function () {
         this.Mealqueue.push(this.meal1);
-        let newPlace=this.Mealqueue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Mealqueue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allMealsShown=true;
+          this.allMealsShown = true;
         }
-        return this.meal1=newPlace;
+        return this.meal1 = newPlace;
       },
 
-      NewDate1Close: function(){
+      NewDate1Close: function () {
         this.Placequeue.push(this.Date1Close);
-        let newPlace=this.Placequeue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Placequeue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allPlaceShown=true;
+          this.allPlaceShown = true;
         }
-        return this.Date1Close=newPlace;
+        return this.Date1Close = newPlace;
       },
 
-      NewDate2Open: function(){
+      NewDate2Open: function () {
         this.Placequeue.push(this.Date2Open);
-        let newPlace=this.Placequeue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Placequeue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allPlaceShown=true;
+          this.allPlaceShown = true;
         }
-        return this.Date2Open=newPlace;
+        return this.Date2Open = newPlace;
 
 
       },
 
-      NewMeal2: function(){
+      NewMeal2: function () {
         this.Mealqueue.push(this.meal2);
-        let newPlace=this.Mealqueue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Mealqueue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allMealsShown=true;
+          this.allMealsShown = true;
         }
-        return this.meal2=newPlace;
+        return this.meal2 = newPlace;
       },
-      NewDate2Close: function(){
+      NewDate2Close: function () {
         this.Placequeue.push(this.Date2Close);
-        let newPlace=this.Placequeue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Placequeue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allPlaceShown=true;
+          this.allPlaceShown = true;
         }
-        return this.Date2Close=newPlace;
+        return this.Date2Close = newPlace;
 
 
       },
 
-      NewDate3Open: function(){
+      NewDate3Open: function () {
         this.Placequeue.push(this.Date3Open);
-        let newPlace=this.Placequeue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Placequeue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allPlaceShown=true;
+          this.allPlaceShown = true;
         }
-        return this.Date3Open=newPlace;
+        return this.Date3Open = newPlace;
 
 
       },
-      NewMeal3: function(){
+      NewMeal3: function () {
         this.Mealqueue.push(this.meal3);
-        let newPlace=this.Mealqueue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Mealqueue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allMealsShown=true;
+          this.allMealsShown = true;
         }
-        return this.meal3=newPlace;
+        return this.meal3 = newPlace;
 
 
       },
-      NewDate3Close: function(){
+      NewDate3Close: function () {
         this.Placequeue.push(this.Date3Close);
-        let newPlace=this.Placequeue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Placequeue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allPlaceShown='true' ;
+          this.allPlaceShown = 'true';
         }
-        return this.Date3Close=newPlace;
+        return this.Date3Close = newPlace;
 
 
       },
 
-      sorter: function() {
+      sorter: function () {
         for (let i = 0; i < this.Randomqueue.length; i++) {
           let place = this.Randomqueue[i];
           if (place.placeSearch.types.includes("restaurant") || place.placeSearch.types.includes("cafe")) {
@@ -694,44 +669,39 @@
             place["showed"] = "false";
           }
         }
-        this.ButtonsVisible='true';
+        this.ButtonsVisible = 'true';
 
       },
 
 
       initial: function () {
-        this.meal1=this.Mealqueue.shift();
-        this.meal2=this.Mealqueue.shift();
-        this.meal3=this.Mealqueue.shift();
+        this.meal1 = this.Mealqueue.shift();
+        this.meal2 = this.Mealqueue.shift();
+        this.meal3 = this.Mealqueue.shift();
 
-        this.Date1Open=this.Placequeue.shift();
-        this.Date2Open=this.Placequeue.shift();
-        this.Date3Open=this.Placequeue.shift();
-        this.Date1Close=this.Placequeue.shift();
-        this.Date2Close=this.Placequeue.shift();
-        this.Date3Close=this.Placequeue.shift();
-
-
-        this.meal1.showed="true";
-        this.meal2.showed="true";
-        this.meal3.showed="true";
-
-        this.Date1Open.showed="true";
-        this.Date2Open.showed="true";
-        this.Date3Open.showed="true";
-        this.Date1Close.showed="true";
-        this.Date2Close.showed="true";
-        this.Date3Close.showed="true";
+        this.Date1Open = this.Placequeue.shift();
+        this.Date2Open = this.Placequeue.shift();
+        this.Date3Open = this.Placequeue.shift();
+        this.Date1Close = this.Placequeue.shift();
+        this.Date2Close = this.Placequeue.shift();
+        this.Date3Close = this.Placequeue.shift();
 
 
+        this.meal1.showed = "true";
+        this.meal2.showed = "true";
+        this.meal3.showed = "true";
 
+        this.Date1Open.showed = "true";
+        this.Date2Open.showed = "true";
+        this.Date3Open.showed = "true";
+        this.Date1Close.showed = "true";
+        this.Date2Close.showed = "true";
+        this.Date3Close.showed = "true";
 
-      },
-      displayReview: function(){
 
 
       },
-      shuffle: function(array) {
+      shuffle: function (array) {
         let currentIndex = array.length, temporaryValue, randomIndex;
 
         // While there remain elements to shuffle...
@@ -749,25 +719,25 @@
 
         return array;
       },
-      shuffling: function(array){
-        if(this.searchCompleted == true) {
-          this.Randomqueue=this.results
-          this.Randomqueue=this.shuffle(this.Randomqueue);
+      shuffling: function (array) {
+        if (this.searchCompleted == true) {
+          this.Randomqueue = this.results
+          this.Randomqueue = this.shuffle(this.Randomqueue);
         }
       },
-      doubleCheck: function(){
+      doubleCheck: function () {
 
         let newQueue = [];
         let idlist = [];
 
-        for (let i = 0; i < this.Randomqueue.length;  i++){
+        for (let i = 0; i < this.Randomqueue.length; i++) {
           let id = this.Randomqueue[i].placeSearch.name;
           console.log(id);
-          if (idlist.includes(id)){
+          if (idlist.includes(id)) {
             let joshBeard = "cool";
             console.log("False");
           }
-          else{
+          else {
             newQueue.push(this.Randomqueue[i]);
             idlist.push(id);
             console.log("True");
@@ -776,25 +746,23 @@
         }
         this.Randomqueue = newQueue;
       },
-      filler: function(){
+      filler: function () {
 
         console.log("Hello Humans");
-        this.Randomqueue=this.results;
+        this.Randomqueue = this.results;
         console.log("Goodbye Humans");
 
       },
 
-      queueFunctions: function(array){
+      queueFunctions: function (array) {
         shuffling(array);
         sorter;
         this.initial;
       },
       async getResult() {
         this.results = "";
-        this.isSearching = true;
-        if(this.searchCompleted == true) {
-          this.searchCompleted = false;
-        }
+//so we can push
+
         function formatResultDetailSearch(result) {
           var r = {};
           r['phoneNumber'] = result.formatted_phone_number;
@@ -835,97 +803,119 @@
         }
 
 
-        for (let h = 0; h < this.parameters.categories.length; h++) {
-          let searchstring = "";
-          console.log(this.parameters.categories[h]);
-
-          if((this.parameters.categories[h] == "restaurant") == true) {
-            console.log('using price parameter');
-            searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&minprice=" + (this.parameters.minBudget) + "&maxprice=" + this.parameters.maxBudget + "&key=" + API_KEY;
-          }
-          else {
-            console.log('not using price parameter');
-            searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&key=" + API_KEY;
-          }
-          console.log(searchstring);
-          let raw = await axios.get(searchstring);
-          console.log(raw.data.status);
-          if (raw.data.status !== 'ZERO_RESULTS') {
-            let data = raw.data.results;
-            let cleandata = [];
-            for (let j = 0; j < data.length; j++) {
-              let dict = {};
-              let detail = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[j].place_id + "&key=" + API_KEY);
-              let detaildata = detail.data.result;
-              if(!('reviews' in detaildata) == true) {
-                detaildata['reviews'] = [{'text':'No review to display.'}]
-              }
-              dict['placeSearch'] = formatResult(data[j]);
-              dict['placeDetails'] = detaildata;
-              if(cleandata.includes(Object(dict)) == false) {
-                cleandata[j] = dict;
-                console.log(cleandata[j]);
-              }
-              else{
-                console.log('duplicate found');
-              }
+        if (this.parameters.categories.length == 0 || this.parameters.latitude == 0 || this.parameters.longitude == 0) {
+          alert('You did not pick all the necessary parameters. Please try again.')
+        } else {
+          if (this.isSearching == false) {
+            this.isSearching = true;
+            if (this.searchCompleted == true) {
+              this.searchCompleted = false;
             }
+            for (let h = 0; h < this.parameters.categories.length; h++) {
+              let searchstring = "";
+              console.log(this.parameters.categories[h]);
 
-            if (Array.isArray(this.results) == true) {
-              for (let o = 0; o < cleandata.length; o++) {
-                if(this.results.includes(Object(cleandata[o])) == false) {
-                  this.results.push(cleandata[o]);
+              if ((this.parameters.categories[h] == "restaurant") == true) {
+                console.log('using price parameter');
+                searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&minprice=" + (this.parameters.minBudget) + "&maxprice=" + this.parameters.maxBudget + "&key=" + API_KEY;
+              }
+              else {
+                console.log('not using price parameter');
+                searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&key=" + API_KEY;
+              }
+              console.log(searchstring);
+              let raw = await axios.get(searchstring);
+              console.log(raw.data.status);
+              if (raw.data.status !== 'ZERO_RESULTS') {
+                let data = raw.data.results;
+                let cleandata = [];
+                for (let j = 0; j < data.length; j++) {
+                  let dict = {};
+                  let detail = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[j].place_id + "&key=" + API_KEY);
+                  let detaildata = detail.data.result;
+                  if (!('reviews' in detaildata) == true) {
+                    detaildata['reviews'] = [{'text': 'No review to display.'}]
+                  }
+                  dict['placeSearch'] = formatResult(data[j]);
+                  dict['placeDetails'] = detaildata;
+                  if (cleandata.includes(Object(dict)) == false) {
+                    cleandata[j] = dict;
+                    console.log(cleandata[j]);
+                  }
+                  else {
+                    console.log('duplicate found');
+                  }
+                }
+
+                if (Array.isArray(this.results) == true) {
+                  for (let o = 0; o < cleandata.length; o++) {
+                    if (this.results.includes(Object(cleandata[o])) == false) {
+                      this.results.push(cleandata[o]);
+                    }
+                    else {
+                      console.log('duplicate found');
+                    }
+                  }
                 }
                 else {
-                  console.log('duplicate found');
+                  this.results = cleandata;
                 }
               }
             }
-            else {
-              this.results = cleandata;
+            this.isSearching = false;
+            this.searchCompleted = true;
+            if (this.results !== "" && this.results.length >= 9){
+              this.showNew = true;
             }
+            else{
+              alert("Your search did not return enough results. Please try again.")
+            }
+          } else {
+            alert('You are already searching. Please wait until the search is completed to run another search.')
           }
         }
-        this.searchCompleted  = true;
-        this.isSearching = false;
       },
-      scrollToDates: _.debounce(function() {
-        document.getElementById( 'testy' ).scrollIntoView();
-      }, 500)
+      scrollToDates: _.debounce(function () {
+        document.getElementById('testy').scrollIntoView();
+      }, 500),
+      checkClickSearchButton: function () {
+        this.searchButtonClickCount = this.searchButtonClickCount + 1;
+        if(this.searchButtonClickCount > 1) {
+        }
+      }
     },
     watch: {
-      budget:function() {
+      budget: function () {
         console.log('data updated.');
         console.log(this.budget);
         this.parameters['budget'] = this.budget;
         //Will add more api stuff here
       },
-      categorytypes: function() {
+      categorytypes: function () {
         console.log('data updated.');
         console.log(this.categorytypes);
         this.parameters['categories'] = this.categorytypes;
         //Will add more api stuff here
       },
-      latitude:function() {
+      latitude: function () {
         console.log('data updated.');
         this.parameters['latitude'] = this.latitude;
       },
-      longitude:function() {
+      longitude: function () {
         console.log('data updated.');
         this.parameters['longitude'] = this.longitude;
       },
-      radius: function() {
+      radius: function () {
         this.parameters['radius'] = this.radius;
       },
-      maxBudget: function() {
+      maxBudget: function () {
         this.parameters['maxBudget'] = this.maxBudget;
       },
-      minBudget: function() {
+      minBudget: function () {
         this.parameters['minBudget'] = this.minBudget;
       }
 
     }
-
 
   }
 </script>
@@ -1033,7 +1023,7 @@
   #DatePage .loader {
     position: absolute;
     border: 16px solid #f3f3f3;
-    left: -45px;
+    left: -50px;
     border-radius: 50%;
     border-top: 16px solid #fd5e53;
     width: 40px;
