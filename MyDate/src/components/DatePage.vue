@@ -19,18 +19,19 @@
     <div>
       <div class="loader method2" v-if="isSearching"></div>
       <h1 v-if="searchCompleted">
-        <div>
-          <button v-if="searchCompleted" class="method1 buttonFont" v-on:click="shuffling(); doubleCheck(); sorter(); initial(); scrollToDates();">Display Your Dates!</button>
-        </div>
 
+        <h2 v-if="showNew">
+          <div>
+            <button v-if="searchCompleted" class="method1 buttonFont" v-on:click="shuffling(); doubleCheck(); sorter(); initial(); scrollToDates();">Display Your Dates!</button>
+          </div>
+        </h2>
       </h1>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
     </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
 
     <div>
@@ -505,6 +506,7 @@
         parameters: {'maxBudget': 4, 'minBudget': 0, 'categories': [], 'latitude': 0, 'longitude': 0, 'radius': 24150},
         searchCompleted: false,
         searchButtonClickCount: 0,
+        showNew: false,
 
 
         // variables
@@ -837,6 +839,12 @@
             }
             this.isSearching = false;
             this.searchCompleted = true;
+            if (this.results !== "" && this.results.length >= 9){
+              this.showNew = true;
+            }
+            else{
+              alert("Your search did not return enough results. Please try again.")
+            }
           } else {
             alert('You are already searching. Please wait until the search is completed to run another search.')
           }
@@ -982,7 +990,7 @@
   #DatePage .loader {
     position: absolute;
     border: 16px solid #f3f3f3;
-    left: -45px;
+    left: -50px;
     border-radius: 50%;
     border-top: 16px solid #fd5e53;
     width: 50px;
