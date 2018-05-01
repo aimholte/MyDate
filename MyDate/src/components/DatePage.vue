@@ -837,6 +837,9 @@
               let dict = {};
               let detail = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[j].place_id + "&key=" + API_KEY);
               let detaildata = detail.data.result;
+              if(!('reviews' in detaildata) == true) {
+                detaildata['reviews'] = [{'text':'No review to display.'}]
+              }
               dict['placeSearch'] = formatResult(data[j]);
               dict['placeDetails'] = detaildata;
               if(cleandata.includes(Object(dict)) == false) {
@@ -866,9 +869,9 @@
         this.searchCompleted  = true;
         this.isSearching = false;
       },
-      scrollToDates: function() {
+      scrollToDates: _.debounce(function() {
         document.getElementById( 'testy' ).scrollIntoView();
-      }
+      }, 500)
     },
     watch: {
       budget:function() {
