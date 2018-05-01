@@ -19,12 +19,15 @@
     <div>
       <div class="loader method2" v-if="isSearching"></div>
       <h1 v-if="searchCompleted">
-        <div>
-          <button v-if="searchCompleted" class="method1 buttonFont" v-on:click="shuffling(); doubleCheck(); sorter(); initial(); scrollToDates();">Display Your Dates!</button>
-        </div>
 
+        <h2 v-if="Shownew">
+          <div>
+            <button v-if="searchCompleted" class="method1 buttonFont" v-on:click="shuffling(); doubleCheck(); sorter(); initial(); scrollToDates();">Display Your Dates!</button>
+          </div>
+        </h2>
       </h1>
     </div>
+
 
     <br>
     <br>
@@ -776,80 +779,78 @@
         }
 
 
-        if (this.parameters.categories.length == 0 || this.parameters.latitude == 0 || this.parameters.longitude == 0) {
-          alert('You did not pick all the necessary parameters. Please try again.')
-        } else {
-          if (this.isSearching == false) {
-            this.isSearching = true;
-            if (this.searchCompleted == true) {
-              this.searchCompleted = false;
+        for (let h = 0; h < this.parameters.categories.length; h++) {
+          let searchstring = "";
+          console.log(this.parameters.categories[h]);
+
+          if((this.parameters.categories[h] == "restaurant") == true) {
+            console.log('using price parameter');
+            searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&minprice=" + (this.parameters.minBudget) + "&maxprice=" + this.parameters.maxBudget + "&key=" + API_KEY;
+          }
+          else {
+            console.log('not using price parameter');
+            searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&key=" + API_KEY;
+          }
+          console.log(searchstring);
+          let raw = await axios.get(searchstring);
+          console.log(raw.data.status);
+          if (raw.data.status !== 'ZERO_RESULTS') {
+            let data = raw.data.results;
+            let cleandata = [];
+            for (let j = 0; j < data.length; j++) {
+              let dict = {};
+              let detail = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[j].place_id + "&key=" + API_KEY);
+              let detaildata = detail.data.result;
+              if(!('reviews' in detaildata) == true) {
+                detaildata['reviews'] = [{'text':'No review to display.'}]
+              }
+              dict['placeSearch'] = formatResult(data[j]);
+              dict['placeDetails'] = detaildata;
+              if(cleandata.includes(Object(dict)) == false) {
+                cleandata[j] = dict;
+                console.log(cleandata[j]);
+              }
+              else{
+                console.log('duplicate found');
+              }
             }
-            for (let h = 0; h < this.parameters.categories.length; h++) {
-              let searchstring = "";
-              console.log(this.parameters.categories[h]);
 
-              if ((this.parameters.categories[h] == "restaurant") == true) {
-                console.log('using price parameter');
-                searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&minprice=" + (this.parameters.minBudget) + "&maxprice=" + this.parameters.maxBudget + "&key=" + API_KEY;
-              }
-              else {
-                console.log('not using price parameter');
-                searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&key=" + API_KEY;
-              }
-              console.log(searchstring);
-              let raw = await axios.get(searchstring);
-              console.log(raw.data.status);
-              if (raw.data.status !== 'ZERO_RESULTS') {
-                let data = raw.data.results;
-                let cleandata = [];
-                for (let j = 0; j < data.length; j++) {
-                  let dict = {};
-                  let detail = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[j].place_id + "&key=" + API_KEY);
-                  let detaildata = detail.data.result;
-                  if (!('reviews' in detaildata) == true) {
-                    detaildata['reviews'] = [{'text': 'No review to display.'}]
-                  }
-                  dict['placeSearch'] = formatResult(data[j]);
-                  dict['placeDetails'] = detaildata;
-                  if (cleandata.includes(Object(dict)) == false) {
-                    cleandata[j] = dict;
-                    console.log(cleandata[j]);
-                  }
-                  else {
-                    console.log('duplicate found');
-                  }
-                }
-
-                if (Array.isArray(this.results) == true) {
-                  for (let o = 0; o < cleandata.length; o++) {
-                    if (this.results.includes(Object(cleandata[o])) == false) {
-                      this.results.push(cleandata[o]);
-                    }
-                    else {
-                      console.log('duplicate found');
-                    }
-                  }
+            if (Array.isArray(this.results) == true) {
+              for (let o = 0; o < cleandata.length; o++) {
+                if(this.results.includes(Object(cleandata[o])) == false) {
+                  this.results.push(cleandata[o]);
                 }
                 else {
-                  this.results = cleandata;
+                  console.log('duplicate found');
                 }
               }
             }
-            this.isSearching = false;
-            this.searchCompleted = true;
-          } else {
-            alert('You are already searching. Please wait until the search is completed to run another search.')
+            else {
+              this.results = cleandata;
+            }
           }
         }
-      },
-      scrollToDates: _.debounce(function () {
-        document.getElementById('testy').scrollIntoView();
-      }, 500),
-      checkClickSearchButton: function () {
-        this.searchButtonClickCount = this.searchButtonClickCount + 1;
-        if(this.searchButtonClickCount > 1) {
+        this.searchCompleted  = true;
+        this.isSearching = false;
+        if (this.results !== "" && this.results.length >= 9){
+          this.Shownew = true;
         }
-      }
+        else{
+          alert("Your search did not return enough results :'(")
+        }
+
+      },
+      scrollToDates: _.debounce(function() {
+        document.getElementById( 'testy' ).scrollIntoView();
+      }, 500),
+      // checkLength: function () {
+      //   if (this.results !== "" && this.results.length >= 9){
+      //     this.Shownew = true;
+      //   }
+      //   else{
+      //     alert("Your search did not return enough results :'(")
+      //   }
+      // }
     },
     watch: {
       budget: function () {
