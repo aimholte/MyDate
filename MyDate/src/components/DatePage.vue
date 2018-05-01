@@ -32,7 +32,21 @@
       </h1>
     </div>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
+
+    <div>
+      <transtion name="fade">
+        <button class="method1 buttonFont" v-on:click="getResult()">Search For Results!</button>
+      </transtion>
+    </div>
+
+    <br>
+    <br>
 
 
     <div v-if='allPlaceShown'>
@@ -43,21 +57,21 @@
       <label>All meals have been shown.</label>
     </div>
     <h1 class="center " v-if="ButtonsVisible">
-        Scroll To See Your Three Date Options:
+      Scroll To See Your Three Date Options:
     </h1>
 
-      <!--Date Box 1-->
+    <!--Date Box 1-->
     <!--Row 1-->
-    <div id="Date1" class="row" v-if="ButtonsVisible">
-      <h1  v-if="ButtonsVisible">
+    <div id="testy" class="row" v-if="ButtonsVisible">
+      <h1 class="dateTitle" v-if="ButtonsVisible">
         Date 1
       </h1>
 
-      <div class="left column border">
+      <div id="lefty" class="left column border">
         <!--Date Opener-->
         <div v-if="ButtonsVisible">
-          <h2>
-             1st Activity
+          <h2 class="activityTitle">
+            1st Activity
           </h2>
           <!--Date Opener-->
           <p class="biggerFont">
@@ -76,7 +90,7 @@
             <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
             {{Date1Open.placeDetails.formatted_phone_number}} <br>
           </p>
-          <p >
+          <p>
             <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
             {{Date1Open.placeDetails.rating}}<br>
           </p>
@@ -93,15 +107,15 @@
         </div>
       </div>
       <div class="column middle">
-        <h2>
+        <h2 class="activityTitle">
           Meal
         </h2>
 
         <p v-if="ButtonsVisible">
           <!--Date name-->
-          <p class="biggerFont">
-              {{meal1.placeSearch.name}}
-          </p>
+        <p class="biggerFont">
+          {{meal1.placeSearch.name}}
+        </p>
         <p>
           <!--Date location-->
           <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
@@ -132,12 +146,12 @@
           "{{meal1.placeDetails.reviews[0].text}}"
         </p>
 
-          <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
+        <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
 
       </div>
 
       <div class="column right">
-        <h2>
+        <h2 class="activityTitle">
           2nd Activity
         </h2>
         <p v-if="ButtonsVisible" class="biggerFont">
@@ -173,7 +187,7 @@
           "{{Date1Close.placeDetails.reviews[0].text}}" <br>
         </p>
 
-          <button  v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
+        <button  v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
 
       </div>
     </div>
@@ -188,19 +202,19 @@
           <!--&lt;!&ndash;{{Date1Open.placeDetails.opening_hours.}}<br>&ndash;&gt;-->
         <!--</p>-->
 
-        <!--Date 2-->
+    <!--Date 2-->
     <div v-if="ButtonsVisible" class="row colorDateTwo">
-      <h1>
+      <h1 class="dateTitle">
         Date 2
       </h1>
-        <div class="column left">
-          <h2>
-            1st Activity
-          </h2>
+      <div class="column left">
+        <h2 class="activityTitle">
+          1st Activity
+        </h2>
 
-          <!--Date 2 Opener-->
-          <p class="biggerFont">
-            {{Date2Open.placeSearch.name}}
+        <!--Date 2 Opener-->
+        <p class="biggerFont">
+          {{Date2Open.placeSearch.name}}
 
           </p>
           <p>
@@ -228,9 +242,9 @@
             "{{Date2Open.placeDetails.reviews[0].text}}"
           </p>
 
-            <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
+        <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
 
-        </div>
+      </div>
 
         <div class="column middle colorDateTwo">
           <h2>
@@ -265,9 +279,9 @@
             "{{meal2.placeDetails.reviews[0].text}}"
           </p>
 
-            <button  v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Meal</button>
+        <button  v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Meal</button>
 
-        </div>
+      </div>
 
         <div class="column right colorDateTwo">
           <h2>
@@ -302,20 +316,20 @@
             "{{Date2Close.placeDetails.reviews[0].text}}"
           </p>
 
-            <button  v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
+        <button  v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
 
-        </div>
+      </div>
     </div>
 
         <!--Date 3 Opener-->
     <div  v-if="ButtonsVisible" class="row">
-      <h1 v-if="ButtonsVisible">
+      <h1 class="dateTitle" v-if="ButtonsVisible">
         Date 3
       </h1>
-        <div class="column left">
-          <h2>
-            1st Activity
-          </h2>
+      <div class="column left">
+        <h2 class="activityTitle">
+          1st Activity
+        </h2>
 
           <p class="biggerFont">
             {{Date3Open.placeSearch.name}}
@@ -345,9 +359,9 @@
             "{{Date3Open.placeDetails.reviews[0].text}}"
           </p>
 
-            <button v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
+        <button v-if="ButtonsVisible" v-on:click="NewDate3Open()">Find New Place</button>
 
-        </div>
+      </div>
 
         <div class="column middle">
           <h2>
@@ -382,10 +396,10 @@
             "{{meal3.placeDetails.reviews[0].text}}"<br>
           </p>
 
-            <button v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Meal</button>
-            <!--Date Box 1-->
+        <button v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Meal</button>
+        <!--Date Box 1-->
 
-        </div>
+      </div>
 
         <div class="column right">
           <h2>
@@ -939,7 +953,7 @@
         this.isSearching = false;
       },
       scrollToDates: function() {
-        document.getElementById( 'Date1' ).scrollIntoView();
+        document.getElementById( 'testy' ).scrollIntoView();
       }
     },
     watch: {
@@ -1018,8 +1032,8 @@
     margin-bottom: 0px;
   }
   #DatePage h3{
-      float: left;
-      margin: 0;
+    float: left;
+    margin: 0;
   }
 
   #DatePage .border{
@@ -1080,11 +1094,12 @@
 
   #DatePage .loader {
     position: absolute;
-    border: 8px solid #f3f3f3;
+    border: 16px solid #f3f3f3;
+    left: -45px;
     border-radius: 50%;
-    border-top: 8px solid #fd5e53;
-    width: 40px;
-    height: 40px;
+    border-top: 16px solid #fd5e53;
+    width: 50px;
+    height: 50px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
   }
@@ -1109,6 +1124,7 @@
   }
   #DatePage .biggerFont{
     font-size: 30px;
+    font-family: Apple Chancery, cursive
   }
 
   #DatePage .directions , #DatePage .website{
@@ -1166,6 +1182,17 @@
   }
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
+  }
+
+  .activityTitle{
+    font-family: Apple Chancery, cursive;
+    font-size: 35px;
+  }
+
+  .dateTitle{
+    font-family: Apple Chancery, cursive;
+    font-size: 45px;
+    font-weight: bold;
   }
 
 </style>
