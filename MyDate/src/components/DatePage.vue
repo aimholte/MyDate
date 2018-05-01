@@ -736,7 +736,7 @@
       },
       async getResult() {
         this.results = "";
-
+//so we can push
 
         function formatResultDetailSearch(result) {
           var r = {};
