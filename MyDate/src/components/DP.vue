@@ -1,19 +1,6 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml">
   <div id ="DatePicker">
-    <nav class="navBar">
-      <!--Router links to home, about, and date picker page-->
-      <div>
-        <ul class="NavUl">
-          <!--<img src="MDLogo.png" class="centerPic">-->
 
-          <li class="Navli">  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>
-          <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
-          <li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png"></router-link></li>
-        </ul>
-
-      </div>
-
-    </nav>
     <!--Header-->
     <br>
 
@@ -25,36 +12,63 @@
     <!--Active-->
     <form action = "" method="post">
       <div class="row">
-        <div class="column left">
+        <div class="column container  left">
           <h1>Date Categories</h1>
-          <div class="iconPadding">
-            <img class="icon" src="https://png.icons8.com/metro/1600/running-rabbit.png"/>
-            <label class="writing">
-              Active
-              <input  type="radio" id = "active" value="Active" v-model="category" v-on:click="setActive"/>
-            </label>
-          </div>
-          <div class="iconPadding">
-            <!--City-->
-            <img class="icon" src="https://png.icons8.com/metro/1600/building.png"/>
-            <label class="writing iconPadding" >City
-              <input type="radio" id="city" value="City" v-model="category" v-on:click="setCity"/>
-            </label>
-          </div>
-          <div class="iconPadding">
-            <!--SomethingNew-->
-            <img class="icon" src="http://cdn.onlinewebfonts.com/svg/img_453906.png"/>
-            <label class="writing">Something New
-              <input type="radio" value="Something New" v-model="category" v-on:click="setSomethingNew"/>
-            </label>
-          </div>
-          <div class="iconPadding">
-            <!--Vintage-->
-            <img class="icon" src="https://image.flaticon.com/icons/png/512/57/57894.png"/>
-            <label class="writing">Vintage
-              <input type="radio" value="Vintage" v-model="category" v-on:click="setVintage">
-            </label>
-          </div>
+          <ul>
+
+          <li>
+            <div class="iconPadding">
+              <input name="selector"  type="radio" id = "active" value="Active" v-model="category" v-on:click="setActive"/>
+              <img class="icon" src="https://png.icons8.com/metro/1600/running-rabbit.png"/>
+              <label for="active" class="writing">
+                Active
+              </label>
+            </div>
+            <div class="check"></div>
+          </li>
+
+            <li>
+              <div class="iconPadding">
+                <!--City-->
+                <input name="selector" type="radio" id="city" value="City" v-model="category" v-on:click="setCity"/>
+                <img class="icon" src="https://png.icons8.com/metro/1600/building.png"/>
+                <label for="city" class="writing iconPadding" >City
+                </label>
+              </div>
+              <div class="check"></div>
+              <div class="inside"></div>
+            </li>
+
+            <li>
+              <div class="iconPadding">
+                <!--SomethingNew-->
+
+                <input name="selector" id="somethingNew" type="radio" value="Something New" v-model="category" v-on:click="setSomethingNew"/>
+                <img class="icon" src="http://cdn.onlinewebfonts.com/svg/img_453906.png"/>
+
+                <label for="somethingNew" class="writing">Something New
+                </label>
+              </div>
+              <div class="check"></div>
+              <div class="inside"></div>
+            </li>
+
+            <li>
+              <div class="iconPadding">
+                <!--Vintage-->
+                <input id="vintage" type="radio" value="Vintage" v-model="category" v-on:click="setVintage">
+                <img class="icon" src="https://image.flaticon.com/icons/png/512/57/57894.png"/>
+
+                <label  for="vintage" class="writing">Vintage
+                </label>
+              </div>
+              <div class="check"></div>
+              <div class="inside"></div>
+            </li>
+
+
+
+          </ul>
         </div>
         <!--<span class="selection">You've Selected:</span>-->
         <!--<p class="centerup writing">Category: {{category}}</p>-->
@@ -70,33 +84,50 @@
 
 
 
-        <div class="column right">
-          <div class="centerdown">
+        <div class="column  borderLeft right">
+          <!--<div class="centerdown">-->
 
-          </div>
+          <!--</div>-->
+          <br>
+          <br>
+          <br>
+
           <h1 class="centerTex">Select A Price</h1>
-          <label class="centerup biggerFont "> Select the Most You Would Want to Spend</label>
-          <select  class="centerup center" v-model="maxAmount" v-on:click="setMaxBudget(); setMinimum()">
+          <label class="centerup biggerFont "> Max Spend:</label> <br>
+          <select  class="centerup custom-select center" v-model="maxAmount" v-on:click="setMaxBudget(); setMinimum()">
             <option class="centerup"  v-for="num in numbers">{{num}}</option>
           </select>
           <div>
+            <br>
 
-            <label class="centerup biggerFont">Minimum You Want to Spend</label>
-            <select class="centerup" v-model="minAmount" v-on:click="setMinBudget">
+            <label class="centerup biggerFont">Min Spend:</label><br>
+            <select class="centerup custom-select" v-model="minAmount" v-on:click="setMinBudget">
               <option class="centerup" v-for="num in minnumbers">{{num}}</option>
             </select>
           </div>
 
         </div>
-        <div class=" column middle">
+
+
+
+        <div class=" column borderLeft  middle">
+          <br>
+          <br>
+          <br>
           <!--Location Box-->
+
           <h1 class="centerdown"> Enter A Location To Search </h1>
-          <input class="centerdown" type="text" id="txtPlaces" ref="autocomplete" placeholder="Enter a location" v-on:form.submit.prevent="setPosition"/>
+          <input class="centerdown locationBar" type="text" id="txtPlaces" ref="autocomplete" placeholder="Enter a location" v-on:form.submit.prevent="setPosition"/>
+          <br>
+          <p class="center biggerFont">
+            Or
+          </p>
+          <br>
           <button class="currentLocation" v-on:click.prevent="useCurrentLocation"> <b>Use Your Current Location</b></button>
           <br>
           <br>
           <div class="selectDistance">
-            <h1>Miles You Are Willing to Travel:</h1>
+            <h1>Miles Willing to Travel:</h1>
             <input type="range" min="1" max="30" value="15" class="slider" id="myRange" v-model="miles">
             <span class="centerup"><b>{{miles}} miles</b></span>
           </div>
@@ -234,7 +265,7 @@
    /*background: radial-gradient(circle closest-side,#fd5e53,#4F4E4C);*/
     background: whitesmoke;
     zoom: 85%;
-    font-family: Damascus;
+    font-family: mpact, Charcoal, sans-serif;
   }
   #checkboxes input{
     display: inline-block;
@@ -285,12 +316,15 @@
   }
   #DatePicker .left {
     width: 450px;
+    height: 550px;
   }
   #DatePicker .right{
     width: 450px;
+    height: 550px;
   }
   #DatePicker .middle{
     width: 450px;
+    height: 550px;
   }
   #DatePicker .row{
     content: "";
@@ -306,7 +340,8 @@
     font-weight: bold;
   }
   #DatePicker .writing{
-    font-size: 18px;
+    font-size: 24px;
+    font-weight: bold;
   }
   #DatePicker ul{
     list-style-type: none;
@@ -368,4 +403,466 @@
     background-color: whitesmoke;
     color: black;
   }
+  .catBackG{
+    background-image: url("https://thumbs.dreamstime.com/b/online-store-product-categories-icons-linear-monotone-vector-goods-gray-image-white-background-62391398.jpg");
+  }
+  #DatePicker input[type=radio]:checked ~ .check {
+    border: 5px solid #fd5e53;
+  }
+
+  #DatePicker input[type=radio]:checked ~ .check::before{
+    background: #fd5e53;
+  }
+
+  #DatePicker input[type=radio]:checked ~ label{
+    color: #fd5e53;
+  }
+
+  #DatePicker .container ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+  }
+  #DatePicker ul li{
+    color: #00004d;
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid #333;
+  }
+  #DatePicker ul li input[type=radio]{
+    position: absolute;
+    visibility: hidden;
+  }
+
+  #DatePicker ul li label{
+    display: block;
+    position: relative;
+    font-weight: 300;
+    font-size: 1.35em;
+    padding: 25px 25px 25px 80px;
+    margin: 10px auto;
+    height: 30px;
+    z-index: 9;
+    cursor: pointer;
+    -webkit-transition: all 0.25s linear;
+  }
+
+  #DatePicker ul li:hover label{
+    color: #fd5e53;
+  }
+
+  #DatePicker ul li .check{
+    display: block;
+    position: absolute;
+    border: 5px solid #00004d;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    top: 30px;
+    left: 20px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+  }
+
+  #DatePicker ul li:hover .check {
+    border: 5px solid #fd5e53 ;
+  }
+
+  #DatePicker ul li .check::before {
+    display: block;
+    position: absolute;
+    content: '';
+    border-radius: 100%;
+    height: 15px;
+    width: 15px;
+    top: 5px;
+    left: 5px;
+    margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+  }
+
+  #DatePicker input[type=radio]:checked ~ .check {
+    border: 5px solid #00004d;
+  }
+
+  #DatePicker input[type=radio]:checked ~ .check::before{
+    background: #00004d;
+  }
+
+  #DatePicker input[type=radio]:checked ~ label{
+    color: #fd5e53 ;
+  }
+
+  .signature {
+    margin: 10px auto;
+    padding: 10px 0;
+    width: 100%;
+  }
+
+  #DatePicker .signature p{
+    text-align: center;
+    font-family: Helvetica, Arial, Sans-Serif;
+    font-size: 0.85em;
+    color: #fd5e53;
+  }
+
+
+
+  #DatePicker .signature a {
+    color:yellow ;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  #DatePicker .container{
+    display: block;
+    position: relative;
+    margin: 40px auto;
+    height: auto;
+    width: 500px;
+    padding: 20px;
+  }
+  .custom-select {
+    position: relative;
+    font-family: Arial;
+    background-color: #fd5e53  ;
+    width: 300px;
+    height: 50px;
+    font-size: 30px;
+
+
+  }
+  .custom-select select {
+    display: none; /*hide original SELECT element:*/
+  }
+  .select-selected {
+    background-color: #fd5e53;
+  }
+  /*style the arrow inside the select element:*/
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fd5e53 transparent transparent transparent;
+  }
+  /*point the arrow upwards when the select box is open (active):*/
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fd5e53 transparent;
+    top: 7px;
+  }
+  /*style the items (options), including the selected item:*/
+  .select-items div,.select-selected {
+    color: #fd5e53;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+  }
+  /*style items (options):*/
+  .select-items {
+    position: absolute;
+    background-color: #fd5e53;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+  /*hide the items when the select box is closed:*/
+  .select-hide {
+    display: none;
+  }
+  .select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  #DatePicker input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 10.8px 0;
+  }
+  #DatePicker input[type=range]:focus {
+    outline: none;
+  }
+  #DatePicker input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #00004d;
+    border-radius: 8px;
+    border: 0.2px solid #010101;
+  }
+  #DatePicker input[type=range]::-webkit-slider-thumb {
+    box-shadow: 4.1px 4.1px 2.7px #000000, 0px 0px 4.1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 30px;
+    width: 16px;
+    border-radius: 10px;
+    background: #fd5e53;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -11px;
+  }
+  #DatePicker input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #00008f;
+  }
+  #DatePicker input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #00004d;
+    border-radius: 8px;
+    border: 0.2px solid #010101;
+  }
+  #DatePicker input[type=range]::-moz-range-thumb {
+    box-shadow: 4.1px 4.1px 2.7px #000000, 0px 0px 4.1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 30px;
+    width: 16px;
+    border-radius: 10px;
+    background: #fd5e53;
+    cursor: pointer;
+  }
+  #DatePicker input[type=range]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  #DatePicker input[type=range]::-ms-fill-lower {
+    background: #00000b;
+    border: 0.2px solid #010101;
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  #DatePicker input[type=range]::-ms-fill-upper {
+    background: #00004d;
+    border: 0.2px solid #010101;
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  #DatePicker input[type=range]::-ms-thumb {
+    box-shadow: 4.1px 4.1px 2.7px #000000, 0px 0px 4.1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 30px;
+    width: 16px;
+    border-radius: 10px;
+    background: #fd5e53;
+    cursor: pointer;
+    height: 8.4px;
+  }
+  #DatePicker input[type=range]:focus::-ms-fill-lower {
+    background: #00004d;
+  }
+  #DatePicker input[type=range]:focus::-ms-fill-upper {
+    background: #00008f;
+  }
+  #DatePicker input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 10.8px 0;
+  }
+  #DatePicker input[type=range]:focus {
+    outline: none;
+  }
+  #DatePicker input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #00004d;
+    border-radius: 8px;
+    border: 0.2px solid #010101;
+  }
+  #DatePicker input[type=range]::-webkit-slider-thumb {
+    box-shadow: 4.1px 4.1px 2.7px #000000, 0px 0px 4.1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 30px;
+    width: 16px;
+    border-radius: 10px;
+    background: #fd5e53;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -11px;
+  }
+  #DatePicker input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #00008f;
+  }
+  #DatePicker input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #00004d;
+    border-radius: 8px;
+    border: 0.2px solid #010101;
+  }
+  #DatePicker input[type=range]::-moz-range-thumb {
+    box-shadow: 4.1px 4.1px 2.7px #000000, 0px 0px 4.1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 30px;
+    width: 16px;
+    border-radius: 10px;
+    background: #fd5e53;
+    cursor: pointer;
+  }
+  #DatePicker input[type=range]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  #DatePicker input[type=range]::-ms-fill-lower {
+    background: #00000b;
+    border: 0.2px solid #010101;
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  #DatePicker input[type=range]::-ms-fill-upper {
+    background: #00004d;
+    border: 0.2px solid #010101;
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  #DatePicker input[type=range]::-ms-thumb {
+    box-shadow: 4.1px 4.1px 2.7px #000000, 0px 0px 4.1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 30px;
+    width: 16px;
+    border-radius: 10px;
+    background: #fd5e53;
+    cursor: pointer;
+    height: 8.4px;
+  }
+  #DatePicker input[type=range]:focus::-ms-fill-lower {
+    background: #00004d;
+  }
+  #DatePicker input[type=range]:focus::-ms-fill-upper {
+    background: #00008f;
+  }
+  #DatePicker input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 10.8px 0;
+  }
+  #DatePicker input[type=range]:focus {
+    outline: none;
+  }
+  #DatePicker input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #00004d;
+    border-radius: 8px;
+    border: 0.2px solid #010101;
+  }
+  #DatePicker input[type=range]::-webkit-slider-thumb {
+    box-shadow: 4.1px 4.1px 2.7px #000000, 0px 0px 4.1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 30px;
+    width: 16px;
+    border-radius: 10px;
+    background: #fd5e53;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -11px;
+  }
+  #DatePicker input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #00008f;
+  }
+  #DatePicker input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #00004d;
+    border-radius: 8px;
+    border: 0.2px solid #010101;
+  }
+  #DatePicker input[type=range]::-moz-range-thumb {
+    box-shadow: 4.1px 4.1px 2.7px #000000, 0px 0px 4.1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 30px;
+    width: 16px;
+    border-radius: 10px;
+    background: #fd5e53;
+    cursor: pointer;
+  }
+  #DatePicker input[type=range]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  #DatePicker input[type=range]::-ms-fill-lower {
+    background: #00000b;
+    border: 0.2px solid #010101;
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  #DatePicker input[type=range]::-ms-fill-upper {
+    background: #00004d;
+    border: 0.2px solid #010101;
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  #DatePicker input[type=range]::-ms-thumb {
+    box-shadow: 4.1px 4.1px 2.7px #000000, 0px 0px 4.1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 30px;
+    width: 16px;
+    border-radius: 10px;
+    background: #fd5e53;
+    cursor: pointer;
+    height: 8.4px;
+  }
+  #DatePicker input[type=range]:focus::-ms-fill-lower {
+    background: #00004d;
+  }
+  #DatePicker input[type=range]:focus::-ms-fill-upper {
+    background: #00008f;
+  }
+  #DatePicker .locationBar {
+    border: 5px solid #00004d;
+    -webkit-box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+      0 0 16px rgba(0,0,0,0.1);
+    -moz-box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+      0 0 16px rgba(0,0,0,0.1);
+    box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+      0 0 16px rgba(0,0,0,0.1);
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+    width:300px;
+  }
+  .borderRight{
+    border-right: 4px solid #00004d;
+
+  }
+  .borderLeft{
+    border-left: 4px solid #00004d;
+  }
+
+
+
 </style>

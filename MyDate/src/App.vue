@@ -3,6 +3,20 @@
     <!-- the router outlet, where all matched components would ber viewed -->
     <!--<app-header></app-header>-->
     <!--<img src="./assets/MyDateLogo.png" class="centerPic"/>-->
+    <nav>
+      <!--Router links to home, about, and date picker page-->
+      <div>
+        <ul>
+          <!--<img src="MDLogo.png" class="centerPic">-->
+
+          <li>  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>
+          <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
+          <li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png"></router-link></li>
+        </ul>
+
+      </div>
+
+    </nav>
 
     <router-view></router-view>
   </div>
@@ -94,4 +108,24 @@ import header from './components/Header';
     background:  #fd5e53;
 
   }
+  ul{
+    list-style-type: none;
+
+    text-align: center;
+    margin: 0;
+  }
+  li{
+    display: inline-block;
+    margin: 0 10px;
+  }
+  a{
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 8px;
+    border-radius: 10px;
+  }
+  nav{
+    background: #fd5e53 ;
+    padding: 14px 0;
+    margin-bottom: 0px;}
 </style>

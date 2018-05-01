@@ -34,7 +34,7 @@
     <div v-if='allMealsShown'>
       <label>All meals have been shown.</label>
     </div>
-    <h1 class="center underline " v-if="ButtonsVisible">
+    <h1 class="center " v-if="ButtonsVisible">
       Scroll To See Your Three Date Options:
     </h1>
 
@@ -121,7 +121,9 @@
         </p>
         <p>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{meal1.placeDetails.reviews[0].text}}"
+          {{meal1.placeDetails.reviews[0].text}}
+
+
         </p>
 
         <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
@@ -431,6 +433,11 @@
   const GOOGLE_PLACES_DETAIL_SEARCH = "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
   const PHOTO_MAX_WITH = 500;
 
+
+
+
+
+
   export default {
     components: {DotLoader},
     name: "datepage",
@@ -464,15 +471,6 @@
       return{
         Randomqueue: [],
         ButtonsVisible: false,
-        ReviewOpen1:true,
-        ReviewOpen2:true,
-        ReviewOpen3:true,
-        ReviewMeal1:true,
-        ReviewMeal2:true,
-        ReviewMeal3:true,
-        ReviewClose1:true,
-        ReviewClose2:true,
-        ReviewClose3:true,
         Mealqueue : [],
         Placequeue : [],
         allPlaceShown: false,
@@ -551,6 +549,23 @@
         }
 
       },
+      myFunction: function(){
+        document.getElementById("myDropdown").classList.toggle("show");
+        window.onclick = function(event){
+          if (!event.target.matches('.dropbtn')){
+            var dropdowns = document.getElementsByClassName("dropdowncontent");
+            let i;
+            for(i =0; i< dropdowns.length;i++){
+              let openDropdown = dropdowns[i];
+              if(openDropDown.classList.contains('show')){
+                openDropDown.classList.remove('show' +
+                  '')
+              }
+            }
+          }
+        }
+      },
+
 
       NewDate1Open: function(){
         this.Placequeue.push(this.Date1Open);
@@ -683,6 +698,8 @@
         this.ButtonsVisible='true';
 
       },
+
+
       initial: function () {
         this.meal1=this.Mealqueue.shift();
         this.meal2=this.Mealqueue.shift();
@@ -708,6 +725,10 @@
         this.Date3Close.showed="true";
 
 
+
+
+      },
+      displayReview: function(){
 
 
       },
@@ -906,6 +927,7 @@
 
     }
 
+
   }
 </script>
 
@@ -990,7 +1012,7 @@
   }
   .colorDateTwo{
     background: whitesmoke;
-    color: #000;
+    color:#222222;
   }
   .customAlert{
 
@@ -1115,5 +1137,8 @@
     font-size: 45px;
     font-weight: bold;
   }
+
+
+
 
 </style>
