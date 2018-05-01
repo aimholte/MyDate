@@ -1,7 +1,7 @@
 <template xmlns:v-on="http://www.w3.org/1999/xhtml">
 
   <div id="DatePage">
-
+    <br>
     <div>
       <div class="loader method2" v-if="isSearching"></div>
       <h1 v-if="searchCompleted">
@@ -40,12 +40,12 @@
 
     <!--Date Box 1-->
     <!--Row 1-->
-    <div id="testy" class="row" v-if="ButtonsVisible">
-      <h1 class="dateTitle" v-if="ButtonsVisible">
+    <div id="testy" class="row dateOneThreeColor" v-if="ButtonsVisible">
+      <h1 class="dateTitle">
         Date 1
       </h1>
 
-      <div id="lefty" class="left column border">
+      <div id="lefty" class="left column">
         <!--Date Opener-->
         <div v-if="ButtonsVisible">
           <h2 class="activityTitle">
@@ -81,7 +81,9 @@
             <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
             "{{Date1Open.placeDetails.reviews[0].text}}"
           </p>
-          <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
+          <p>
+            <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
+          </p>
         </div>
       </div>
       <div class="column middle">
@@ -89,7 +91,7 @@
           Meal
         </h2>
 
-        <p v-if="ButtonsVisible">
+
           <!--Date name-->
         <p class="biggerFont">
           {{meal1.placeSearch.name}}
@@ -122,12 +124,10 @@
         <p>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
           {{meal1.placeDetails.reviews[0].text}}
-
-
         </p>
-
-        <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
-
+        <p>
+          <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
+        </p>
       </div>
 
       <div class="column right">
@@ -187,37 +187,37 @@
         <p class="biggerFont">
           {{Date2Open.placeSearch.name}}
 
-          </p>
-          <p>
+        </p>
+
+        <p>
             <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
             {{Date2Open.placeDetails.formatted_address}}
-          </p>
-          <p>
+        </p>
+        <p>
             <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
              <a class="AddyWeb" v-bind:href="Date2Open.placeDetails.url" target="_blank">Directions</a>
-          </p>
-          <p>
+        </p>
+        <p>
             <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
             {{Date2Open.placeDetails.formatted_phone_number}}
-          </p>
-          <p>
+        </p>
+        <p>
             <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
             {{Date2Open.placeDetails.rating}}
-          </p>
-          <p>
+        </p>
+        <p>
             <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
             <a class="AddyWeb" v-bind:href = "Date2Open.placeDetails.website" target="_blank">Website</a>
-          </p>
-          <p v-if="Date2Open.placeDetails.reviews[0] !== 'undefined'">
+        </p>
+        <p v-if="Date2Open.placeDetails.reviews[0] !== 'undefined'">
             <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
             "{{Date2Open.placeDetails.reviews[0].text}}"
-          </p>
+        </p>
 
         <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
-
       </div>
 
-        <div class="column middle colorDateTwo">
+      <div class="column middle ">
           <h2 class="activityTitle">
             Meal
           </h2>
@@ -254,7 +254,7 @@
 
       </div>
 
-        <div class="column right colorDateTwo">
+        <div class="column right ">
           <h2 class="activityTitle">
             2nd Activity
           </h2>
@@ -288,12 +288,11 @@
           </p>
 
         <button  v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
-
       </div>
     </div>
 
         <!--Date 3 Opener-->
-    <div  v-if="ButtonsVisible" class="row">
+    <div  v-if="ButtonsVisible" class="row dateOneThreeColor">
       <h1 class="dateTitle" v-if="ButtonsVisible">
         Date 3
       </h1>
@@ -979,11 +978,7 @@
     margin: 0;
   }
 
-  #DatePage .border{
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    border-color: #fd5e53 ;
-  }
+
 
   #DatePage .column{
     float: left;
@@ -1136,6 +1131,9 @@
     font-family: Apple Chancery, cursive;
     font-size: 45px;
     font-weight: bold;
+  }
+  .dateOneThreeColor{
+    background:#4F4E4C ;
   }
 
 

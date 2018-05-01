@@ -74,29 +74,20 @@ import header from './components/Header';
   }
   nav{
     background: #fd5e53 ;
+    background-image: url("/static/FinalLogo.png");
+    background-position:14px center;
+    background-repeat: no-repeat;
+    background-size: auto 75%;
     padding: 14px 0;
-    margin-bottom: 0;}
+    margin-bottom: 0;
+
+  }
 
   img{
     width: 75px;
     height: 75px;
   }
-  .column{
-    float: left;
-    padding: 10px;
-    column-gap: 10px;
-  }
-  .left, .right {
-    width: 450px;
-  }
-  .middle{
-    width: 450px;
-  }
-  .row{
-    content: "";
-    display: table;
-    clear: both;
-  }
+
   button{
     padding-left: 25px;
     padding-right: 25px;
@@ -124,8 +115,8 @@ import header from './components/Header';
     padding: 6px 8px;
     border-radius: 10px;
   }
-  nav{
-    background: #fd5e53 ;
-    padding: 14px 0;
-    margin-bottom: 0px;}
+  .logo{
+    height: 75px;
+    width: auto;
+  }
 </style>

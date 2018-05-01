@@ -32,7 +32,7 @@
                 <!--City-->
                 <input name="selector" type="radio" id="city" value="City" v-model="category" v-on:click="setCity"/>
                 <img class="icon" src="https://png.icons8.com/metro/1600/building.png"/>
-                <label for="city" class="writing iconPadding" >City
+                <label for="city" class="writing" >City
                 </label>
               </div>
               <div class="check"></div>
@@ -92,16 +92,16 @@
           <br>
           <br>
 
-          <h1 class="centerTex">Select A Price</h1>
-          <label class="centerup biggerFont "> Max Spend:</label> <br>
-          <select  class="centerup custom-select center" v-model="maxAmount" v-on:click="setMaxBudget(); setMinimum()">
+          <h1 class="centerTex centerHelp ">Select A Price</h1><br>
+          <label class="centerup biggerFont centerHelp "> Max Spend:</label> <br>
+          <select  class="centerup custom-select centerHelp center" v-model="maxAmount" v-on:click="setMaxBudget(); setMinimum()">
             <option class="centerup"  v-for="num in numbers">{{num}}</option>
           </select>
           <div>
             <br>
 
-            <label class="centerup biggerFont">Min Spend:</label><br>
-            <select class="centerup custom-select" v-model="minAmount" v-on:click="setMinBudget">
+            <label class="centerup centerHelp biggerFont">Min Spend:</label><br>
+            <select class="centerup centerHelp custom-select" v-model="minAmount" v-on:click="setMinBudget">
               <option class="centerup" v-for="num in minnumbers">{{num}}</option>
             </select>
           </div>
@@ -426,12 +426,13 @@
   }
   #DatePicker ul li{
     color: #00004d;
-    display: block;
     position: relative;
     float: left;
     width: 100%;
     height: 100px;
     border-bottom: 1px solid #333;
+    text-align: left;
+    padding-left:72px ;
   }
   #DatePicker ul li input[type=radio]{
     position: absolute;
@@ -439,16 +440,15 @@
   }
 
   #DatePicker ul li label{
-    display: block;
+    /*display: block;*/
     position: relative;
     font-weight: 300;
     font-size: 1.35em;
-    padding: 25px 25px 25px 80px;
-    margin: 10px auto;
     height: 30px;
     z-index: 9;
     cursor: pointer;
     -webkit-transition: all 0.25s linear;
+    padding-left: 10px;
   }
 
   #DatePicker ul li:hover label{
@@ -861,6 +861,9 @@
   }
   .borderLeft{
     border-left: 4px solid #00004d;
+  }
+  .centerHelp{
+    margin-left: 100px;
   }
 
 

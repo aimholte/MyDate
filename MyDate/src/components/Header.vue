@@ -5,6 +5,7 @@ Provides a header at the top of the page
       <!--Router links to home, about, and date picker page-->
       <ul>
         <!--<img src="MDLogo.png" class="centerPic">-->
+        <!--<img src="../assets/FinalLogo.png">-->
 
         <li>  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>
         <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
