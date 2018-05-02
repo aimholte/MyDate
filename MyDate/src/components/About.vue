@@ -46,7 +46,7 @@
     <p class="Blew"></p>
     <p class="writing">
       Benjamin Lewis is from...well no one knows where he came from.<br>
-      He claims to be from Seattle, but when asked if they knew Ben they rejected.<br>
+      He claims to be from Seattle, but when asked if they knew Ben they denied him.<br>
       Ben use to be a small guy but his biggest role model AJ Imholte inspired him to get swole. <br>
       "Working along side him has been truly amazing! I blush everytime I see him flex".<br>
       Ben hopes MyDate will score him a chance with AJ.
