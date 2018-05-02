@@ -4,7 +4,7 @@
 
   <div id="about">
 
-    <body>
+
     <h1 class="fonts">
       About
     </h1>
@@ -25,7 +25,24 @@
       and is getting his major in Computer Science. Kiante hopes that MyDate will change the way people
       think about dating.
     </p>
-    </body>
+    <img class="profilePicture" src="AJ.png"/>
+    <p>
+      Aaron J Imholte, is from the greater Maddison area. Along side Computer Science and Econ, AJ was the first from his family
+      and Macalester college in getting a degree in being swole. When ask about his accomplishment Aj simply said "I hope this encourages
+      everyone not to be small." He hopes MyDate will help him be able to please his girlfriend when they go out from now on.
+    </p>
+    <img class="profilePicture" src="Bartz.png">
+    <p>
+      Josh Bartz, is from Omaha, Nebraska. He is a master of memes and gifs along with powerpoints to create a truly dangerous set of skills.
+      Along side Computer Science, he enjoys making up fake constelations in the night sky. He hopes MyDate will take his love life to new heights.
+    </p>
+    <img class="profilePicture" src="BLEW.png">
+    <p>
+      Benjamin Lewis is from...well no one knows where he came from. He claims to be from Seattle, but when asked if they knew Ben they rejectd.
+      Ben use to be a small guy but he biggest role model AJ Imholte inspired him to get swole. "Working along side him has been truly amazing!
+      I blush everytime I see him flex". Ben hopes MyDate will score him a chance with AJ.
+    </p>
+
 
 
 
