@@ -1,3 +1,6 @@
+Purpose:Home Page of website
+Created By: Team Cheese
+
 
 <template>
   <div id="hello" >

@@ -1,3 +1,6 @@
+Purpose: Display generated dates to user
+Created By:Team Cheese
+
 <template xmlns:v-on="http://www.w3.org/1999/xhtml">
 
   <div id="DatePage">
@@ -20,6 +23,7 @@
       <div class="loader method2" v-if="isSearching"></div>
       <h1 v-if="searchCompleted">
         <div>
+        <!--When clicked this button impliments Queue Funtionality -->
           <button v-if="searchCompleted" class="method1 buttonFont" v-on:click="shuffling(); doubleCheck(); sorter(); initial(); scrollToDates();">Display Your Dates!</button>
         </div>
 
@@ -35,6 +39,7 @@
 
     <div>
       <transtion name="fade">
+      <!--When clicked this button searches for new places results from google API-->
         <button class="method1 buttonFont" v-on:click="getResult()">Search For Results!</button>
       </transtion>
     </div>
@@ -515,7 +520,7 @@
       }
     },
     methods:{
-
+      //------------------------Functions that switch the current date with one from the Queue, called by buttons------
       NewDate1Open: function(){
         this.Placequeue.push(this.Date1Open);
         let newPlace=this.Placequeue.shift();
@@ -630,7 +635,8 @@
 
 
       },
-
+      //----------------------------------------------End of new place buttons-----------------------------------
+      //Sorts the Randomized Queue into a MealQueue and PlaceQueue, also gives them new booleans
       sorter: function() {
         for (let i = 0; i < this.Randomqueue.length; i++) {
           let place = this.Randomqueue[i];
@@ -645,7 +651,7 @@
           }
         }
         this.ButtonsVisible='true';
-
+      //sets the intial values of the date options, changes their chowed boolean to true
       },
       initial: function () {
         this.meal1=this.Mealqueue.shift();
@@ -674,6 +680,7 @@
 
 
       },
+      //Randomizes the Queue
       shuffle: function(array) {
         let currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -692,12 +699,14 @@
 
         return array;
       },
+      //Allows for easier decleration of the suffling
       shuffling: function(array){
         if(this.searchCompleted == true) {
           this.Randomqueue=this.results
           this.Randomqueue=this.shuffle(this.Randomqueue);
         }
       },
+      //removes duplicates of places
       doubleCheck: function(){
 
         let newQueue = [];
@@ -719,6 +728,7 @@
         }
         this.Randomqueue = newQueue;
       },
+      //Testing funciton
       filler: function(){
 
         console.log("Hello Humans");
@@ -726,18 +736,20 @@
         console.log("Goodbye Humans");
 
       },
-
+      //Calls multiple functions simultaneously
       queueFunctions: function(array){
         shuffling(array);
         sorter;
         this.initial;
       },
+      //Calls to the Googple API NearbySearch asyncrenously
       async getResult() {
         this.results = "";
         this.isSearching = true;
         if(this.searchCompleted == true) {
           this.searchCompleted = false;
         }
+        //Formats the results from a details search into a dictonary
         function formatResultDetailSearch(result) {
           var r = {};
           r['phoneNumber'] = result.formatted_phone_number;
@@ -750,7 +762,7 @@
           r['id'] = result.place_id;
           return r;
         }
-
+        //Formats the results from a place search into a dictonary
         function formatResult(result) {
           var r = {};
           r['id'] = result.place_id;
@@ -767,7 +779,7 @@
           }
           return r;
         }
-
+      //Calls to the Googple API DetailSearch asyncrenously
         async function getDetails(data) {
           let r = [];
           for (let i = 0; i < data.length; i++) {

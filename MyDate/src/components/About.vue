@@ -1,3 +1,5 @@
+Purpose: Router to inform users about the goal of MyDate and the creators
+Created By: Team Cheese
 
 <template>
 
@@ -17,6 +19,8 @@
     <h1>
       About
     </h1>
+
+    <!--Talk about what mydate is-->
     <p class="writing">
       MyDate is a date planning app that customizes personal date ideas just for you.
 
@@ -27,6 +31,8 @@
       <br>
     </p>
     <h1>Creators</h1>
+
+    <!--Talking about Creators of myDate-->
     <img class="profilePicture" src="./IMG_1826.jpg">
     <p>
       Kiante Miles, grew up in Mustang Oklahoma, after graduating from Mustang High he went on to
