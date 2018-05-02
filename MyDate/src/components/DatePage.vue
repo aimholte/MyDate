@@ -183,7 +183,7 @@
 
 
     <!--Date 2-->
-    <div v-if="ButtonsVisible" class="row colorDateTwo">
+    <div v-if="ButtonsVisible" class="row wider colorDateTwo">
       <h1 class="dateTitle">
         Date 2
       </h1>
@@ -969,13 +969,13 @@
     column-gap: 10px;
   }
   #DatePage .left, .right {
-    width: 513px;
-    height: 650px;
+    width: 525px;
+    height: 725px;
 
   }
   #DatePage .middle{
     width: 513px;
-    height: 650px;
+    height: 725px;
 
   }
   #DatePage .row{
@@ -1129,6 +1129,9 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+  }
+  .wider{
+    min-width: 3700px;
   }
 
 
