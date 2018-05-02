@@ -1,27 +1,14 @@
-Purpose: Router to inform users about the goal of MyDate and the creators
-Created By: Team Cheese
 
 <template>
 
 
   <div id="about">
-    <nav>
-      <!--Router links to home, about, and date picker page-->
-      <ul>
-        <!--<img src="MDLogo.png" class="centerPic">-->
 
-        <li>  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>
-        <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
-        <li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png">DP</router-link></li>
-      </ul>
-    </nav>
-    <body>
-    <h1>
+
+    <h1 class="fonts">
       About
     </h1>
-
-    <!--Talk about what mydate is-->
-    <p class="writing">
+    <p class="writing fonts">
       MyDate is a date planning app that customizes personal date ideas just for you.
 
       All you have to do is select your price and date category! MyDate was developed by four college students
@@ -30,17 +17,41 @@ Created By: Team Cheese
       creativity to generate or create new, fun, and exciting dates. You can learn more about the creators below.
       <br>
     </p>
-    <h1>Creators</h1>
-
-    <!--Talking about Creators of myDate-->
-    <img class="profilePicture" src="./IMG_1826.jpg">
-    <p>
-      Kiante Miles, grew up in Mustang Oklahoma, after graduating from Mustang High he went on to
-      continue not only his career in football but also his education as well. He currently attends Macalester College
-      and is getting his major in Computer Science. Kiante hopes that MyDate will change the way people
+    <h1 class="fonts">Creators</h1>
+    <p class="Te"></p>
+    <p class="writing">
+      Kiante Miles, grew up in Mustang Oklahoma, after graduating from <br>
+      Mustang High he went on to continue not only his career in football<br>
+      but also his education as well. He currently attends Macalester College<br>
+      and is getting his major in Computer Science.<br>
+      Kiante hopes that MyDate will change the way people<br>
       think about dating.
     </p>
-    </body>
+    <p class="Aj"></p>
+    <p class="writing">
+      Aaron J Imholte, is from the greater Maddison area. Along side<br>
+      Computer Science and Econ, AJ was the first from his family and<br>
+      Macalester college in getting a degree in being swole. When asked<br>
+      about his accomplishment Aj simply said "I hope this encourages<br>
+      everyone not to be small." He hopes MyDate will help him be able to<br>
+      please his girlfriend when they go out from now on.
+    </p>
+    <p class="Bartz"></p>
+    <p class="writing">
+      Josh Bartz, is from Omaha, Nebraska. He is a master of memes and<br>
+      gifs along with powerpoints to create a truly dangerous set of skills.<br>
+      Along side Computer Science, he enjoys making up fake constellations in the night sky<br>
+      . He hopes MyDate will take his love life to new heights.
+    </p>
+    <p class="Blew"></p>
+    <p class="writing">
+      Benjamin Lewis is from...well no one knows where he came from.<br>
+      He claims to be from Seattle, but when asked if they knew Ben they rejected.<br>
+      Ben use to be a small guy but his biggest role model AJ Imholte inspired him to get swole. <br>
+      "Working along side him has been truly amazing! I blush everytime I see him flex".<br>
+      Ben hopes MyDate will score him a chance with AJ.
+    </p>
+
 
 
 
@@ -99,6 +110,42 @@ Created By: Team Cheese
 
   #about .writing{
     font-size: 20px;
+  }
+  #about .fonts{
+    font-family: Impact, Charcoal, sans-serif;
+  }
+  #about  .Aj {
+    background-image: url("/static/AJ.png");
+    width: 200px;
+    height: 250px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: center;
+
+  }
+  #about .Te{
+    background-image: url("/static/Te.png");
+    width: 200px;
+    height: 250px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: center;
+  }
+  #about .Bartz{
+    background-image: url("/static/Bartz.png");
+    width: 200px;
+    height: 250px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: center;
+  }
+  #about .Blew{
+    background-image: url("/static/Benjamin.png");
+    width: 200px;
+    height: 250px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: center;
   }
 
 </style>

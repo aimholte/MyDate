@@ -1,17 +1,7 @@
-Purpose: Display generated dates to user
-Created By:Team Cheese
-
-<template xmlns:v-on="http://www.w3.org/1999/xhtml">
+<template xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
   <div id="DatePage">
-    <!--<div>-->
-    <!--<div class="sk-wave">-->
-    <!--<div class="sk-rect sk-rect1"></div>-->
-    <!--<div class="sk-rect sk-rect2"></div>-->
-    <!--<div class="sk-rect sk-rect3"></div>-->
-    <!--<div class="sk-rect sk-rect4"></div>-->
-    <!--<div class="sk-rect sk-rect5"></div>-->
-    <!--</div>-->
+
     <br/>
 
 
@@ -22,25 +12,24 @@ Created By:Team Cheese
     <div>
       <div class="loader method2" v-if="isSearching"></div>
       <h1 v-if="searchCompleted">
-        <div>
-        <!--When clicked this button impliments Queue Funtionality -->
-          <button v-if="searchCompleted" class="method1 buttonFont" v-on:click="shuffling(); doubleCheck(); sorter(); initial(); scrollToDates();">Display Your Dates!</button>
-        </div>
 
+        <h2 v-if="showNew">
+          <div>
+            <button v-if="searchCompleted" class="method1 buttonFont" v-on:click="shuffling(); doubleCheck(); sorter(); initial(); scrollToDates();">Display Your Dates!</button>
+          </div>
+        </h2>
       </h1>
-    </div>
+      <br>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
+
+      <br>
+    </div>
 
 
     <div>
       <transtion name="fade">
-      <!--When clicked this button searches for new places results from google API-->
-        <button class="method1 buttonFont" v-on:click="getResult()">Search For Results!</button>
+        <button class="method1 buttonFont" v-on:click="getResult(); checkClickSearchButton();">Search For Results!</button>
       </transtion>
     </div>
 
@@ -61,12 +50,12 @@ Created By:Team Cheese
 
     <!--Date Box 1-->
     <!--Row 1-->
-    <div id="testy" class="row" v-if="ButtonsVisible">
-      <h1 class="dateTitle" v-if="ButtonsVisible">
+    <div id="testy" class="row dateOneThreeColor" v-if="ButtonsVisible">
+      <h1 class="dateTitle">
         Date 1
       </h1>
 
-      <div id="lefty" class="left column border">
+      <div id="lefty" class="left column">
         <!--Date Opener-->
         <div v-if="ButtonsVisible">
           <h2 class="activityTitle">
@@ -78,9 +67,12 @@ Created By:Team Cheese
           </p>
           <p>
             <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-            {{Date1Open.placeDetails.formatted_address}} <br>
+            {{Date1Open.placeDetails.formatted_address}}
+          </p>
+
+          <p>
             <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-            <a class="directions" v-bind:href="Date1Open.placeDetails.url" target="_blank">Directions</a><br>
+           <a   class="AddyWeb" v-bind:href="Date1Open.placeDetails.url" target="_blank">Directions </a>
           </p>
           <p>
             <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
@@ -92,14 +84,16 @@ Created By:Team Cheese
           </p>
           <p>
             <img class="minicons " src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-            <a class="website" v-bind:href="Date1Open.placeDetails.website" target="_blank">Website</a>
+            <a class="AddyWeb"  v-bind:href="Date1Open.placeDetails.website" target="_blank">Website</a>
             <br>
           </p>
-          <p>
+          <p v-if="Date1Open.placeDetails.reviews[0] !== 'undefined'">
             <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
             "{{Date1Open.placeDetails.reviews[0].text}}"
           </p>
-          <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
+          <p>
+            <button v-if="ButtonsVisible" v-on:click="NewDate1Open()">Find New Place</button>
+          </p>
         </div>
       </div>
       <div class="column middle">
@@ -107,7 +101,7 @@ Created By:Team Cheese
           Meal
         </h2>
 
-        <p v-if="ButtonsVisible">
+
           <!--Date name-->
         <p class="biggerFont">
           {{meal1.placeSearch.name}}
@@ -120,7 +114,7 @@ Created By:Team Cheese
         <!--Directions-->
         <p>
           <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-          <a class="directions" v-bind:href="meal1.placeDetails.url" target="_blank">Directions</a>
+          <a class="AddyWeb" v-bind:href="meal1.placeDetails.url" target="_blank">Directions</a>
         </p>
         <p>
           <!--Date phone number-->
@@ -135,15 +129,15 @@ Created By:Team Cheese
         <p>
           <!--Date Website-->
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-          <a class="website" v-bind:href="meal1.placeDetails.website" target="_blank">Website</a>
+           <a class="AddyWeb" v-bind:href="meal1.placeDetails.website" target="_blank">Website </a>
         </p>
         <p>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{meal1.placeDetails.reviews[0].text}}"
+          {{meal1.placeDetails.reviews[0].text}}
         </p>
-
-        <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
-
+        <p>
+          <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
+        </p>
       </div>
 
       <div class="column right">
@@ -161,7 +155,7 @@ Created By:Team Cheese
         </p>
         <p>
           <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-          <a class="directions" v-bind:href="Date1Close.placeDetails.url" target="_blank">Directions</a>
+          <a class="AddyWeb" v-bind:href="Date1Close.placeDetails.url" target="_blank">Directions</a>
         </p>
         <p>
           <!--Date phone number-->
@@ -176,7 +170,7 @@ Created By:Team Cheese
         <p>
           <!--Date Website-->
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-          <a class="website" v-bind:href="Date1Close.placeDetails.website" target="_blank">Website</a>
+          <a class="AddyWeb" v-bind:href="Date1Close.placeDetails.website" target="_blank">Website</a>
         </p>
         <p>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
@@ -184,19 +178,9 @@ Created By:Team Cheese
         </p>
 
         <button  v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
-
       </div>
     </div>
-    <!--<p v-if="ButtonsVisible" class="bottomBorder">-->
-    <!--&lt;!&ndash;Date name&ndash;&gt;-->
-    <!--{{Date1Open.placeSearch.name}}<br>-->
-    <!--&lt;!&ndash;Date location&ndash;&gt;-->
-    <!--&lt;!&ndash;Date phone number&ndash;&gt;-->
-    <!--&lt;!&ndash;Date Rating&ndash;&gt;-->
-    <!--&lt;!&ndash;Date Website&ndash;&gt;-->
-    <!--&lt;!&ndash;<img class="minicons" src="https://cdn0.iconfinder.com/data/icons/feather/96/clock-512.png">&ndash;&gt;-->
-    <!--&lt;!&ndash;{{Date1Open.placeDetails.opening_hours.}}<br>&ndash;&gt;-->
-    <!--</p>-->
+
 
     <!--Date 2-->
     <div v-if="ButtonsVisible" class="row colorDateTwo">
@@ -213,112 +197,111 @@ Created By:Team Cheese
           {{Date2Open.placeSearch.name}}
 
         </p>
+
         <p>
-          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-          {{Date2Open.placeDetails.formatted_address}}
+            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+            {{Date2Open.placeDetails.formatted_address}}
         </p>
         <p>
-          <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-          <a class="directions" v-bind:href="Date2Open.placeDetails.url" target="_blank">Directions</a>
+            <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
+             <a class="AddyWeb" v-bind:href="Date2Open.placeDetails.url" target="_blank">Directions</a>
         </p>
         <p>
-          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
-          {{Date2Open.placeDetails.formatted_phone_number}}
+            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+            {{Date2Open.placeDetails.formatted_phone_number}}
         </p>
         <p>
-          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
-          {{Date2Open.placeDetails.rating}}
+            <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+            {{Date2Open.placeDetails.rating}}
         </p>
         <p>
-          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-          <a class="website" v-bind:href = "Date2Open.placeDetails.website" target="_blank">Website</a>
+            <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+            <a class="AddyWeb" v-bind:href = "Date2Open.placeDetails.website" target="_blank">Website</a>
         </p>
-        <p>
-          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{Date2Open.placeDetails.reviews[0].text}}"
+        <p v-if="Date2Open.placeDetails.reviews[0] !== 'undefined'">
+            <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+            "{{Date2Open.placeDetails.reviews[0].text}}"
         </p>
 
         <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
-
       </div>
 
-      <div id="middle" class="column middle colorDateTwo">
-        <h2 class="activityTitle">
-          Meal
-        </h2>
-        <!--Date Meal 2-->
-        <p class="biggerFont">
-          {{meal2.placeSearch.name}}
-        </p>
-        <p>
-          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-          {{meal2.placeDetails.formatted_address}}
-        </p>
-        <p>
-          <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-          <a class="directions" v-bind:href="meal2.placeDetails.url" target="_blank">Directions</a>
-        </p>
-        <p>
-          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
-          {{meal2.placeDetails.formatted_phone_number}}
-        </p>
-        <p>
-          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
-          {{meal2.placeDetails.rating}}
-        </p>
-        <p>
-          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-          <a class="website" v-bind:href="meal2.placeDetails.website" target="_blank">Website</a>
-        </p>
-        <p>
-          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{meal2.placeDetails.reviews[0].text}}"
-        </p>
+      <div class="column middle ">
+          <h2 class="activityTitle">
+            Meal
+          </h2>
+          <!--Date Meal 2-->
+          <p class="biggerFont">
+            {{meal2.placeSearch.name}}
+          </p>
+          <p>
+            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+            {{meal2.placeDetails.formatted_address}}
+          </p>
+          <p>
+            <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
+             <a class="AddyWeb" v-bind:href="meal2.placeDetails.url" target="_blank">Directions</a>
+          </p>
+          <p>
+            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+            {{meal2.placeDetails.formatted_phone_number}}
+          </p>
+          <p>
+            <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+            {{meal2.placeDetails.rating}}
+          </p>
+          <p>
+            <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+            <a class="AddyWeb" v-bind:href="meal2.placeDetails.website" target="_blank">Website </a>
+          </p>
+          <p>
+            <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+            "{{meal2.placeDetails.reviews[0].text}}"
+          </p>
 
         <button  v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Meal</button>
 
       </div>
 
-      <div class="column right colorDateTwo">
-        <h2 class="activityTitle">
-          2nd Activity
-        </h2>
-        <!--Date Closer 2-->
-        <p class="biggerFont">
-          {{Date2Close.placeSearch.name}}
-        </p>
-        <p>
-          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-          {{Date2Close.placeDetails.formatted_address}}
-        </p>
-        <p>
-          <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-          <a class="directions" v-bind:href="Date2Close.placeDetails.url" target="_blank">Directions</a>
-        </p>
-        <p>
-          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
-          {{Date2Close.placeDetails.formatted_phone_number}}
-        </p>
-        <p>
-          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
-          {{Date2Close.placeDetails.rating}}
-        </p>
-        <p>
-          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-          <a class="website" v-bind:href="Date2Close.placeDetails.website" target="_blank">Website</a>
-        </p>
-        <p>
-          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{Date2Close.placeDetails.reviews[0].text}}"
-        </p>
+        <div class="column right ">
+          <h2 class="activityTitle">
+            2nd Activity
+          </h2>
+          <!--Date Closer 2-->
+          <p class="biggerFont">
+            {{Date2Close.placeSearch.name}}
+          </p>
+          <p>
+            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+            {{Date2Close.placeDetails.formatted_address}}
+          </p>
+          <p>
+            <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
+            <a class="AddyWeb" v-bind:href="Date2Close.placeDetails.url" target="_blank">Directions </a>
+          </p>
+          <p>
+            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+            {{Date2Close.placeDetails.formatted_phone_number}}
+          </p>
+          <p>
+            <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+            {{Date2Close.placeDetails.rating}}
+          </p>
+          <p>
+            <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          <a class="AddyWeb" v-bind:href="Date2Close.placeDetails.website" target="_blank">Website </a>
+          </p>
+          <p>
+            <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+            "{{Date2Close.placeDetails.reviews[0].text}}"
+          </p>
 
         <button  v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
-
       </div>
     </div>
 
-    <!--Date 3 Opener-->
-    <div  v-if="ButtonsVisible" class="row">
+        <!--Date 3 Opener-->
+    <div  v-if="ButtonsVisible" class="row dateOneThreeColor">
       <h1 class="dateTitle" v-if="ButtonsVisible">
         Date 3
       </h1>
@@ -327,109 +310,111 @@ Created By:Team Cheese
           1st Activity
         </h2>
 
-        <p class="biggerFont">
-          {{Date3Open.placeSearch.name}}
-        </p>
-        <p>
-          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-          {{Date3Open.placeDetails.formatted_address}}
-        </p>
-        <p>
-          <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-          <a class="directions" v-bind:href="Date3Open.placeDetails.url" target="_blank">Directions</a>
-        </p>
-        <p>
-          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
-          {{Date3Open.placeDetails.formatted_phone_number}}
-        </p>
-        <p>
-          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
-          {{Date3Open.placeDetails.rating}}
-        </p>
-        <p>
-          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-          <a class="website" v-bind:href="Date3Open.placeDetails.website" target="_blank">Website</a>
-        </p>
-        <p>
-          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{Date3Open.placeDetails.reviews[0].text}}"
-        </p>
+          <p class="biggerFont">
+            {{Date3Open.placeSearch.name}}
+          </p>
+          <p>
+            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+            {{Date3Open.placeDetails.formatted_address}}
+          </p>
+          <p>
+            <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
+            <a class="AddyWeb" v-bind:href="Date3Open.placeDetails.url" target="_blank">Directions </a>
+          </p>
+          <p>
+            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+            {{Date3Open.placeDetails.formatted_phone_number}}
+          </p>
+          <p>
+            <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+            {{Date3Open.placeDetails.rating}}
+          </p>
+          <p>
+            <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+            <a class="AddyWeb" v-bind:href="Date3Open.placeDetails.website" target="_blank"> Website</a>
+          </p>
+          <p>
+            <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+            "{{Date3Open.placeDetails.reviews[0].text}}"
+          </p>
 
         <button v-if="ButtonsVisible" v-on:click="NewDate3Open()">Find New Place</button>
 
       </div>
 
-      <div class="column middle">
-        <h2 class="activityTitle">
-          Meal
-        </h2>
-        <!--Date Meal 3r-->
-        <p class="biggerFont">
-          {{meal3.placeSearch.name}}<br>
-        </p>
-        <p>
-          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-          {{meal3.placeDetails.formatted_address}}
-        </p>
-        <p>
-          <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-          <a class="directions" v-bind:href="meal3.placeDetails.url" target="_blank">Directions</a>
-        </p>
-        <p>
-          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
-          {{meal3.placeDetails.formatted_phone_number}}
-        </p>
-        <p>
-          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
-          {{meal3.placeDetails.rating}}
-        </p>
-        <p>
-          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-          <a class="website" v-bind:href="meal3.placeDetails.website" target="_blank">Website</a>
-        </p>
-        <p>
-          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{meal3.placeDetails.reviews[0].text}}"<br>
-        </p>
+        <div class="column middle">
+          <h2 class="activityTitle">
+            Meal
+          </h2>
+          <!--Date Meal 3r-->
+          <p class="biggerFont">
+            {{meal3.placeSearch.name}}<br>
+          </p>
+          <p>
+            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+            {{meal3.placeDetails.formatted_address}}
+          </p>
+          <p>
+            <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
+            <a class="AddyWeb" v-bind:href="meal3.placeDetails.url" target="_blank">Directions</a>
+          </p>
+          <p>
+            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+            {{meal3.placeDetails.formatted_phone_number}}
+          </p>
+          <p>
+            <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+            {{meal3.placeDetails.rating}}
+          </p>
+          <p>
+            <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+            <a class="AddyWeb" v-bind:href="meal3.placeDetails.website" target="_blank">Website</a>
+          </p>
+          <p>
+            <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+            "{{meal3.placeDetails.reviews[0].text}}"
+          </p>
 
         <button v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Meal</button>
         <!--Date Box 1-->
 
       </div>
 
-      <div class="column right">
-        <h2 class="activityTitle">
-          2nd Activity
-        </h2>
-        <p class="biggerFont">
-          {{Date3Close.placeSearch.name}}
-        </p>
-        <p>
-          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-          {{Date3Close.placeDetails.formatted_address}}
-        </p>
-        <p>
-          <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-          <a class="directions" v-bind:href="Date3Close.placeDetails.url" target="_blank">Directions</a>
-        </p>
-        <p>
-          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
-          {{Date3Close.placeDetails.formatted_phone_number}}
-        </p>
-        <p>
-          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
-          {{Date3Close.placeDetails.rating}}
-        </p>
-        <p>
-          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-          <a class="website" v-bind:href="Date3Close.placeDetails.website" target="_blank">Website</a>
-        </p>
-        <p>
-          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-          "{{Date3Close.placeDetails.reviews[0].text}}"<br>
-        </p>
-        <button  v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
-      </div>
+        <div class="column right">
+          <h2 class="activityTitle">
+            2nd Activity
+          </h2>
+          <p class="biggerFont">
+            {{Date3Close.placeSearch.name}}
+          </p>
+          <p>
+            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+            {{Date3Close.placeDetails.formatted_address}}
+          </p>
+          <p>
+            <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
+            <a class="AddyWeb" v-bind:href="Date3Close.placeDetails.url" target="_blank">Diretions </a>
+          </p>
+          <p>
+            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+            {{Date3Close.placeDetails.formatted_phone_number}}
+          </p>
+          <p>
+            <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+            {{Date3Close.placeDetails.rating}}
+          </p>
+          <p>
+            <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+            <a class="AddyWeb"  v-bind:href="Date3Close.placeDetails.website" target="_blank">Website</a>
+          </p>
+          <p>
+            <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+            "{{Date3Close.placeDetails.reviews[0].text}}"
+          </p>
+
+            <button  v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
+
+        </div>
     </div>
   </div>
 
@@ -440,7 +425,6 @@ Created By:Team Cheese
 
 
 
-  <!--Comment so I can push-->
 
 </template>
 
@@ -456,6 +440,11 @@ Created By:Team Cheese
   const GOOGLE_PLACES_ADDRESS = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=";
   const GOOGLE_PLACES_DETAIL_SEARCH = "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
   const PHOTO_MAX_WITH = 500;
+
+
+
+
+
 
   export default {
     components: {DotLoader},
@@ -486,158 +475,180 @@ Created By:Team Cheese
         required: true
       }
     },
-    data(){
-      return{
+    data() {
+      return {
         Randomqueue: [],
         ButtonsVisible: false,
-        Mealqueue : [],
-        Placequeue : [],
+        Mealqueue: [],
+        Placequeue: [],
         allPlaceShown: false,
         allMealsShown: false,
-        n:0,
-        meal1 : "",
-        meal2:"",
-        meal3:"",
-        Date1Open:"",
-        Date2Open:"",
-        Date3Open:"",
-        Date1Close:"",
-        Date2Close:"",
-        Date3Close:"",
+        n: 0,
+        meal1: "",
+        meal2: "",
+        meal3: "",
+        Date1Open: "",
+        Date2Open: "",
+        Date3Open: "",
+        Date1Close: "",
+        Date2Close: "",
+        Date3Close: "",
         msg: 'Welcome to Your Vue.js App',
-        color:"red",
-        results:"",
-        parameters: {'maxBudget':4, 'minBudget':0 ,'categories':[], 'latitude':0, 'longitude':0, 'radius':24150},
+        color: "red",
+        results: "",
+        parameters: {'maxBudget': 4, 'minBudget': 0, 'categories': [], 'latitude': 0, 'longitude': 0, 'radius': 24150},
         searchCompleted: false,
+        searchButtonClickCount: 0,
+        showNew: false,
 
 
         // variables
         SP: "",
-        numbers: [0,5,10,15,20,25,30,35,40,45,50,55,60,65,75,80,85,90,95,100],
-        types: ["Active","City","Something New","Vintage"],
+        numbers: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 75, 80, 85, 90, 95, 100],
+        types: ["Active", "City", "Something New", "Vintage"],
         selectedType: "",
         isSearching: false
       }
     },
-    methods:{
-      //------------------------Functions that switch the current date with one from the Queue, called by buttons------
-      NewDate1Open: function(){
+    methods: {
+
+      clear: function(){
+        let mealLength = this.Mealqueue.length;
+        let placeLength = this.Placequeue.length;
+        let randomLength= this.Randomqueue.length;
+
+        for(let i =0; i<= mealLength; i++){
+          this.Mealqueue.pop(i);
+        }
+        for(let i =0; i<= placeLength; i++){
+          this.Placequeue.pop(i);
+        }
+        for(let i =0; i<= randomLength; i++){
+          this.Randomqueue.pop(i);
+        }
+
+
+      },
+
+
+
+
+      NewDate1Open: function () {
         this.Placequeue.push(this.Date1Open);
-        let newPlace=this.Placequeue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Placequeue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allPlaceShown=true;
+          this.allPlaceShown = true;
         }
-        return this.Date1Open=newPlace;
+        return this.Date1Open = newPlace;
       },
 
-      NewMeal1: function(){
+      NewMeal1: function () {
         this.Mealqueue.push(this.meal1);
-        let newPlace=this.Mealqueue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Mealqueue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allMealsShown=true;
+          this.allMealsShown = true;
         }
-        return this.meal1=newPlace;
+        return this.meal1 = newPlace;
       },
 
-      NewDate1Close: function(){
+      NewDate1Close: function () {
         this.Placequeue.push(this.Date1Close);
-        let newPlace=this.Placequeue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Placequeue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allPlaceShown=true;
+          this.allPlaceShown = true;
         }
-        return this.Date1Close=newPlace;
+        return this.Date1Close = newPlace;
       },
 
-      NewDate2Open: function(){
+      NewDate2Open: function () {
         this.Placequeue.push(this.Date2Open);
-        let newPlace=this.Placequeue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Placequeue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allPlaceShown=true;
+          this.allPlaceShown = true;
         }
-        return this.Date2Open=newPlace;
+        return this.Date2Open = newPlace;
 
 
       },
 
-      NewMeal2: function(){
+      NewMeal2: function () {
         this.Mealqueue.push(this.meal2);
-        let newPlace=this.Mealqueue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Mealqueue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allMealsShown=true;
+          this.allMealsShown = true;
         }
-        return this.meal2=newPlace;
+        return this.meal2 = newPlace;
       },
-      NewDate2Close: function(){
+      NewDate2Close: function () {
         this.Placequeue.push(this.Date2Close);
-        let newPlace=this.Placequeue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Placequeue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allPlaceShown=true;
+          this.allPlaceShown = true;
         }
-        return this.Date2Close=newPlace;
+        return this.Date2Close = newPlace;
 
 
       },
 
-      NewDate3Open: function(){
+      NewDate3Open: function () {
         this.Placequeue.push(this.Date3Open);
-        let newPlace=this.Placequeue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Placequeue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allPlaceShown=true;
+          this.allPlaceShown = true;
         }
-        return this.Date3Open=newPlace;
+        return this.Date3Open = newPlace;
 
 
       },
-      NewMeal3: function(){
+      NewMeal3: function () {
         this.Mealqueue.push(this.meal3);
-        let newPlace=this.Mealqueue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Mealqueue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allMealsShown=true;
+          this.allMealsShown = true;
         }
-        return this.meal3=newPlace;
+        return this.meal3 = newPlace;
 
 
       },
-      NewDate3Close: function(){
+      NewDate3Close: function () {
         this.Placequeue.push(this.Date3Close);
-        let newPlace=this.Placequeue.shift();
-        if (newPlace.showed=="false"){
-          newPlace.showed="true";
+        let newPlace = this.Placequeue.shift();
+        if (newPlace.showed == "false") {
+          newPlace.showed = "true";
         }
         else {
-          this.allPlaceShown='true' ;
+          this.allPlaceShown = 'true';
         }
-        return this.Date3Close=newPlace;
+        return this.Date3Close = newPlace;
 
 
       },
-      //----------------------------------------------End of new place buttons-----------------------------------
-      //Sorts the Randomized Queue into a MealQueue and PlaceQueue, also gives them new booleans
-      sorter: function() {
+
+      sorter: function () {
         for (let i = 0; i < this.Randomqueue.length; i++) {
           let place = this.Randomqueue[i];
           if (place.placeSearch.types.includes("restaurant") || place.placeSearch.types.includes("cafe")) {
@@ -650,38 +661,39 @@ Created By:Team Cheese
             place["showed"] = "false";
           }
         }
-        this.ButtonsVisible='true';
-      //sets the intial values of the date options, changes their chowed boolean to true
+        this.ButtonsVisible = 'true';
+
       },
+
+
       initial: function () {
-        this.meal1=this.Mealqueue.shift();
-        this.meal2=this.Mealqueue.shift();
-        this.meal3=this.Mealqueue.shift();
+        this.meal1 = this.Mealqueue.shift();
+        this.meal2 = this.Mealqueue.shift();
+        this.meal3 = this.Mealqueue.shift();
 
-        this.Date1Open=this.Placequeue.shift();
-        this.Date2Open=this.Placequeue.shift();
-        this.Date3Open=this.Placequeue.shift();
-        this.Date1Close=this.Placequeue.shift();
-        this.Date2Close=this.Placequeue.shift();
-        this.Date3Close=this.Placequeue.shift();
+        this.Date1Open = this.Placequeue.shift();
+        this.Date2Open = this.Placequeue.shift();
+        this.Date3Open = this.Placequeue.shift();
+        this.Date1Close = this.Placequeue.shift();
+        this.Date2Close = this.Placequeue.shift();
+        this.Date3Close = this.Placequeue.shift();
 
 
-        this.meal1.showed="true";
-        this.meal2.showed="true";
-        this.meal3.showed="true";
+        this.meal1.showed = "true";
+        this.meal2.showed = "true";
+        this.meal3.showed = "true";
 
-        this.Date1Open.showed="true";
-        this.Date2Open.showed="true";
-        this.Date3Open.showed="true";
-        this.Date1Close.showed="true";
-        this.Date2Close.showed="true";
-        this.Date3Close.showed="true";
+        this.Date1Open.showed = "true";
+        this.Date2Open.showed = "true";
+        this.Date3Open.showed = "true";
+        this.Date1Close.showed = "true";
+        this.Date2Close.showed = "true";
+        this.Date3Close.showed = "true";
 
 
 
       },
-      //Randomizes the Queue
-      shuffle: function(array) {
+      shuffle: function (array) {
         let currentIndex = array.length, temporaryValue, randomIndex;
 
         // While there remain elements to shuffle...
@@ -699,27 +711,25 @@ Created By:Team Cheese
 
         return array;
       },
-      //Allows for easier decleration of the suffling
-      shuffling: function(array){
-        if(this.searchCompleted == true) {
-          this.Randomqueue=this.results
-          this.Randomqueue=this.shuffle(this.Randomqueue);
+      shuffling: function (array) {
+        if (this.searchCompleted == true) {
+          this.Randomqueue = this.results
+          this.Randomqueue = this.shuffle(this.Randomqueue);
         }
       },
-      //removes duplicates of places
-      doubleCheck: function(){
+      doubleCheck: function () {
 
         let newQueue = [];
         let idlist = [];
 
-        for (let i = 0; i < this.Randomqueue.length;  i++){
+        for (let i = 0; i < this.Randomqueue.length; i++) {
           let id = this.Randomqueue[i].placeSearch.name;
           console.log(id);
-          if (idlist.includes(id)){
+          if (idlist.includes(id)) {
             let joshBeard = "cool";
             console.log("False");
           }
-          else{
+          else {
             newQueue.push(this.Randomqueue[i]);
             idlist.push(id);
             console.log("True");
@@ -728,28 +738,23 @@ Created By:Team Cheese
         }
         this.Randomqueue = newQueue;
       },
-      //Testing funciton
-      filler: function(){
+      filler: function () {
 
         console.log("Hello Humans");
-        this.Randomqueue=this.results;
+        this.Randomqueue = this.results;
         console.log("Goodbye Humans");
 
       },
-      //Calls multiple functions simultaneously
-      queueFunctions: function(array){
+
+      queueFunctions: function (array) {
         shuffling(array);
         sorter;
         this.initial;
       },
-      //Calls to the Googple API NearbySearch asyncrenously
       async getResult() {
         this.results = "";
-        this.isSearching = true;
-        if(this.searchCompleted == true) {
-          this.searchCompleted = false;
-        }
-        //Formats the results from a details search into a dictonary
+//so we can push
+
         function formatResultDetailSearch(result) {
           var r = {};
           r['phoneNumber'] = result.formatted_phone_number;
@@ -762,7 +767,7 @@ Created By:Team Cheese
           r['id'] = result.place_id;
           return r;
         }
-        //Formats the results from a place search into a dictonary
+
         function formatResult(result) {
           var r = {};
           r['id'] = result.place_id;
@@ -779,7 +784,7 @@ Created By:Team Cheese
           }
           return r;
         }
-      //Calls to the Googple API DetailSearch asyncrenously
+
         async function getDetails(data) {
           let r = [];
           for (let i = 0; i < data.length; i++) {
@@ -790,92 +795,115 @@ Created By:Team Cheese
         }
 
 
-        for (let h = 0; h < this.parameters.categories.length; h++) {
-          let searchstring = "";
-          console.log(this.parameters.categories[h]);
-
-          if((this.parameters.categories[h] == "restaurant") == true) {
-            console.log('using price parameter');
-            searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&minprice=" + (this.parameters.minBudget) + "&maxprice=" + this.parameters.maxBudget + "&key=" + API_KEY;
-          }
-          else {
-            console.log('not using price parameter');
-            searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&key=" + API_KEY;
-          }
-          console.log(searchstring);
-          let raw = await axios.get(searchstring);
-          console.log(raw.data.status);
-          if (raw.data.status !== 'ZERO_RESULTS') {
-            let data = raw.data.results;
-            let cleandata = [];
-            for (let j = 0; j < data.length; j++) {
-              let dict = {};
-              let detail = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[j].place_id + "&key=" + API_KEY);
-              let detaildata = detail.data.result;
-              if(!('reviews' in detaildata) == true) {
-                detaildata['reviews'] = [{'text':'No review to display.'}]
-              }
-              dict['placeSearch'] = formatResult(data[j]);
-              dict['placeDetails'] = detaildata;
-              if(cleandata.includes(Object(dict)) == false) {
-                cleandata[j] = dict;
-                console.log(cleandata[j]);
-              }
-              else{
-                console.log('duplicate found');
-              }
+        if (this.parameters.categories.length == 0 || this.parameters.latitude == 0 || this.parameters.longitude == 0) {
+          alert('You did not pick all the necessary parameters. Please try again.')
+        } else {
+          if (this.isSearching == false) {
+            this.isSearching = true;
+            if (this.searchCompleted == true) {
+              this.searchCompleted = false;
             }
+            for (let h = 0; h < this.parameters.categories.length; h++) {
+              let searchstring = "";
+              console.log(this.parameters.categories[h]);
 
-            if (Array.isArray(this.results) == true) {
-              for (let o = 0; o < cleandata.length; o++) {
-                if(this.results.includes(Object(cleandata[o])) == false) {
-                  this.results.push(cleandata[o]);
+              if ((this.parameters.categories[h] == "restaurant") == true) {
+                console.log('using price parameter');
+                searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&minprice=" + (this.parameters.minBudget) + "&maxprice=" + this.parameters.maxBudget + "&key=" + API_KEY;
+              }
+              else {
+                console.log('not using price parameter');
+                searchstring = PROXY_ADDRESS + GOOGLE_PLACES_ADDRESS + this.latitude + ',' + this.longitude + "&radius=" + this.parameters.radius + "&type=" + this.parameters.categories[h] + "&key=" + API_KEY;
+              }
+              console.log(searchstring);
+              let raw = await axios.get(searchstring);
+              console.log(raw.data.status);
+              if (raw.data.status !== 'ZERO_RESULTS') {
+                let data = raw.data.results;
+                let cleandata = [];
+                for (let j = 0; j < data.length; j++) {
+                  let dict = {};
+                  let detail = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[j].place_id + "&key=" + API_KEY);
+                  let detaildata = detail.data.result;
+                  if (!('reviews' in detaildata) == true) {
+                    detaildata['reviews'] = [{'text': 'No review to display.'}]
+                  }
+                  dict['placeSearch'] = formatResult(data[j]);
+                  dict['placeDetails'] = detaildata;
+                  if (cleandata.includes(Object(dict)) == false) {
+                    cleandata[j] = dict;
+                    console.log(cleandata[j]);
+                  }
+                  else {
+                    console.log('duplicate found');
+                  }
+                }
+
+                if (Array.isArray(this.results) == true) {
+                  for (let o = 0; o < cleandata.length; o++) {
+                    if (this.results.includes(Object(cleandata[o])) == false) {
+                      this.results.push(cleandata[o]);
+                    }
+                    else {
+                      console.log('duplicate found');
+                    }
+                  }
                 }
                 else {
-                  console.log('duplicate found');
+                  this.results = cleandata;
                 }
               }
             }
-            else {
-              this.results = cleandata;
+            this.isSearching = false;
+            this.searchCompleted = true;
+            if (this.results !== "" && this.results.length >= 9){
+              this.showNew = true;
             }
+            else{
+              alert("Your search did not return enough results. Please try again.")
+            }
+          } else {
+            alert('You are already searching. Please wait until the search is completed to run another search.')
           }
         }
-        this.searchCompleted  = true;
-        this.isSearching = false;
       },
-      scrollToDates: _.debounce(function() {
-        document.getElementById( 'testy' ).scrollIntoView();
-      }, 500)
+      scrollToDates: _.debounce(function () {
+        document.getElementById('testy').scrollIntoView();
+      }, 500),
+      checkClickSearchButton: function () {
+        this.searchButtonClickCount = this.searchButtonClickCount + 1;
+        if(this.searchButtonClickCount > 1) {
+        }
+      }
     },
     watch: {
-      budget:function() {
+      budget: function () {
         console.log('data updated.');
         console.log(this.budget);
         this.parameters['budget'] = this.budget;
         //Will add more api stuff here
       },
-      categorytypes: function() {
+      categorytypes: function () {
         console.log('data updated.');
         console.log(this.categorytypes);
         this.parameters['categories'] = this.categorytypes;
         //Will add more api stuff here
       },
-      latitude:function() {
+      latitude: function () {
         console.log('data updated.');
         this.parameters['latitude'] = this.latitude;
       },
-      longitude:function() {
+      longitude: function () {
         console.log('data updated.');
         this.parameters['longitude'] = this.longitude;
       },
-      radius: function() {
+      radius: function () {
         this.parameters['radius'] = this.radius;
       },
-      maxBudget: function() {
+      maxBudget: function () {
         this.parameters['maxBudget'] = this.maxBudget;
       },
-      minBudget: function() {
+      minBudget: function () {
         this.parameters['minBudget'] = this.minBudget;
       }
 
@@ -888,7 +916,17 @@ Created By:Team Cheese
   #DatePage{
     color: whitesmoke ;
     background: #4F4E4C;
-    min-height: 100%;
+    min-height: 100vh;
+    font-size: 16px;
+
+  }
+  html,body{
+    min-height: 100vh;
+    padding:0;
+    margin:0;
+  }
+  .underline{
+    text-decoration: underline  wavy #fd5e53;
   }
 
 
@@ -922,11 +960,7 @@ Created By:Team Cheese
     margin: 0;
   }
 
-  #DatePage .border{
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    border-color: #fd5e53 ;
-  }
+
 
   #DatePage .column{
     float: left;
@@ -934,10 +968,12 @@ Created By:Team Cheese
     column-gap: 10px;
   }
   #DatePage .left, .right {
-    width: 450px;
+    width: 513px;
+
   }
   #DatePage .middle{
-    width: 450px;
+    width: 513px;
+
   }
   #DatePage .row{
     content: "";
@@ -947,7 +983,7 @@ Created By:Team Cheese
 
 
   .dateBox1{
-    width: 450px;
+   width: 450px;
     height: 350px;
     border-color: #fd5e53 ;
     border-style:solid;
@@ -955,7 +991,7 @@ Created By:Team Cheese
   }
   .colorDateTwo{
     background: whitesmoke;
-    color: #000;
+    color:#222222;
   }
   .customAlert{
 
@@ -981,11 +1017,11 @@ Created By:Team Cheese
   #DatePage .loader {
     position: absolute;
     border: 16px solid #f3f3f3;
-    left: -45px;
+    left: -50px;
     border-radius: 50%;
     border-top: 16px solid #fd5e53;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
   }
@@ -1042,6 +1078,27 @@ Created By:Team Cheese
     margin-left: 50%;
   }
 
+  a.website{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: #fd5e53;
+  }
+
+  a.directions{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: #fd5e53;
+  }
+  #DatePage .AddyWeb{
+    color: #fd5e53;
+  }
+
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
   }
@@ -1059,5 +1116,12 @@ Created By:Team Cheese
     font-size: 45px;
     font-weight: bold;
   }
+  .dateOneThreeColor{
+    background:#4F4E4C ;
+  }
+
+
+
+
 
 </style>

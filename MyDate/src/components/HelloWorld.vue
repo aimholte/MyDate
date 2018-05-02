@@ -4,19 +4,19 @@ Created By: Team Cheese
 
 <template>
   <div id="hello" >
-    <nav>
-      <!--Router links to home, about, and date picker page-->
-      <ul>
-        <!--<img src="MDLogo.png" class="centerPic">-->
+    <!--<nav>-->
+      <!--&lt;!&ndash;Router links to home, about, and date picker page&ndash;&gt;-->
+      <!--<ul>-->
+        <!--&lt;!&ndash;<img src="MDLogo.png" class="centerPic">&ndash;&gt;-->
 
-        <li>  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>
-        <li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>
-        <li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png"></router-link></li>
-      </ul>
-    </nav>
+        <!--<li>  <router-link v-bind:to="'/'" exact="" tag="img" src="https://png.icons8.com/metro/1600/home.png"  >Home</router-link></li>-->
+        <!--<li><router-link v-bind:to="'/about'" exact="" tag="img" src="https://cdn1.iconfinder.com/data/icons/seo-icons-4/24/Idea-3-512.png">About</router-link></li>-->
+        <!--<li><router-link v-bind:to="'/DP'"  exact="" tag="img"src="https://png.icons8.com/windows/1600/hearts.png"></router-link></li>-->
+      <!--</ul>-->
+    <!--</nav>-->
 
 
-    <p class="textSize dateOption centTextBox">
+    <p class="textSize dateOption centTextBox fonts">
       Welcome to MyDate! <br>
       The interactive Date Planner App.<br>
       This app is to help you find the perfect date for the perfect time!
@@ -24,7 +24,7 @@ Created By: Team Cheese
 
     </p>
     <video autoplay loop muted id="video-background" plays-inline>
-      <source src="https://09-lvl3-pdl.vimeocdn.com/01/4700/4/123504120/350950598.mp4?expires=1524507691&token=042624880d9d125cbb6e9">
+      <source src="https://09-lvl3-pdl.vimeocdn.com/01/4700/4/123504120/350950598.mp4?expires=1525070984&token=07b0b1a7719044126c72c">
     </video>
     <!--<video autoplay loop muted id="video-background" plays-inline>-->
       <!--<source src="https://gcs-vimeo.akamaized.net/exp=1523403274~acl=%2A%2F348715371.mp4%2A~hmac=7e643eeed9fb2d296a7d158668eefdbe70aba2793c58acf20e460a326a732d88/vimeo-prod-skyfire-std-us/01/4581/4/122906560/348715371.mp4">-->
@@ -64,12 +64,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style >
   #hello {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: whitesmoke;
     margin-top: 60px;
+    font-family: Impact, Charcoal, sans-serif;
   }
 
   /*button {*/
@@ -89,6 +89,7 @@ export default {
   p{
     margin-top: 40px;
     font-size: 13px;
+    font-family: Impact, Charcoal, sans-serif;
   }
 
   #video-background{
@@ -149,6 +150,9 @@ export default {
     text-decoration: none;
     padding: 6px 8px;
     border-radius: 10px;
+  }
+  #hello .fonts{
+    font-family: Damascus;
   }
 
 
