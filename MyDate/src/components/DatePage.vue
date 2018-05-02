@@ -969,11 +969,11 @@
   }
   #DatePage .left, .right {
     width: 513px;
-    height: 700px;
+
   }
   #DatePage .middle{
     width: 513px;
-    height: auto;
+
   }
   #DatePage .row{
     content: "";
@@ -1119,6 +1119,7 @@
   .dateOneThreeColor{
     background:#4F4E4C ;
   }
+
 
 
 

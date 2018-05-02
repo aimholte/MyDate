@@ -267,7 +267,7 @@
    /*background: radial-gradient(circle closest-side,#fd5e53,#4F4E4C);*/
     background: whitesmoke;
     zoom: 85%;
-    font-family: mpact, Charcoal, sans-serif;
+    font-family: impact, Charcoal, sans-serif;
   }
   #checkboxes input{
     display: inline-block;
@@ -509,7 +509,7 @@
 
   #DatePicker .signature p{
     text-align: center;
-    font-family: Helvetica, Arial, Sans-Serif;
+    font-family: Impact, Charcoal, sans-serif;
     font-size: 0.85em;
     color: #fd5e53;
   }
@@ -531,7 +531,7 @@
   }
   .custom-select {
     position: relative;
-    font-family: Arial;
+    font-family: Impact, Charcoal, sans-serif;
     background-color: #fd5e53  ;
     width: 300px;
     height: 50px;
@@ -866,6 +866,9 @@
   }
   .centerHelp{
     margin-left: 100px;
+  }
+  button{
+    font-family: Impact, Charcoal, sans-serif;
   }
 
 

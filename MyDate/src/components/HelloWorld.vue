@@ -61,12 +61,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style >
   #hello {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: whitesmoke;
     margin-top: 60px;
+    font-family: Impact, Charcoal, sans-serif;
   }
 
   /*button {*/
@@ -86,6 +86,7 @@ export default {
   p{
     margin-top: 40px;
     font-size: 13px;
+    font-family: Impact, Charcoal, sans-serif;
   }
 
   #video-background{
