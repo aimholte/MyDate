@@ -1,7 +1,13 @@
+Purpose:  Autocomplete Functionality to gain users location easier
+Created By: Team Cheese
+
+
 
 <template>
   <div id="app">
     <h1>Enter Your Desired Location</h1>
+    <!--input and button for Current Location -->
+
     <input ref="autocomplete"
            placeholder="Search"
            class="search-location"
@@ -20,6 +26,8 @@
         longitude: '',
       }
     },
+
+    //mounts the function so it can call the API
     mounted() {
       this.autocomplete = new google.maps.places.Autocomplete(
         (this.$refs.autocomplete),
@@ -35,6 +43,7 @@
         console.log(`The user picked ${city} with the coordinates ${this.latitude}, ${this.longitude}`);
       });
     },
+    //If button is pressed this method is called to use the users current location
     methods:{
       useCurrentLocation: function() {
         navigator.geolocation.getCurrentPosition(position => {

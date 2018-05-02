@@ -1,3 +1,7 @@
+Purpose: Allow User to select what parameters they want to search for
+Created By: Team Cheese
+
+
 <template xmlns:v-on="http://www.w3.org/1999/xhtml">
   <div id ="DatePicker">
 
@@ -187,7 +191,7 @@
 
     },
     methods: {
-
+//------------------------------------------Sets defualt values ------------------------------------------
       setMinimum: _.debounce(function() {
         this.minnumbers = this.numbers.slice(0,this.maxBudget);
       },500),
