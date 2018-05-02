@@ -920,6 +920,7 @@
     font-size: 16px;
 
   }
+
   html,body{
     min-height: 100vh;
     padding:0;
@@ -969,10 +970,12 @@
   }
   #DatePage .left, .right {
     width: 513px;
+    height: 650px;
 
   }
   #DatePage .middle{
     width: 513px;
+    height: 650px;
 
   }
   #DatePage .row{
@@ -1118,6 +1121,14 @@
   }
   .dateOneThreeColor{
     background:#4F4E4C ;
+  }
+  #DatePage p{
+   font-family:  Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
 

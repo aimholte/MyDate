@@ -76,7 +76,10 @@
     background:#4F4E4C ;
     min-height: 100vh;
   }
-
+  #about .padder{
+    padding-top: 8px;
+    max-width: 20em;
+  }
   #about ul{
     list-style-type: none;
 

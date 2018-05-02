@@ -34,9 +34,7 @@
 
 <style>
   /*MyDate Logo*/
-  body{
-    background-image: url("/MyDate/src/assets/PerfectDAte.png");
-  }
+
 
 </style>
 <script>
