@@ -2,12 +2,12 @@
 
   <div id="DatePage">
     <!--<div>-->
-      <!--<div class="sk-wave">-->
-      <!--<div class="sk-rect sk-rect1"></div>-->
-      <!--<div class="sk-rect sk-rect2"></div>-->
-      <!--<div class="sk-rect sk-rect3"></div>-->
-      <!--<div class="sk-rect sk-rect4"></div>-->
-      <!--<div class="sk-rect sk-rect5"></div>-->
+    <!--<div class="sk-wave">-->
+    <!--<div class="sk-rect sk-rect1"></div>-->
+    <!--<div class="sk-rect sk-rect2"></div>-->
+    <!--<div class="sk-rect sk-rect3"></div>-->
+    <!--<div class="sk-rect sk-rect4"></div>-->
+    <!--<div class="sk-rect sk-rect5"></div>-->
     <!--</div>-->
     <br/>
 
@@ -16,12 +16,6 @@
 
     <!--Button to generate Dates-->
 
-    <div>
-      <transtion name="fade">
-        <button class="method1 buttonFont" v-on:click="clear(); getResult();">Search For Results!</button>
-      </transtion>
-    </div>
-    <br>
     <div>
       <div class="loader method2" v-if="isSearching"></div>
       <h1 v-if="searchCompleted">
@@ -32,7 +26,21 @@
       </h1>
     </div>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
+
+    <div>
+      <transtion name="fade">
+        <button class="method1 buttonFont" v-on:click="getResult()">Search For Results!</button>
+      </transtion>
+    </div>
+
+    <br>
+    <br>
 
 
     <div v-if='allPlaceShown'>
@@ -43,21 +51,21 @@
       <label>All meals have been shown.</label>
     </div>
     <h1 class="center " v-if="ButtonsVisible">
-        Scroll To See Your Three Date Options:
+      Scroll To See Your Three Date Options:
     </h1>
 
-      <!--Date Box 1-->
+    <!--Date Box 1-->
     <!--Row 1-->
-    <div class="row" v-if="ButtonsVisible">
-      <h1  v-if="ButtonsVisible">
+    <div id="testy" class="row" v-if="ButtonsVisible">
+      <h1 class="dateTitle" v-if="ButtonsVisible">
         Date 1
       </h1>
 
-      <div class="left column border">
+      <div id="lefty" class="left column border">
         <!--Date Opener-->
         <div v-if="ButtonsVisible">
-          <h2>
-             1st Activity
+          <h2 class="activityTitle">
+            1st Activity
           </h2>
           <!--Date Opener-->
           <p class="biggerFont">
@@ -65,12 +73,9 @@
           </p>
           <p>
             <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-            {{Date1Open.placeDetails.formatted_address}}
-          </p>
-
-          <p>
+            {{Date1Open.placeDetails.formatted_address}} <br>
             <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-           <a   class="AddyWeb" v-bind:href="Date1Open.placeDetails.url" target="_blank">Directions </a>
+            <a class="directions" v-bind:href="Date1Open.placeDetails.url" target="_blank">Directions</a><br>
           </p>
           <p>
             <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
@@ -82,7 +87,7 @@
           </p>
           <p>
             <img class="minicons " src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-            <a class="AddyWeb"  v-bind:href="Date1Open.placeDetails.website" target="_blank">Website</a>
+            <a class="website" v-bind:href="Date1Open.placeDetails.website" target="_blank">Website</a>
             <br>
           </p>
           <p>
@@ -93,15 +98,15 @@
         </div>
       </div>
       <div class="column middle">
-        <h2>
+        <h2 class="activityTitle">
           Meal
         </h2>
 
         <p v-if="ButtonsVisible">
           <!--Date name-->
-          <p class="biggerFont">
-              {{meal1.placeSearch.name}}
-          </p>
+        <p class="biggerFont">
+          {{meal1.placeSearch.name}}
+        </p>
         <p>
           <!--Date location-->
           <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
@@ -110,7 +115,7 @@
         <!--Directions-->
         <p>
           <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-          <a class="AddyWeb" v-bind:href="meal1.placeDetails.url" target="_blank">Directions</a>
+          <a class="directions" v-bind:href="meal1.placeDetails.url" target="_blank">Directions</a>
         </p>
         <p>
           <!--Date phone number-->
@@ -125,19 +130,19 @@
         <p>
           <!--Date Website-->
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-           <a class="AddyWeb" v-bind:href="meal1.placeDetails.website" target="_blank">Website </a>
+          <a class="website" v-bind:href="meal1.placeDetails.website" target="_blank">Website</a>
         </p>
         <p>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
           "{{meal1.placeDetails.reviews[0].text}}"
         </p>
 
-          <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
+        <button v-if="ButtonsVisible" v-on:click="NewMeal1()">Find New Meal</button>
 
       </div>
 
       <div class="column right">
-        <h2>
+        <h2 class="activityTitle">
           2nd Activity
         </h2>
         <p v-if="ButtonsVisible" class="biggerFont">
@@ -151,7 +156,7 @@
         </p>
         <p>
           <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-          <a class="AddyWeb" v-bind:href="Date1Close.placeDetails.url" target="_blank">Directions</a>
+          <a class="directions" v-bind:href="Date1Close.placeDetails.url" target="_blank">Directions</a>
         </p>
         <p>
           <!--Date phone number-->
@@ -166,262 +171,260 @@
         <p>
           <!--Date Website-->
           <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-          <a class="AddyWeb" v-bind:href="Date1Close.placeDetails.website" target="_blank">Website</a>
+          <a class="website" v-bind:href="Date1Close.placeDetails.website" target="_blank">Website</a>
         </p>
         <p>
           <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
           "{{Date1Close.placeDetails.reviews[0].text}}" <br>
         </p>
 
-          <button  v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
+        <button  v-if="ButtonsVisible" v-on:click="NewDate1Close()">Find New Place</button>
 
       </div>
     </div>
-        <!--<p v-if="ButtonsVisible" class="bottomBorder">-->
-          <!--&lt;!&ndash;Date name&ndash;&gt;-->
-          <!--{{Date1Open.placeSearch.name}}<br>-->
-          <!--&lt;!&ndash;Date location&ndash;&gt;-->
-          <!--&lt;!&ndash;Date phone number&ndash;&gt;-->
-          <!--&lt;!&ndash;Date Rating&ndash;&gt;-->
-          <!--&lt;!&ndash;Date Website&ndash;&gt;-->
-          <!--&lt;!&ndash;<img class="minicons" src="https://cdn0.iconfinder.com/data/icons/feather/96/clock-512.png">&ndash;&gt;-->
-          <!--&lt;!&ndash;{{Date1Open.placeDetails.opening_hours.}}<br>&ndash;&gt;-->
-        <!--</p>-->
+    <!--<p v-if="ButtonsVisible" class="bottomBorder">-->
+    <!--&lt;!&ndash;Date name&ndash;&gt;-->
+    <!--{{Date1Open.placeSearch.name}}<br>-->
+    <!--&lt;!&ndash;Date location&ndash;&gt;-->
+    <!--&lt;!&ndash;Date phone number&ndash;&gt;-->
+    <!--&lt;!&ndash;Date Rating&ndash;&gt;-->
+    <!--&lt;!&ndash;Date Website&ndash;&gt;-->
+    <!--&lt;!&ndash;<img class="minicons" src="https://cdn0.iconfinder.com/data/icons/feather/96/clock-512.png">&ndash;&gt;-->
+    <!--&lt;!&ndash;{{Date1Open.placeDetails.opening_hours.}}<br>&ndash;&gt;-->
+    <!--</p>-->
 
-        <!--Date 2-->
+    <!--Date 2-->
     <div v-if="ButtonsVisible" class="row colorDateTwo">
-      <h1>
+      <h1 class="dateTitle">
         Date 2
       </h1>
-        <div class="column left">
-          <h2>
-            1st Activity
-          </h2>
+      <div class="column left">
+        <h2 class="activityTitle">
+          1st Activity
+        </h2>
 
-          <!--Date 2 Opener-->
-          <p class="biggerFont">
-            {{Date2Open.placeSearch.name}}
+        <!--Date 2 Opener-->
+        <p class="biggerFont">
+          {{Date2Open.placeSearch.name}}
 
-          </p>
-          <p>
-            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-            {{Date2Open.placeDetails.formatted_address}}
-          </p>
-          <p>
-            <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-             <a class="AddyWeb" v-bind:href="Date2Open.placeDetails.url" target="_blank">Directions</a>
-          </p>
-          <p>
-            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
-            {{Date2Open.placeDetails.formatted_phone_number}}
-          </p>
-          <p>
-            <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
-            {{Date2Open.placeDetails.rating}}
-          </p>
-          <p>
-            <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-            <button class="buttonWebDir"> <a v-bind:href = "Date2Open.placeDetails.website" target="_blank"></a>Website</button>
-          </p>
-          <p>
-            <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-            "{{Date2Open.placeDetails.reviews[0].text}}"
-          </p>
+        </p>
+        <p>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{Date2Open.placeDetails.formatted_address}}
+        </p>
+        <p>
+          <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
+          <a class="directions" v-bind:href="Date2Open.placeDetails.url" target="_blank">Directions</a>
+        </p>
+        <p>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{Date2Open.placeDetails.formatted_phone_number}}
+        </p>
+        <p>
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{Date2Open.placeDetails.rating}}
+        </p>
+        <p>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          <a class="website" v-bind:href = "Date2Open.placeDetails.website" target="_blank">Website</a>
+        </p>
+        <p>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{Date2Open.placeDetails.reviews[0].text}}"
+        </p>
 
-            <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
+        <button v-if="ButtonsVisible" v-on:click="NewDate2Open()">Find New Place</button>
 
-        </div>
+      </div>
 
-        <div class="column middle colorDateTwo">
-          <h2>
-            Meal
-          </h2>
-          <!--Date Meal 2-->
-          <p class="biggerFont">
-            {{meal2.placeSearch.name}}
-          </p>
-          <p>
-            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-            {{meal2.placeDetails.formatted_address}}
-          </p>
-          <p>
-            <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-            <button class="buttonWebDir"> <a v-bind:href="meal2.placeDetails.url" target="_blank"></a>Directions </button>
-          </p>
-          <p>
-            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
-            {{meal2.placeDetails.formatted_phone_number}}
-          </p>
-          <p>
-            <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
-            {{meal2.placeDetails.rating}}
-          </p>
-          <p>
-            <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-            <button class="buttonWebDir"><a v-bind:href="meal2.placeDetails.website" target="_blank"> </a>Website</button>
-          </p>
-          <p>
-            <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-            "{{meal2.placeDetails.reviews[0].text}}"
-          </p>
+      <div id="middle" class="column middle colorDateTwo">
+        <h2 class="activityTitle">
+          Meal
+        </h2>
+        <!--Date Meal 2-->
+        <p class="biggerFont">
+          {{meal2.placeSearch.name}}
+        </p>
+        <p>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{meal2.placeDetails.formatted_address}}
+        </p>
+        <p>
+          <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
+          <a class="directions" v-bind:href="meal2.placeDetails.url" target="_blank">Directions</a>
+        </p>
+        <p>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{meal2.placeDetails.formatted_phone_number}}
+        </p>
+        <p>
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{meal2.placeDetails.rating}}
+        </p>
+        <p>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          <a class="website" v-bind:href="meal2.placeDetails.website" target="_blank">Website</a>
+        </p>
+        <p>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{meal2.placeDetails.reviews[0].text}}"
+        </p>
 
-            <button  v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Meal</button>
+        <button  v-if="ButtonsVisible" v-on:click="NewMeal2()">Find New Meal</button>
 
-        </div>
+      </div>
 
-        <div class="column right colorDateTwo">
-          <h2>
-            2nd Activity
-          </h2>
-          <!--Date Closer 2-->
-          <p class="biggerFont">
-            {{Date2Close.placeSearch.name}}
-          </p>
-          <p>
-            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-            {{Date2Close.placeDetails.formatted_address}}
-          </p>
-          <p>
-            <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-            <button class="buttonWebDir"><a v-bind:href="Date2Close.placeDetails.url" target="_blank"> </a>Directions</button>
-          </p>
-          <p>
-            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
-            {{Date2Close.placeDetails.formatted_phone_number}}
-          </p>
-          <p>
-            <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
-            {{Date2Close.placeDetails.rating}}
-          </p>
-          <p>
-            <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-            <button class="buttonWebDir"><a v-bind:href="Date2Close.placeDetails.website" target="_blank"> </a>Website</button>
-          </p>
-          <p>
-            <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-            "{{Date2Close.placeDetails.reviews[0].text}}"
-          </p>
+      <div class="column right colorDateTwo">
+        <h2 class="activityTitle">
+          2nd Activity
+        </h2>
+        <!--Date Closer 2-->
+        <p class="biggerFont">
+          {{Date2Close.placeSearch.name}}
+        </p>
+        <p>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{Date2Close.placeDetails.formatted_address}}
+        </p>
+        <p>
+          <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
+          <a class="directions" v-bind:href="Date2Close.placeDetails.url" target="_blank">Directions</a>
+        </p>
+        <p>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{Date2Close.placeDetails.formatted_phone_number}}
+        </p>
+        <p>
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{Date2Close.placeDetails.rating}}
+        </p>
+        <p>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          <a class="website" v-bind:href="Date2Close.placeDetails.website" target="_blank">Website</a>
+        </p>
+        <p>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{Date2Close.placeDetails.reviews[0].text}}"
+        </p>
 
-            <button  v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
+        <button  v-if="ButtonsVisible" v-on:click="NewDate2Close()">Find New Place</button>
 
-        </div>
+      </div>
     </div>
 
-        <!--Date 3 Opener-->
+    <!--Date 3 Opener-->
     <div  v-if="ButtonsVisible" class="row">
-      <h1 v-if="ButtonsVisible">
+      <h1 class="dateTitle" v-if="ButtonsVisible">
         Date 3
       </h1>
-        <div class="column left">
-          <h2>
-            1st Activity
-          </h2>
+      <div class="column left">
+        <h2 class="activityTitle">
+          1st Activity
+        </h2>
 
-          <p class="biggerFont">
-            {{Date3Open.placeSearch.name}}
-          </p>
-          <p>
-            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-            {{Date3Open.placeDetails.formatted_address}}
-          </p>
-          <p>
-            <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-            <button class="buttonWebDir"> <a v-bind:href="Date3Open.placeDetails.url" target="_blank"> </a> Directions</button>
-          </p>
-          <p>
-            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
-            {{Date3Open.placeDetails.formatted_phone_number}}
-          </p>
-          <p>
-            <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
-            {{Date3Open.placeDetails.rating}}
-          </p>
-          <p>
-            <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-            <button class="buttonWebDir"><a v-bind:href="Date3Open.placeDetails.website" target="_blank"> </a>Website</button>
-          </p>
-          <p>
-            <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-            "{{Date3Open.placeDetails.reviews[0].text}}"
-          </p>
+        <p class="biggerFont">
+          {{Date3Open.placeSearch.name}}
+        </p>
+        <p>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{Date3Open.placeDetails.formatted_address}}
+        </p>
+        <p>
+          <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
+          <a class="directions" v-bind:href="Date3Open.placeDetails.url" target="_blank">Directions</a>
+        </p>
+        <p>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{Date3Open.placeDetails.formatted_phone_number}}
+        </p>
+        <p>
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{Date3Open.placeDetails.rating}}
+        </p>
+        <p>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          <a class="website" v-bind:href="Date3Open.placeDetails.website" target="_blank">Website</a>
+        </p>
+        <p>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{Date3Open.placeDetails.reviews[0].text}}"
+        </p>
 
-            <button v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
+        <button v-if="ButtonsVisible" v-on:click="NewDate3Open()">Find New Place</button>
 
-        </div>
+      </div>
 
-        <div class="column middle">
-          <h2>
-            Meal
-          </h2>
-          <!--Date Meal 3r-->
-          <p class="biggerFont">
-            {{meal3.placeSearch.name}}<br>
-          </p>
-          <p>
-            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-            {{meal3.placeDetails.formatted_address}}
-          </p>
-          <p>
-            <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-            <button class="buttonWebDir"><a v-bind:href="meal3.placeDetails.url" target="_blank"></a>Directions</button>
-          </p>
-          <p>
-            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
-            {{meal3.placeDetails.formatted_phone_number}}
-          </p>
-          <p>
-            <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
-            {{meal3.placeDetails.rating}}
-          </p>
-          <p>
-            <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-            <button class="buttonWebDir"><a v-bind:href="meal3.placeDetails.website" target="_blank"></a> Website</button>
-          </p>
-          <p>
-            <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-            "{{meal3.placeDetails.reviews[0].text}}"<br>
-          </p>
+      <div class="column middle">
+        <h2 class="activityTitle">
+          Meal
+        </h2>
+        <!--Date Meal 3r-->
+        <p class="biggerFont">
+          {{meal3.placeSearch.name}}<br>
+        </p>
+        <p>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{meal3.placeDetails.formatted_address}}
+        </p>
+        <p>
+          <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
+          <a class="directions" v-bind:href="meal3.placeDetails.url" target="_blank">Directions</a>
+        </p>
+        <p>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{meal3.placeDetails.formatted_phone_number}}
+        </p>
+        <p>
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{meal3.placeDetails.rating}}
+        </p>
+        <p>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          <a class="website" v-bind:href="meal3.placeDetails.website" target="_blank">Website</a>
+        </p>
+        <p>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{meal3.placeDetails.reviews[0].text}}"<br>
+        </p>
 
-            <button v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Meal</button>
-            <!--Date Box 1-->
+        <button v-if="ButtonsVisible" v-on:click="NewMeal3()">Find New Meal</button>
+        <!--Date Box 1-->
 
-        </div>
+      </div>
 
-        <div class="column right">
-          <h2>
-            2nd Activity
-          </h2>
-          <p class="biggerFont">
-            {{Date3Close.placeSearch.name}}
-          </p>
-          <p>
-            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
-            {{Date3Close.placeDetails.formatted_address}}
-          </p>
-          <p>
-            <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
-            <button class="buttonWebDir"><a v-bind:href="Date3Close.placeDetails.url" target="_blank"> </a>Directions</button>
-          </p>
-          <p>
-            <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
-            {{Date3Close.placeDetails.formatted_phone_number}}
-          </p>
-          <p>
-            <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
-            {{Date3Close.placeDetails.rating}}
-          </p>
-          <p>
-            <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
-            <button class="buttonWebDir"><a  v-bind:href="Date3Close.placeDetails.website" target="_blank"></a>Website</button>
-          </p>
-          <p>
-            <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
-            "{{Date3Close.placeDetails.reviews[0].text}}"<br>
-          </p>
-
-            <button  v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
-
-        </div>
+      <div class="column right">
+        <h2 class="activityTitle">
+          2nd Activity
+        </h2>
+        <p class="biggerFont">
+          {{Date3Close.placeSearch.name}}
+        </p>
+        <p>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/location-512.png">
+          {{Date3Close.placeDetails.formatted_address}}
+        </p>
+        <p>
+          <img class="minicons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS+SURBVGhD7ZppqHVTHIev+ZV5JgplyNCLfDEPJUJEfCAihMhQxmRIyjxE4gsJiaQMRRmSXi9JiciQDEXmWYbMPM8+9/+27m6ffdY6e7v3PXV/9XTPWmedddbv7DX+152a11Ko5+A9OBGWN6MnrQ6XwjfwEhwBy0JfWhOug+/Btk/9m/AhdDUUBr6DtG7xBzsVFsC4WgnOhW8h6r0dliTeTl6PY6jJwNOwFxwPb07nyZdwMawNufJpHgsfQdTz2fTfGUYseDSUGmoy8AzsDqmWgYPheYhyP8PNsCm06QB4FeJzr8A+cNp0eoaRUJuhFSA0zMAeMEq7wsPwN/i5P+E+2BFS7QRPQdT/Ptg2fxTVaiQ0zNBJUDfwLOQYqGtruBN+g6jrSTgcNBZGv4azYUVIlWUk1GQo0MCe0FUbwTXwI6T1/wpXgjNUk4qMhMLQaxCDuG/ZXc+Ht+AO2BjaNJaRpVFzZuQssL/fW6UGcjB/AZdUqTJlGXFmWG3wsjfFOHOAq+XAqdS8h8xAq8JieBy2NKNFWUZugp+gy2BeA1yFo0EugE2Ns1zIgf0D2KYrzGhRlhEHnflPVKly+USdGKzjBjMKpGH3ZutWqcGs5takriwjzlKnQ32FzpXdxs2i3WQTM8aUi7A7APdp65iRqHiwuxCdAVtVqeHaHK6FhVWqH/mDvAC28TgzEhUbOQQs8wtsY0aDVoGvwHJur/uUY+gEcJ1JVWzEbbeFP4ZtzUD+Oi+DM5C/mmPCmcd0ya62i4qNNOlR8HOfV6nZ0QXwGMTA78WIj3lnWKtKzY4WgW3dr0r1ZGQudDK4C4hxOrFG6po3MtfaHt6Bw6rUBBsxArOk4Wiin8gH4AKt5sfIXCuN4qiJNLIBGJC7pUoNNJFG3DTazgeq1EBFRjzRNUUzNoP1Bi9nRW5WH4H0iJBtZGUwtmRE3ahfyNPbH2AYc5gMvm04ePm/KduIW3N3m74fZsKEeZeBMja8N2hcHQW+b6TQ/C46EB6EplNmUdfydOi53TKGScPE9aA8UL0B5l1lBvKk6E71dXDuVwaqtxi8zJYHKo+51r2/GTUVD3bNeIiKsvdAyPCNT8tQz3ZmDNG78A+UxK+s28C4wYsIXKcqNpJ2J6mPGef3pi9KdQ443u6vUoNTpwHxYyDWB8eUUXqD5cOO1KmKjBwJYeJGiG5WN5MjIzPR6IMgvvsUM1BMsXan+hVDk7KNOHgj5B9jIh0zbbPWKDlBXATpRY9PdV/IPfMXPRHD+kYLU2nGp1NdQo7QbjAqqj6uZhj5azphMCHncebKrhMTxO9wN7RNBqU6FDybWP+tZlwIMcU5q3Q1lBoQz9jRPa3f4HSXtWUXiCCEeJeyA1RaH5ziuhiqG/gEzgRnJ2ejq8E78XjfsiV3765Bxs1sm593A+lBq/GidhxDdQOfgvcgTXfphpDOA8tE+VF37waybwO7p+W9IfAO0zVmpHIMDTMQ25Q2OVk41dot4vPevbtYxozljsG7eBvu+978asjtfLGaDLn3Sg0YafTGNcdAXXYrB+2LEPX5XXdB/DOA3+kiOerSJ0t1Q10NNMnrC3+kGANiFN7B3bs0dDnkdqFx5LnDq+oI+cxrAjU19R/6bt6RSC/gyQAAAABJRU5ErkJggg==">
+          <a class="directions" v-bind:href="Date3Close.placeDetails.url" target="_blank">Directions</a>
+        </p>
+        <p>
+          <img class="minicons" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/71/mobile-512.png">
+          {{Date3Close.placeDetails.formatted_phone_number}}
+        </p>
+        <p>
+          <img class="minicons" src="https://png.icons8.com/metro/1600/like.png">
+          {{Date3Close.placeDetails.rating}}
+        </p>
+        <p>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/world-wide-web-globe-icon-images--pictures-becuo-0.png">
+          <a class="website" v-bind:href="Date3Close.placeDetails.website" target="_blank">Website</a>
+        </p>
+        <p>
+          <img class="minicons" src="https://www.freeiconspng.com/uploads/edit-editor-pen-pencil-write-icon--4.png">
+          "{{Date3Close.placeDetails.reviews[0].text}}"<br>
+        </p>
+        <button  v-if="ButtonsVisible" v-on:click="NewDate3Close()">Find New Place</button>
+      </div>
     </div>
   </div>
 
@@ -512,24 +515,6 @@
       }
     },
     methods:{
-      clear: function(){
-        let mealLength = this.Mealqueue.length;
-        let placeLength = this.Placequeue.length;
-        let randomLength= this.Randomqueue.length;
-
-        for(let i =0; i<= mealLength; i++){
-          this.Mealqueue.pop(i);
-        }
-        for(let i =0; i<= placeLength; i++){
-          this.Placequeue.pop(i);
-        }
-        for(let i =0; i<= randomLength; i++){
-          this.Randomqueue.pop(i);
-        }
-
-
-
-      },
 
       NewDate1Open: function(){
         this.Placequeue.push(this.Date1Open);
@@ -687,6 +672,7 @@
         this.Date3Close.showed="true";
 
 
+
       },
       shuffle: function(array) {
         let currentIndex = array.length, temporaryValue, randomIndex;
@@ -814,6 +800,9 @@
               let dict = {};
               let detail = await axios.get(PROXY_ADDRESS + GOOGLE_PLACES_DETAIL_SEARCH + data[j].place_id + "&key=" + API_KEY);
               let detaildata = detail.data.result;
+              if(!('reviews' in detaildata) == true) {
+                detaildata['reviews'] = [{'text':'No review to display.'}]
+              }
               dict['placeSearch'] = formatResult(data[j]);
               dict['placeDetails'] = detaildata;
               if(cleandata.includes(Object(dict)) == false) {
@@ -843,9 +832,9 @@
         this.searchCompleted  = true;
         this.isSearching = false;
       },
-      scrollToDates: function() {
-        document.getElementById( 'middle' ).scrollIntoView();
-      }
+      scrollToDates: _.debounce(function() {
+        document.getElementById( 'testy' ).scrollIntoView();
+      }, 500)
     },
     watch: {
       budget:function() {
@@ -887,14 +876,7 @@
   #DatePage{
     color: whitesmoke ;
     background: #4F4E4C;
-    min-height: 100vh;
-    zoom: 85%;
-
-  }
-  html,body{
-    min-height: 100vh;
-    padding:0;
-    margin:0;
+    min-height: 100%;
   }
 
 
@@ -924,8 +906,8 @@
     margin-bottom: 0px;
   }
   #DatePage h3{
-      float: left;
-      margin: 0;
+    float: left;
+    margin: 0;
   }
 
   #DatePage .border{
@@ -953,7 +935,7 @@
 
 
   .dateBox1{
-   width: 450px;
+    width: 450px;
     height: 350px;
     border-color: #fd5e53 ;
     border-style:solid;
@@ -986,11 +968,12 @@
 
   #DatePage .loader {
     position: absolute;
-    border: 8px solid #f3f3f3;
+    border: 16px solid #f3f3f3;
+    left: -45px;
     border-radius: 50%;
-    border-top: 8px solid #fd5e53;
-    width: 40px;
-    height: 40px;
+    border-top: 16px solid #fd5e53;
+    width: 50px;
+    height: 50px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
   }
@@ -1015,6 +998,7 @@
   }
   #DatePage .biggerFont{
     font-size: 30px;
+    font-family: Apple Chancery, cursive
   }
 
   #DatePage .directions , #DatePage .website{
@@ -1046,32 +1030,22 @@
     margin-left: 50%;
   }
 
-  a.website{
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-
-    text-decoration: none;
-    color: #fd5e53;
-  }
-
-  a.directions{
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-
-    text-decoration: none;
-    color: #fd5e53;
-  }
-  #DatePage .AddyWeb{
-    color: #fd5e53;
-  }
-
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
   }
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
+  }
+
+  .activityTitle{
+    font-family: Apple Chancery, cursive;
+    font-size: 35px;
+  }
+
+  .dateTitle{
+    font-family: Apple Chancery, cursive;
+    font-size: 45px;
+    font-weight: bold;
   }
 
 </style>
