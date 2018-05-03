@@ -11,6 +11,8 @@
 
     <div>
       <div class="loader method2" v-if="isSearching"></div>
+      <br>
+      <br>
       <h1 v-if="searchCompleted">
 
         <h2 v-if="showNew">
@@ -1020,7 +1022,7 @@
   #DatePage .loader {
     position: absolute;
     border: 16px solid #f3f3f3;
-    left: -50px;
+    left: -46px;
     border-radius: 50%;
     border-top: 16px solid #fd5e53;
     width: 40px;
